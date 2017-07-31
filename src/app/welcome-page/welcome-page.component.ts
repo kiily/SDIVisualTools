@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SignInValidators } from './sign-in.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./welcome-page.component.css']
 })
 export class WelcomePageComponent implements OnInit {
+  
   form = new FormGroup({
     username: new FormControl('',[Validators.required, 
       Validators.minLength(3),
@@ -16,7 +18,8 @@ export class WelcomePageComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  constructor() { }
+  constructor(private router : Router) {  }
+
   ngOnInit() {
   }
 
@@ -26,6 +29,8 @@ export class WelcomePageComponent implements OnInit {
       this.form.setErrors({
         invalidLogin: true
       });
+
+      this.router.navigate(['/home']);
     }
   
 

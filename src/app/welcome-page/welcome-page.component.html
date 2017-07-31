@@ -1,28 +1,42 @@
-<form [formGroup]="form" (ngSubmit)="login()">
-  <div *ngIf="form.errors" class="alert alert-danger">
-    Invalid Credentials
-  </div>
-    <div class="form-group">
-      <label for="username">Username:</label>
-        <input formControlName="username" type="text" class="form-control" name="username"/>
-        <div *ngIf="username.pending">Checking for Uniqueness...</div>
-        <div *ngIf="username.touched && username.invalid"
-        class="alert alert-danger">
-      <!--One DIV for each Validation error  -->
-      <div *ngIf="username.errors.required">Username is required</div>
-      <div *ngIf="username.errors.minlength">Username should be minimum {{username.errors.minlength.requiredLength}} characters</div>
-      <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space.</div>
-      <div *ngIf="username.errors.shouldBeUnique">Username is already taken.</div>
-       </div>
+<div class="jumbotron login-jumbotron">
+  <div class="container-fluid">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center">
+      <h1>SDI Visualizations</h1>
     </div>
-  <div class="form-group">
-    <label for="passwordFld">Password:</label>
-    <input formControlName="password" type="password" class="form-control" name="passwordFld"/>
-  </div> 
+    <div class="col-md-4"></div>
+  </div>
+</div>
 
-  <button class="btn btn-primary" type="submit">Log In</button>
-</form>
+<div class="container">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <div *ngIf="form.errors" class="alert alert-danger">
+        Invalid Credentials
+      </div>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input formControlName="username" type="text" class="form-control" name="username" />
+        <div *ngIf="username.pending">Checking for Uniqueness...</div>
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+          <!--One DIV for each Validation error  -->
+          <div *ngIf="username.errors.required">Username is required</div>
+          <div *ngIf="username.errors.minlength">Username should be minimum {{username.errors.minlength.requiredLength}} characters</div>
+          <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space.</div>
+          <div *ngIf="username.errors.shouldBeUnique">Username is already taken.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="passwordFld">Password:</label>
+        <input formControlName="password" type="password" class="form-control" name="passwordFld" />
+      </div>
+
+      <button class="btn btn-primary" type="submit">Log In</button>
+      <button class="btn btn-default">Sign up</button>
+    </form>
+  </div>
+</div>
 
 
-<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiYzBiY2VjY2MtMWM0Mi00ZDRiLWE2MWYtM2FkYWI0NTEwYjA2IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
-<like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked"></like>
+<!-- <iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiYzBiY2VjY2MtMWM0Mi00ZDRiLWE2MWYtM2FkYWI0NTEwYjA2IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe> -->

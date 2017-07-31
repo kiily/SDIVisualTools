@@ -1,0 +1,65 @@
+/*CSS reference: https://codepen.io/moxy/pen/bEXxgQ*/
+
+/* wrapper not in use */
+.wrapper {
+  margin: 5vh auto 0;
+}
+
+.zone:hover {
+  background-color: rgba(255,255,255,0.3);
+  color: white;
+}
+
+
+.zone {
+  padding:40px 0;
+ margin: 0 auto;
+  text-align:center;
+  color: black;
+  background-blend-mode:darken;
+  transition: 0.5s;
+}
+
+.zone:nth-child(1){
+   /* background: url("../../assets/lego-builing-blocks.jpg") no-repeat center; */
+   background-color: #e6ff2a;
+    background-size: cover;
+    width: 25%;
+    clip-path: polygon(50% 0, 0% 100%, 0 100%);
+    -webkit-clip-path: polygon(50% 0, 100% 100%, 0 100%);
+     clip-path:url("#part1");
+}
+
+.zone:nth-child(2){
+   /* background: url("../../assets/lego-builing-blocks.jpg") no-repeat center; */
+   background-color: #26fffb;
+    background-size: cover;
+    width: 50%;
+    clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
+    
+}
+
+.zone:nth-child(3){
+ /*background: url("../../assets/lego-builing-blocks.jpg") no-repeat center;*/
+    background-color: #a6ff8e;
+    background-size: cover;
+    width: 75%;
+    clip-path: polygon(16.5% 0, 83% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(16.5% 0, 83% 0, 100% 100%, 0 100%);
+}
+
+
+
+.pyramid{
+    float: left;
+  shape-outside:polygon(310px 0px, 130px 405px, 558px 405px);
+  padding-right:100px;
+  width: 800px;
+  height:300px;
+}
+
+.col-centered{
+    float:none;
+    margin:0 auto;
+}
