@@ -34,7 +34,8 @@ import { PyramidComponent } from './pyramid/pyramid.component';
      { path: 'scaffolding', component: ScaffoldingComponent },    
      { path: 'discovery', component: DiscoveryComponent },
      {path: 'innovation', component: InnovationComponent},
-     {path: 'home', component: HomeComponent}
+     {path: 'home', component: HomeComponent},
+     {path: 'welcome-page', component: WelcomePageComponent}
     ])
   ],
   providers: [
