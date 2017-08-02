@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { SignInValidators } from './sign-in.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as pbi from 'powerbi-client';
 
 @Component({
   selector: 'welcome-page',

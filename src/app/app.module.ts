@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SEATService } from './seat.service';
+import { SEATService } from './services/seat.service';
+import {PowerBIService} from './services/power-bi.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -39,7 +40,8 @@ import { PyramidComponent } from './pyramid/pyramid.component';
     ])
   ],
   providers: [
-    SEATService
+    SEATService,
+    PowerBIService
   ],
   bootstrap: [AppComponent]
 })
