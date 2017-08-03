@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SEATService } from './seat.service';
+import { SEATService } from './services/seat.service';
+import {PowerBIService} from './services/power-bi.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -34,11 +35,13 @@ import { PyramidComponent } from './pyramid/pyramid.component';
      { path: 'scaffolding', component: ScaffoldingComponent },    
      { path: 'discovery', component: DiscoveryComponent },
      {path: 'innovation', component: InnovationComponent},
-     {path: 'home', component: HomeComponent}
+     {path: 'home', component: HomeComponent},
+     {path: 'welcome-page', component: WelcomePageComponent}
     ])
   ],
   providers: [
-    SEATService
+    SEATService,
+    PowerBIService
   ],
   bootstrap: [AppComponent]
 })
