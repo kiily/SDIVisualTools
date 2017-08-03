@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scaffolding.component.css']
 })
 export class ScaffoldingComponent implements OnInit {
+  phaseNumber : number;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  togglePhase(phaseNumber : number){
+    this.phaseNumber= phaseNumber;
+  }
 }
