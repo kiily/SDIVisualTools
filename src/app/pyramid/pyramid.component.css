@@ -22,7 +22,7 @@
 
 .zone:nth-child(1){
    /* background: url("../../assets/lego-builing-blocks.jpg") no-repeat center; */
-   background-color: #e6ff2a;
+   background-color: #ec576b;
     background-size: cover;
     width: 25%;
     clip-path: polygon(50% 0, 0% 100%, 0 100%);
@@ -34,7 +34,7 @@
 
 .zone:nth-child(2){
    /* background: url("../../assets/lego-builing-blocks.jpg") no-repeat center; */
-   background-color: #26fffb;
+   background-color: #4ec5c1;
     background-size: cover;
     width: 50%;
     clip-path: polygon(25% 0, 75% 0, 100% 100%, 0 100%);
@@ -46,7 +46,7 @@
 
 .zone:nth-child(3){
  /*background: url("../../assets/lego-builing-blocks.jpg") no-repeat center;*/
-    background-color: #a6ff8e;
+    background-color: #57BC90;
     background-size: cover;
     width: 75%;
     clip-path: polygon(16.5% 0, 83% 0, 100% 100%, 0 100%);

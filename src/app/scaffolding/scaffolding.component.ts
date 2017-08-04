@@ -15,5 +15,7 @@ export class ScaffoldingComponent implements OnInit {
 
   togglePhase(phaseNumber : number){
     this.phaseNumber= phaseNumber;
+    console.log(this.phaseNumber);
+    console.log(phaseNumber);
   }
 }

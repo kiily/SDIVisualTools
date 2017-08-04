@@ -13,6 +13,7 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
 import { PyramidComponent } from './pyramid/pyramid.component';
+import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PyramidComponent } from './pyramid/pyramid.component';
     DiscoveryComponent,
     InnovationComponent,
     HomeComponent,
-    PyramidComponent
+    PyramidComponent,
+    HexagonMenuComponent
   ],
   imports: [
     BrowserModule, 
