@@ -1,16 +1,19 @@
-<div class="jumbotron login-jumbotron">
+<!-- <div class="jumbotron login-jumbotron"> -->
   <div class="container-fluid">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 text-center">
-      <h1>SDI Visualizations</h1>
+    <div class="col-sm-4">
+      <h1 style="color:white;">SDI Visualizations</h1>
     </div>
-    <div class="col-md-4"></div>
+    
+    <div class="col-sm-2 pull-right">
+      <img src="../../assets/UCL_Logo_Orange.jpg" style="width:200px">
+    </div>
+    
   </div>
-</div>
-
+  
+<!-- </div> -->
+<br><br>
 <div class="container">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
+  <div class="col-sm-4 login-box">
     <form [formGroup]="form" (ngSubmit)="login()">
       <div *ngIf="form.errors" class="alert alert-danger">
         Invalid Credentials
@@ -38,5 +41,3 @@
   </div>
 </div>
 
-
-<!-- <iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiYzBiY2VjY2MtMWM0Mi00ZDRiLWE2MWYtM2FkYWI0NTEwYjA2IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe> -->

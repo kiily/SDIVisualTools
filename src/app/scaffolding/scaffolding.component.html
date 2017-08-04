@@ -1,1 +1,31 @@
-<sdinavbar></sdinavbar>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <sdinavbar></sdinavbar>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="btn-toolbar-vertical" role="toolbar">
+                <button class="btn btn-default" (click)="togglePhase(1)">1. Procedural Programming</button>
+                <button class="btn btn-default" (click)="togglePhase(2)">2. Scripting</button>
+                <button class="btn btn-default" (click)="togglePhase(3)">3. Functional Programming</button>
+                <button class="btn btn-default" (click)="togglePhase(4)">4. Object-Oriented Programming</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-5">
+            <div [ngSwitch]="phaseNumber" class="col-md-9">
+                <iframe *ngSwitchCase="1" width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiYzBiY2VjY2MtMWM0Mi00ZDRiLWE2MWYtM2FkYWI0NTEwYjA2IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                    frameborder="0" allowFullScreen="true"></iframe>
+                <iframe *ngSwitchCase="4" width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiY2YxYzRhNzktOGI4Mi00MDAxLTljYzctYWIzZTg0NjQ1MzhlIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                    frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

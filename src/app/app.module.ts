@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SEATService } from './seat.service';
+import { SEATService } from './services/seat.service';
+import {PowerBIService} from './services/power-bi.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
 import { PyramidComponent } from './pyramid/pyramid.component';
+import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { PyramidComponent } from './pyramid/pyramid.component';
     DiscoveryComponent,
     InnovationComponent,
     HomeComponent,
-    PyramidComponent
+    PyramidComponent,
+    HexagonMenuComponent
   ],
   imports: [
     BrowserModule, 
@@ -34,11 +37,13 @@ import { PyramidComponent } from './pyramid/pyramid.component';
      { path: 'scaffolding', component: ScaffoldingComponent },    
      { path: 'discovery', component: DiscoveryComponent },
      {path: 'innovation', component: InnovationComponent},
-     {path: 'home', component: HomeComponent}
+     {path: 'home', component: HomeComponent},
+     {path: 'welcome-page', component: WelcomePageComponent}
     ])
   ],
   providers: [
-    SEATService
+    SEATService,
+    PowerBIService
   ],
   bootstrap: [AppComponent]
 })
