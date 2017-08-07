@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
 .home-background{
       /* background: url("../../assets/skyline-night.jpg") repeat-x center; */
@@ -41,3 +43,51 @@
     font-size: 25px;
     color: white;
 }
+
+.glyphicon-log-out{
+    font-size: 30px;
+    color: white;
+}
+
+#home-title{
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    font-size:26pt;
+} 
+
+
+/*  LOGOUT BUTTON */
+.navigation {
+  width: 100%;
+}
+
+.logout {
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+	position: relative;
+  right: -18px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  
+}
+
+.logout-button {
+	text-decoration: none;
+  padding: 12px;
+  margin: 15px;
+  color:white;
+  width: 25px;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden
+}
+
+
+
+a:hover .logout{
+  opacity: .9;
+}
+
