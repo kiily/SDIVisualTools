@@ -1,3 +1,43 @@
 
+.home-background{
+      /* background: url("../../assets/skyline-night.jpg") repeat-x center; */
+      background-color: black;
+      padding-top: 100px;
+}
 
 
+/*ABOUT ELEMENTS  */
+.value-props {
+
+  width: 100%;
+}
+
+.prop {
+  border: 1px solid #FFF;
+  padding: 40px 0px;
+  margin: 5px 0px;
+  text-align: center;
+}
+
+.prop h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  color: white;
+}
+
+.prop p{
+    color:white;
+    text-align: justify;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Helvetica', sans-serif;
+    font-size:16pt;
+    display: inline-block;
+    
+}
+
+.glyphicon{
+    font-size: 25px;
+    color: white;
+}
