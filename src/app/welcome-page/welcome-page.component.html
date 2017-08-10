@@ -12,22 +12,35 @@
   
 <!-- </div> -->
 <br><br>
+
 <div class="container">
+ 
   <div class="col-sm-4 login-box">
-    <div class="welcome-back"><h2>Welcome Back!</h2></div>
+      <header class="welcome-back">
+      <div ><h2>Welcome Back!</h2></div>
+    </header>
+    
+     
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input formControlName="email" type="text" class="form-control" name="email" />
+        <input formControlName="email" type="text" class="form-control" placeholder="example@ucl.ac.uk" name="email" />
      </div>
       <div class="form-group">
-        <label for="passwordFld">Password:</label>
-        <input formControlName="password" type="password" class="form-control" name="passwordFld" />
+        <!-- <label for="passwordFld">Password:</label> -->
+        <input formControlName="password" placeholder="Password" type="password" class="form-control" name="passwordFld" />
       </div>
 
+      
+<footer>
       <button class="btn btn-primary" type="submit">Log In</button>
       <button class="btn btn-default">Sign up</button>
+      <!--The button below should be separated into a modal and ask the user for the email  -->
+      <button class="btn btn-default" (click)="resetPassword()">Reset Password</button>
+      </footer>
     </form>
+    
+
   </div>
 </div>
 

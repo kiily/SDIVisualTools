@@ -69,6 +69,12 @@ registerUser(uid, email, firstName, lastName){
     lastName: lastName
     
   })
+
+ 
 }
-    
+     resetPassword(email : string){
+       let resetAuth = firebase.auth();
+       return resetAuth.sendPasswordResetEmail(email)
+         
+  }
 }
