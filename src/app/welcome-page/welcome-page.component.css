@@ -11,9 +11,28 @@
 
 .login-box{
     border: 2px solid white;
-    border-radius: 8px;
+    /* border-radius: 8px; */
+    padding: 5px;
+    color: yellow;
+    background-color: white;
+    background-color: darkgrey;
+}
+
+
+.signup-box{
+    border: 2px solid white;
+    /* border-radius: 8px; */
     padding: 5px;
     color: white;
+}
+
+.welcome-back{
+    /* border: 2px solid greenyellow; */
+    /* border-radius: 8px; */
+    text-transform: uppercase;
+    border-bottom: 2px solid #ffdd00;
+    background-color: grey;
+   
 }
 
 .get-started{

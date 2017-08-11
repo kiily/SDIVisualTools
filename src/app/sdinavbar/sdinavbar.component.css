@@ -57,7 +57,7 @@ html { height: 100%;}
 /* #wrapper.toggled #button-content-wrapper {
     position: absolute;
     margin-right: -220px;
-}  */
+}  */ 
 
 /*-------------------------------*/
 /*     Sidebar nav styles        */
@@ -77,6 +77,8 @@ html { height: 100%;}
     line-height: 20px;
     display: inline-block;
     width: 100%;
+    font-size: 16pt;
+   font-family: 'Inconsolata', monospace;
 }
  
 .sidebar-nav li:before {
@@ -146,6 +148,7 @@ html { height: 100%;}
 }
 
 .sidebar-nav > .sidebar-sdi {
+    padding-left: 10px;
     height: 65px;
     font-size: 20px;
     line-height: 44px;
@@ -209,7 +212,7 @@ html { height: 100%;}
 .menu.is-closed .menu-top,
 .menu.is-closed .menu-middle,
 .menu.is-closed .menu-bottom {
-   background-color: #1a1a1a; 
+   background-color: white; 
 }
 .menu.is-closed .menu-top { 
   top: 5px; 
@@ -239,7 +242,7 @@ html { height: 100%;}
 .menu.is-open .menu-top,
 .menu.is-open .menu-middle,
  .menu.is-open .menu-bottom {
-  background-color: #1a1a1a;
+  background-color: white;
 } 
 .menu.is-open .menu-top,
 .menu.is-open .menu-bottom {
