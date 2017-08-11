@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpDataService {
@@ -17,7 +18,7 @@ export class HttpDataService {
 
     getAll(){
         return this.http.get(this.url)
-        .map(response => response.json);
+        .map(response => response.json());
     }
 
     postResource(resource){

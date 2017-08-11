@@ -1,3 +1,4 @@
+import { InnoflowService } from './../services/innoflow.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InnovationComponent implements OnInit {
 
-  constructor() { }
+  innovations: any[];
+
+  constructor(private innoflowService: InnoflowService) {
+
+  }
 
   ngOnInit() {
+
+    //Get the innovations for the given url (hard coded at the moment)
+    this.innoflowService.getAll()
+      .subscribe(innovations => {
+      this.innovations = innovations;
+        console.log(innovations);
+        
+      });
   }
 
 }

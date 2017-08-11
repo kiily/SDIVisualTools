@@ -1,1 +1,23 @@
-<sdinavbar></sdinavbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 pull-left">
+            <sdinavbar></sdinavbar>            
+        </div>
+    </div>
+</div>
+
+<br><br><br><br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text center">
+            <ul class="list-group">
+                <li *ngFor="let innovation of innovations" class="list-group-item">
+                    {{innovation.code}}
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+</div>

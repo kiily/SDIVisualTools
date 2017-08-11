@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { InnoflowService } from './services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
@@ -46,6 +47,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule,
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),
 
