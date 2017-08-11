@@ -1,3 +1,4 @@
+import { InnoflowService } from './services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -51,7 +52,8 @@ export const firebaseConfig = {
   ],
   providers: [
     SEATService,
-    AuthService
+    AuthService,
+    InnoflowService
   ],
   bootstrap: [AppComponent]
 })
