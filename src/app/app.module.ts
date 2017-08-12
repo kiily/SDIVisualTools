@@ -1,3 +1,4 @@
+import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
 import { InnoflowService } from './services/innoflow.service';
 import { AuthService } from './services/auth.service';
@@ -5,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SEATService } from './services/seat.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SDINavbarComponent } from './sdinavbar/sdinavbar.component';
 import { LikeComponent } from './like/like.component';
@@ -14,7 +15,6 @@ import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
-import { PyramidComponent } from './pyramid/pyramid.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
 import { AngularFireModule } from 'angularfire2';
 import { MarkdownModule } from 'angular2-markdown'
@@ -41,7 +41,6 @@ export const firebaseConfig = {
     DiscoveryComponent,
     InnovationComponent,
     HomeComponent,
-    PyramidComponent,
     HexagonMenuComponent
   ],
   imports: [
@@ -57,7 +56,9 @@ export const firebaseConfig = {
   providers: [
     SEATService,
     AuthService,
-    InnoflowService
+    InnoflowService,
+    //replace the default error handler with the global error handler
+    { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
   ],
   bootstrap: [AppComponent]
 })
