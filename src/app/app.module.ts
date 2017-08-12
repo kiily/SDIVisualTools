@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { PyramidComponent } from './pyramid/pyramid.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
 import { AngularFireModule } from 'angularfire2';
+import { MarkdownModule } from 'angular2-markdown'
 import { rootRouterConfig } from './app.routes';
 
 
@@ -50,6 +51,7 @@ export const firebaseConfig = {
     HttpModule,
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),
+    MarkdownModule.forRoot()
 
   ],
   providers: [
