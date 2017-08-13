@@ -62,7 +62,7 @@ export const firebaseConfig = {
     HttpModule,
     MdDialogModule,
     BrowserAnimationsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),
   ],
@@ -70,11 +70,11 @@ export const firebaseConfig = {
     SEATService,
     AuthService,
     InnoflowService,
+    AlertGenerator,
+    SignUpValidator,
     //replace the default error handler with the global error handler
     { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
-    AlertGenerator,
-    SignUpValidator
-
+  
   ],
   bootstrap: [AppComponent]
 })

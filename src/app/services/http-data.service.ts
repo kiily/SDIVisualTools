@@ -3,7 +3,7 @@ import { AppError } from './../common/error-handling/app-error';
 import { NotFoundError } from '../common/error-handling/not-found-error';
 import { BadInputRequestError } from './../common/error-handling/bad-input-request';
 import { Observable } from 'rxjs/Rx';
-import { Http } from '@angular/http';
+import { Headers, Http, RequestOptionsArgs } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -18,8 +18,10 @@ export class HttpDataService {
     //This data service enables the application to communicate via HTTP requests (e.g. RESTFul)
     //This Service contains all CRUD methods - some are currently not in use but may be useful in the future
 
-    constructor(private url : string, private http : Http) {
 
+
+    constructor(private url : string, private http ){
+       
     }
 
     //All the methods of this HttpDataService return observables
