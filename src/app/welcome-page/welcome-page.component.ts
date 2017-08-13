@@ -1,4 +1,4 @@
-import { SignUpValidator } from '../common/validators/sign-up.validator';
+import { AuthValidator } from '../common/validators/sign-up.validator';
 import { AlertGenerator } from '../common/alerts/alert-generator';
 import { AuthDialogComponent } from './../auth-dialog/auth-dialog.component';
 import { AuthService } from '../services/auth.service';
@@ -21,7 +21,7 @@ export class WelcomePageComponent implements OnInit {
 
   constructor(private router: Router, private formBuilder: FormBuilder,
     private authService: AuthService, private alertGenerator : AlertGenerator,
-  private signUpValidator : SignUpValidator) {
+  private AuthValidator : AuthValidator) {
 
 
     this.loginForm = formBuilder.group({
@@ -57,11 +57,12 @@ export class WelcomePageComponent implements OnInit {
           //If everything is okay then navigate to home page
           this.router.navigate(['/home']);
         } else {
-          console.log("email is not verified");
+          this.alertGenerator.generateAuthAlert("Please verify your email");
         }
 
       }).catch(error => {
         console.log(error);
+        this.AuthValidator.handleAuthErrors(error);
 
       });
   }
@@ -100,17 +101,18 @@ export class WelcomePageComponent implements OnInit {
           //NAVIGATION (if any) SHOULD BE ADDED HERE
         }).catch(error => {
           console.log(error);
-          this.signUpValidator.handleAuthErrors(error);
+          this.AuthValidator.handleAuthErrors(error);
         });
 
     }else{
       //PASSWORDS DO NOT MATCH
-      this.alertGenerator.generateSignUpAlert("Passwords do not match");
+      this.alertGenerator.generateAuthAlert("Passwords do not match");
     }
   }
 
 
   resetPassword(){
+    
    let email = this.loginForm.controls.email.value;
    this.authService.resetPassword(email)
    .then(() => {

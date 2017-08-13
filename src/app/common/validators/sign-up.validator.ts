@@ -4,7 +4,7 @@ import { AuthDialogComponent } from './../../auth-dialog/auth-dialog.component';
 import { MdDialog } from '@angular/material';
 
 @Injectable()
-export class SignUpValidator{
+export class AuthValidator{
     
     error : any;
 
@@ -19,16 +19,22 @@ export class SignUpValidator{
         this.error = error;
           
           if(this.error.code === 'auth/invalid-email'){
-            this.alertGenerator.generateSignUpAlert("Email is badly formatted");
+            this.alertGenerator.generateAuthAlert("Email is badly formatted. Please enter a valid email address.");
+          }
+          else if(this.error.code === 'auth/wrong-password'){
+            this.alertGenerator.generateAuthAlert("The password is invalid or the user does not have a password.");
+          }
+          else if(this.error.code === 'auth/user-not-found'){
+             this.alertGenerator.generateAuthAlert("There is no user record corresponding to this identifier.");
           }
           else if(this.error.code === 'auth/weak-password'){
-            this.alertGenerator.generateSignUpAlert("The password must be 6 characters long or more");
+            this.alertGenerator.generateAuthAlert("The password must be 6 characters long or more.");
           }
           else if(this.error.code === 'auth/email-already-in-use'){
-            this.alertGenerator.generateSignUpAlert("The email address is already in use by another account.");
+            this.alertGenerator.generateAuthAlert("The email address is already in use by another account.");
           }else{
              //Something unexpected occurred
-          this.alertGenerator.generateSignUpAlert("An unexpected error occurred");
+          this.alertGenerator.generateAuthAlert("An unexpected error occurred.");
         
           }
          

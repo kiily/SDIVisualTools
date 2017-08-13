@@ -9,7 +9,7 @@ export class AlertGenerator{
 
     }
 
-    generateSignUpAlert(message : string){
+    generateAuthAlert(message : string){
 
     let dialogRef = this.dialog.open(AuthDialogComponent, {
       data: message,

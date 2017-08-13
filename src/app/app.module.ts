@@ -1,6 +1,6 @@
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
-import { SignUpValidator } from './common/validators/sign-up.validator';
+import { AuthValidator } from './common/validators/sign-up.validator';
 import { AlertGenerator } from './common/alerts/alert-generator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InnoflowService } from './services/innoflow.service';
@@ -12,7 +12,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SDINavbarComponent } from './sdinavbar/sdinavbar.component';
-import { LikeComponent } from './like/like.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { DiscoveryComponent } from './discovery/discovery.component';
@@ -42,13 +41,11 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     SDINavbarComponent,
-    LikeComponent,
     WelcomePageComponent,
     ScaffoldingComponent,
     DiscoveryComponent,
     InnovationComponent,
     HomeComponent,
-
     HexagonMenuComponent,
     AuthDialogComponent,
   ],
@@ -73,10 +70,10 @@ export const firebaseConfig = {
     AuthService,
     InnoflowService,
     AlertGenerator,
-    SignUpValidator
+    AuthValidator
     //replace the default error handler with the global error handler
     // { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
-  
+
   ],
   bootstrap: [AppComponent]
 })
