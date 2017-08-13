@@ -1,4 +1,3 @@
-
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
 import { SignUpValidator } from './common/validators/sign-up.validator';
@@ -25,7 +24,6 @@ import { MdDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { rootRouterConfig } from './app.routes';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
-
 
 
 //Firebase database configuration settings
