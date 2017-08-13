@@ -1,9 +1,11 @@
+import { SignUpValidator } from '../common/validators/sign-up.validator';
+import { AlertGenerator } from '../common/alerts/alert-generator';
+import { AuthDialogComponent } from './../auth-dialog/auth-dialog.component';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { SignInValidators } from './sign-in.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import * as pbi from 'powerbi-client';
+
 
 @Component({
   selector: 'welcome-page',
@@ -32,8 +34,11 @@ export class WelcomePageComponent implements OnInit {
 
   // });
 
+  error : any;
+
   constructor(private router: Router, private formBuilder: FormBuilder,
-    private authService: AuthService) {
+    private authService: AuthService, private alertGenerator : AlertGenerator,
+  private signUpValidator : SignUpValidator) {
 
     this.loginForm = formBuilder.group({
       email: ["", Validators.required],
@@ -112,9 +117,12 @@ export class WelcomePageComponent implements OnInit {
 
           //NAVIGATION (if any) SHOULD BE ADDED HERE
         }).catch(error => {
-          console.log(error);
+          this.signUpValidator.handleAuthErrors(error);
         });
 
+    }else{
+      //PASSWORDS DO NOT MATCH
+      this.alertGenerator.generateSignUpAlert("Passwords do not match");
     }
   }
 
@@ -134,4 +142,8 @@ export class WelcomePageComponent implements OnInit {
     return this.loginForm.get('username');
   }
 
+ 
+
 }
+
+

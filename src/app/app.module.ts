@@ -1,3 +1,6 @@
+import { SignUpValidator } from './common/validators/sign-up.validator';
+import { AlertGenerator } from './common/alerts/alert-generator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InnoflowService } from './services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
@@ -13,10 +16,11 @@ import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
-import { PyramidComponent } from './pyramid/pyramid.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
+import { MdDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { rootRouterConfig } from './app.routes';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 
 
 //Firebase database configuration settings
@@ -39,13 +43,18 @@ export const firebaseConfig = {
     DiscoveryComponent,
     InnovationComponent,
     HomeComponent,
-    PyramidComponent,
-    HexagonMenuComponent
+    HexagonMenuComponent,
+    AuthDialogComponent,
+  ],
+  entryComponents: [
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    MdDialogModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),
 
@@ -53,7 +62,9 @@ export const firebaseConfig = {
   providers: [
     SEATService,
     AuthService,
-    InnoflowService
+    InnoflowService,
+    AlertGenerator,
+    SignUpValidator
   ],
   bootstrap: [AppComponent]
 })
