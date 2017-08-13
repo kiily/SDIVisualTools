@@ -71,9 +71,9 @@ export const firebaseConfig = {
     AuthService,
     InnoflowService,
     AlertGenerator,
-    SignUpValidator,
+    SignUpValidator
     //replace the default error handler with the global error handler
-    { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
+    // { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
   
   ],
   bootstrap: [AppComponent]
