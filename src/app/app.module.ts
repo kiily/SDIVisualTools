@@ -1,5 +1,9 @@
+
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
+import { SignUpValidator } from './common/validators/sign-up.validator';
+import { AlertGenerator } from './common/alerts/alert-generator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InnoflowService } from './services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
@@ -16,9 +20,12 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
-import { AngularFireModule } from 'angularfire2';
 import { MarkdownModule } from 'angular2-markdown'
+import { MdDialogModule } from '@angular/material';
+import { AngularFireModule } from 'angularfire2';
 import { rootRouterConfig } from './app.routes';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+
 
 
 //Firebase database configuration settings
@@ -41,17 +48,23 @@ export const firebaseConfig = {
     DiscoveryComponent,
     InnovationComponent,
     HomeComponent,
-    HexagonMenuComponent
+
+    HexagonMenuComponent,
+    AuthDialogComponent,
+  ],
+  entryComponents: [
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    MdDialogModule,
+    BrowserAnimationsModule,
+    MarkdownModule.forRoot()
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),
-    MarkdownModule.forRoot()
-
   ],
   providers: [
     SEATService,
@@ -59,6 +72,9 @@ export const firebaseConfig = {
     InnoflowService,
     //replace the default error handler with the global error handler
     { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
+    AlertGenerator,
+    SignUpValidator
+
   ],
   bootstrap: [AppComponent]
 })
