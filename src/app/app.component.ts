@@ -2,7 +2,7 @@
 import { MdDialog } from '@angular/material';
 import { Observable } from 'rxjs/Rx';
 import { Component } from '@angular/core';
-import {AngularFire, AuthProviders, AuthMethods, FirebaseListObservable} from 'angularfire2';
+// import {AngularFire, AuthProviders, AuthMethods, FirebaseListObservable} from 'angularfire2';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +12,9 @@ import {AngularFire, AuthProviders, AuthMethods, FirebaseListObservable} from 'a
 
 export class AppComponent {
 
-  //stores firebase no-SQL list
-  items : FirebaseListObservable<any>;
-  //accesses the user state
-  user: Observable<firebase.User>;
+  // //stores firebase no-SQL list
+  // items : FirebaseListObservable<any>;
+  // //accesses the user state
+  // user: Observable<firebase.User>;
 
 }

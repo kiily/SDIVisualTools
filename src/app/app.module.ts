@@ -22,6 +22,8 @@ import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
 import { MarkdownModule } from 'angular2-markdown'
 import { MdDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { rootRouterConfig } from './app.routes';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 
@@ -60,6 +62,8 @@ export const firebaseConfig = {
     HttpModule,
     MdDialogModule,
     BrowserAnimationsModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     MarkdownModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),

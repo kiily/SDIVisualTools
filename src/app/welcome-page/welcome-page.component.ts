@@ -50,9 +50,9 @@ export class WelcomePageComponent implements OnInit {
     //Catch the loginPromise
     this.authService.login(email, password)
       .then(authState => {
-
+          console.log(authState);
         //check whether email is verified
-        if (authState.auth.emailVerified) {
+        if (authState.emailVerified) {
           this.loginForm.reset();
           //If everything is okay then navigate to home page
           this.router.navigate(['/home']);
@@ -82,19 +82,24 @@ export class WelcomePageComponent implements OnInit {
       //Catch the signup promise
       this.authService.signupUser(email, password)
         .then(authState => {
-
+          console.log(authState);
+         
           console.log("sending email");
           //Email verification
-          authState.auth.sendEmailVerification();
+          authState.sendEmailVerification();
 
+         
           this.signUpForm.reset();
 
           //Extract unique user id
           let uid = authState.uid;
+          console.log(uid);
           this.authService.registerUser(uid, email, firstName, lastName);
+          console.log("user should have been registered");
 
           //NAVIGATION (if any) SHOULD BE ADDED HERE
         }).catch(error => {
+          console.log(error);
           this.signUpValidator.handleAuthErrors(error);
         });
 
