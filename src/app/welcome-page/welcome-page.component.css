@@ -19,6 +19,7 @@
     overflow-x: hidden;
 }
 
+
 header {
     height: 45px;
     line-height: 45px;
@@ -35,8 +36,6 @@ header.welcome-back{
 h3 span {
     color: #ffdd00;
 }
-
-
 
 .login-box{
      border: 1px solid #161616;

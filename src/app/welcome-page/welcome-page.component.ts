@@ -14,31 +14,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class WelcomePageComponent implements OnInit {
 
-  // loginForm = new FormGroup({
-  //   email: new FormControl('', Validators.required),
-  //   password: new FormControl('', Validators.required)
-  // });
-
   loginForm;
   signUpForm;
 
-  // signupForm = new FormGroup({
-  //   email: new FormControl('', [Validators.required,
-  //   Validators.minLength(6),
-  //   SignInValidators.cannotContainSpace],
-  //     SignInValidators.shouldBeUnique),
-  //   password: new FormControl('', Validators.required),
-  //   repeatPassword: new FormControl('', Validators.required),
-  //   firstName: new FormControl('', Validators.required),
-  //   lastName: new FormControl('', Validators.required)
 
-  // });
-
-  error : any;
 
   constructor(private router: Router, private formBuilder: FormBuilder,
     private authService: AuthService, private alertGenerator : AlertGenerator,
   private signUpValidator : SignUpValidator) {
+
 
     this.loginForm = formBuilder.group({
       email: ["", Validators.required],
@@ -80,12 +64,6 @@ export class WelcomePageComponent implements OnInit {
         console.log(error);
 
       });
-
-    //  //set errors at the form level (can call at individual
-    // //form control object too)
-    // this.loginForm.setErrors({
-    //   invalidLogin: true
-    // });
   }
 
 
