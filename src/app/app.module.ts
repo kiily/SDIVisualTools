@@ -25,6 +25,7 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { rootRouterConfig } from './app.routes';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
 
 //Firebase database configuration settings
@@ -48,6 +49,7 @@ export const firebaseConfig = {
     HomeComponent,
     HexagonMenuComponent,
     AuthDialogComponent,
+    SignUpPageComponent,
   ],
   entryComponents: [
     AuthDialogComponent

@@ -12,8 +12,17 @@ export class AlertGenerator{
     generateAuthAlert(message : string){
 
     let dialogRef = this.dialog.open(AuthDialogComponent, {
+      data: "Error: "+message,
+    });
+
+    }
+
+    generateRegistrationConfirm(message : string){
+
+    let dialogRef = this.dialog.open(AuthDialogComponent, {
       data: message,
     });
 
     }
+
 }

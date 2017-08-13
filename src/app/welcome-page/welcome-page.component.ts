@@ -15,31 +15,20 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class WelcomePageComponent implements OnInit {
 
   loginForm;
-  signUpForm;
-
-
 
   constructor(private router: Router, private formBuilder: FormBuilder,
     private authService: AuthService, private alertGenerator : AlertGenerator,
-  private AuthValidator : AuthValidator) {
+  private authValidator : AuthValidator) {
 
 
     this.loginForm = formBuilder.group({
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
-
-    this.signUpForm = formBuilder.group({
-      email: ["", Validators.required],
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
-      password: ["", Validators.required],
-      repeatPassword: ["", Validators.required]
-
-    });
   }
 
   ngOnInit() {
+
   }
 
   login() {
@@ -62,57 +51,17 @@ export class WelcomePageComponent implements OnInit {
 
       }).catch(error => {
         console.log(error);
-        this.AuthValidator.handleAuthErrors(error);
+        this.authValidator.handleAuthErrors(error);
 
       });
   }
 
-
-  signUp() {
-
-    //retrieve data from the form
-    let email = this.signUpForm.controls.email.value;
-    let password = this.signUpForm.controls.password.value;
-    let repeatPassword = this.signUpForm.controls.repeatPassword.value;
-    let firstName = this.signUpForm.controls.firstName.value;
-    let lastName = this.signUpForm.controls.lastName.value;
-
-    console.log(email);
-    //check whether the passwords match
-    if (password == repeatPassword) {
-      //Catch the signup promise
-      this.authService.signupUser(email, password)
-        .then(authState => {
-          console.log(authState);
-         
-          console.log("sending email");
-          //Email verification
-          authState.sendEmailVerification();
-
-         
-          this.signUpForm.reset();
-
-          //Extract unique user id
-          let uid = authState.uid;
-          console.log(uid);
-          this.authService.registerUser(uid, email, firstName, lastName);
-          console.log("user should have been registered");
-
-          //NAVIGATION (if any) SHOULD BE ADDED HERE
-        }).catch(error => {
-          console.log(error);
-          this.AuthValidator.handleAuthErrors(error);
-        });
-
-    }else{
-      //PASSWORDS DO NOT MATCH
-      this.alertGenerator.generateAuthAlert("Passwords do not match");
-    }
+  goToSignUp(){
+    this.router.navigate(['/sign-up-page']);
   }
 
-
   resetPassword(){
-    
+
    let email = this.loginForm.controls.email.value;
    this.authService.resetPassword(email)
    .then(() => {
