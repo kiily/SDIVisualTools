@@ -8,8 +8,8 @@
 
         <div class="col-sm-9 top-bar">
             <div class="btn-toolbar-vertical" role="toolbar">
-                <button class="btn btn-default" (click)="togglePhase(0)">General Overview</button>
-                <button class="btn btn-default" (click)="togglePhase(1)">1. Procedural Programming</button>
+               <button class="btn btn-default" (click)="togglePhase(0)">General Overview</button>
+                <a target="_blank" routerLink='/scaffolding'><button class="btn btn-default" (click)="togglePhase(1)">1. Procedural Programming</button></a>
                 <button class="btn btn-default" (click)="togglePhase(2)">2. Scripting</button>
                 <button class="btn btn-default" (click)="togglePhase(3)">3. Functional Programming</button>
                 <button class="btn btn-default" (click)="togglePhase(4)">4. Object-Oriented Programming</button>
@@ -26,21 +26,29 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-9">
             <div [ngSwitch]="phaseNumber" class="col-md-9">
+                <!--CLEAN DATA DASHBOARDS  -->
+                <!--GENERAL OVERVIEW REPORT  -->
+                <iframe *ngSwitchCase="0" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOWZlNjJhMmUtZmViYy00Mjc5LWI0ZDQtMzU5M2QxOGRjOWE4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                 frameborder="0" allowFullScreen="true"></iframe>
+                 <!--PHASE 1 - PROCEDURAL PROGRAMMING REPORT  -->
+                 <iframe *ngSwitchCase="1" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOTUzYmQ1NGUtOWEzZS00NDNhLTk3MTctYmIxZWNjYzYzNmZhIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0" 
+                 frameborder="0" allowFullScreen="true"></iframe>
+                 <!--PHASE 2 - SCRIPTING REPORT  -->                
+                 <iframe *ngSwitchCase="2" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiZGZiZjQzYzItYzEyNi00MGEzLWFiMmYtYjVhM2YzYWRiMmJiIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                  frameborder="0" allowFullScreen="true"></iframe>
+                 <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
+                 <iframe *ngSwitchCase="3" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiNmNkMGYwNjYtYTA0Zi00N2ZiLWI0ODYtN2U4MDNhMzAwOGNiIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                  frameborder="0" allowFullScreen="true"></iframe>
+                <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
+                <iframe *ngSwitchCase="4" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMjcwZmY2YjgtNjc2NS00OWQxLWJjNDEtODY3NjFkYWQ2ZDg4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0" 
+                frameborder="0" allowFullScreen="true"></iframe>
+                <!--SEAT TIMELINE REPORT  -->
+                <iframe *ngSwitchCase="5" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOWZlNjJhMmUtZmViYy00Mjc5LWI0ZDQtMzU5M2QxOGRjOWE4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection4"
+                 frameborder="0" allowFullScreen="true"></iframe>
+                <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
+                 <iframe *ngSwitchDefault width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOWZlNjJhMmUtZmViYy00Mjc5LWI0ZDQtMzU5M2QxOGRjOWE4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                 frameborder="0" allowFullScreen="true"></iframe>
 
-                <iframe *ngSwitch="0" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMGQyMGMxYWUtMTllZS00YTIyLWJkZmUtYjlhMjk3Y2JhYzA5IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                    frameborder="0" allowFullScreen="true"></iframe>
-                <iframe *ngSwitchCase="1" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiYzU3MmMxM2MtODMzZC00MmQ3LTkyODUtZTI3NWI4NDFlODBkIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                    frameborder="0" allowFullScreen="true"></iframe>
-                <iframe *ngSwitchCase="2" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiODA5YjBhMWUtNDI0ZS00MThiLWExZjUtMjYwY2E3NzEyNTliIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                    frameborder="0" allowFullScreen="true"></iframe>
-                <iframe *ngSwitchCase="3" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiZWMxOTc2OGItMWM4Ny00YWE0LWI0NDItZjI3MzRiOGFkYTkxIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                    frameborder="0" allowFullScreen="true"></iframe>
-                <iframe *ngSwitchCase="4" width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMzE3ZTk5NDktZTQ2ZS00YWEyLTlmZmQtY2QzMzFiY2YzM2EzIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                    frameborder="0" allowFullScreen="true"></iframe>
-                <iframe *ngSwitchDefault width="1000" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMGQyMGMxYWUtMTllZS00YTIyLWJkZmUtYjlhMjk3Y2JhYzA5IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection5"                 frameborder="0" allowFullScreen="true"></iframe>
-
-                <!-- <iframe *ngSwitchDefault width="933" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiMGQyMGMxYWUtMTllZS00YTIyLWJkZmUtYjlhMjk3Y2JhYzA5IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                    frameborder="0" allowFullScreen="true"></iframe> -->
             </div>
         </div>
     </div>

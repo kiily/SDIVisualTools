@@ -1,3 +1,5 @@
+
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { DiscoveryComponent } from './discovery/discovery.component';
@@ -14,5 +16,6 @@ export const rootRouterConfig: Routes = [
     { path: 'discovery', component: DiscoveryComponent },
     { path: 'innovation', component: InnovationComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'welcome-page', component: WelcomePageComponent }
+    { path: 'welcome-page', component: WelcomePageComponent },
+    { path: 'sign-up-page', component: SignUpPageComponent}
 ];

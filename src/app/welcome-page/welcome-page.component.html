@@ -1,86 +1,62 @@
 <!-- <div class="jumbotron login-jumbotron"> -->
-  <div class="container-fluid">
-    <div class="col-sm-4">
-      <h1 style="color:white;">SDI Visualizations</h1>
+<div class="container-fluid full-width">
+  <div class="row" style="background-color: #F58F1D">
+    <div class="col-sm-4 pull-left">
+      <img src="../../assets/UCL_Logo_Orange.jpg">
     </div>
-    
-    <div class="col-sm-2 pull-right">
-      <img src="../../assets/UCL_Logo_Orange.jpg" style="width:200px">
-    </div>
-    
-  </div>
-  
-<!-- </div> -->
-<br><br>
 
-<div class="container">
- 
-  <div class="col-sm-4 login-box">
+    <div class="col-sm-offset-4 col-sm-4">
+      <h1 style="color:white;">SDI VisualTools</h1>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container login-box">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 ">
       <header class="welcome-back">
-      <div ><h2>Welcome Back!</h2></div>
-    </header>
-    
-     
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input formControlName="email" type="text" class="form-control" placeholder="example@ucl.ac.uk" name="email" />
-     </div>
-      <div class="form-group">
-        <!-- <label for="passwordFld">Password:</label> -->
-        <input formControlName="password" placeholder="Password" type="password" class="form-control" name="passwordFld" />
-      </div>
+        <div>
+          <h3><span>Welcome</span> Back!</h3>
+        </div>
+      </header>
 
+      <br>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input formControlName="email" type="text" class="form-control" placeholder="example@ucl.ac.uk" name="email" />
+        </div>
+        <div class="form-group">
+          <!-- <label for="passwordFld">Password:</label> -->
+          <input formControlName="password" placeholder="Password" type="password" class="form-control" name="passwordFld" />
+        </div>
+
+
+  
+          <button class="btn btn-block login-btn" type="submit">Log In</button>
+          <!--The button below should be separated into a modal and ask the user for the email  -->
+          
+         
+      </form>
+
+      <footer>
+       <div class="row" style="padding-top: 30px;">
+         <div class="text-center">
+            <button class="btn btn-link text-center" (click)="resetPassword()">Forgot your Password?</button>
+          </div>
+          <br>
+            <div class="col-sm-8">
+              <p>Don't have an account?</p>
+            </div>
+            <div class="col-sm-4 pull-right">
+              <button class="btn btn-block sign-up-btn" (click)="goToSignUp()">Sign up</button>
+            </div>
+          </div>
+        </footer>
       
-<footer>
-      <button class="btn btn-primary" type="submit">Log In</button>
-      <button class="btn btn-default">Sign up</button>
-      <!--The button below should be separated into a modal and ask the user for the email  -->
-      <button class="btn btn-default" (click)="resetPassword()">Reset Password</button>
-      </footer>
-    </form>
-    
 
+    </div>
   </div>
 </div>
-
-<!-- SIGN-UP FORM -->
-<div class="container">
-  <div class="col-sm-4 signup-box">
-    
-    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input formControlName="email" type="text" class="form-control" name="email" />
-        <!-- <div *ngIf="email.pending">Checking for Uniqueness...</div>
-        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">-->
-          <!--One DIV for each Validation error  -->
-          <!--<div *ngIf="email.errors.required">Email is required</div>
-          <div *ngIf="email.errors.minlength">Email should be minimum {{email.errors.minlength.requiredLength}} characters</div>
-          <div *ngIf="email.errors.cannotContainSpace">Email cannot contain space.</div>
-          <div *ngIf="email.errors.shouldBeUnique">Email is already taken.</div> -->
-        <!-- </div> -->
-      </div>
-        <div class="form-group">
-        <label for="firstNameFld">First Name</label>
-        <input formControlName="firstName" type="firstName" class="form-control" name="firstNameFld" />
-      </div>
-        <div class="form-group">
-        <label for="lastNameFld">Last Name</label>
-        <input formControlName="lastName" type="lastName" class="form-control" name="lastNameFld" />
-      </div>
-      <div class="form-group">
-        <label for="passwordFld">Password:</label>
-        <input formControlName="password" type="password" class="form-control" name="passwordFld" />
-      </div>
-      <div class="form-group">
-        <label for="repeatPasswordFld">Repeat Password:</label>
-        <input formControlName="repeatPassword" type="password" class="form-control" name="repeatPasswordFld" />
-      </div>
-    
-      
-      <button class="btn btn-default" type="submit">Sign up</button>
-    </form>
-  </div>
-</div>
-

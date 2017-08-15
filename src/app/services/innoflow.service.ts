@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class InnoflowService extends HttpDataService {
 
   constructor(http : Http) { 
-    super('http://innoflow.herokuapp.com/api/users/1/innovations', http);
+    super('https://innoflow.herokuapp.com/api/users/2/innovations', http);
   }
 
 }

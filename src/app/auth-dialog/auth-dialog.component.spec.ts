@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PyramidComponent } from './pyramid.component';
+import { AuthDialogComponent } from './auth-dialog.component';
 
-describe('PyramidComponent', () => {
-  let component: PyramidComponent;
-  let fixture: ComponentFixture<PyramidComponent>;
+describe('AuthDialogComponent', () => {
+  let component: AuthDialogComponent;
+  let fixture: ComponentFixture<AuthDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PyramidComponent ]
+      declarations: [ AuthDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PyramidComponent);
+    fixture = TestBed.createComponent(AuthDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

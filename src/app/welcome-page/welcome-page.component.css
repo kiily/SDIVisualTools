@@ -1,49 +1,57 @@
-/* .login-jumbotron {
 
-    
-    background: url("../../assets/lego-builing-blocks.jpg") no-repeat center;
-    background-size: cover;
-    color: #eeeaec;
-    height: 300px;
-    text-shadow: 1px 1px 1px #000000;
+/*LOGIN CSS References:
+ - https://codepen.io/iamnbutler/pen/clrDk  */
 
-} */
 
-.login-box{
-    border: 2px solid white;
-    /* border-radius: 8px; */
-    padding: 5px;
-    color: yellow;
-    background-color: white;
-    background-color: darkgrey;
+.container-fluid.full-width {
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
 }
 
 
-.signup-box{
-    border: 2px solid white;
-    /* border-radius: 8px; */
-    padding: 5px;
+header {
+    height: 45px;
+    line-height: 45px;
+    border-bottom: solid 2px #ffdd00;
+    padding: 0 30px;
+
     color: white;
-}
-
-.welcome-back{
-    /* border: 2px solid greenyellow; */
-    /* border-radius: 8px; */
-    text-transform: uppercase;
-    border-bottom: 2px solid #ffdd00;
-    background-color: grey;
    
 }
 
-.get-started{
-    border: 2px solid white;
-    background: transparent;
-    color: yellow;
-    font-weight: bold;
 
+header.welcome-back{
+    text-transform: uppercase;
 }
 
-.get-started:hover{
-    border: 2px solid white;
-    background: gold;
+
+h3 span {
+    color: #ffdd00;
 }
+
+.login-box{
+    padding:100px;
+    border: 1px solid #161616;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
+    border-radius: 2px;
+    color: white;
+    background-color: black;
+   
+}
+
+.login-btn{
+    background-color: #ffdd00;
+    color: black;
+}
+
+.sign-up-btn{
+    background-color: #ffdd00;
+    border-radius: 3px;
+    color: black;
+  
+}
+
+
+
+

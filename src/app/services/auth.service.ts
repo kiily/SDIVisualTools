@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, AuthMethods, AuthProviders, FirebaseObjectObservable, AngularFireAuth} from 'angularfire2';
+import { AngularFireAuth} from 'angularfire2/auth';
+import {AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
+
 
 /**
  * AuthService provides user data manipulation methods and authentication methods.
@@ -15,11 +18,11 @@ import { AngularFire, AuthMethods, AuthProviders, FirebaseObjectObservable, Angu
 @Injectable()
 export class AuthService {
 
-  firebaseAuth : AngularFireAuth;
 
 
-  constructor(private af : AngularFire) {
-    this.firebaseAuth = af.auth;
+
+  constructor(private afAuth : AngularFireAuth, private afdb : AngularFireDatabase) {
+   
    }
 
    /**
@@ -29,18 +32,8 @@ export class AuthService {
    login(email, password){
 
     //auth.login method returns a Promise
-   
-    let loginPromise = this.af.auth.login({
-      email: email,
-      password: password
-    },{
-      //method selected in Firebase
-      method: AuthMethods.Password,
-      provider: AuthProviders.Password
-    });
-
+    let loginPromise = this.afAuth.auth.signInWithEmailAndPassword(email, password);
     return loginPromise;
-
    }
 
    /**
@@ -49,12 +42,8 @@ export class AuthService {
  */
 signupUser(email, password){
 
-  let signupUserPromise = this.af.auth.createUser({
-      email: email,
-      password: password
-    });
-  
-    return signupUserPromise;
+  let signupUserPromise = this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+      return signupUserPromise;
 }
 
 /**
@@ -62,19 +51,19 @@ signupUser(email, password){
  */
 registerUser(uid, email, firstName, lastName){
 
-  this.af.database.object('/users/'+uid).update({
+  this.afdb.object('/users/'+uid).update({
+
 
     email: email,
     firstName: firstName,
     lastName: lastName
     
-  })
-
+  });
  
 }
      resetPassword(email : string){
-       let resetAuth = firebase.auth();
-       return resetAuth.sendPasswordResetEmail(email)
+       let resetAuth = this.afAuth.auth.sendPasswordResetEmail(email);
+       return resetAuth;
          
   }
 }
