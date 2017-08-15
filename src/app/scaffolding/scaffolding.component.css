@@ -7,3 +7,63 @@
     background-color: black;
     background-size: cover;
 }
+
+/* clearfix */
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+/*BUTTON REFERENCES:
+    - https://bootsnipp.com/snippets/Oeo2N  
+
+   */
+
+ /* .button{
+    color:white;
+    font-family:inherit;
+    background: none;
+    position: relative;
+    padding: 25px, 80px;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    outline: none;
+    border: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 1px solid white;
+
+}  */
+
+.button {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 50px;
+    display: inline-block;
+    margin: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    border: 1px solid white;
+    color: white;
+    
+}
+.button:hover,
+.button:active {
+    color: #0e83cd;
+    background: white;
+    
+}
+
