@@ -1,3 +1,4 @@
+
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { InnovationComponent } from './innovation/innovation.component';

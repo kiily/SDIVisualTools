@@ -15,13 +15,16 @@ header {
     line-height: 45px;
     border-bottom: solid 2px #ffdd00;
     padding: 0 30px;
+
     color: white;
    
 }
 
+
 header.welcome-back{
     text-transform: uppercase;
 }
+
 
 h3 span {
     color: #ffdd00;

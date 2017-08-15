@@ -1,3 +1,4 @@
+
 import { AuthValidator } from '../common/validators/sign-up.validator';
 import { AlertGenerator } from '../common/alerts/alert-generator';
 import { AuthDialogComponent } from './../auth-dialog/auth-dialog.component';
@@ -5,7 +6,6 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'welcome-page',
@@ -25,6 +25,7 @@ export class WelcomePageComponent implements OnInit {
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
+
   }
 
   ngOnInit() {
@@ -39,19 +40,24 @@ export class WelcomePageComponent implements OnInit {
     //Catch the loginPromise
     this.authService.login(email, password)
       .then(authState => {
+
           console.log(authState);
         //check whether email is verified
         if (authState.emailVerified) {
+
           this.loginForm.reset();
           //If everything is okay then navigate to home page
           this.router.navigate(['/home']);
         } else {
+
           this.alertGenerator.generateAuthAlert("Please verify your email");
+
         }
 
       }).catch(error => {
         console.log(error);
         this.authValidator.handleAuthErrors(error);
+
 
       });
   }
@@ -60,8 +66,8 @@ export class WelcomePageComponent implements OnInit {
     this.router.navigate(['/sign-up-page']);
   }
 
-  resetPassword(){
 
+  resetPassword(){
    let email = this.loginForm.controls.email.value;
    this.authService.resetPassword(email)
    .then(() => {

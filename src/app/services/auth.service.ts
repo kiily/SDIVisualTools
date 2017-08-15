@@ -3,6 +3,7 @@ import { AngularFireAuth} from 'angularfire2/auth';
 import {AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 
+
 /**
  * AuthService provides user data manipulation methods and authentication methods.
  * 
@@ -19,6 +20,7 @@ export class AuthService {
 
 
 
+
   constructor(private afAuth : AngularFireAuth, private afdb : AngularFireDatabase) {
    
    }
@@ -30,10 +32,8 @@ export class AuthService {
    login(email, password){
 
     //auth.login method returns a Promise
-   
     let loginPromise = this.afAuth.auth.signInWithEmailAndPassword(email, password);
     return loginPromise;
-
    }
 
    /**
@@ -53,12 +53,12 @@ registerUser(uid, email, firstName, lastName){
 
   this.afdb.object('/users/'+uid).update({
 
+
     email: email,
     firstName: firstName,
     lastName: lastName
     
   });
-
  
 }
      resetPassword(email : string){

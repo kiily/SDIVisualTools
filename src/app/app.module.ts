@@ -18,6 +18,7 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
+
 import { MarkdownModule } from 'angular2-markdown'
 import { MdDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
@@ -26,6 +27,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { rootRouterConfig } from './app.routes';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+
 
 
 //Firebase database configuration settings
@@ -66,6 +68,7 @@ export const firebaseConfig = {
     MarkdownModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),
+
   ],
   providers: [
     SEATService,
@@ -74,8 +77,8 @@ export const firebaseConfig = {
     AlertGenerator,
     AuthValidator
     //replace the default error handler with the global error handler
+    //should revert this and retest
     // { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
-
   ],
   bootstrap: [AppComponent]
 })

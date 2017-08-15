@@ -1,9 +1,8 @@
-
 import { AppError } from './../common/error-handling/app-error';
 import { NotFoundError } from '../common/error-handling/not-found-error';
 import { BadInputRequestError } from './../common/error-handling/bad-input-request';
 import { Observable } from 'rxjs/Rx';
-import { Headers, Http, RequestOptionsArgs } from '@angular/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -17,27 +16,22 @@ export class HttpDataService {
     //This is the parent class of all the data services in the application
     //This data service enables the application to communicate via HTTP requests (e.g. RESTFul)
     //This Service contains all CRUD methods - some are currently not in use but may be useful in the future
+    constructor(private url : string, private http : Http) {
 
-
-
-    constructor(private url : string, private http ){
-       
     }
 
     //All the methods of this HttpDataService return observables
 
     getAll(){
         return this.http.get(this.url)
-        .map(response => response.json())
+       .map(response => response.json())
         .catch(this.handleError);
-
     }
 
     postResource(resource){
         return this.http.post(this.url, JSON.stringify(resource))
         .map(response => response.json())
         .catch(this.handleError);
-
     }
 
     updateResource(resource){
@@ -45,7 +39,6 @@ export class HttpDataService {
         return this.http.put(this.url, JSON.stringify(resource))
         .map(response => response.json())
         .catch(this.handleError);
-
     }
 
     removeResource(id){
@@ -65,7 +58,6 @@ export class HttpDataService {
         }
 
         return Observable.throw(new AppError(error.json()))
-
 
     }
 }
