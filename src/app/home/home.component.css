@@ -5,21 +5,22 @@
 .home-background{
       /* background: url("../../assets/skyline-night.jpg") repeat-x center; */
       background-color: black;
-      padding-top: 100px;
+      padding-top:50px;
 }
 
 
 /*ABOUT ELEMENTS  */
 .value-props {
-
   width: 100%;
 }
+
 
 .prop {
   border: 1px solid #FFF;
   padding: 40px 0px;
   margin: 5px 0px;
   text-align: center;
+  
 }
 
 .prop h2 {
@@ -34,8 +35,8 @@
     text-align: justify;
     margin-left: 10px;
     margin-right: 10px;
-    font-family: 'Helvetica', sans-serif;
-    font-size:16pt;
+   font-family: 'Inconsolata', monospace;
+    font-size:20pt;
     display: inline-block;
     
 }
@@ -54,19 +55,26 @@
 #home-title{
     font-family: 'Inconsolata', monospace;
     color: white;
-    font-size:26pt;
+    font-size:45pt;
 } 
 
+#about-title{
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    font-size:35pt;
+    text-transform: uppercase;
+}
 
 /*  LOGOUT BUTTON */
 .navigation {
   width: 100%;
+
 }
 
 .logout {
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
-	position: relative;
+	/* position: relative; */
   right: -18px;
   overflow: hidden;
   letter-spacing: 3px;
@@ -78,8 +86,8 @@
 
 .logout-button {
 	text-decoration: none;
-  padding: 12px;
-  margin: 15px;
+   padding: 30px; 
+  /* margin: 15px; */
   color:white;
   width: 25px;
   transition: width .35s;
@@ -92,4 +100,6 @@
 a:hover .logout{
   opacity: .9;
 }
+
+
 

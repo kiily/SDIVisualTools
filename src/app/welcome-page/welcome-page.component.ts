@@ -37,6 +37,10 @@ export class WelcomePageComponent implements OnInit {
     let email = this.loginForm.controls.email.value;
     let password = this.loginForm.controls.password.value;
 
+    //Enabled a temp offline login for demos
+    if(email ==="admin" && password=="admin"){
+         this.router.navigate(['/home']);
+    }else{
     //Catch the loginPromise
     this.authService.login(email, password)
       .then(authState => {
@@ -60,6 +64,7 @@ export class WelcomePageComponent implements OnInit {
 
 
       });
+    }
   }
 
   goToSignUp(){
