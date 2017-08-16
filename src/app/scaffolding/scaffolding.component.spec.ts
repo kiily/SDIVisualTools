@@ -1,3 +1,4 @@
+import { SDINavbarComponent } from './../sdinavbar/sdinavbar.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ScaffoldingComponent } from './scaffolding.component';
@@ -8,7 +9,7 @@ describe('ScaffoldingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScaffoldingComponent ]
+      declarations: [ ScaffoldingComponent, SDINavbarComponent ]
     })
     .compileComponents();
   }));

@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { SEATService } from './seat.service';
@@ -5,7 +6,8 @@ import { SEATService } from './seat.service';
 describe('SEATService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SEATService]
+      providers: [SEATService],
+      imports: [HttpModule]
     });
   });
 
