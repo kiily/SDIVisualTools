@@ -16,7 +16,7 @@ export class InnovationComponent implements OnInit {
   constructor(private innoflowService: InnoflowService) {
 
   }
-
+ 
   ngOnInit() {
 
     //Get the innovations for the given url (hard coded at the moment)
