@@ -80,6 +80,7 @@ html { height: 100%;}
     width: 100%;
     font-size: 16pt;
    font-family: 'Inconsolata', monospace;
+   text-transform: uppercase;
 }
  
 .sidebar-nav li:before {

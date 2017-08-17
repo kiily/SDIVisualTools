@@ -23,6 +23,10 @@
   
 }
 
+.value-props:hover{
+  background-color:lightslategrey;
+}
+
 .prop h2 {
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
