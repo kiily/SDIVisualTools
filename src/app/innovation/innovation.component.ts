@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-innovation',
   templateUrl: './innovation.component.html',
   styleUrls: ['./innovation.component.css']
+  
 })
 export class InnovationComponent implements OnInit {
 
@@ -16,7 +17,7 @@ export class InnovationComponent implements OnInit {
   constructor(private innoflowService: InnoflowService) {
 
   }
-
+ 
   ngOnInit() {
 
     //Get the innovations for the given url (hard coded at the moment)

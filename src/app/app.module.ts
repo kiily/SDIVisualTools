@@ -1,6 +1,6 @@
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
-import { AuthValidator } from './common/validators/sign-up.validator';
+import { AuthValidator } from './common/validators/auth.validator';
 import { AlertGenerator } from './common/alerts/alert-generator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InnoflowService } from './services/innoflow.service';
@@ -18,7 +18,6 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
-
 import { MarkdownModule } from 'angular2-markdown'
 import { MdDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
