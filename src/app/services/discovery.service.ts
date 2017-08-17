@@ -30,6 +30,11 @@ export class DiscoveryService {
     });
   }
 
+  deleteLink(id){
+    return this.afdb.object('/discovery/links/'+id).remove();
+  }
 
+  updateLink(){
 
+  }
 }

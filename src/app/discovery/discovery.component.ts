@@ -10,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscoveryComponent implements OnInit {
 
-  discoveryLinks : FirebaseListObservable<any[]>;
-  discoveryLinkCategories : FirebaseListObservable<any[]>;
-  category : Object;
+  discoveryLinks: FirebaseListObservable<any[]>;
+  discoveryLinkCategories: FirebaseListObservable<any[]>;
+  category: Object;
 
   addLinkForm;
 
-  constructor(private discoveryService: DiscoveryService, private formBuilder : FormBuilder) { 
+  constructor(private discoveryService: DiscoveryService, private formBuilder: FormBuilder) {
 
     this.addLinkForm = formBuilder.group({
       title: ["", Validators.required],
@@ -30,18 +30,29 @@ export class DiscoveryComponent implements OnInit {
     this.discoveryLinkCategories = this.discoveryService.getDiscoveryLinkCategories();
   }
 
-  addNewLink(){
-    
+  addNewLink() {
+
     let title = this.addLinkForm.controls.title.value;
     let link = this.addLinkForm.controls.link.value;
     console.log("error is right below");
     let category = this.addLinkForm.controls.category.value;
 
-    console.log("category is:"+category);
-    
+    console.log("category is:" + category);
+
 
     this.discoveryService.addDiscoveryLink(title, link, category);
     console.log("added");
+  }
+
+  removeLink(linkID) {
+    console.log(linkID);
+    this.discoveryService.deleteLink(linkID.$key)
+      .then(() => {
+        // could implement validation here
+      })
+      .catch(() => {
+        // catch error here
+      });
   }
 
 }

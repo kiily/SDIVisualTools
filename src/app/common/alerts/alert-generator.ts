@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthDialogComponent } from './../../auth-dialog/auth-dialog.component';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { MdDialog } from '@angular/material';
 
 @Injectable()
