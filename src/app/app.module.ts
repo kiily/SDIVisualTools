@@ -1,3 +1,4 @@
+import { DiscoveryService } from './services/discovery.service';
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
 import { AuthValidator } from './common/validators/auth.validator';
@@ -72,6 +73,7 @@ export const firebaseConfig = {
   providers: [
     SEATService,
     AuthService,
+    DiscoveryService,
     InnoflowService,
     AlertGenerator,
     AuthValidator
