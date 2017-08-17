@@ -1,7 +1,7 @@
 
 import { AuthValidator } from '../common/validators/auth.validator';
 import { AlertGenerator } from '../common/alerts/alert-generator';
-import { AuthDialogComponent } from './../auth-dialog/auth-dialog.component';
+import { AuthDialogComponent } from '../common/alerts/auth-dialog/auth-dialog.component';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

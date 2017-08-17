@@ -1,3 +1,4 @@
+import { DiscoveryService } from './services/discovery.service';
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
 import { AuthValidator } from './common/validators/auth.validator';
@@ -24,8 +25,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { rootRouterConfig } from './app.routes';
-import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+import { AuthDialogComponent } from './common/alerts/auth-dialog/auth-dialog.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { ConfirmDialogComponent } from './common/alerts/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -51,9 +53,11 @@ export const firebaseConfig = {
     HexagonMenuComponent,
     AuthDialogComponent,
     SignUpPageComponent,
+    ConfirmDialogComponent,
   ],
   entryComponents: [
-    AuthDialogComponent
+    AuthDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +76,7 @@ export const firebaseConfig = {
   providers: [
     SEATService,
     AuthService,
+    DiscoveryService,
     InnoflowService,
     AlertGenerator,
     AuthValidator

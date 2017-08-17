@@ -1,0 +1,10 @@
+li {
+    color: white;
+    border: 2px solid black; 
+    padding-bottom: 25px;
+}
+
+h2, label {
+    color: white;
+    font-family: 'Inconsolata', monospace;
+}

@@ -14,3 +14,9 @@ body{
     background-color: #191818;
 }
 
+.top-row{
+    background: grey;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
