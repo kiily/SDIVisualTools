@@ -56,7 +56,8 @@ export const firebaseConfig = {
     ConfirmDialogComponent,
   ],
   entryComponents: [
-    AuthDialogComponent
+    AuthDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

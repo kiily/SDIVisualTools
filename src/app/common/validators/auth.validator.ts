@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AlertGenerator } from './../alerts/alert-generator';
-import { AuthDialogComponent } from './../../auth-dialog/auth-dialog.component';
+import { AuthDialogComponent } from '../alerts/auth-dialog/auth-dialog.component';
 import { MdDialog } from '@angular/material';
 
 @Injectable()

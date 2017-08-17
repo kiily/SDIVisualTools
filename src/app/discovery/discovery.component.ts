@@ -1,3 +1,4 @@
+import { AlertGenerator } from '../common/alerts/alert-generator';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { DiscoveryService } from './../services/discovery.service';
@@ -13,10 +14,12 @@ export class DiscoveryComponent implements OnInit {
   discoveryLinks: FirebaseListObservable<any[]>;
   discoveryLinkCategories: FirebaseListObservable<any[]>;
   category: Object;
+  selectedOption : string;
 
   addLinkForm;
 
-  constructor(private discoveryService: DiscoveryService, private formBuilder: FormBuilder) {
+  constructor(private discoveryService: DiscoveryService, private formBuilder: FormBuilder,
+    private alertGenerator: AlertGenerator) {
 
     this.addLinkForm = formBuilder.group({
       title: ["", Validators.required],
@@ -46,13 +49,33 @@ export class DiscoveryComponent implements OnInit {
 
   removeLink(linkID) {
     console.log(linkID);
-    this.discoveryService.deleteLink(linkID.$key)
-      .then(() => {
-        // could implement validation here
-      })
-      .catch(() => {
-        // catch error here
-      });
+    let dialogRef = this.alertGenerator.confirmDelete("Are you sure you want to delete this item?");
+    
+    console.log("fails below");
+    dialogRef.subscribe( (response) => {
+      this.selectedOption = response;
+
+      console.log("enters here"+this.selectedOption);
+    
+      if (this.selectedOption) {
+        console.log("deleting item");
+
+        this.discoveryService.deleteLink(linkID.$key)
+        .then(() => {
+          // could implement validation here
+          console.log("then");
+        })
+        .catch(() => {
+          // catch error here
+          console.log("catch");
+        });
+
+      } 
+     
+    });
+    
   }
+
+
 
 }
