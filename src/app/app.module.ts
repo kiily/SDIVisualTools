@@ -1,6 +1,6 @@
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
-import { AuthValidator } from './common/validators/sign-up.validator';
+import { AuthValidator } from './common/validators/auth.validator';
 import { AlertGenerator } from './common/alerts/alert-generator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InnoflowService } from './services/innoflow.service';

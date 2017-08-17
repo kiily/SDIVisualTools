@@ -1,5 +1,5 @@
 
-import { AuthValidator } from '../common/validators/sign-up.validator';
+import { AuthValidator } from '../common/validators/auth.validator';
 import { AlertGenerator } from '../common/alerts/alert-generator';
 import { AuthDialogComponent } from './../auth-dialog/auth-dialog.component';
 import { AuthService } from '../services/auth.service';

@@ -1,16 +1,23 @@
-import { AuthValidator } from './../common/validators/sign-up.validator';
+import { AuthService } from './../services/auth.service';
+import { AuthValidator } from './../common/validators/auth.validator';
 import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
 import { AlertGenerator } from './../common/alerts/alert-generator';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2/app';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthService } from '../services/auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { WelcomePageComponent } from './welcome-page.component';
 import { AngularFireModule } from "angularfire2";
 import { firebaseConfig } from "../app.module";
+import { Router } from "@angular/router";
+
+class RouterStub {
+  navigate(params){
+
+  }
+}
 
 describe('WelcomePageComponent', () => {
   let component: WelcomePageComponent;
@@ -25,10 +32,13 @@ describe('WelcomePageComponent', () => {
       providers: [AuthService, AngularFireAuth, FirebaseApp, AlertGenerator, AuthValidator,
         { provide: MD_DIALOG_DATA, useValue: {} },
         { provide: MdDialog, useValue: {} },
-        { provide: MdDialogRef, useValue: {} }
+        { provide: MdDialogRef, useValue: {} },
+        {provide: Router, useClass: RouterStub }
       ]
     })
-      .compileComponents();
+      .compileComponents().then( () => {
+        let authService = TestBed.get(AuthService);
+      });
 
   }));
 
@@ -54,8 +64,28 @@ describe('WelcomePageComponent', () => {
     expect(passwordControl.valid).toBeFalsy();
   })
 
-
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should redirect the user to the sign up page', () => {
+    let router = TestBed.get(Router);
+    let spy = spyOn(router, 'navigate');
+
+    component.goToSignUp();
+
+    expect(spy).toHaveBeenCalledWith(['/sign-up-page']);
+  });
+
+  //Something is not letting this test work - could be the firebase connection
+  // it('should redirect the user to the home page', () => {
+  //   let router = TestBed.get(Router);
+  //   let spy = spyOn(router, 'navigate');
+
+  //   component.login();
+
+  //   expect(spy).toHaveBeenCalledWith(['/home']);
+  // });
+
+
 });
