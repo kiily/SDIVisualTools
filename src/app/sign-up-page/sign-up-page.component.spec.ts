@@ -1,3 +1,5 @@
+import { RouterLinkWithHref } from '@angular/router';
+import { By } from '@angular/platform-browser';
 import { AuthService } from './../services/auth.service';
 import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -69,5 +71,13 @@ describe('SignUpPageComponent', () => {
     expect(repeatPasswordControl.valid).toBeFalsy();
   });
 
+  it('should have a link back to the login page', () => {
+    let debugElements = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
+
+    let index = debugElements.findIndex(de => de.properties['href'] === '/welcome-page');
+
+    expect(index).toBeGreaterThan(-1);
+
+  });
 
 });
