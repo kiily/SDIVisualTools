@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SEATService } from './services/seat.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SDINavbarComponent } from './sdinavbar/sdinavbar.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
@@ -18,7 +18,6 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
-
 import { MarkdownModule } from 'angular2-markdown'
 import { MdDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
