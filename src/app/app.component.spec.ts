@@ -1,3 +1,4 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [RouterTestingModule]
     }).compileComponents();
   }));
 
