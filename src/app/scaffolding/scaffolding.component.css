@@ -1,12 +1,11 @@
-.top-bar{
+.button-menu{
     padding-bottom: 50px;
-    padding-top: 25px;
+    padding-top: 120px;
+    
 }
 
-.scaffolding-background{
-    background-color: black;
-    background-size: cover;
-}
+
+
 
 /* clearfix */
 .clearfix:before, .clearfix:after {
@@ -21,29 +20,9 @@
 
    */
 
- /* .button{
-    color:white;
-    font-family:inherit;
-    background: none;
-    position: relative;
-    padding: 25px, 80px;
-    display: inline-block;
-    margin: 10px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    outline: none;
-    border: none;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-    border: 1px solid white;
-
-}  */
-
 .button {
     border: none;
-    font-family: inherit;
+     font-family: 'Inconsolata', monospace;
     font-size: inherit;
     color: inherit;
     background: none;
@@ -60,14 +39,32 @@
     color: white;
     
 }
+
+#powerbi-app-button{
+    background: #FFDA11;
+    color: black;
+}
+
+
 .button:hover,
-.button:active {
-    color: #0e83cd;
-    background: white;
+.button:active,
+#powerbi-app-button:hover {
+    color: white;
+    background: #0e83cd;
     
 }
 
-.report-holder h2{
+.button a{
+    color: white;
+}
+
+
+
+.report-frame{
+    width: 100%;
+}
+
+h2, h3{
     color:white;
 }
 

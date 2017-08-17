@@ -34,7 +34,11 @@ export class DiscoveryService {
     return this.afdb.object('/discovery/links/'+id).remove();
   }
 
-  updateLink(){
-
+  updateLink(id, title, link, category){
+    return this.afdb.object('/discovery/links/'+id).update({
+      title: title,
+      link: link,
+      category: category
+    });
   }
 }
