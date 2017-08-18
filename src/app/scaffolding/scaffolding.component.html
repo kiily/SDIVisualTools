@@ -1,9 +1,10 @@
-
-
-<div class="container-fluid top-row" >
+<div class="container-fluid top-row">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <sdinavbar></sdinavbar>
+        </div>
+        <div class="col-sm-4 text-center text-transform">
+            <h1 class="page-title">Scaffolding</h1>
         </div>
     </div>
 </div>
@@ -12,14 +13,14 @@
     <div class="row">
         <div class="col-sm-10 col-sm-offset-2 button-menu">
             <section>
-            <div class="btn-toolbar-vertical" role="toolbar">
-               <button class="button" (click)="togglePhase(0)">General Overview</button>
-                <a target="_blank" routerLink='/scaffolding'><button class="button" (click)="togglePhase(1)">1. Procedural Programming</button></a>
-                <button class="button" (click)="togglePhase(2)">2. Scripting</button>
-                <button class="button" (click)="togglePhase(3)">3. Functional Programming</button>
-                <button class="button" (click)="togglePhase(4)">4. Object-Oriented Programming</button>
-                <button class="button" (click)="togglePhase(5)">SEAT Historical Data</button>
-            </div>
+                <div class="btn-toolbar-vertical" role="toolbar">
+                    <button class="button" (click)="togglePhase(0)">General Overview</button>
+                    <a target="_blank" routerLink='/scaffolding'><button class="button" (click)="togglePhase(1)">1. Procedural Programming</button></a>
+                    <button class="button" (click)="togglePhase(2)">2. Scripting</button>
+                    <button class="button" (click)="togglePhase(3)">3. Functional Programming</button>
+                    <button class="button" (click)="togglePhase(4)">4. Object-Oriented Programming</button>
+                    <button class="button" (click)="togglePhase(5)">SEAT Historical Data</button>
+                </div>
             </section>
 
         </div>
@@ -29,52 +30,51 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 pull-right">
 
-        <h3>PowerBI App:</h3>
-        <!--Works if the user has a PowerBI account and has been granted access to the app (takes the user to the dashboard) -->
-        <a [href]="this.appLink" target="_blank"><button class="button btn-block" id="powerbi-app-button">SDI VisualTools PowerBI</button></a>
-        <br>
-        <a [href]="this.appDashboardLink" target="_blank"><button class="button btn-block">SEAT Dashboard</button></a>
-
-        </div>
         <div class="col-sm-9">
             <div [ngSwitch]="phaseNumber">
                 <!--CLEAN DATA DASHBOARDS  -->
-                 <h2 *ngSwitchCase="0">General Overview Report:</h2>
-                 <h2 *ngSwitchCase="1">Phase 1 Report:</h2>
-                 <h2 *ngSwitchCase="2">Phase 2 Report:</h2>
-                 <h2 *ngSwitchCase="3">Phase 3 Report:</h2>
-                 <h2 *ngSwitchCase="4">Phase 4 Report:</h2>
-                 <h2 *ngSwitchCase="5">SEAT Historical Data Report</h2>
+                <h2 *ngSwitchCase="0">General Overview Report:</h2>
+                <h2 *ngSwitchCase="1">Phase 1 Report:</h2>
+                <h2 *ngSwitchCase="2">Phase 2 Report:</h2>
+                <h2 *ngSwitchCase="3">Phase 3 Report:</h2>
+                <h2 *ngSwitchCase="4">Phase 4 Report:</h2>
+                <h2 *ngSwitchCase="5">SEAT Historical Data Report</h2>
                 <!--GENERAL OVERVIEW REPORT  -->
-                   
+
                 <iframe class="report-frame" *ngSwitchCase="0" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOWZlNjJhMmUtZmViYy00Mjc5LWI0ZDQtMzU5M2QxOGRjOWE4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                 frameborder="0" allowFullScreen="true"></iframe>
-                 
-                 <!--PHASE 1 - PROCEDURAL PROGRAMMING REPORT  -->
-                 <iframe class="report-frame" *ngSwitchCase="1" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOTUzYmQ1NGUtOWEzZS00NDNhLTk3MTctYmIxZWNjYzYzNmZhIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0" 
-                 frameborder="0" allowFullScreen="true"></iframe>
-                 <!--PHASE 2 - SCRIPTING REPORT  -->                
-                 <iframe class="report-frame" *ngSwitchCase="2" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiZGZiZjQzYzItYzEyNi00MGEzLWFiMmYtYjVhM2YzYWRiMmJiIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                  frameborder="0" allowFullScreen="true"></iframe>
-                 <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
-                 <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiNmNkMGYwNjYtYTA0Zi00N2ZiLWI0ODYtN2U4MDNhMzAwOGNiIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                  frameborder="0" allowFullScreen="true"></iframe>
+                    frameborder="0" allowFullScreen="true"></iframe>
+
+                <!--PHASE 1 - PROCEDURAL PROGRAMMING REPORT  -->
+                <iframe class="report-frame" *ngSwitchCase="1" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOTUzYmQ1NGUtOWEzZS00NDNhLTk3MTctYmIxZWNjYzYzNmZhIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                    frameborder="0" allowFullScreen="true"></iframe>
+                <!--PHASE 2 - SCRIPTING REPORT  -->
+                <iframe class="report-frame" *ngSwitchCase="2" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiZGZiZjQzYzItYzEyNi00MGEzLWFiMmYtYjVhM2YzYWRiMmJiIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                    frameborder="0" allowFullScreen="true"></iframe>
+                <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
+                <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiNmNkMGYwNjYtYTA0Zi00N2ZiLWI0ODYtN2U4MDNhMzAwOGNiIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                    frameborder="0" allowFullScreen="true"></iframe>
                 <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMjcwZmY2YjgtNjc2NS00OWQxLWJjNDEtODY3NjFkYWQ2ZDg4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0" 
-                frameborder="0" allowFullScreen="true"></iframe>
+                <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMjcwZmY2YjgtNjc2NS00OWQxLWJjNDEtODY3NjFkYWQ2ZDg4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                    frameborder="0" allowFullScreen="true"></iframe>
                 <!--SEAT TIMELINE REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="5" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOWZlNjJhMmUtZmViYy00Mjc5LWI0ZDQtMzU5M2QxOGRjOWE4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection4"
-                 frameborder="0" allowFullScreen="true"></iframe>
+                    frameborder="0" allowFullScreen="true"></iframe>
                 <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
-                 <iframe class="report-frame" *ngSwitchDefault width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOWZlNjJhMmUtZmViYy00Mjc5LWI0ZDQtMzU5M2QxOGRjOWE4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
-                 frameborder="0" allowFullScreen="true"></iframe>
+                <iframe class="report-frame" *ngSwitchDefault width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiOWZlNjJhMmUtZmViYy00Mjc5LWI0ZDQtMzU5M2QxOGRjOWE4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                    frameborder="0" allowFullScreen="true"></iframe>
 
             </div>
         </div>
+
+        <div class="col-sm-3">
+
+            <h3>PowerBI App:</h3>
+            <!--Works if the user has a PowerBI account and has been granted access to the app (takes the user to the dashboard) -->
+            <a [href]="this.appLink" target="_blank"><button class="button btn-block" id="powerbi-app-button">SDI VisualTools PowerBI</button></a>
+            <br>
+            <a [href]="this.appDashboardLink" target="_blank"><button class="button btn-block">SEAT Dashboard</button></a>
+
+        </div>
     </div>
 </div>
-
-
-
