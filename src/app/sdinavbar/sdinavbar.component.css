@@ -30,7 +30,7 @@ html { height: 100%;}
     left: 220px;
     width: 0;
     /* Change height of the navbar */
-    height: 35%;
+    height: 40%;
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
