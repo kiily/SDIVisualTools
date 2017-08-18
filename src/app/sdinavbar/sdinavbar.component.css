@@ -30,11 +30,11 @@ html { height: 100%;}
     left: 220px;
     width: 0;
     /* Change height of the navbar */
-    height: 45%;
+    height: 35%;
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #1a1a1a;
+    background: black;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -91,7 +91,7 @@ html { height: 100%;}
     z-index: -1;
     height: 100%;
     width: 3px;
-    background-color: #1c1c1c;
+    background-color: #F65B61;
     -webkit-transition: width .2s ease-in;
       -moz-transition:  width .2s ease-in;
        -ms-transition:  width .2s ease-in;
@@ -103,7 +103,7 @@ html { height: 100%;}
     /* background-color: #1a1a1a; */
 }
 .sidebar-nav li:nth-child(2):before {
-    background-color: #ec1b5a;   
+    background-color: #38D299;   
 }
 .sidebar-nav li:nth-child(3):before {
     background-color: #79aefe;   
@@ -150,9 +150,9 @@ html { height: 100%;}
 }
 
 .sidebar-nav > .sidebar-sdi {
-    padding-left: 10px;
-    height: 65px;
-    font-size: 20px;
+    padding-left: 20px;
+    font-size: 30px;
+    height: 100px;
     line-height: 44px;
     color: white;
 }
