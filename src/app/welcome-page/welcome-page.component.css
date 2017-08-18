@@ -3,11 +3,6 @@
  - https://codepen.io/iamnbutler/pen/clrDk  */
 
 
-.container-fluid.full-width {
-    padding-left: 0;
-    padding-right: 0;
-    overflow-x: hidden;
-}
 
 
 header {
@@ -32,14 +27,15 @@ h3 span {
 
 .login-box{
     padding:90px;
-    border: 1px solid #161616;
+    border: 1px solid white;
+    background:url('../../assets/space-telescope.jpg') no-repeat;
     box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
-    background-image: url('../../assets/space-telescope.jpg');
     border-radius: 2px;
     color: white;
     background-color: black;
    
 }
+
 
 .login-btn{
     background-color: #ffdd00;
@@ -53,12 +49,5 @@ h3 span {
   
 }
 
-#page-title{
-    font-size:45pt;
-    padding-top: 40px;
-    color: white;
-    font-family: 'Inconsolata', monospace;
-    font-weight: bold;
-}
 
 

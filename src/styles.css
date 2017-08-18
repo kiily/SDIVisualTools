@@ -15,8 +15,22 @@ body{
 }
 
 .top-row{
-    background: grey;
+    background: #F65B61;
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 5;
 }
+
+.page-title{
+    font-size:45pt;
+    padding-top: 40px;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
+}
+
+.padding-top{
+    padding-top:50px;
+}
+
+
