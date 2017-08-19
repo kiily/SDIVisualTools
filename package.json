@@ -29,6 +29,8 @@
     "core-js": "^2.4.1",
     "firebase": "^4.2.0",
     "rxjs": "^5.1.0",
+    "wijmo": "file://wijmo-commonjs-min",
+    "xlsx": "^0.11.2",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -50,6 +52,8 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "typescript": "~2.3.3",
+    "css-loader": "^0.28.5",
+    "style-loader":"^0.18.2"
   }
 }

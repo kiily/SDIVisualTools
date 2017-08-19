@@ -88,3 +88,18 @@
         </div>
     </div>
 </div>
+
+
+<input type="file" #excelfile (change)="fileEvent($event)" class="form-control" id="importFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+<button class="btn btn-default" (click)="importExcel()">Import</button>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-5">
+            <!-- <wj-flex-grid #flex [itemsSource]="data"> -->
+            <wj-flex-grid #flex >
+
+            </wj-flex-grid>
+        </div>
+    </div>
+</div>

@@ -7,20 +7,11 @@
     {
       "root": "src",
       "outDir": "dist",
+       "styles": ["assets/styles/wijmo.min.css"],
       "assets": [
         "assets",
         "favicon.ico",
-        "lego-building-blocks",
-        {
-          "glob": "index.js",
-          "input": "./server/",
-          "output": "./"
-        },
-        {
-          "glob": "package.json",
-          "input": "./server/",
-          "output": "./"
-        }
+        "lego-building-blocks"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -33,7 +24,10 @@
         "styles.css",
         "../node_modules/prismjs/themes/prism-okaidia.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/wijmo/wijmo.xlsx.js",
+        "../node_modules/wijmo/wijmo.grid.xlsx.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

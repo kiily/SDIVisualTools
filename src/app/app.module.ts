@@ -1,3 +1,4 @@
+import { WjGridModule } from '../../wijmo-commonjs-min/wijmo.angular2.grid';
 import { DiscoveryService } from './services/discovery.service';
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
@@ -10,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SEATService } from './services/seat.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SDINavbarComponent } from './sdinavbar/sdinavbar.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
@@ -28,6 +29,7 @@ import { rootRouterConfig } from './app.routes';
 import { AuthDialogComponent } from './common/alerts/auth-dialog/auth-dialog.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ConfirmDialogComponent } from './common/alerts/confirm-dialog/confirm-dialog.component';
+
 
 
 
@@ -53,7 +55,8 @@ export const firebaseConfig = {
     HexagonMenuComponent,
     AuthDialogComponent,
     SignUpPageComponent,
-    ConfirmDialogComponent,
+    ConfirmDialogComponent
+
   ],
   entryComponents: [
     AuthDialogComponent,
@@ -68,6 +71,7 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    WjGridModule,
     MarkdownModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig),
     AngularFireModule.initializeApp(firebaseConfig),
