@@ -92,3 +92,9 @@ a:hover .logout{
   text-decoration: none;
   color: white;
 }
+
+.text-formatted{
+       color: white;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
+}
