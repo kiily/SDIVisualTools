@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { AuthValidator } from './common/validators/auth.validator';
 import { AlertGenerator } from './common/alerts/alert-generator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InnoflowService } from './services/innoflow.service';
+import { InnoflowService } from './services/innoflow-services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
