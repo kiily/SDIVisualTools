@@ -45,6 +45,7 @@ export class DiscoveryComponent implements OnInit {
 
     this.discoveryService.addDiscoveryLink(title, link, category);
     console.log("added");
+    this.addLinkForm.reset();
   }
 
   removeLink(linkID) {
