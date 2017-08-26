@@ -2,6 +2,7 @@
 .container{
   padding: 30px;
 }
+
 #hexGrid {
   display: flex;
   flex-wrap: wrap;
