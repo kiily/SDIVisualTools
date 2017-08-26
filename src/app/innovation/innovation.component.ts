@@ -1,3 +1,4 @@
+import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { InnoflowFirebaseService } from '../services/innoflow-services/innoflow-firebase.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import { NotFoundError } from '../common/error-handling/not-found-error';
@@ -16,22 +17,32 @@ export class InnovationComponent implements OnInit {
 
   innovations: any[];
   innoflowUsers: any[];
+  innoflowUsersFirebase : any[];
+
   selectedUser;
 
-  constructor(private innoflowService: InnoflowService, private innoflowFirebaseService : InnoflowFirebaseService ) {
+  constructor(private innoflowService: InnoflowService, private innoflowFirebaseService : InnoflowFirebaseService) {
 
   }
  
   ngOnInit() {
-  
-    //  this.innoflowService.setUrl(this.usersUrl);
-   
-    //Get the innovations for the given url (hard coded at the moment)
-   // this.innoflowService.getAll()
+
+    this.innoflowFirebaseService.getUsers()
+    .subscribe(users => {
+      console.log("before users");
+      console.log( users);
+      
+      this.innoflowUsersFirebase = users;
+      console.log(this.innoflowUsersFirebase);
+      
+    });
+     
+   //Get the innovations for the given url (hard coded at the moment)
+   //HTTP Implementation
    this.innoflowService.retrieveAllUsers()
       .subscribe(users => {
         this.innoflowUsers = users;
-        console.log(users);
+        // console.log(users);
       }, (error: AppError) => {
 
         if (error instanceof BadInputRequestError) {
@@ -59,36 +70,43 @@ export class InnovationComponent implements OnInit {
       username: username
     }
 
-    this.innoflowService.retrieveUserInnovations(userID)
-     .subscribe(innovations => {
-        this.innovations = innovations;
-        console.log(this.innovations);
-      }, (error: AppError) => {
+    this.innoflowFirebaseService.getUserInnovations(userID)
+    .subscribe(innovations => {
+      this.innovations = innovations;
+      console.log(this.innovations);
+    })
 
-        if (error instanceof BadInputRequestError) {
-          //display toaster for this
-        }
-        if (error instanceof NotFoundError) {
-          //display toaster for this
-          console.log("Not found indeed");
-        }
-        //Propagate error to error handler
-        else {
-          throw error;
-        }
+    //DEPRECATED IMPLEMENTATION FOR HTTP SERVICES
+    // this.innoflowService.retrieveUserInnovations(userID)
+    //  .subscribe(innovations => {
+    //     this.innovations = innovations;
+    //     console.log(this.innovations);
+    //   }, (error: AppError) => {
 
-      });
+    //     if (error instanceof BadInputRequestError) {
+    //       //display toaster for this
+    //     }
+    //     if (error instanceof NotFoundError) {
+    //       //display toaster for this
+    //       console.log("Not found indeed");
+    //     }
+    //     //Propagate error to error handler
+    //     else {
+    //       throw error;
+    //     }
+
+    //   });
   }
 
-
+//this function takes the http data and synchronizes it with Firebase
+//THIS REQUIRES CORS BUT SHOULD NOW BE ABLE TO BYPASS THIS ISSUE once the data is on firebase
   syncInnovationData(){
 
     this.innoflowService.retrieveAllUsers()
     .subscribe(users =>{
       let innoflowUsers = users;
-      console.log(innoflowUsers);
       for (let user of innoflowUsers){
-        console.log(user);
+        // console.log(user);
         this.innoflowFirebaseService.addInnovationUser(user);
      
     this.innoflowService.retrieveUserInnovations(user.id)
@@ -97,11 +115,8 @@ export class InnovationComponent implements OnInit {
           for(let innovation of innovations){
           this.innoflowFirebaseService.addInnovation(innovation, user.id);
           }
-         
       });
-
     }
-   
     });
 
   }
