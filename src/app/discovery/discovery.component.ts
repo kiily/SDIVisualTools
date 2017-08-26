@@ -1,7 +1,7 @@
+import { DiscoveryFirebaseService } from '../services/discovery-services/discovery-firebase.service';
 import { AlertGenerator } from '../common/alerts/alert-generator';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
-import { DiscoveryService } from './../services/discovery.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -18,7 +18,7 @@ export class DiscoveryComponent implements OnInit {
 
   addLinkForm;
 
-  constructor(private discoveryService: DiscoveryService, private formBuilder: FormBuilder,
+  constructor(private discoveryService: DiscoveryFirebaseService, private formBuilder: FormBuilder,
     private alertGenerator: AlertGenerator) {
 
     this.addLinkForm = formBuilder.group({

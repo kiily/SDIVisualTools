@@ -1,5 +1,5 @@
 import { AngularFireDatabase } from 'angularfire2/database';
-import { HttpDataService } from './http-data.service';
+import { HttpDataService } from '../http-data.service';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 

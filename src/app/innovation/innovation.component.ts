@@ -1,3 +1,5 @@
+import { InnoflowFirebaseService } from '../services/innoflow-services/innoflow-firebase.service';
+import { forEach } from '@angular/router/src/utils/collection';
 import { NotFoundError } from '../common/error-handling/not-found-error';
 import { BadInputRequestError } from '../common/error-handling/bad-input-request';
 import { AppError } from '../common/error-handling/app-error';
@@ -16,7 +18,7 @@ export class InnovationComponent implements OnInit {
   innoflowUsers: any[];
   selectedUser;
 
-  constructor(private innoflowService: InnoflowService) {
+  constructor(private innoflowService: InnoflowService, private innoflowFirebaseService : InnoflowFirebaseService ) {
 
   }
  
@@ -77,5 +79,32 @@ export class InnovationComponent implements OnInit {
 
       });
   }
+
+
+  syncInnovationData(){
+
+    this.innoflowService.retrieveAllUsers()
+    .subscribe(users =>{
+      let innoflowUsers = users;
+      console.log(innoflowUsers);
+      for (let user of innoflowUsers){
+        console.log(user);
+        this.innoflowFirebaseService.addInnovationUser(user);
+     
+    this.innoflowService.retrieveUserInnovations(user.id)
+    .subscribe(innovationsHttp => {
+          let innovations = innovationsHttp;
+          for(let innovation of innovations){
+          this.innoflowFirebaseService.addInnovation(innovation, user.id);
+          }
+         
+      });
+
+    }
+   
+    });
+
+  }
+
 
 }

@@ -1,4 +1,5 @@
-import { DiscoveryService } from './services/discovery.service';
+import { InnoflowFirebaseService } from './services/innoflow-services/innoflow-firebase.service';
+import { DiscoveryFirebaseService } from './services/discovery-services/discovery-firebase.service';
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
 import { AuthValidator } from './common/validators/auth.validator';
@@ -8,7 +9,7 @@ import { InnoflowService } from './services/innoflow-services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SEATService } from './services/seat.service';
+import { SEATService } from './services/seat-services/seat.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -76,8 +77,9 @@ export const firebaseConfig = {
   providers: [
     SEATService,
     AuthService,
-    DiscoveryService,
+    DiscoveryFirebaseService,
     InnoflowService,
+    InnoflowFirebaseService,
     AlertGenerator,
     AuthValidator
     //replace the default error handler with the global error handler
