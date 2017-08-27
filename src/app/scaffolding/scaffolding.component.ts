@@ -42,7 +42,7 @@ export class ScaffoldingComponent implements OnInit {
     console.log(this.blankToggle);
   }
 
-  togglePhase(phaseNumber : string){
+  togglePhase(phaseNumber){
     this.phase= phaseNumber;
     console.log("ethod");
     console.log(this.phase);
