@@ -1,3 +1,4 @@
+import { Url } from 'url';
 import { AppError } from './../common/error-handling/app-error';
 import { NotFoundError } from '../common/error-handling/not-found-error';
 import { BadInputRequestError } from './../common/error-handling/bad-input-request';
@@ -59,5 +60,10 @@ export class HttpDataService {
 
         return Observable.throw(new AppError(error.json()))
 
+    }
+
+
+    setUrl(url:string){
+        this.url = url;
     }
 }

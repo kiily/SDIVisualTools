@@ -1,13 +1,15 @@
+import { InnoflowFirebaseService } from './services/innoflow-services/innoflow-firebase.service';
+import { DiscoveryFirebaseService } from './services/discovery-services/discovery-firebase.service';
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
 import { HttpModule } from '@angular/http';
-import { AuthValidator } from './common/validators/sign-up.validator';
+import { AuthValidator } from './common/validators/auth.validator';
 import { AlertGenerator } from './common/alerts/alert-generator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InnoflowService } from './services/innoflow.service';
+import { InnoflowService } from './services/innoflow-services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SEATService } from './services/seat.service';
+import { SEATService } from './services/seat-services/seat.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -18,15 +20,15 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { InnovationComponent } from './innovation/innovation.component';
 import { HomeComponent } from './home/home.component';
 import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
-
 import { MarkdownModule } from 'angular2-markdown'
 import { MdDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { rootRouterConfig } from './app.routes';
-import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+import { AuthDialogComponent } from './common/alerts/auth-dialog/auth-dialog.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { ConfirmDialogComponent } from './common/alerts/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -52,9 +54,11 @@ export const firebaseConfig = {
     HexagonMenuComponent,
     AuthDialogComponent,
     SignUpPageComponent,
+    ConfirmDialogComponent,
   ],
   entryComponents: [
-    AuthDialogComponent
+    AuthDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,9 @@ export const firebaseConfig = {
   providers: [
     SEATService,
     AuthService,
+    DiscoveryFirebaseService,
     InnoflowService,
+    InnoflowFirebaseService,
     AlertGenerator,
     AuthValidator
     //replace the default error handler with the global error handler

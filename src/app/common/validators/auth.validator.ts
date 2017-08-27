@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AlertGenerator } from './../alerts/alert-generator';
-import { AuthDialogComponent } from './../../auth-dialog/auth-dialog.component';
+import { AuthDialogComponent } from '../alerts/auth-dialog/auth-dialog.component';
 import { MdDialog } from '@angular/material';
+
+/*This class encapsulates te necessary methods for validating authentication. This includes
+sign up and login */
 
 @Injectable()
 export class AuthValidator{
@@ -33,7 +36,7 @@ export class AuthValidator{
           else if(this.error.code === 'auth/email-already-in-use'){
             this.alertGenerator.generateAuthAlert("The email address is already in use by another account.");
           }else{
-             //Something unexpected occurred
+          //Something unexpected occurred
           this.alertGenerator.generateAuthAlert("An unexpected error occurred.");
         
           }

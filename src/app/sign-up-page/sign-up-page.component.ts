@@ -1,4 +1,4 @@
-import { AuthValidator } from './../common/validators/sign-up.validator';
+import { AuthValidator } from './../common/validators/auth.validator';
 import { AlertGenerator } from '../common/alerts/alert-generator';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';

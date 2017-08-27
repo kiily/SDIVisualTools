@@ -1,4 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MdDialogModule, MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { AuthDialogComponent } from './auth-dialog.component';
 
@@ -8,7 +9,13 @@ describe('AuthDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthDialogComponent ]
+      declarations: [ AuthDialogComponent],
+      imports: [MdDialogModule],
+      providers: [
+        {provide: MD_DIALOG_DATA, useValue: {}},
+        {provide: MdDialog, useValue: {} },
+        {provide: MdDialogRef, useValue: {}}
+      ]
     })
     .compileComponents();
   }));

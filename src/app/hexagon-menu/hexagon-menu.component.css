@@ -1,9 +1,12 @@
 
-  
+.container{
+  padding: 30px;
+}
+
 #hexGrid {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  width: 65%;
   margin: 0 auto;
   overflow: hidden;
   justify-content: center;

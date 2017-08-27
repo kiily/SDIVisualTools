@@ -1,21 +1,22 @@
-<!-- <div class="jumbotron login-jumbotron"> -->
-<div class="container-fluid full-width">
-  <div class="row" style="background-color: #F58F1D">
+
+
+<div class="container-fluid">
+  <div class="row" style="background-color: #F69C21">
     <div class="col-sm-4 pull-left">
       <img src="../../assets/UCL_Logo_Orange.jpg">
     </div>
 
-    <div class="col-sm-offset-4 col-sm-4">
-      <h1 style="color:white;">SDI VisualTools</h1>
+    <div class="col-sm-offset-2 col-sm-4 pull-right">
+      <h1 class="page-title">SDI VisualTools</h1>
     </div>
   </div>
 
 </div>
 
 
-<div class="container login-box">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 ">
+    <div class="col-sm-4 col-sm-offset-4 login-box ">
       <header class="welcome-back">
         <div>
           <h3><span>Welcome</span> Back!</h3>
@@ -33,8 +34,6 @@
           <input formControlName="password" placeholder="Password" type="password" class="form-control" name="passwordFld" />
         </div>
 
-
-  
           <button class="btn btn-block login-btn" type="submit">Log In</button>
           <!--The button below should be separated into a modal and ask the user for the email  -->
           
@@ -48,7 +47,7 @@
           </div>
           <br>
             <div class="col-sm-8">
-              <p>Don't have an account?</p>
+              <p style="font-weight: bold;">Don't have an account?</p>
             </div>
             <div class="col-sm-4 pull-right">
               <button class="btn btn-block sign-up-btn" (click)="goToSignUp()">Sign up</button>
@@ -60,3 +59,4 @@
     </div>
   </div>
 </div>
+

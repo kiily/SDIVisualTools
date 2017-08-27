@@ -1,3 +1,5 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { Http, HttpModule } from '@angular/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { InnoflowService } from './innoflow.service';
@@ -5,7 +7,8 @@ import { InnoflowService } from './innoflow.service';
 describe('InnoflowService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [InnoflowService]
+      providers: [InnoflowService],
+      imports: [HttpModule, BrowserModule]
     });
   });
 

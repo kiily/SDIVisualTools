@@ -10,7 +10,95 @@
 }
  */
 
+html{
+    zoom:80%;
+}
+
 body{
     background-color: #191818;
 }
 
+.top-row{
+    background-color: #F65B61;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+.page-title{
+    font-size:45pt;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
+}
+
+.padding-top{
+    padding-top:50px;
+}
+
+.low-padding-top{
+    padding-top: 20px;
+}
+
+.report-frame{
+    width: 100%;
+}
+
+.text-transform{
+    text-transform: uppercase;
+}
+
+
+/*  LOGOUT BUTTON */
+.navigation {
+  width: 100%;
+}
+
+.navigation a {
+    text-decoration: none;
+    color:  white;
+}
+
+.glyphicon-log-out{
+    font-size: 25px;
+    color: white;
+
+}
+
+.logout {
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+	/* position: relative; */
+  right: -18px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  
+}
+
+.logout-button {
+	text-decoration: none;
+   padding: 30px; 
+  /* margin: 15px; */
+  color:white;
+  width: 25px;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden
+}
+
+
+
+a:hover .logout{
+  opacity: .9;
+  text-decoration: none;
+  color: white;
+}
+
+.text-formatted{
+       color: white;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
+}

@@ -15,6 +15,7 @@ header {
    
 }
 
+
 header.sign-up-header{
     text-transform: uppercase;
 }
@@ -24,12 +25,12 @@ h3 span {
 }
   
 .signup-box{
-    padding:100px;
-    border: 1px solid #161616;
+    padding: 20px;
+    border: 1px solid white;
     box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
     border-radius: 2px;
     color: white;
-    background-color: black;
+    background:url('../../assets/space-telescope.jpg') no-repeat;
     
 }
 
@@ -41,6 +42,7 @@ h3 span {
 /*  LOGOUT BUTTON */
 .navigation {
   width: 100%;
+  
 }
 
 .login {
@@ -64,7 +66,7 @@ h3 span {
   width: 25px;
   transition: width .35s;
   -webkit-transition: width .35s;
-  overflow: hidden
+  overflow: hidden;
 }
 
 

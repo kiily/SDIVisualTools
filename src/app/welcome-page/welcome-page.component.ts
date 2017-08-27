@@ -1,7 +1,7 @@
 
-import { AuthValidator } from '../common/validators/sign-up.validator';
+import { AuthValidator } from '../common/validators/auth.validator';
 import { AlertGenerator } from '../common/alerts/alert-generator';
-import { AuthDialogComponent } from './../auth-dialog/auth-dialog.component';
+import { AuthDialogComponent } from '../common/alerts/auth-dialog/auth-dialog.component';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -37,6 +37,10 @@ export class WelcomePageComponent implements OnInit {
     let email = this.loginForm.controls.email.value;
     let password = this.loginForm.controls.password.value;
 
+    //Enabled a temp offline login for demos
+    if(email ==="admin" && password=="admin"){
+         this.router.navigate(['/home']);
+    }else{
     //Catch the loginPromise
     this.authService.login(email, password)
       .then(authState => {
@@ -60,6 +64,7 @@ export class WelcomePageComponent implements OnInit {
 
 
       });
+    }
   }
 
   goToSignUp(){
@@ -77,12 +82,7 @@ export class WelcomePageComponent implements OnInit {
       console.log(error);
     });
   }
-  //create a property (getter) this is similar to a method
-  get username() {
-    return this.loginForm.get('username');
-  }
 
- 
 
 }
 

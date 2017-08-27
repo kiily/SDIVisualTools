@@ -1,3 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
+import { SEATService } from '../services/seat-services/seat.service';
+import { FirebaseObjectObservable } from 'angularfire2/database/firebase_object_observable';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,16 +9,53 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scaffolding.component.css']
 })
 export class ScaffoldingComponent implements OnInit {
-  phaseNumber : number;
+  phase : string;
+  appLink : string;
+  appDashboardLinkPro : string;
+  appDashboardLink : string;
 
-  constructor() { }
+  blankToggle : boolean = false;
+
+  constructor(private seatService : SEATService, private route : ActivatedRoute) { }
 
   ngOnInit() {
+    
+    this.route.queryParamMap
+    .subscribe(params => {
+      console.log(params);
+      if(params){
+        let phaseNumber = params.get('phaseNumber');
+        console.log("phase from params: "+phaseNumber);
+        this.phase =  phaseNumber;
+      }
+    })
+
+    this.seatService.getAppLink().subscribe( appLink => {
+    
+      this.appLink = appLink.link;
+      this.appDashboardLinkPro = appLink.dashboardLinkPro;
+      this.appDashboardLink = appLink.dashboardLink;
+    });
+
+    console.log("phase: "+this.phase);
+
+    console.log(this.blankToggle);
   }
 
-  togglePhase(phaseNumber : number){
-    this.phaseNumber= phaseNumber;
-    console.log(this.phaseNumber);
+  togglePhase(phaseNumber){
+    this.phase= phaseNumber;
+    console.log("ethod");
+    console.log(this.phase);
     console.log(phaseNumber);
+    console.log("after method");
+    
   }
+
+  /*Utility method to track the status of the blankToggle variable */
+  toggleBlank(){
+    console.log(this.blankToggle);
+  }
+
+
+
 }
