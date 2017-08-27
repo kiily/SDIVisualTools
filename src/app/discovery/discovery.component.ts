@@ -33,6 +33,7 @@ export class DiscoveryComponent implements OnInit {
 
   /*Use the Angular lifecycle hooks to retrieve the discovery data */
   ngOnInit() {
+
     this.discoveryLinks = this.discoveryFirebaseService.getDiscoveryLinks();
     this.discoveryLinkCategories = this.discoveryFirebaseService.getDiscoveryLinkCategories();
   }
@@ -60,6 +61,7 @@ the discovery link to remove. A confirmation dialog is triggered and the link is
       //User confirms deletion
       if (this.selectedOption) {
         this.discoveryFirebaseService.deleteLink(linkID.$key)
+
         .then(() => {
           // could implement validation here
           console.log("then");
