@@ -1,14 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400);
 @import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
+/*ABOUT ELEMENTS STYLING  */
 
-
-
-/*ABOUT ELEMENTS  */
 .value-props {
   width: 100%;
 }
 
+.value-props:hover{
+  background-color: #F65B61;
+ 
+}
 
 .prop {
   border: 1px solid #FFF;
@@ -16,11 +18,6 @@
   margin: 5px 0px;
   text-align: center;
   
-}
-
-.value-props:hover{
-  background-color: #F65B61;
- 
 }
 
 .prop h2 {

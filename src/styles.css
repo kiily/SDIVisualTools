@@ -2,13 +2,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-/* Add some padding to the body*/
-/* body {
-    padding: 20px;
-    background: url("assets/screw.jpg") no-repeat center;
-    background-size: cover;
-}
- */
 
 html{
     zoom:80%;

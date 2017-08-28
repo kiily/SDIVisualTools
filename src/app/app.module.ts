@@ -83,7 +83,6 @@ export const firebaseConfig = {
     AlertGenerator,
     AuthValidator
     //replace the default error handler with the global error handler
-    //should revert this and retest
     // { provide: ErrorHandler, useClass: AppGlobalErrorHandler}
   ],
   bootstrap: [AppComponent]

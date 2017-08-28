@@ -13,6 +13,7 @@ export class ScaffoldingComponent implements OnInit {
   appLink : string;
   appDashboardLinkPro : string;
   appDashboardLink : string;
+  excelLink : string;
 
   blankToggle : boolean = false;
 
@@ -35,6 +36,7 @@ export class ScaffoldingComponent implements OnInit {
       this.appLink = appLink.link;
       this.appDashboardLinkPro = appLink.dashboardLinkPro;
       this.appDashboardLink = appLink.dashboardLink;
+      this.excelLink = appLink.excelLink;
     });
 
     console.log("phase: "+this.phase);

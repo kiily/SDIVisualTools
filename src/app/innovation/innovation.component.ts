@@ -106,7 +106,7 @@ export class InnovationComponent implements OnInit {
     .subscribe(users =>{
       let innoflowUsers = users;
       for (let user of innoflowUsers){
-        // console.log(user);
+        
         this.innoflowFirebaseService.addInnovationUser(user);
      
     this.innoflowService.retrieveUserInnovations(user.id)

@@ -9,7 +9,7 @@ import { Routes } from '@angular/router';
 
 
 
-//All the application paths are stored here
+//This constants holds the configuration for all the necessary routes within the application
 export const rootRouterConfig: Routes = [
     { path: '', component: WelcomePageComponent },
     { path: 'scaffolding', component: ScaffoldingComponent },

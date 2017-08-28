@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+/*This class acts as the controller for the WelcomePage component. It is associated with an HTML template
+that renders the welcome page. Current features: user login and password reset, and navigation to the sign up page. */
 @Component({
   selector: 'welcome-page',
   templateUrl: './welcome-page.component.html',
@@ -32,6 +34,7 @@ export class WelcomePageComponent implements OnInit {
 
   }
 
+  /*This function is triggeret */
   login() {
 
     let email = this.loginForm.controls.email.value;

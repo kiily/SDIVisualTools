@@ -25,12 +25,18 @@
             <section>
                 <div class="col-sm-10">
                     <div class="btn-toolbar-vertical" role="toolbar">
-                        <button class="button" (click)="togglePhase(0)">General Overview<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '0'}"> (NEW TAB)</a></button>
-                        <button class="button" (click)="togglePhase(1)">1. Procedural Programming<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '1'}"> (NEW TAB)</a></button>
-                        <button class="button" (click)="togglePhase(2)">2. Scripting<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '2'}"> (NEW TAB)</a></button>
-                        <button class="button" (click)="togglePhase(3)">3. Functional Programming<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '3'}"> (NEW TAB)</a></button>
-                        <button class="button" (click)="togglePhase(4)">4. Object-Oriented Programming<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '4'}"> (NEW TAB)</a></button>
-                        <button class="button" (click)="togglePhase(5)">SEAT Historical Data<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '5'}"> (NEW TAB)</a></button>
+                        <button class="button" [style.background-color]="phase ==0 ? '#0e83cd' : 'black' " 
+                        (click)="togglePhase(0)">General Overview<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '0'}"> (NEW TAB)</a></button>
+                        <button class="button" [style.background-color]="phase ==1 ? '#0e83cd' : 'black' " 
+                        (click)="togglePhase(1)">1. Procedural Programming<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '1'}"> (NEW TAB)</a></button>
+                        <button class="button" [style.background-color]="phase ==2 ? '#0e83cd' : 'black' "
+                        (click)="togglePhase(2)">2. Scripting<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '2'}"> (NEW TAB)</a></button>
+                        <button class="button" [style.background-color]="phase ==3 ? '#0e83cd' : 'black' "
+                         (click)="togglePhase(3)">3. Functional Programming<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '3'}"> (NEW TAB)</a></button>
+                        <button class="button" [style.background-color]="phase ==4 ? '#0e83cd' : 'black' "
+                        (click)="togglePhase(4)">4. Object-Oriented Programming<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '4'}"> (NEW TAB)</a></button>
+                        <button class="button" [style.background-color]="phase ==5 ? '#0e83cd' : 'black' "
+                        (click)="togglePhase(5)">SEAT Historical Data<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '5'}"> (NEW TAB)</a></button>
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -91,8 +97,9 @@
             <!--Works if the user has a PowerBI account and has been granted access to the app (takes the user to the dashboard) -->
             <a [href]="this.appLink" target="_blank"><button class="button btn-block" id="powerbi-app-button">SDI VisualTools PowerBI (Pro)</button></a>
             <br>
-            <a [href]="this.appDashboardLinkPro" target="_blank"><button class="button btn-block">SEAT Dashboard (Pro)</button></a>
-            <a [href]="this.appDashboardLink" target="_blank"><button class="button btn-block">SEAT Dashboard (No license required)</button></a>
+            <a [href]="this.appDashboardLinkPro" target="_blank"><button class="button btn-block" id="powerbi-dashboard-button"><span class="glyphicon glyphicon-th-large"></span> SEAT Dashboard (Pro)</button></a>
+            <a [href]="this.appDashboardLink" target="_blank"><button class="button btn-block" id="powerbi-dashboard-button"><span class="glyphicon glyphicon-th-large"></span> SEAT Dashboard (No license required)</button></a>
+            <a [href]="this.excelLink" target="_blank"><button class="button btn-block" id="powerbi-excel-button"><span class="glyphicon glyphicon-cloud"></span> Excel (Data Source) </button></a>
 
         </div>
     </div>
