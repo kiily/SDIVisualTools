@@ -58,25 +58,25 @@
                 <h2 *ngSwitchCase="4">Phase 4 - Object-Oriented Programming Report:</h2>
                 <h2 *ngSwitchCase="5">SEAT Historical Data Report</h2>
                 <!--GENERAL OVERVIEW REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="0" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMTRkOTI5MjgtNzRkMS00YjQ1LWExMmItNDAwYmRiNDBkOGQxIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                <iframe class="report-frame" *ngSwitchCase="0" width="1180" height="800" [src]="this.reportLinks[0] | safeURL"
                     frameborder="0" allowFullScreen="true"></iframe>
                 <!--PHASE 1 - PROCEDURAL PROGRAMMING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="'1'" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMmUyNGUwMzMtNjAxMC00MjIwLWIzNjUtMjRiNTA1ZTQwYWVhIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                <iframe class="report-frame" *ngSwitchCase="'1'" width="1180" height="800" [src]="this.reportLinks[1] | safeURL"
                     frameborder="0" allowFullScreen="true"></iframe>
                 <!--PHASE 2 - SCRIPTING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="2" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiZTBkNGE1Y2UtZjg1Mi00OTAyLWEyZWUtMmJkYWU2MDIyZjg2IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9"
+                <iframe class="report-frame" *ngSwitchCase="2" width="1180" height="800" [src]="this.reportLinks[2] | safeURL"
                     frameborder="0" allowFullScreen="true"></iframe>
                 <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMmFhZmU4MDMtNDA4OS00MGM0LWJiOTctYTc3MGMzMWJjNzEwIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" [src]="this.reportLinks[3] | safeURL"
                     frameborder="0" allowFullScreen="true"></iframe>
                 <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiZTJmMjE3MWQtMTFhZC00ZDA3LWI3MGMtMmY0YmU5YTlmNmI4IiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" [src]="this.reportLinks[4] | safeURL"
                     frameborder="0" allowFullScreen="true"></iframe>
                 <!--SEAT TIMELINE REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="5" width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMTRkOTI5MjgtNzRkMS00YjQ1LWExMmItNDAwYmRiNDBkOGQxIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection4"
+                <iframe class="report-frame" *ngSwitchCase="5" width="1180" height="800" [src]="this.reportLinks[5] | safeURL"
                     frameborder="0" allowFullScreen="true"></iframe>
                 <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
-                <iframe class="report-frame" *ngSwitchDefault width="1180" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMTRkOTI5MjgtNzRkMS00YjQ1LWExMmItNDAwYmRiNDBkOGQxIiwidCI6IjFmYWY4OGZlLWE5OTgtNGM1Yi05M2M5LTIxMGExMWQ5YTVjMiIsImMiOjh9&pageName=ReportSection0"
+                <iframe class="report-frame" *ngSwitchDefault width="1180" height="800" [src]="this.reportLinks[0] | safeURL"
                     frameborder="0" allowFullScreen="true"></iframe>
 
             </div>
@@ -92,6 +92,7 @@
             <a [href]="this.appDashboardLink" target="_blank"><button class="button btn-block" id="powerbi-dashboard-button"><span class="glyphicon glyphicon-th-large"></span> SEAT Dashboard (No license required)</button></a>
             <a [href]="this.excelLink" target="_blank"><button class="button btn-block" id="powerbi-excel-button"><span class="glyphicon glyphicon-cloud"></span> Excel (Data Source) </button></a>
 
+            
         </div>
     </div>
 </div>

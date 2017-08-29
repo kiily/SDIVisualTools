@@ -1,3 +1,4 @@
+import { SEATFirebaseService } from './../../services/seat-services/seat-firebase.service';
 import { AuthService } from './../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { SEATService } from '../../services/seat-services/seat.service';
@@ -18,7 +19,10 @@ export class ScaffoldingComponent implements OnInit {
 
   blankToggle : boolean = false;
 
-  constructor(private seatService : SEATService, private route : ActivatedRoute,
+  //report links
+  reportLinks : string[] = [];
+
+  constructor(private seatFirebaseService : SEATFirebaseService, private route : ActivatedRoute,
   private authService : AuthService) { }
 
   ngOnInit() {
@@ -35,12 +39,30 @@ export class ScaffoldingComponent implements OnInit {
       }
     })
 
-    this.seatService.getAppLink().subscribe( appLink => {
+    this.seatFirebaseService.getAppLink().subscribe( appLink => {
     
       this.appLink = appLink.link;
       this.appDashboardLinkPro = appLink.dashboardLinkPro;
       this.appDashboardLink = appLink.dashboardLink;
       this.excelLink = appLink.excelLink;
+    });
+
+    this.seatFirebaseService.getReportEmbedLinks().subscribe(reportLinks => {
+
+      //Report links are accessed via Firebase key in the template -  name the variables accordingly here;
+      //Page to open the report on is added to the URL
+      let generalOverview = reportLinks.generalOverview+"&pageName=ReportSection0";
+      let phase1 = reportLinks.phase1+"&pageName=ReportSection0";
+      let phase2 = reportLinks.phase2+"&pageName=ReportSection0";
+      let phase3 = reportLinks.phase3+"&pageName=ReportSection0";
+      let phase4= reportLinks.phase4+"&pageName=ReportSection0";
+      let timelineReport = reportLinks.generalOverview+"&pageName=ReportSection4";
+
+      this.reportLinks.push(generalOverview, phase1 ,phase2 ,phase3, phase4, timelineReport);
+
+      console.log(reportLinks);
+      console.log(reportLinks['generalOverview']);
+
     });
 
     console.log("phase: "+this.phase);

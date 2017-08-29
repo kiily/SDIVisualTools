@@ -1,3 +1,4 @@
+import { SEATFirebaseService } from './services/seat-services/seat-firebase.service';
 import { InnoflowFirebaseService } from './services/innoflow-services/innoflow-firebase.service';
 import { DiscoveryFirebaseService } from './services/discovery-services/discovery-firebase.service';
 import { AppGlobalErrorHandler } from './common/error-handling/app-global-error-handler';
@@ -30,6 +31,7 @@ import { AuthDialogComponent } from './common/alerts/auth-dialog/auth-dialog.com
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { ConfirmDialogComponent } from './common/alerts/confirm-dialog/confirm-dialog.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { SafeURLPipe } from './pipes/safe-url.pipe';
 
 
 
@@ -57,6 +59,7 @@ export const firebaseConfig = {
     SignUpPageComponent,
     ConfirmDialogComponent,
     LogoutComponent,
+    SafeURLPipe,
   ],
   entryComponents: [
     AuthDialogComponent,
@@ -77,6 +80,7 @@ export const firebaseConfig = {
 
   ],
   providers: [
+    SEATFirebaseService,
     SEATService,
     AuthService,
     DiscoveryFirebaseService,
