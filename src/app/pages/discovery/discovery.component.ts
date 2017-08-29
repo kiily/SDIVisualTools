@@ -1,8 +1,9 @@
+import { AuthService } from '../../services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { Component, OnInit } from '@angular/core';
-import { DiscoveryFirebaseService } from '../services/discovery-services/discovery-firebase.service';
-import { AlertGenerator } from '../common/alerts/alert-generator';
+import { DiscoveryFirebaseService } from '../../services/discovery-services/discovery-firebase.service';
+import { AlertGenerator } from '../../common/alerts/alert-generator';
 
 
 /*This class acts as the controller for the Discovery component. It is associated with an HTML template
@@ -22,7 +23,7 @@ export class DiscoveryComponent implements OnInit {
   addLinkForm;
 
   constructor(private discoveryFirebaseService: DiscoveryFirebaseService, private formBuilder: FormBuilder,
-    private alertGenerator: AlertGenerator) {
+    private alertGenerator: AlertGenerator, private authService : AuthService) {
 
     this.addLinkForm = formBuilder.group({
       title: ["", Validators.required],
@@ -33,6 +34,7 @@ export class DiscoveryComponent implements OnInit {
 
   /*Use the Angular lifecycle hooks to retrieve the discovery data */
   ngOnInit() {
+    this.authService.userScan();
 
     this.discoveryLinks = this.discoveryFirebaseService.getDiscoveryLinks();
     this.discoveryLinkCategories = this.discoveryFirebaseService.getDiscoveryLinkCategories();

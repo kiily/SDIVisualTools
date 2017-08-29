@@ -1,4 +1,4 @@
-import { SDINavbarComponent } from './../sdinavbar/sdinavbar.component';
+import { SDINavbarComponent } from './../../components/sdinavbar/sdinavbar.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DiscoveryComponent } from './discovery.component';

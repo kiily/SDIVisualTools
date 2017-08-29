@@ -1,6 +1,6 @@
-import { AuthValidator } from './../common/validators/auth.validator';
-import { AlertGenerator } from '../common/alerts/alert-generator';
-import { AuthService } from '../services/auth.service';
+import { AuthValidator } from './../../common/validators/auth.validator';
+import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { AuthService } from '../../services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 

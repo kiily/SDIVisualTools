@@ -1,10 +1,11 @@
+import { AuthService } from '../../services/auth.service';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
-import { InnoflowFirebaseService } from '../services/innoflow-services/innoflow-firebase.service';
+import { InnoflowFirebaseService } from '../../services/innoflow-services/innoflow-firebase.service';
 import { forEach } from '@angular/router/src/utils/collection';
-import { NotFoundError } from '../common/error-handling/not-found-error';
-import { BadInputRequestError } from '../common/error-handling/bad-input-request';
-import { AppError } from '../common/error-handling/app-error';
-import { InnoflowService } from './../services/innoflow-services/innoflow.service';
+import { NotFoundError } from '../../common/error-handling/not-found-error';
+import { BadInputRequestError } from '../../common/error-handling/bad-input-request';
+import { AppError } from '../../common/error-handling/app-error';
+import { InnoflowService } from './../../services/innoflow-services/innoflow.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -21,11 +22,14 @@ export class InnovationComponent implements OnInit {
 
   selectedUser;
 
-  constructor(private innoflowService: InnoflowService, private innoflowFirebaseService : InnoflowFirebaseService) {
+  constructor(private innoflowService: InnoflowService, private innoflowFirebaseService : InnoflowFirebaseService,
+  private authService : AuthService) {
 
   }
  
   ngOnInit() {
+
+    this.authService.userScan();
 
     this.innoflowFirebaseService.getUsers()
     .subscribe(users => {

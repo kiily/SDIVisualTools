@@ -1,5 +1,5 @@
 import { By } from '@angular/platform-browser';
-import { SDINavbarComponent } from './../sdinavbar/sdinavbar.component';
+import { SDINavbarComponent } from './../../components/sdinavbar/sdinavbar.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ScaffoldingComponent } from './scaffolding.component';
@@ -30,7 +30,7 @@ describe('ScaffoldingComponent', () => {
    //explictly click button
    button.triggerEventHandler('click',null);
 
-   expect(component.phaseNumber).toBeLessThanOrEqual(5);
+   expect(component.phase).toBeLessThanOrEqual(5);
   });
 
 });

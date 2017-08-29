@@ -1,8 +1,8 @@
 
-import { AuthValidator } from '../common/validators/auth.validator';
-import { AlertGenerator } from '../common/alerts/alert-generator';
-import { AuthDialogComponent } from '../common/alerts/auth-dialog/auth-dialog.component';
-import { AuthService } from '../services/auth.service';
+import { AuthValidator } from '../../common/validators/auth.validator';
+import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { AuthDialogComponent } from '../../common/alerts/auth-dialog/auth-dialog.component';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -31,7 +31,7 @@ export class WelcomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-
+      this.authService.userScan();
   }
 
   /*This function is triggeret */

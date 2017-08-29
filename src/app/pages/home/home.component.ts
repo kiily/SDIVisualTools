@@ -1,3 +1,4 @@
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,11 +11,14 @@ the home page.*/
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
+  constructor(private authService : AuthService) {
 
    }
 
   ngOnInit() {
+
+    this.authService.userScan();
+
   }
 
 }

@@ -2,7 +2,7 @@ import * as console from 'console';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { Router, RouterLinkWithHref } from '@angular/router';
-import { HexagonMenuComponent } from '../hexagon-menu/hexagon-menu.component';
+import { HexagonMenuComponent } from '../../components/hexagon-menu/hexagon-menu.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';

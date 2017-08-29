@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth} from 'angularfire2/auth';
 import {AngularFireDatabase } from 'angularfire2/database';
@@ -21,9 +22,26 @@ export class AuthService {
 
 
 
-  constructor(private afAuth : AngularFireAuth, private afdb : AngularFireDatabase) {
+  constructor(private afAuth : AngularFireAuth, private afdb : AngularFireDatabase,
+  private router : Router) {
    
    }
+  
+   /**
+    * Checks the authentication state of the current user. If no user is properly logged in, the method
+    will redirect to the welcome-page.
+    */
+   userScan(){
+     let authState = this.afAuth.auth.onAuthStateChanged( user => {
+       if(user){
+         //user logged in
+       }else{
+          this.router.navigate(['/welcome-page']);
+       }
+     });
+     
+   }
+
 
    /**
  * Takes an email and password and attempts to log in the user. It
@@ -65,5 +83,11 @@ registerUser(uid, email, firstName, lastName){
        let resetAuth = this.afAuth.auth.sendPasswordResetEmail(email);
        return resetAuth;
          
+  }
+
+  logout(){
+    let logoutPromise = this.afAuth.auth.signOut();
+    return logoutPromise;
+
   }
 }

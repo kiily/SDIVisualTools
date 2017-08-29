@@ -1,5 +1,6 @@
+import { AuthService } from './../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { SEATService } from '../services/seat-services/seat.service';
+import { SEATService } from '../../services/seat-services/seat.service';
 import { FirebaseObjectObservable } from 'angularfire2/database/firebase_object_observable';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,10 +18,13 @@ export class ScaffoldingComponent implements OnInit {
 
   blankToggle : boolean = false;
 
-  constructor(private seatService : SEATService, private route : ActivatedRoute) { }
+  constructor(private seatService : SEATService, private route : ActivatedRoute,
+  private authService : AuthService) { }
 
   ngOnInit() {
     
+    this.authService.userScan();
+
     this.route.queryParamMap
     .subscribe(params => {
       console.log(params);
