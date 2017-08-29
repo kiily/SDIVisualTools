@@ -31,10 +31,9 @@ export class ScaffoldingComponent implements OnInit {
 
     this.route.queryParamMap
     .subscribe(params => {
-      console.log(params);
+      
       if(params){
         let phaseNumber = params.get('phaseNumber');
-        console.log("phase from params: "+phaseNumber);
         this.phase =  phaseNumber;
       }
     })
@@ -60,26 +59,16 @@ export class ScaffoldingComponent implements OnInit {
 
       this.reportLinks.push(generalOverview, phase1 ,phase2 ,phase3, phase4, timelineReport);
 
-      console.log(reportLinks);
-      console.log(reportLinks['generalOverview']);
-
     });
 
-    console.log("phase: "+this.phase);
-
-    console.log(this.blankToggle);
   }
 
+  /* This method changes the phase variable to the phase corresponding to the clicked button*/
   togglePhase(phaseNumber){
-    this.phase= phaseNumber;
-    console.log("ethod");
-    console.log(this.phase);
-    console.log(phaseNumber);
-    console.log("after method");
-    
+    this.phase= phaseNumber;   
   }
 
-  /*Utility method to track the status of the blankToggle variable */
+  /* Utility method to track the status of the blankToggle variable */
   toggleBlank(){
     console.log(this.blankToggle);
   }

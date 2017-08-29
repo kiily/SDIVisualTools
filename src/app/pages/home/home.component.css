@@ -7,10 +7,19 @@
   width: 100%;
 }
 
-.value-props:hover{
-  background-color: #F65B61;
- 
+#scaffolding-info:hover{
+    background-color: #79aefe;   
 }
+#discovery-info:hover{
+    background-color: #314190;   
+}
+#innovation-info:hover{
+    background-color:  #279636;   
+}
+#constructionism-info:hover{
+    background-color: #F65B61;
+}
+
 
 .prop {
   border: 1px solid #FFF;
