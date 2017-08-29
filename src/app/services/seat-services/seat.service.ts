@@ -1,5 +1,4 @@
-import { AngularFireDatabase } from 'angularfire2/database';
-import { HttpDataService } from '../http-data.service';
+import { AngularFireDatabase } from 'angularfire2/database';import { HttpDataService } from '../http-data.service';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -11,16 +10,10 @@ console. (the same was done for the dashboard)
 @Injectable()
 export class SEATService extends HttpDataService {
 
-  constructor(http : Http, private afdb : AngularFireDatabase) {
+  constructor(http : Http) {
     super('urltobedetermined', http);
    }
 
-   getAppLink(){
-     let appLinks = this.afdb.object("/scaffolding/powerBIApp");
-     return appLinks;
-   }
-
-   
 
 }
  

@@ -11,9 +11,4 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
     title = 'SDIVisualTools';
-  // //stores firebase no-SQL list
-  // items : FirebaseListObservable<any>;
-  // //accesses the user state
-  // user: Observable<firebase.User>;
-
 }

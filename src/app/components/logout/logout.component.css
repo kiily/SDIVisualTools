@@ -1,46 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-
-html{
-    zoom:80%;
-}
-
-body{
-    background-color: #191818;
-}
-
-.top-row{
-    background-color: #F65B61;
-    position: fixed;
-    width: 100%;
-    z-index: 5;
-}
-
-.page-title{
-    font-size:45pt;
-    color: white;
-    font-family: 'Inconsolata', monospace;
-    font-weight: bold;
-}
-
-.padding-top{
-    padding-top:50px;
-}
-
-.low-padding-top{
-    padding-top: 20px;
-}
-
-.report-frame{
-    width: 100%;
-}
-
-.text-transform{
-    text-transform: uppercase;
-}
-
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
 /*  LOGOUT BUTTON */
 .navigation {
