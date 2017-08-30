@@ -1,7 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Oswald:400);
-@import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
-/*  LOGOUT BUTTON */
+
+/*  LOGOUT BUTTON 
+
+References: 
+ -  https://codepen.io/jeremyloyd/pen/EaavQb*/
 .navigation {
   width: 100%;
 }

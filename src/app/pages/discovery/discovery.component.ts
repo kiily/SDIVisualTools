@@ -34,6 +34,7 @@ export class DiscoveryComponent implements OnInit {
 
   /*Use the Angular lifecycle hooks to retrieve the discovery data */
   ngOnInit() {
+    //Checking that a user is logged in
     this.authService.userScan();
 
     this.discoveryLinks = this.discoveryFirebaseService.getDiscoveryLinks();

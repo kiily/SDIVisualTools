@@ -1,7 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
+/*REFERENCES: 
+
+ - https://www.dtelepathy.com/blog/inspiration/30-bold-and-clean-web-designs-for-inspiration
+ - https://designschool.canva.com/blog/website-color-schemes/
+ */
 
 html{
     zoom:80%;

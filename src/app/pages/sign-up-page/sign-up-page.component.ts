@@ -4,6 +4,9 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
+/*This class acts as the controller for the SignUpPage component. It is associated with an HTML template that renders 
+the sign up page. This includes a basic sign-up form with error validation so that the user
+can register with the application.*/
 @Component({
   selector: 'sign-up-page',
   templateUrl: './sign-up-page.component.html',
@@ -31,6 +34,10 @@ export class SignUpPageComponent implements OnInit {
   }
 
 
+  /*This method retrieves the data from the signUpForm and validates this data
+  before registering the user with the Firebase authentication service as well as creating
+  a node for each user in the database (password is hidden). Note that email verification is
+  required to complete registration */ 
   signUp() {
 
     //retrieve data from the form
@@ -40,30 +47,27 @@ export class SignUpPageComponent implements OnInit {
     let firstName = this.signUpForm.controls.firstName.value;
     let lastName = this.signUpForm.controls.lastName.value;
 
-    console.log(email);
     //check whether the passwords match
     if (password == repeatPassword) {
       //Catch the signup promise
       this.authService.signupUser(email, password)
         .then(authState => {
-          console.log(authState);
-         
-          console.log("sending email");
-          //Email verification
+          
+          //Send Email verification
           authState.sendEmailVerification();
-
-         
+          //Reset Form
           this.signUpForm.reset();
 
           //Extract unique user id
           let uid = authState.uid;
-          console.log(uid);
+     
+          //Register user and notify
           this.authService.registerUser(uid, email, firstName, lastName);
           this.alertGenerator.generateRegistrationConfirm("Registration was successful. Please verify your email before logging in.")
 
-          //NAVIGATION (if any) SHOULD BE ADDED HERE
+          //NAVIGATION (if any) SHOULD BE ADDED HERE -e.g. log in directly?
         }).catch(error => {
-          console.log(error);
+     
           this.authValidator.handleAuthErrors(error);
         });
 

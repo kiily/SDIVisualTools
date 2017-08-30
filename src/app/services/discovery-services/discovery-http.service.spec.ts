@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { DiscoveryService } from './discovery.service';
+import { DiscoveryHttpService } from './discovery-http.service';
 
 describe('DiscoveryService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DiscoveryService]
+      providers: [DiscoveryHttpService]
     });
   });
 
-  it('should be created', inject([DiscoveryService], (service: DiscoveryService) => {
+  it('should be created', inject([DiscoveryHttpService], (service: DiscoveryHttpService) => {
     expect(service).toBeTruthy();
   }));
 });

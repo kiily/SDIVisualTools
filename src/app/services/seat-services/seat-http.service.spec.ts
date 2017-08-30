@@ -1,17 +1,17 @@
 import { HttpModule } from '@angular/http';
 import { TestBed, inject } from '@angular/core/testing';
 
-import { SEATService } from './seat.service';
+import { SEATHttpService } from './seat-http.service';
 
 describe('SEATService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SEATService],
+      providers: [SEATHttpService],
       imports: [HttpModule]
     });
   });
 
-  it('should be created', inject([SEATService], (service: SEATService) => {
+  it('should be created', inject([SEATHttpService], (service: SEATHttpService) => {
     expect(service).toBeTruthy();
   }));
 });

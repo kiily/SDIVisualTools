@@ -1,3 +1,7 @@
+/*REFERENCES: 
+- https://bootsnipp.com/snippets/featured/fancy-sidebar-navigation
+*/
+
 body {
     position: relative;
     overflow-x: hidden;
@@ -8,9 +12,7 @@ html { height: 100%;}
 .nav .open > a:hover, 
 .nav .open > a:focus {background-color: transparent;}
 
-/*-------------------------------*/
-/*           Wrappers            */
-/*-------------------------------*/
+/*SDI NAVBAR WRAPPER*/
 
   #wrapper {
     padding-left: 0;

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    //Checking that a user is logged in
     this.authService.userScan();
 
   }

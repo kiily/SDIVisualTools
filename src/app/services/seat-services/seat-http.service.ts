@@ -8,7 +8,7 @@ accessed from inside the app. If necessary, the link can be changed directly in 
 console. (the same was done for the dashboard)
 */
 @Injectable()
-export class SEATService extends HttpDataService {
+export class SEATHttpService extends HttpDataService {
 
   constructor(http : Http) {
     super('urltobedetermined', http);

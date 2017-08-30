@@ -5,9 +5,18 @@ import { forEach } from '@angular/router/src/utils/collection';
 import { NotFoundError } from '../../common/error-handling/not-found-error';
 import { BadInputRequestError } from '../../common/error-handling/bad-input-request';
 import { AppError } from '../../common/error-handling/app-error';
-import { InnoflowService } from './../../services/innoflow-services/innoflow.service';
+import { InnoflowHttpService } from './../../services/innoflow-services/innoflow-http.service';
 import { Component, OnInit } from '@angular/core';
 
+
+/*This class acts as the controller for the Innovation component. It is associated with an HTML template that renders 
+the innovation page. This page presents the student numbers and their attached innovations which are stored in the Firebase
+database. A synchronisation function is provided to fetch the most recent data from Innoflow and automatically
+update the Firebase schema
+
+References:
+ - Library used to render markdown with Prism.js: ttps://libraries.io/npm/angular2-markdown
+ */
 @Component({
   selector: 'app-innovation',
   templateUrl: './innovation.component.html',
@@ -22,52 +31,28 @@ export class InnovationComponent implements OnInit {
 
   selectedUser;
 
-  constructor(private innoflowService: InnoflowService, private innoflowFirebaseService : InnoflowFirebaseService,
+  constructor(private innoflowHttpService: InnoflowHttpService, private innoflowFirebaseService : InnoflowFirebaseService,
   private authService : AuthService) {
 
   }
  
+  /*User the Angular lifecyle hook to retrieve the innovation data */
   ngOnInit() {
 
+    //Checking that a user is logged in
     this.authService.userScan();
 
+    //Get the student numbers
     this.innoflowFirebaseService.getUsers()
     .subscribe(users => {
-      console.log("before users");
-      console.log( users);
-      
-      this.innoflowUsersFirebase = users;
-      console.log(this.innoflowUsersFirebase);
-      
+           
+      this.innoflowUsersFirebase = users;      
     });
-     
-   //Get the innovations for the given url (hard coded at the moment)
-   //HTTP Implementation
-   this.innoflowService.retrieveAllUsers()
-      .subscribe(users => {
-        this.innoflowUsers = users;
-        // console.log(users);
-      }, (error: AppError) => {
-
-        if (error instanceof BadInputRequestError) {
-          //display toaster for this
-        }
-        if (error instanceof NotFoundError) {
-          //display toaster for this
-          console.log("Not found indeed");
-        }
-        //Propagate error to error handler
-        else {
-          throw error;
-        }
-
-      });
   }
-
-  //Activated by pressing the user
+  
+  
+  //Activated by pressing a given student number. It loads of all that user's innovations
   getInnovations(userID, username){
-    console.log(userID);
-    console.log(username);
 
     this.selectedUser = {
       id: userID,
@@ -77,10 +62,68 @@ export class InnovationComponent implements OnInit {
     this.innoflowFirebaseService.getUserInnovations(userID)
     .subscribe(innovations => {
       this.innovations = innovations;
-      console.log(this.innovations);
-    })
+    });    
+  }
 
-    //DEPRECATED IMPLEMENTATION FOR HTTP SERVICES
+/*This method takes makes HTTP requests to Innoflow to retrieve data from the Innoflow Server
+ and synchronizes it with Firebase */
+  syncInnovationData(){
+
+    //Retrieve all the student IDs
+    this.innoflowHttpService.retrieveAllUsers()
+    .subscribe(users =>{
+      let innoflowUsers = users;
+      //push each user to Firebase
+      for (let user of innoflowUsers){
+        
+        this.innoflowFirebaseService.addInnovationUser(user);
+     //Retrieve the innovations for each user
+    this.innoflowHttpService.retrieveUserInnovations(user.id)
+    .subscribe(innovationsHttp => {
+          let innovations = innovationsHttp;
+          for(let innovation of innovations){
+            //Add the innovations to the relevant users on Firebase
+          this.innoflowFirebaseService.addInnovation(innovation, user.id);
+          }
+      });
+    }
+    });
+
+  }
+
+
+}
+
+
+/* DEPRECATED IMPLEMENTATIONS - For reference only 
+
+This deprecated implementation required CORS - cross origin resource sharing is not
+enabled in the Innoflow API - this implementation works using a plugin for Chrome
+
+CORS Toggle - https://chrome.google.com/webstore/detail/cors-toggle/omcncfnpmcabckcddookmnajignpffnh?utm_source=chrome-app-launcher-info-dialog
+
+ //HTTP Implementation (DEPRECATED - kept this here just in case)
+  //  this.innoflowService.retrieveAllUsers()
+  //     .subscribe(users => {
+  //       this.innoflowUsers = users;
+  //       // console.log(users);
+  //     }, (error: AppError) => {
+
+  //       if (error instanceof BadInputRequestError) {
+  //         //display toaster for this
+  //       }
+  //       if (error instanceof NotFoundError) {
+  //         //display toaster for this
+  //         console.log("Not found indeed");
+  //       }
+  //       //Propagate error to error handler
+  //       else {
+  //         throw error;
+  //       }
+
+  //     });*/
+
+  //DEPRECATED IMPLEMENTATION FOR HTTP SERVICES
     // this.innoflowService.retrieveUserInnovations(userID)
     //  .subscribe(innovations => {
     //     this.innovations = innovations;
@@ -100,30 +143,3 @@ export class InnovationComponent implements OnInit {
     //     }
 
     //   });
-  }
-
-//this function takes the http data and synchronizes it with Firebase
-//THIS REQUIRES CORS BUT SHOULD NOW BE ABLE TO BYPASS THIS ISSUE once the data is on firebase
-  syncInnovationData(){
-
-    this.innoflowService.retrieveAllUsers()
-    .subscribe(users =>{
-      let innoflowUsers = users;
-      for (let user of innoflowUsers){
-        
-        this.innoflowFirebaseService.addInnovationUser(user);
-     
-    this.innoflowService.retrieveUserInnovations(user.id)
-    .subscribe(innovationsHttp => {
-          let innovations = innovationsHttp;
-          for(let innovation of innovations){
-          this.innoflowFirebaseService.addInnovation(innovation, user.id);
-          }
-      });
-    }
-    });
-
-  }
-
-
-}

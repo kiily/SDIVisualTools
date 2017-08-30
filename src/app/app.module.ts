@@ -1,3 +1,5 @@
+import { InnoflowHttpService } from './services/innoflow-services/innoflow-http.service';
+import { DiscoveryHttpService } from './services/discovery-services/discovery-http.service';
 import { SEATFirebaseService } from './services/seat-services/seat-firebase.service';
 import { InnoflowFirebaseService } from './services/innoflow-services/innoflow-firebase.service';
 import { DiscoveryFirebaseService } from './services/discovery-services/discovery-firebase.service';
@@ -6,11 +8,10 @@ import { HttpModule } from '@angular/http';
 import { AuthValidator } from './common/validators/auth.validator';
 import { AlertGenerator } from './common/alerts/alert-generator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InnoflowService } from './services/innoflow-services/innoflow.service';
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SEATService } from './services/seat-services/seat.service';
+import { SEATHttpService } from './services/seat-services/seat-http.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -81,10 +82,11 @@ export const firebaseConfig = {
   ],
   providers: [
     SEATFirebaseService,
-    SEATService,
+    SEATHttpService,
     AuthService,
     DiscoveryFirebaseService,
-    InnoflowService,
+    DiscoveryHttpService,
+    InnoflowHttpService,
     InnoflowFirebaseService,
     AlertGenerator,
     AuthValidator
