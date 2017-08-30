@@ -30,7 +30,7 @@ export class ScaffoldingComponent implements OnInit {
   blankToggle : boolean = false;
 
   //Report links
-  reportLinks : string[] = [];
+  reportLinks : any[] = [];
 
   constructor(private seatFirebaseService : SEATFirebaseService, private route : ActivatedRoute,
   private authService : AuthService) { }
