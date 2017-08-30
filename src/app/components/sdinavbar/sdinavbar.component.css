@@ -1,0 +1,284 @@
+/*REFERENCES: 
+- https://bootsnipp.com/snippets/featured/fancy-sidebar-navigation
+*/
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+body,
+html { height: 100%;}
+.nav .open > a, 
+.nav .open > a:hover, 
+.nav .open > a:focus {background-color: transparent;}
+
+/*SDI NAVBAR WRAPPER*/
+
+  #wrapper {
+    padding-left: 0;
+    padding-bottom:100px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+} 
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+ #sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    /* Change height of the navbar */
+    height: 40%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: black;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+} 
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+/* #page-content-wrapper {
+    width: 100%;
+    padding-top: 70px;
+} */
+
+/* might be necessary when adding content to the page
+/* #wrapper.toggled #button-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}  */ 
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative; 
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+    font-size: 16pt;
+   font-family: 'Inconsolata', monospace;
+   text-transform: uppercase;
+}
+ 
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #F65B61;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+} 
+.sidebar-nav li:first-child a {
+    color: #fff;
+    /* background-color: #1a1a1a; */
+}
+.sidebar-nav li:nth-child(2):before {
+    background-color: #38D299;   
+}
+.sidebar-nav li:nth-child(3):before {
+    background-color: #79aefe;   
+}
+
+.sidebar-nav li:nth-child(4):before {
+    background-color: #314190;   
+}
+
+.sidebar-nav li:nth-child(5):before {
+    background-color: #279636;   
+}
+.sidebar-nav li:nth-child(6):before {
+    background-color: #7d5d81;  
+} 
+  
+/*NOTE how a transition for the width is done" */
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;    
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.sidebar-nav > .sidebar-sdi {
+    padding-left: 20px;
+    font-size: 30px;
+    height: 100px;
+    line-height: 44px;
+    color: white;
+}
+
+
+/*-------------------------------*/
+/*       menu-Cross         */
+/*-------------------------------*/
+
+.menu {
+  position: fixed;
+  top: 20px;  
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: transparent;
+  border: none;
+}
+.menu:hover,
+.menu:focus,
+.menu:active {
+  outline: none;
+}
+.menu.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
+}
+.menu.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+  transition:all .35s ease-in-out;
+
+}
+
+.menu.is-closed .menu-top,
+.menu.is-closed .menu-middle,
+.menu.is-closed .menu-bottom,
+.menu.is-open .menu-top,
+.menu.is-open .menu-middle,
+.menu.is-open .menu-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.menu.is-closed .menu-top,
+.menu.is-closed .menu-middle,
+.menu.is-closed .menu-bottom {
+   background-color: white; 
+}
+.menu.is-closed .menu-top { 
+  top: 5px; 
+  -webkit-transition: all .35s ease-in-out;
+  transition:all .35s ease-in-out;
+}
+.menu.is-closed .menu-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.menu.is-closed .menu-bottom {
+  bottom: 5px;  
+  -webkit-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
+}
+
+.menu.is-closed:hover .menu-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
+}
+.menu.is-closed:hover .menu-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
+}
+.menu.is-open .menu-top,
+.menu.is-open .menu-middle,
+ .menu.is-open .menu-bottom {
+  background-color: white;
+} 
+.menu.is-open .menu-top,
+.menu.is-open .menu-bottom {
+  top: 50%;
+  margin-top: -2px;  
+}
+.menu.is-open .menu-top { 
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.menu.is-open .menu-middle { display: none; }
+.menu.is-open .menu-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.menu.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
+}
+.menu.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+  transform: all .35s ease-in-out;
+}

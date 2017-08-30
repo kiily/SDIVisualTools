@@ -1,0 +1,75 @@
+
+/*ABOUT ELEMENTS STYLING  */
+
+.value-props {
+  width: 100%;
+}
+
+#scaffolding-info:hover{
+    background-color: #79aefe;   
+}
+#discovery-info:hover{
+    background-color: #314190;   
+}
+#innovation-info:hover{
+    background-color:  #279636;   
+}
+#constructionism-info:hover{
+    background-color: #F65B61;
+}
+
+
+.prop {
+  border: 1px solid #FFF;
+  padding: 40px 0px;
+  margin: 5px 0px;
+  text-align: center;
+  
+}
+
+.prop h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  color: white;
+}
+
+.prop p{
+    color:white;
+    text-align: justify;
+    margin-left: 10px;
+    margin-right: 10px;
+   font-family: 'Inconsolata', monospace;
+    font-size:20pt;
+    display: inline-block;
+    
+}
+
+.glyphicon{
+    font-size: 25px;
+    color: white;
+
+}
+
+#home-title{
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    font-size:45pt;
+} 
+
+#about-title{
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    font-size:35pt;
+    text-transform: uppercase;
+}
+
+#about-info{
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    text-transform: uppercase;
+}
+
+
+
+
