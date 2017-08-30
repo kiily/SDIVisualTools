@@ -34,6 +34,12 @@ import { ConfirmDialogComponent } from './common/alerts/confirm-dialog/confirm-d
 import { LogoutComponent } from './components/logout/logout.component';
 import { SafeURLPipe } from './pipes/safe-url.pipe';
 
+/*GLOBAL REFERENCES - these tutorials where helpful during the dev process
+
+ - https://www.udemy.com/angular-2-tutorial-for-beginners/learn/v4/content
+ - https://www.udemy.com/testing-angular-apps/learn/v4/content
+
+*/
 
 
 //Firebase database configuration settings

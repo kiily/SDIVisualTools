@@ -83,7 +83,7 @@ export class ScaffoldingComponent implements OnInit {
   }
 
   /* Utility method to track the status of the blankToggle variable */
-  private toggleBlank(){
+  toggleBlank(){
     console.log(this.blankToggle);
   }
 
