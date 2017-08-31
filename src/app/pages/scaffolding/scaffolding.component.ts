@@ -20,11 +20,13 @@ References:
 export class ScaffoldingComponent implements OnInit {
 
   phase : string;
+
   //New Tab Toggle
   blankToggle : boolean = false;
 
   //PowerBI app and related links
   powerBIAppLinks : any[] = [];
+
   //Report links
   reportLinks : any[] = [];
 
@@ -47,16 +49,13 @@ export class ScaffoldingComponent implements OnInit {
     //Getting PowerBI related links (App, Dashboard, Excel)
     this.seatFirebaseService.getAppLink().subscribe( appLink => {
     
-      // this.appLink = appLink.link;
-      // this.appDashboardLinkPro = appLink.dashboardLinkPro;
-      // this.appDashboardLink = appLink.dashboardLink;
-      // this.excelLink = appLink.excelLink;
       let app = appLink.link;
       let appDashboardPro = appLink.dashboardLinkPro;
       let appDashboard = appLink.dashboardLink;
       let excel = appLink.excelLink;
 
       this.powerBIAppLinks.push(app,appDashboardPro,appDashboard,excel);
+
     });
 
     //Get links for the reports

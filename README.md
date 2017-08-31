@@ -1,16 +1,50 @@
 # SDIVisualTools
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
+## What is SDI VisualTools?
+SDI VisualTools is an Angular 4 app that acts as teaching assistant designed to help teachers visualise student progress in Computer Science (CS). PowerBI is used to present the visualisations.
 
-## Development server
+The solution is based on the SDI methodology, a constructionist learning theory which is currently being implemented at the University College London (UCL). 
+
+## Technologies used:
+ * Angular 4
+ * [Node.js](http://nodejs.org/)
+ * [PowerBI](https://powerbi.microsoft.com/en-us/)
+ * [Firebase](https://firebase.google.com/)
+ * CSS based on [Twitter's bootstrap](http://getbootstrap.com/)
+ * Tests written in  [Jasmine](http://jasmine.github.io/) 
+ * Test executed with [Karma Test Runner](http://karma-runner.github.io/0.8/index.html)
+ 
+## Installation Guide:
+### Preparing the development environment:
+
+* Install node.js.
+* Use the node package manager to install the Angular CLI on your machine (-g stands for global installation) and check that the installation was successful.
+
+```
+npm install - g @angular/cli
+ng --version
+```
+### Getting the code
+
+* Clone this report or fork it and clone the new fork. Navigate to the SDIVisualTools folder.
+
+```
+git clone https://github.com/kiily/SDIVisualTools.git
+cd SDIVisualTools
+```
+
+###  Installing the dependencies (ensure you are in the project root folder)
+
+```
+npm install
+```
+
+## Running the application on localhost
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Build
+## Building the application
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
@@ -18,10 +52,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
 
