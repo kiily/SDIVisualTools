@@ -102,3 +102,36 @@ a:hover .logout{
     font-family: 'Inconsolata', monospace;
     font-weight: bold;
 }
+
+/*BUTTON REFERENCES:
+    - https://bootsnipp.com/snippets/Oeo2N  
+    - http://callmenick.com/post/stylish-css-buttons
+
+   */
+
+.button {
+    border: none;
+     font-family: 'Inconsolata', monospace;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 50px;
+    display: inline-block;
+    margin: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    border: 1px solid white;
+    color: white;
+    
+}
+
+
+.button:active,
+.button:hover{
+        color: white;
+    background: #0e83cd;
+}

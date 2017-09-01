@@ -1,9 +1,11 @@
+import { SEATHttpService } from './../../services/seat-services/seat-http.service';
 import { AlertGenerator } from '../../common/alerts/alert-generator';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
 import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import * as FileSaver from 'file-saver';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -31,8 +33,11 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   addScaffoldingProblemForm: any;
   addScaffoldingAttemptForm : any;
 
+  sharePointLink;
+
   constructor(private authService: AuthService, private seatFirebaseService: SEATFirebaseService,
-    private formBuilder: FormBuilder, private alertGenerator: AlertGenerator) {
+    private formBuilder: FormBuilder, private alertGenerator: AlertGenerator,
+     private seatHttpService : SEATHttpService) {
 
     this.addScaffoldingModuleForm = formBuilder.group({
       moduleCode: ["", Validators.required],
@@ -69,8 +74,13 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
     //Checking that a user is logged in
     this.authService.userScan();
+    
+    this.seatFirebaseService.getAppLink().subscribe(appLink => {
+      this.sharePointLink = appLink.sharePointLink;
+      console.log(this.sharePointLink);
+    });
+    
     //extract the arrays of modules and problems sheets here
-
     this.phases = this.seatFirebaseService.getPhases();
     this.students = this.seatFirebaseService.getStudents();
     this.modules = this.seatFirebaseService.getModules();
@@ -187,4 +197,20 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
     this.seatFirebaseService.addAttempt(studentID, problemID, output, compile, date);
   }
+
+  exportJSONTree(){
+    this.seatFirebaseService.getScaffoldingDataTree().subscribe( snapshot => {
+      console.log(snapshot);
+
+
+      
+      // console.log(JSON.stringify(snapshot));
+
+      let blob = new Blob([JSON.stringify(snapshot)], {type:'json'});
+      FileSaver.saveAs(blob, "sdi-database.json");
+    })
+
+  }
+
+
 }

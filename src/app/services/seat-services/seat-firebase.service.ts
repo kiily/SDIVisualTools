@@ -29,6 +29,10 @@ export class SEATFirebaseService {
      return reportEmbedLinks;
    }
 
+   getScaffoldingDataTree(){
+     let scaffoldingData = this.afdb.object("/scaffolding");
+     return scaffoldingData;
+   }
    getPhases(){
      let phases = this.afdb.list("/scaffolding/phases");
      return phases;
