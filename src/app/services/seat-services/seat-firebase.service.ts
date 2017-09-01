@@ -73,6 +73,7 @@ export class SEATFirebaseService {
 
      problemSheets.update({
        [problemSheetID] : {
+         problemSheetID : problemSheetID,
          problemSheetTitle: problemSheetTitle,
          moduleID : moduleID,
          releaseDate : releaseDate,
@@ -90,6 +91,7 @@ export class SEATFirebaseService {
 
      problems.update({
        [problemID] : {
+         problemID: problemID,
          problemSheetID : problemSheetID,
          problemTitle: problemTitle
        }
