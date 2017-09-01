@@ -71,6 +71,21 @@ export class SEATFirebaseService {
        }
      });
    }
+
+   getProlems(){
+     let problems = this.afdb.list('/scaffolding/problems');
+     return problems; 
+   }
+   addProblem(problemID, problemSheetID, problemTitle){
+     let problems = this.afdb.object('/scaffolding/problems');
+
+     problems.update({
+       [problemID] : {
+         problemSheetID : problemSheetID,
+         problemTitle: problemTitle
+       }
+     });
+   }
     
 
 }

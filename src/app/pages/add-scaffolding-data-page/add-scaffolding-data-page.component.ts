@@ -16,9 +16,11 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   phases: FirebaseListObservable<any[]>;
   modules: FirebaseListObservable<any[]>;
   problemSheets: FirebaseListObservable<any[]>;
+  problems : FirebaseListObservable<any[]>;
 
   problemSheetIDs: number[] = [];
   moduleCodes: any[] = [];
+  problemIDs : number[] =[];
 
   addScaffoldingModuleForm: any;
   addScaffoldingProblemSheetForm: any;
@@ -59,21 +61,28 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     this.phases = this.seatFirebaseService.getPhases();
     this.modules = this.seatFirebaseService.getModules();
     this.problemSheets = this.seatFirebaseService.getProblemSheets();
+    this.problems = this.seatFirebaseService.getProlems();
 
 
     this.modules.subscribe(modules => {
       for (let mod of modules) {
         this.moduleCodes.push(mod.$key);
       }
-    })
+    });
 
     this.problemSheets.subscribe(problemSheets => {
       for (let pS of problemSheets) {
         this.problemSheetIDs.push(Number(pS.$key));
 
       }
-      console.log(this.problemSheetIDs)
-    })
+    });
+
+    this.problems.subscribe(problems => {
+      for(let problem of problems){
+        this.problemIDs.push(Number(problem.$key));
+      }
+    });
+
   }
 
   /*This method takes the values from the addScaffoldingModuleForm and checks whether the module code provided
@@ -126,17 +135,32 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       this.alertGenerator.generateConfirmNotification("Success. A new problem sheet was successfully added to " + moduleID);
     } else {
       //problemSheet already exists, throw an alert
-      this.alertGenerator.generateDataAdditionError("The Module Code you entered already exists")
+      this.alertGenerator.generateDataAdditionError("The ProblemSheetID must be unique.");
     }
-
-
-
-
-
-
-
-
 
   }
 
+  addProblem(){
+
+    let problemID = this.addScaffoldingProblemForm.controls.problemID.value;
+    let problemSheetID = this.addScaffoldingProblemForm.controls.problemSheetID.value;
+    let problemTitle = this.addScaffoldingProblemForm.controls.problemTitle.value;
+
+    if(!this.problemIDs.includes(problemID)){
+        //if problemID is unique
+
+         //reset form
+      this.addScaffoldingProblemForm.reset();
+
+      //add problem sheet
+      this.seatFirebaseService.addProblem(problemID, problemSheetID, problemTitle);
+
+      //notify user
+      this.alertGenerator.generateConfirmNotification("Success. A new problem was successfully added to problem sheet " + problemSheetID);
+    }else{
+      //problem already exists, throw an alert
+      this.alertGenerator.generateDataAdditionError("The ProblemID must be unique.");
+    }
+
+  }
 }
