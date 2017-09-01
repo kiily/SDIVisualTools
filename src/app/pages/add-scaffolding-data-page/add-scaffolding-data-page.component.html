@@ -1,0 +1,106 @@
+<div class="container-fluid top-row">
+  <div class="row">
+    <div class="col-sm-3">
+      <sdinavbar></sdinavbar>
+    </div>
+    <div class="col-sm-4 text-center text-transform">
+      <h1 class="page-title">Scaffolding</h1>
+    </div>
+    <div class="low-padding-top">
+      <logout-button></logout-button>
+    </div>
+
+  </div>
+</div>
+
+<br><br><br><br><br/>
+<div class="container-fluid" style="color: white;">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Add a new module</h1>
+
+      <form [formGroup]="addScaffoldingModuleForm" (ngSubmit)="addModule()">
+        <div class="form-group">
+          <label for="module-code">Module Code (ID):</label>
+          <input formControlName="moduleCode" type="text" class="form-control" name="module-code" required />
+          <label for="module-name">Module Name:</label>
+          <input formControlName="moduleName" type="text" class="form-control" name="module-name" required/>
+          <label for="class-size">Class Size:</label>
+          <input formControlName="classSize" type="number" class="form-control" name="class-size" required/>
+          <label for="phase">Phase:</label>
+          <select formControlName="phase" class="form-control" name="phase" required>
+                <option *ngFor="let phase of phases | async" [value]="phase.$key">{{phase.phaseName}}</option>
+          </select>
+        </div>
+        <button class="btn btn-block" type="submit">Add Module</button>
+      </form>
+
+    </div>
+    <div class="col-sm-6">
+      <h1>Add a new ProblemSheet</h1>
+
+      <form [formGroup]="addScaffoldingProblemSheetForm" (ngSubmit)="addProblemSheet()">
+        <div class="form-group">
+          <div class="col-sm-4">
+            <label for="problem-sheet-ID">Problem Sheet (ID):</label>
+            <input formControlName="problemSheetID" type="number" class="form-control" name="problem-sheet-ID" required />
+          </div>
+          <div class="col-sm-4">
+            <label for="problem-sheet-title">Problem Sheet Title:</label>
+            <input formControlName="problemSheetTitle" type="text" class="form-control" name="problem-sheet-title" required/>
+          </div>
+          <div class="col-sm-4">
+            <label for="moduleID">ModuleID:</label>
+            <select formControlName="moduleID" class="form-control" name="moduleID" required>
+                <option *ngFor="let module of modules | async" [value]="module.$key">{{module.$key}}</option>
+          </select>
+          </div>
+          <div class="col-sm-4">
+            <label for="release-date">Release Date:</label>
+            <input formControlName="releaseDate" type="date" class="form-control" name="release-date" required/>
+            <label for="deadline-date">Deadline:</label>
+            <input formControlName="deadline" type="date" class="form-control" name="deadline-date" required/>
+          </div>
+          <div class="col-sm-8">
+
+            <br><br>
+            <button class="btn btn-block" type="submit">Add Problem Sheet</button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Add a new problem:</h1>
+
+      <form [formGroup]="addScaffoldingProblemForm" (ngSubmit)="addProblem()">
+      <div class="form-group">
+        <div class="col-sm-4">
+          <label for="problem-ID">Problem (ID):</label>
+          <input formControlName="problemID" type="number" class="form-control" name="problem-ID" required />
+        </div>
+        <div class="col-sm-4">
+          <label for="problem-sheet-ID">ProblemSheetID:</label>
+          <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
+                <option *ngFor="let problemSheet of problemSheets | async" 
+                [value]="problemSheet.$key">{{problemSheet.$key}}. {{problemSheet.problemSheetTitle}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-4">
+            <label for="problem-title">Problem Title:</label>
+            <input formControlName="problemTitle" type="text" class="form-control" name="problem-title" required/>
+      </div>
+        <div class="col-sm-8">
+
+         <br><br>
+           <button class="btn btn-block" type="submit">Add Problem</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>

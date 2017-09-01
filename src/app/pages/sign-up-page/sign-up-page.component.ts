@@ -63,7 +63,7 @@ export class SignUpPageComponent implements OnInit {
      
           //Register user and notify
           this.authService.registerUser(uid, email, firstName, lastName);
-          this.alertGenerator.generateRegistrationConfirm("Registration was successful. Please verify your email before logging in.")
+          this.alertGenerator.generateConfirmNotification("Registration was successful. Please verify your email before logging in.")
 
           //NAVIGATION (if any) SHOULD BE ADDED HERE -e.g. log in directly?
         }).catch(error => {

@@ -32,11 +32,19 @@
                     </div>
                 </div>
                 <div class="col-sm-2">
+                    <div class="row">
                     <h5>Open reports on a new tab:</h5>
                         <label class="switch">
                              <input type="checkbox" [(ngModel)]="blankToggle" (change)="toggleBlank()">
                              <span class="slider round"></span>
                         </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                        <button  class="button btn-block" id="add-data-button" routerLink='/add-scaffolding-data-page'>
+                            <span class="glyphicon glyphicon-stats"></span> Add Data</button>
+                            </div>
+                    </div>
                 </div>
                 
             </section>

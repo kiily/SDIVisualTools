@@ -1,3 +1,5 @@
+import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
@@ -26,6 +28,50 @@ export class SEATFirebaseService {
      let reportEmbedLinks = this.afdb.object("/scaffolding/powerBIReports");
      return reportEmbedLinks;
    }
+
+   getPhases(){
+     let phases = this.afdb.list("/scaffolding/phases");
+     return phases;
+   }
+
+   addModule(moduleCode, moduleName, classSize, phaseID){
+    let modules = this.afdb.object('/scaffolding/modules');
+
+    modules.update({
+      [moduleCode]: {
+        moduleName : moduleName,
+        classSize: classSize,
+        phaseID: phaseID
+
+      }
+    });
+   
+   }
+
+   getModules(){
+     let modules =  this.afdb.list('/scaffolding/modules');
+     return modules;
+
+   }
+
+   getProblemSheets(){
+     let problemSheets =  this.afdb.list('/scaffolding/problemSheets');
+     return problemSheets;
+   }
+
+   addProblemSheet(problemSheetID, problemSheetTitle, moduleID, releaseDate, deadline){
+     let problemSheets = this.afdb.object('/scaffolding/problemSheets');
+
+     problemSheets.update({
+       [problemSheetID] : {
+         problemSheetTitle: problemSheetTitle,
+         moduleID : moduleID,
+         releaseDate : releaseDate,
+         deadline : deadline
+       }
+     });
+   }
+    
 
 }
  

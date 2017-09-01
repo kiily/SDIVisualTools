@@ -1,4 +1,4 @@
-
+import { AddScaffoldingDataPageComponent } from './pages/add-scaffolding-data-page/add-scaffolding-data-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { ScaffoldingComponent } from './pages/scaffolding/scaffolding.component';
 import { InnovationComponent } from './pages/innovation/innovation.component';
@@ -13,6 +13,7 @@ import { Routes } from '@angular/router';
 export const rootRouterConfig: Routes = [
     { path: '', component: WelcomePageComponent },
     { path: 'scaffolding', component: ScaffoldingComponent },
+    { path: 'add-scaffolding-data-page' , component: AddScaffoldingDataPageComponent },
     { path: 'discovery', component: DiscoveryComponent },
     { path: 'innovation', component: InnovationComponent },
     { path: 'home', component: HomeComponent },

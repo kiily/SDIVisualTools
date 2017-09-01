@@ -61,11 +61,16 @@ h5  {
 background-color: #2DD276;
 }
 
+#add-data-button{
+    background-color: #2DD276;
+ }
+
 .button:hover,
 .button:active,
 #powerbi-app-button:hover,
 #powerbi-dashboard-button:hover,
-#powerbi-excel-button:hover {
+#powerbi-excel-button:hover,
+#add-data-button:hover {
     color: white;
     background: #0e83cd;
     
