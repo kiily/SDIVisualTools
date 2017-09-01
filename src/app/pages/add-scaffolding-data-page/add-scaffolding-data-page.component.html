@@ -77,29 +77,74 @@
       <h1>Add a new problem:</h1>
 
       <form [formGroup]="addScaffoldingProblemForm" (ngSubmit)="addProblem()">
-      <div class="form-group">
-        <div class="col-sm-4">
-          <label for="problem-ID">Problem (ID):</label>
-          <input formControlName="problemID" type="number" class="form-control" name="problem-ID" required />
-        </div>
-        <div class="col-sm-4">
-          <label for="problem-sheet-ID">ProblemSheetID:</label>
-          <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <label for="problem-ID">Problem (ID):</label>
+            <input formControlName="problemID" type="number" class="form-control" name="problem-ID" required />
+          </div>
+          <div class="col-sm-4">
+            <label for="problem-sheet-ID">ProblemSheetID:</label>
+            <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
                 <option *ngFor="let problemSheet of problemSheets | async" 
                 [value]="problemSheet.$key">{{problemSheet.$key}}. {{problemSheet.problemSheetTitle}}</option>
           </select>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-4">
-            <label for="problem-title">Problem Title:</label>
-            <input formControlName="problemTitle" type="text" class="form-control" name="problem-title" required/>
-      </div>
+        <div class="col-sm-4">
+          <label for="problem-title">Problem Title:</label>
+          <input formControlName="problemTitle" type="text" class="form-control" name="problem-title" required/>
+        </div>
         <div class="col-sm-8">
 
-         <br><br>
-           <button class="btn btn-block" type="submit">Add Problem</button>
-      </div>
+          <br><br>
+          <button class="btn btn-block" type="submit">Add Problem</button>
+        </div>
 
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>Add an attempt:</h1>
+
+
+      <form [formGroup]="addScaffoldingAttemptForm" (ngSubmit)="addAttempt()">
+        <div class="form-group">
+
+          <div class="col-sm-4">
+            <label for="problem-ID">ProblemID:</label>
+            <select formControlName="problemID" class="form-control" name="problem-ID" required>
+                <option *ngFor="let problem of problems | async" 
+                [value]="problem.$key">{{problem.$key}}. {{problem.problemTitle}}</option>
+          </select>
+               <label for="student-ID">StudentID:</label>
+            <select formControlName="studentID" class="form-control" name="student-ID" required>
+                <option *ngFor="let student of students | async" 
+                [value]="student.$key">{{student.$key}}. {{student.firstName}} {{student.lastName}}</option>
+          </select>
+          </div>
+          <div class="col-sm-4">
+            <label for="compile-status">Compile Status:</label>
+            <select formControlName="compile" class="form-control" name="compile-status" required>
+                <option value="Y">Yes</option>
+                 <option value="N">No</option>
+          </select>
+            <label for="output-status">Compile Status:</label>
+            <select formControlName="output" class="form-control" name="output-status" required>
+                <option value="Correct">Correct</option>
+                <option value="Wrong">Wrong</option>
+          </select>
+          </div>
+
+          <div class="col-sm-4">
+             <label for="attempt-date">Attempt Date:</label>
+            <input formControlName="date" type="date" class="form-control" name="attempt-date" required/>
+            <br>
+              <button class="btn btn-block" type="submit">Add Attempt</button>
+          </div>
+          
+        </div>
       </form>
     </div>
   </div>

@@ -34,6 +34,11 @@ export class SEATFirebaseService {
      return phases;
    }
 
+   getStudents(){
+     let students = this.afdb.list("/scaffolding/students");
+     return students;
+   }
+
    addModule(moduleCode, moduleName, classSize, phaseID){
     let modules = this.afdb.object('/scaffolding/modules');
 
@@ -72,7 +77,7 @@ export class SEATFirebaseService {
      });
    }
 
-   getProlems(){
+   getProblems(){
      let problems = this.afdb.list('/scaffolding/problems');
      return problems; 
    }
@@ -84,6 +89,18 @@ export class SEATFirebaseService {
          problemSheetID : problemSheetID,
          problemTitle: problemTitle
        }
+     });
+   }
+
+   addAttempt(studentID, problemID, compile, output, date){
+     let attempts = this.afdb.list("/scaffolding/attempts");
+
+     attempts.push({
+       studentID: studentID,
+       problemID: problemID,
+       compile : compile,
+       output: output,
+       date : date
      });
    }
     

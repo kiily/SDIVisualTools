@@ -17,14 +17,19 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   modules: FirebaseListObservable<any[]>;
   problemSheets: FirebaseListObservable<any[]>;
   problems : FirebaseListObservable<any[]>;
+  students : FirebaseListObservable<any[]>;
 
+
+  //Arrays are used to check for uniqueness
   problemSheetIDs: number[] = [];
   moduleCodes: any[] = [];
   problemIDs : number[] =[];
+  
 
   addScaffoldingModuleForm: any;
   addScaffoldingProblemSheetForm: any;
   addScaffoldingProblemForm: any;
+  addScaffoldingAttemptForm : any;
 
   constructor(private authService: AuthService, private seatFirebaseService: SEATFirebaseService,
     private formBuilder: FormBuilder, private alertGenerator: AlertGenerator) {
@@ -48,7 +53,15 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       problemID: ["", Validators.required],
       problemSheetID: ["", Validators.required],
       problemTitle: ["", Validators.required],
-    })
+    });
+
+    this.addScaffoldingAttemptForm = formBuilder.group({
+      studentID: ["", Validators.required],
+      problemID: ["", Validators.required],
+      compile: ["", Validators.required],
+      output: ["", Validators.required],
+      date: ["", Validators.required],
+    });
   }
 
 
@@ -59,10 +72,10 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     //extract the arrays of modules and problems sheets here
 
     this.phases = this.seatFirebaseService.getPhases();
+    this.students = this.seatFirebaseService.getStudents();
     this.modules = this.seatFirebaseService.getModules();
     this.problemSheets = this.seatFirebaseService.getProblemSheets();
-    this.problems = this.seatFirebaseService.getProlems();
-
+    this.problems = this.seatFirebaseService.getProblems();
 
     this.modules.subscribe(modules => {
       for (let mod of modules) {
@@ -162,5 +175,16 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       this.alertGenerator.generateDataAdditionError("The ProblemID must be unique.");
     }
 
+  }
+
+  addAttempt(){
+
+    let studentID = this.addScaffoldingAttemptForm.controls.studentID.value;
+    let problemID = this.addScaffoldingAttemptForm.controls.problemID.value;
+    let output = this.addScaffoldingAttemptForm.controls.output.value;
+    let compile = this.addScaffoldingAttemptForm.controls.compile.value;
+    let date = this.addScaffoldingAttemptForm.controls.date.value;
+
+    this.seatFirebaseService.addAttempt(studentID, problemID, output, compile, date);
   }
 }
