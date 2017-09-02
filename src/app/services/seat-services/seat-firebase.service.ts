@@ -109,6 +109,15 @@ export class SEATFirebaseService {
        date : date
      });
    }
+
+   addStudentModule(studentID, moduleID){
+     let studentModules = this.afdb.list("/scaffolding/studentModules");
+
+     studentModules.push({
+       studentID : studentID,
+       moduleID : moduleID
+     })
+   }
     
 
 }

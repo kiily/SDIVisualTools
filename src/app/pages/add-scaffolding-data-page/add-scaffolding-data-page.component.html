@@ -14,6 +14,21 @@
 </div>
 
 <br><br><br><br><br/>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 ">
+
+
+      <button class="button" (click)="exportJSONTree()">Export Firebase Tree</button>
+
+    </div>
+    <div class="col-sm-3">
+      <a [href]="this.sharePointLink" target="_blank"><button class="button btn-block" id="powerbi-app-button">
+        <span class="glyphicon glyphicon-cloud"></span> SDI VisualTools SharePoint</button></a>
+    </div>
+  </div>
+</div>
 <div class="container-fluid" style="color: white;">
   <div class="row">
     <div class="col-sm-6">
@@ -22,7 +37,7 @@
       <form [formGroup]="addScaffoldingModuleForm" (ngSubmit)="addModule()">
         <div class="form-group">
           <label for="module-code">Module Code (ID):</label>
-          <input formControlName="moduleCode" type="text" class="form-control" name="module-code" required />
+          <input formControlName="moduleID" type="text" class="form-control" name="module-code" required />
           <label for="module-name">Module Name:</label>
           <input formControlName="moduleName" type="text" class="form-control" name="module-name" required/>
           <label for="class-size">Class Size:</label>
@@ -102,8 +117,33 @@
 
       </form>
     </div>
-  </div>
+  
 
+  <div class="col-sm-6">
+    <h1>Enroll a student in a module:</h1>
+    <form [formGroup]="addScaffoldingStudentModuleForm" (ngSubmit)="addStudentModule()">
+      <div class="form-group">
+        <div class="col-sm-4">
+          <label for="student-ID">StudentID:</label>
+          <select formControlName="studentID" class="form-control" name="student-ID" required>
+                <option *ngFor="let student of students | async" 
+                [value]="student.$key">{{student.$key}}. {{student.firstName}} {{student.lastName}}</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label for="moduleID">ModuleID:</label>
+          <select formControlName="moduleID" class="form-control" name="moduleID" required>
+                <option *ngFor="let module of modules | async" [value]="module.$key">{{module.$key}}</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <br>
+          <button class="btn btn-block" type="submit">Enroll</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
   <div class="row">
     <div class="col-sm-6">
       <h1>Add an attempt:</h1>
@@ -118,7 +158,7 @@
                 <option *ngFor="let problem of problems | async" 
                 [value]="problem.$key">{{problem.$key}}. {{problem.problemTitle}}</option>
           </select>
-               <label for="student-ID">StudentID:</label>
+            <label for="student-ID">StudentID:</label>
             <select formControlName="studentID" class="form-control" name="student-ID" required>
                 <option *ngFor="let student of students | async" 
                 [value]="student.$key">{{student.$key}}. {{student.firstName}} {{student.lastName}}</option>
@@ -138,25 +178,16 @@
           </div>
 
           <div class="col-sm-4">
-             <label for="attempt-date">Attempt Date:</label>
+            <label for="attempt-date">Attempt Date:</label>
             <input formControlName="date" type="date" class="form-control" name="attempt-date" required/>
             <br>
-              <button class="btn btn-block" type="submit">Add Attempt</button>
+            <button class="btn btn-block" type="submit">Add Attempt</button>
           </div>
-          
+
         </div>
       </form>
     </div>
-    <div class="col-sm-3 ">
-      
-           
-      <button class="button" (click)="exportJSONTree()">Export Firebase Tree</button>
-     
-    </div>
-      <div class="col-sm-3">
-         <a [href]="this.sharePointLink" target="_blank"><button class="button btn-block" id="powerbi-app-button">
-        <span class="glyphicon glyphicon-cloud"></span> SDI VisualTools SharePoint</button></a>
-      </div>
-    
+
+
   </div>
 </div>

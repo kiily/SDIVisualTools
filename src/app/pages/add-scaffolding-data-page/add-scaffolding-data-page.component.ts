@@ -18,29 +18,31 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   phases: FirebaseListObservable<any[]>;
   modules: FirebaseListObservable<any[]>;
   problemSheets: FirebaseListObservable<any[]>;
-  problems : FirebaseListObservable<any[]>;
-  students : FirebaseListObservable<any[]>;
+  problems: FirebaseListObservable<any[]>;
+  students: FirebaseListObservable<any[]>;
 
 
   //Arrays are used to check for uniqueness
   problemSheetIDs: number[] = [];
   moduleCodes: any[] = [];
-  problemIDs : number[] =[];
-  
+  problemIDs: number[] = [];
+
 
   addScaffoldingModuleForm: any;
   addScaffoldingProblemSheetForm: any;
   addScaffoldingProblemForm: any;
-  addScaffoldingAttemptForm : any;
+  addScaffoldingAttemptForm: any;
+  addScaffoldingStudentModuleForm : any;
 
   sharePointLink;
+  dataTree;
 
   constructor(private authService: AuthService, private seatFirebaseService: SEATFirebaseService,
     private formBuilder: FormBuilder, private alertGenerator: AlertGenerator,
-     private seatHttpService : SEATHttpService) {
+    private seatHttpService: SEATHttpService) {
 
     this.addScaffoldingModuleForm = formBuilder.group({
-      moduleCode: ["", Validators.required],
+      moduleID: ["", Validators.required],
       moduleName: ["", Validators.required],
       classSize: ["", Validators.required],
       phase: ["", Validators.required]
@@ -53,6 +55,11 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       releaseDate: ["", Validators.required],
       deadline: ["", Validators.required]
     });
+
+    this.addScaffoldingStudentModuleForm = formBuilder.group({
+      studentID: ["", Validators.required],
+      moduleID: ["", Validators.required]
+    })
 
     this.addScaffoldingProblemForm = formBuilder.group({
       problemID: ["", Validators.required],
@@ -74,12 +81,17 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
     //Checking that a user is logged in
     this.authService.userScan();
-    
+
     this.seatFirebaseService.getAppLink().subscribe(appLink => {
       this.sharePointLink = appLink.sharePointLink;
-      console.log(this.sharePointLink);
     });
-    
+
+     this.seatFirebaseService.getScaffoldingDataTree().subscribe(snapshot => {
+
+      this.dataTree = JSON.stringify(snapshot);
+      console.log(this.dataTree);
+     })
+
     //extract the arrays of modules and problems sheets here
     this.phases = this.seatFirebaseService.getPhases();
     this.students = this.seatFirebaseService.getStudents();
@@ -101,7 +113,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     });
 
     this.problems.subscribe(problems => {
-      for(let problem of problems){
+      for (let problem of problems) {
         this.problemIDs.push(Number(problem.$key));
       }
     });
@@ -112,7 +124,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   is unique. If it is, the new module is added to the database. If not, an error message is generated*/
   addModule() {
 
-    let moduleCode = this.addScaffoldingModuleForm.controls.moduleCode.value;
+    let moduleCode = this.addScaffoldingModuleForm.controls.moduleID.value;
     let moduleName = this.addScaffoldingModuleForm.controls.moduleName.value;
     let classSize = this.addScaffoldingModuleForm.controls.classSize.value;
     let phaseID = this.addScaffoldingModuleForm.controls.phase.value;
@@ -163,16 +175,16 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
   }
 
-  addProblem(){
+  addProblem() {
 
     let problemID = this.addScaffoldingProblemForm.controls.problemID.value;
     let problemSheetID = this.addScaffoldingProblemForm.controls.problemSheetID.value;
     let problemTitle = this.addScaffoldingProblemForm.controls.problemTitle.value;
 
-    if(!this.problemIDs.includes(problemID)){
-        //if problemID is unique
+    if (!this.problemIDs.includes(problemID)) {
+      //if problemID is unique
 
-         //reset form
+      //reset form
       this.addScaffoldingProblemForm.reset();
 
       //add problem sheet
@@ -180,14 +192,16 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
       //notify user
       this.alertGenerator.generateConfirmNotification("Success. A new problem was successfully added to problem sheet " + problemSheetID);
-    }else{
+    } else {
       //problem already exists, throw an alert
       this.alertGenerator.generateDataAdditionError("The ProblemID must be unique.");
+
+      
     }
 
   }
 
-  addAttempt(){
+  addAttempt() {
 
     let studentID = this.addScaffoldingAttemptForm.controls.studentID.value;
     let problemID = this.addScaffoldingAttemptForm.controls.problemID.value;
@@ -196,20 +210,26 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     let date = this.addScaffoldingAttemptForm.controls.date.value;
 
     this.seatFirebaseService.addAttempt(studentID, problemID, output, compile, date);
+    this.alertGenerator.generateConfirmNotification("Success. A new attempt was successfully added");
   }
 
-  exportJSONTree(){
-    this.seatFirebaseService.getScaffoldingDataTree().subscribe( snapshot => {
-      console.log(snapshot);
 
+  addStudentModule(){
+    
+    let studentID = this.addScaffoldingStudentModuleForm.controls.studentID.value;
+    let moduleID = this.addScaffoldingStudentModuleForm.controls.moduleID.value;
 
-      
-      // console.log(JSON.stringify(snapshot));
+    this.seatFirebaseService.addStudentModule(studentID, moduleID);
+    this.alertGenerator.generateConfirmNotification("Success. Student "+studentID+" was enrolled into "+moduleID+".");
 
-      let blob = new Blob([JSON.stringify(snapshot)], {type:'json'});
+  }
+
+  exportJSONTree() {
+   
+    console.log("aqui:"+this.dataTree);
+      let blob = new Blob([this.dataTree], { type: 'json' });
       FileSaver.saveAs(blob, "sdi-database.json");
-    })
-
+     
   }
 
 
