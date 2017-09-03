@@ -1,0 +1,29 @@
+.form-box{
+    border: 1px solid white;
+    border-radius: 10px;
+    font-family:'Inconsolata', monospace;
+    padding: 15px;
+
+}
+
+.btn{
+    background-color: #F65B61;
+}
+
+#share-point-btn{
+    background-color: #96FAF1;
+    color: black;
+}
+
+#export-btn{
+    background-color: #2DD276;
+    
+}
+
+#export-btn:hover,
+#share-point-btn:hover{
+     color: white;
+    background: #0e83cd;
+}
+   
+    
