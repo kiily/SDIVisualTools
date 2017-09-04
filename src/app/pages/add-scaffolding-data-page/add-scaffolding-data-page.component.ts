@@ -220,7 +220,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       this.seatFirebaseService.addProblem(problemID, problemSheetID, problemTitle);
 
       //notify user
-      this.alertGenerator.generateConfirmNotification("Success. A new problem was successfully added to problem sheet " + problemSheetID);
+      this.alertGenerator.generateConfirmNotification("Success. A new problem (ID: "+problemID+") was successfully added to problem sheet " + problemSheetID);
     } else {
       //problem already exists, throw an alert
       this.alertGenerator.generateDataAdditionError("The ProblemID must be unique.");
@@ -278,7 +278,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   exportJSONTree() {
   
       let blob = new Blob([this.dataTree], { type: 'json' });
-      FileSaver.saveAs(blob, "sdi-database.json");
+      FileSaver.saveAs(blob, "sdi-visual-tools-export.json");
      
   }
 
