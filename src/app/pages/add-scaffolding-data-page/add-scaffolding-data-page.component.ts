@@ -21,12 +21,14 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   problemSheets: FirebaseListObservable<any[]>;
   problems: FirebaseListObservable<any[]>;
   students: FirebaseListObservable<any[]>;
+  studentModules : FirebaseListObservable<any[]>;
 
 
   //Arrays are used to check for uniqueness
   problemSheetIDs: number[] = [];
   moduleCodes: any[] = [];
   problemIDs: number[] = [];
+  studentModulesPairs : any[] =[];
 
 
   addModuleForm: FormGroup;
@@ -80,8 +82,8 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.addAttemptForm);
-    console.log(this.addModuleForm.controls['phase']);
+    
+
     //Checking that a user is logged in
     this.authService.userScan();
 
@@ -101,6 +103,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     this.modules = this.seatFirebaseService.getModules();
     this.problemSheets = this.seatFirebaseService.getProblemSheets();
     this.problems = this.seatFirebaseService.getProblems();
+    this.studentModules = this.seatFirebaseService.getStudentModules();
 
     this.modules.subscribe(modules => {
       for (let mod of modules) {
@@ -120,6 +123,13 @@ export class AddScaffoldingDataPageComponent implements OnInit {
         this.problemIDs.push(Number(problem.$key));
       }
     });
+
+    this.studentModules.subscribe(studentModulePairs => {
+      for(let pair of studentModulePairs){
+        this.studentModulesPairs.push(pair);
+        console.log(this.studentModulesPairs);
+      }
+    })
 
   }
 
@@ -245,24 +255,19 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   addStudentModule(){
 
     if(!this.addStudentModuleForm.invalid){
-    console.log(this.addStudentModuleForm);
-
-    console.log("is invalid")
-    console.log(this.addStudentModuleForm.invalid);
-
-    //here need to check for uniqueness of the combination of the student ID and the moduleID
-    //need to compare to both arrays somehow  - or have an array of student modules
-    // for(let id of this.studentIDs){
-    //     let
-    // }
-    // let studentModules = []
 
     let studentID = this.addStudentModuleForm.controls.studentID.value;
     let moduleID = this.addStudentModuleForm.controls.moduleID.value;
 
+    if(this.studentModulesPairs.includes({moduleID : moduleID, studentID : studentID})){
+
     this.seatFirebaseService.addStudentModule(studentID, moduleID);
     this.alertGenerator.generateConfirmNotification("Success. Student "+studentID+" was enrolled into "+moduleID+".");
     
+    }else{
+      //Notify user that a field is required
+      this.alertGenerator.generateDataAdditionError("Student "+studentID+" is already enrolled in "+moduleID+".")
+    }
   }else{
      //Notify user that a field is required
       this.alertGenerator.generateDataAdditionError("Please provide a value for all fields.")

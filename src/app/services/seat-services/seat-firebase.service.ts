@@ -43,6 +43,11 @@ export class SEATFirebaseService {
      return students;
    }
 
+   getStudentModules(){
+      let studentModules = this.afdb.list("/scaffolding/studentModules");
+     return studentModules;
+   }
+
    addModule(moduleCode, moduleName, classSize, phaseID){
     let modules = this.afdb.object('/scaffolding/modules');
 
