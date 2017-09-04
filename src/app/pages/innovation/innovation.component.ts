@@ -27,7 +27,7 @@ export class InnovationComponent implements OnInit {
 
   innovations: any[];
   innoflowUsers: any[];
-  innoflowUsersFirebase : any[];
+  innoflowUsersFirebase : FirebaseListObservable<any[]>;
 
   selectedUser;
 
@@ -43,13 +43,9 @@ export class InnovationComponent implements OnInit {
     this.authService.userScan();
 
     //Get the student numbers
-    this.innoflowFirebaseService.getUsers()
-    .subscribe(users => {
-           
-      this.innoflowUsersFirebase = users;      
-    });
+    this.innoflowUsersFirebase = this.innoflowFirebaseService.getUsers();
+    
   }
-  
   
   //Activated by pressing a given student number. It loads of all that user's innovations
   getInnovations(userID, username){

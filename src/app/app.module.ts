@@ -28,11 +28,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { rootRouterConfig } from './app.routes';
-import { AuthDialogComponent } from './common/alerts/auth-dialog/auth-dialog.component';
+import { ErrorDialogComponent } from './common/alerts/error-dialog/error-dialog.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { ConfirmDialogComponent } from './common/alerts/confirm-dialog/confirm-dialog.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SafeURLPipe } from './pipes/safe-url.pipe';
+import { AddScaffoldingDataPageComponent } from './pages/add-scaffolding-data-page/add-scaffolding-data-page.component';
 
 /*GLOBAL REFERENCES - these tutorials where helpful during the dev process
 
@@ -62,14 +63,15 @@ export const firebaseConfig = {
     InnovationComponent,
     HomeComponent,
     HexagonMenuComponent,
-    AuthDialogComponent,
+    ErrorDialogComponent,
     SignUpPageComponent,
     ConfirmDialogComponent,
     LogoutComponent,
     SafeURLPipe,
+    AddScaffoldingDataPageComponent,
   ],
   entryComponents: [
-    AuthDialogComponent,
+    ErrorDialogComponent,
     ConfirmDialogComponent
   ],
   imports: [

@@ -1,6 +1,6 @@
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { Injectable } from '@angular/core';
-import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { MdDialog } from '@angular/material';
 
 /*
@@ -13,19 +13,28 @@ export class AlertGenerator{
 
     }
 
-    //Methods on AuthDialogComponent
+    //Methods on ErrorDialogComponent
+    //Can reuse the ErrorDialogComponent for all errors and even notifications
     generateAuthAlert(message : string){
 
-    let dialogRef = this.dialog.open(AuthDialogComponent, {
+    let dialogRef = this.dialog.open(ErrorDialogComponent, {
       data: "Error: "+message,
     });
 
     }
 
-    generateRegistrationConfirm(message : string){
+    generateConfirmNotification(message : string){
 
-    let dialogRef = this.dialog.open(AuthDialogComponent, {
+    let dialogRef = this.dialog.open(ErrorDialogComponent, {
       data: message,
+    });
+
+    }
+
+    generateDataAdditionError(message : string){
+
+      let dialogRef = this.dialog.open(ErrorDialogComponent, {
+      data: "Error: Your data could not be added. "+message,
     });
 
     }

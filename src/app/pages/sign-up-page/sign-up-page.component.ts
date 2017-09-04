@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthValidator } from './../../common/validators/auth.validator';
 import { AlertGenerator } from '../../common/alerts/alert-generator';
 import { AuthService } from '../../services/auth.service';
@@ -17,7 +18,8 @@ export class SignUpPageComponent implements OnInit {
   signUpForm;
   
   constructor(private formBuilder : FormBuilder, private authService : AuthService,
-    private alertGenerator : AlertGenerator, private authValidator : AuthValidator) {
+    private alertGenerator : AlertGenerator, private authValidator : AuthValidator, 
+  private router : Router) {
 
     this.signUpForm = formBuilder.group({
       email: ["", Validators.required],
@@ -63,9 +65,9 @@ export class SignUpPageComponent implements OnInit {
      
           //Register user and notify
           this.authService.registerUser(uid, email, firstName, lastName);
-          this.alertGenerator.generateRegistrationConfirm("Registration was successful. Please verify your email before logging in.")
-
-          //NAVIGATION (if any) SHOULD BE ADDED HERE -e.g. log in directly?
+          this.alertGenerator.generateConfirmNotification("Registration was successful. Please verify your email before logging in.");
+          this.router.navigate(['/welcome-page']);
+          
         }).catch(error => {
      
           this.authValidator.handleAuthErrors(error);

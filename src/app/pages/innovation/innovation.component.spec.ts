@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Rx';
 import { MarkdownComponent } from 'angular2-markdown';
 import { Http, HttpModule, Response } from '@angular/http';
 import * as http from 'http';
-import { InnoflowService } from './../../services/innoflow-services/innoflow.service';
+import { InnoflowHttpService } from './../../services/innoflow-services/innoflow-http.service';
 import { SDINavbarComponent } from './../../components/sdinavbar/sdinavbar.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { InnovationComponent } from './innovation.component';
@@ -14,18 +14,18 @@ describe('InnovationComponent', () => {
   let component: InnovationComponent;
   let fixture: ComponentFixture<InnovationComponent>;
 
-  let service : InnoflowService;
+  let service : InnoflowHttpService;
   
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ InnovationComponent, SDINavbarComponent, MarkdownComponent ], 
-      providers: [InnoflowService],
+      providers: [InnoflowHttpService],
       imports: [HttpModule]
     })
     .compileComponents().then(() => {
        
-    service = TestBed.get(InnoflowService);
+    service = TestBed.get(InnoflowHttpService);
     });
   }));
 

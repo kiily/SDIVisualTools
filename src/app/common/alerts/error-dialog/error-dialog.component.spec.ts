@@ -1,15 +1,15 @@
 import { MdDialogModule, MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
-import { AuthDialogComponent } from './auth-dialog.component';
+import { ErrorDialogComponent } from './error-dialog.component';
 
-describe('AuthDialogComponent', () => {
-  let component: AuthDialogComponent;
-  let fixture: ComponentFixture<AuthDialogComponent>;
+describe('ErrorDialogComponent', () => {
+  let component: ErrorDialogComponent;
+  let fixture: ComponentFixture<ErrorDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthDialogComponent],
+      declarations: [ ErrorDialogComponent],
       imports: [MdDialogModule],
       providers: [
         {provide: MD_DIALOG_DATA, useValue: {}},
@@ -21,7 +21,7 @@ describe('AuthDialogComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthDialogComponent);
+    fixture = TestBed.createComponent(ErrorDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

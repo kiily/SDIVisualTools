@@ -11,7 +11,7 @@ console. (the same was done for the dashboard)
 export class SEATHttpService extends HttpDataService {
 
   constructor(http : Http) {
-    super('urltobedetermined', http);
+    super('https://sdi-visual-tools.firebaseio.com/.json?print=pretty&format=export&download=sdi-visual-tools-export.json&auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MDQyODcwNzcsImV4cCI6MTUwNDI5MDY3NywiYWRtaW4iOnRydWUsInYiOjB9.FBtPv8CpJbSjWqA1vxvAS-NvpYyzH9PpNqL6un6X-To ', http);
    }
 
 

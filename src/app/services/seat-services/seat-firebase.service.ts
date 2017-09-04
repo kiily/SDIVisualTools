@@ -1,3 +1,5 @@
+import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
@@ -26,6 +28,102 @@ export class SEATFirebaseService {
      let reportEmbedLinks = this.afdb.object("/scaffolding/powerBIReports");
      return reportEmbedLinks;
    }
+
+   getScaffoldingDataTree(){
+     let scaffoldingData = this.afdb.object("/scaffolding");
+     return scaffoldingData;
+   }
+   getPhases(){
+     let phases = this.afdb.list("/scaffolding/phases");
+     return phases;
+   }
+
+   getStudents(){
+     let students = this.afdb.list("/scaffolding/students");
+     return students;
+   }
+
+   getStudentModules(){
+      let studentModules = this.afdb.list("/scaffolding/studentModules");
+     return studentModules;
+   }
+
+   addModule(moduleCode, moduleName, classSize, phaseID){
+    let modules = this.afdb.object('/scaffolding/modules');
+
+    modules.update({
+      [moduleCode]: {
+        moduleName : moduleName,
+        classSize: classSize,
+        phaseID: phaseID
+
+      }
+    });
+   
+   }
+
+   getModules(){
+     let modules =  this.afdb.list('/scaffolding/modules');
+     return modules;
+
+   }
+
+   getProblemSheets(){
+     let problemSheets =  this.afdb.list('/scaffolding/problemSheets');
+     return problemSheets;
+   }
+
+   addProblemSheet(problemSheetID, problemSheetTitle, moduleID, releaseDate, deadline){
+     let problemSheets = this.afdb.object('/scaffolding/problemSheets');
+
+     problemSheets.update({
+       [problemSheetID] : {
+         problemSheetID : problemSheetID,
+         problemSheetTitle: problemSheetTitle,
+         moduleID : moduleID,
+         releaseDate : releaseDate,
+         deadline : deadline
+       }
+     });
+   }
+
+   getProblems(){
+     let problems = this.afdb.list('/scaffolding/problems');
+     return problems; 
+   }
+   addProblem(problemID, problemSheetID, problemTitle){
+     let problems = this.afdb.object('/scaffolding/problems');
+
+     problems.update({
+       [problemID] : {
+         problemID: problemID,
+         problemSheetID : problemSheetID,
+         problemTitle: problemTitle
+       }
+     });
+   }
+
+   addAttempt(studentID, problemID, compile, output, date){
+     let attempts = this.afdb.list("/scaffolding/attempts");
+
+     attempts.push({
+       studentID: studentID,
+       problemID: problemID,
+       compile : compile,
+       output: output,
+       date : date
+     });
+   }
+
+   addStudentModule(studentID, moduleID){
+     let studentModules = this.afdb.list("/scaffolding/studentModules");
+
+     studentModules.push({
+       studentID : studentID,
+       moduleID : moduleID
+     })
+   }
+    
 
 }
  

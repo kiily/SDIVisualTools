@@ -20,31 +20,7 @@ h5  {
     font-family: 'Inconsolata', monospace;
      color: white;
 }
-/*BUTTON REFERENCES:
-    - https://bootsnipp.com/snippets/Oeo2N  
-    - http://callmenick.com/post/stylish-css-buttons
 
-   */
-
-.button {
-    border: none;
-     font-family: 'Inconsolata', monospace;
-    font-size: inherit;
-    color: inherit;
-    background: none;
-    cursor: pointer;
-    padding: 25px 50px;
-    display: inline-block;
-    margin: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    outline: none;
-    position: relative;
-    border: 1px solid white;
-    color: white;
-    
-}
 
 #powerbi-app-button{
     background: #FFDA11;
@@ -61,11 +37,17 @@ h5  {
 background-color: #2DD276;
 }
 
-.button:hover,
+#add-data-button{
+    background-color: #2DD276;
+ }
+
+
 .button:active,
+.button:hover,
 #powerbi-app-button:hover,
 #powerbi-dashboard-button:hover,
-#powerbi-excel-button:hover {
+#powerbi-excel-button:hover,
+#add-data-button:hover {
     color: white;
     background: #0e83cd;
     
@@ -140,4 +122,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.glyphicon{
+    font-size: 25px;
 }
