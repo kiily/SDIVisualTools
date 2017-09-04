@@ -1,6 +1,7 @@
+import { async } from '@angular/core/testing';
 import { SEATHttpService } from './../../services/seat-services/seat-http.service';
 import { AlertGenerator } from '../../common/alerts/alert-generator';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
 import { AuthService } from '../../services/auth.service';
@@ -28,11 +29,11 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   problemIDs: number[] = [];
 
 
-  addScaffoldingModuleForm: any;
-  addScaffoldingProblemSheetForm: any;
-  addScaffoldingProblemForm: any;
-  addScaffoldingAttemptForm: any;
-  addScaffoldingStudentModuleForm : any;
+  addModuleForm: FormGroup;
+  addProblemSheetForm: FormGroup;
+  addProblemForm: FormGroup;
+  addAttemptForm: FormGroup;
+  addStudentModuleForm : FormGroup;
 
   sharePointLink;
   dataTree;
@@ -41,14 +42,14 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     private formBuilder: FormBuilder, private alertGenerator: AlertGenerator,
     private seatHttpService: SEATHttpService) {
 
-    this.addScaffoldingModuleForm = formBuilder.group({
+    this.addModuleForm = formBuilder.group({
       moduleID: ["", Validators.required],
       moduleName: ["", Validators.required],
       classSize: ["", Validators.required],
       phase: ["", Validators.required]
     });
 
-    this.addScaffoldingProblemSheetForm = formBuilder.group({
+    this.addProblemSheetForm = formBuilder.group({
       problemSheetID: ["", Validators.required],
       problemSheetTitle: ["", Validators.required],
       moduleID: ["", Validators.required],
@@ -56,29 +57,31 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       deadline: ["", Validators.required]
     });
 
-    this.addScaffoldingStudentModuleForm = formBuilder.group({
+    this.addStudentModuleForm = formBuilder.group({
       studentID: ["", Validators.required],
       moduleID: ["", Validators.required]
     })
 
-    this.addScaffoldingProblemForm = formBuilder.group({
+    this.addProblemForm = formBuilder.group({
       problemID: ["", Validators.required],
       problemSheetID: ["", Validators.required],
       problemTitle: ["", Validators.required],
     });
 
-    this.addScaffoldingAttemptForm = formBuilder.group({
+    this.addAttemptForm = formBuilder.group({
       studentID: ["", Validators.required],
       problemID: ["", Validators.required],
       compile: ["", Validators.required],
       output: ["", Validators.required],
       date: ["", Validators.required],
     });
+    
   }
 
 
   ngOnInit() {
-
+    console.log(this.addAttemptForm);
+    console.log(this.addModuleForm.controls['phase']);
     //Checking that a user is logged in
     this.authService.userScan();
 
@@ -89,7 +92,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
      this.seatFirebaseService.getScaffoldingDataTree().subscribe(snapshot => {
 
       this.dataTree = JSON.stringify(snapshot);
-      console.log(this.dataTree);
+   
      })
 
     //extract the arrays of modules and problems sheets here
@@ -124,16 +127,18 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   is unique. If it is, the new module is added to the database. If not, an error message is generated*/
   addModule() {
 
-    let moduleCode = this.addScaffoldingModuleForm.controls.moduleID.value;
-    let moduleName = this.addScaffoldingModuleForm.controls.moduleName.value;
-    let classSize = this.addScaffoldingModuleForm.controls.classSize.value;
-    let phaseID = this.addScaffoldingModuleForm.controls.phase.value;
+    if(!this.addModuleForm.invalid){
+
+    let moduleCode = this.addModuleForm.controls.moduleID.value;
+    let moduleName = this.addModuleForm.controls.moduleName.value;
+    let classSize = this.addModuleForm.controls.classSize.value;
+    let phaseID = this.addModuleForm.controls.phase.value;
 
     if (!this.moduleCodes.includes(moduleCode)) {
       //module id is unique
 
       //reset form
-      this.addScaffoldingModuleForm.reset();
+      this.addModuleForm.reset();
 
 
       //if it is unique, add to the database
@@ -147,21 +152,28 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       //module already exists, throw an alert
       this.alertGenerator.generateDataAdditionError("The Module Code you entered already exists")
     }
+
+    }else{
+      //Notify user that a field is required
+      this.alertGenerator.generateDataAdditionError("Please provide a value for all fields.")
+    }
   }
 
   addProblemSheet() {
 
-    let problemSheetID = this.addScaffoldingProblemSheetForm.controls.problemSheetID.value;
-    let problemSheetTitle = this.addScaffoldingProblemSheetForm.controls.problemSheetTitle.value;
-    let moduleID = this.addScaffoldingProblemSheetForm.controls.moduleID.value;
-    let releaseDate = this.addScaffoldingProblemSheetForm.controls.releaseDate.value;
-    let deadline = this.addScaffoldingProblemSheetForm.controls.deadline.value;
+    if(!this.addProblemSheetForm.invalid){
+
+    let problemSheetID = this.addProblemSheetForm.controls.problemSheetID.value;
+    let problemSheetTitle = this.addProblemSheetForm.controls.problemSheetTitle.value;
+    let moduleID = this.addProblemSheetForm.controls.moduleID.value;
+    let releaseDate = this.addProblemSheetForm.controls.releaseDate.value;
+    let deadline = this.addProblemSheetForm.controls.deadline.value;
 
     if (!this.problemSheetIDs.includes(problemSheetID)) {
       //if problemSheetID is unique
 
       //reset form
-      this.addScaffoldingProblemSheetForm.reset();
+      this.addProblemSheetForm.reset();
 
       //add problem sheet
       this.seatFirebaseService.addProblemSheet(problemSheetID, problemSheetTitle, moduleID, releaseDate, deadline);
@@ -173,19 +185,26 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       this.alertGenerator.generateDataAdditionError("The ProblemSheetID must be unique.");
     }
 
+    }else{
+      //Notify user that a field is required
+      this.alertGenerator.generateDataAdditionError("Please provide a value for all fields.");
+    }
+
   }
 
   addProblem() {
 
-    let problemID = this.addScaffoldingProblemForm.controls.problemID.value;
-    let problemSheetID = this.addScaffoldingProblemForm.controls.problemSheetID.value;
-    let problemTitle = this.addScaffoldingProblemForm.controls.problemTitle.value;
+    if(!this.addProblemForm.invalid){
+
+    let problemID = this.addProblemForm.controls.problemID.value;
+    let problemSheetID = this.addProblemForm.controls.problemSheetID.value;
+    let problemTitle = this.addProblemForm.controls.problemTitle.value;
 
     if (!this.problemIDs.includes(problemID)) {
       //if problemID is unique
 
       //reset form
-      this.addScaffoldingProblemForm.reset();
+      this.addProblemForm.reset();
 
       //add problem sheet
       this.seatFirebaseService.addProblem(problemID, problemSheetID, problemTitle);
@@ -195,38 +214,64 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     } else {
       //problem already exists, throw an alert
       this.alertGenerator.generateDataAdditionError("The ProblemID must be unique.");
-
-      
     }
 
+    }else{
+      //Notify user that a field is required
+      this.alertGenerator.generateDataAdditionError("Please provide a value for all fields.");
+    }
   }
 
   addAttempt() {
 
-    let studentID = this.addScaffoldingAttemptForm.controls.studentID.value;
-    let problemID = this.addScaffoldingAttemptForm.controls.problemID.value;
-    let output = this.addScaffoldingAttemptForm.controls.output.value;
-    let compile = this.addScaffoldingAttemptForm.controls.compile.value;
-    let date = this.addScaffoldingAttemptForm.controls.date.value;
+    if(!this.addAttemptForm.invalid){
+
+    let studentID = this.addAttemptForm.controls.studentID.value;
+    let problemID = this.addAttemptForm.controls.problemID.value;
+    let output = this.addAttemptForm.controls.output.value;
+    let compile = this.addAttemptForm.controls.compile.value;
+    let date = this.addAttemptForm.controls.date.value;
 
     this.seatFirebaseService.addAttempt(studentID, problemID, output, compile, date);
     this.alertGenerator.generateConfirmNotification("Success. A new attempt was successfully added");
+
+    }else{
+      //Notify user that a field is required
+      this.alertGenerator.generateDataAdditionError("Please provide a value for all fields.")
+    }
   }
 
 
   addStudentModule(){
-    
-    let studentID = this.addScaffoldingStudentModuleForm.controls.studentID.value;
-    let moduleID = this.addScaffoldingStudentModuleForm.controls.moduleID.value;
+
+    if(!this.addStudentModuleForm.invalid){
+    console.log(this.addStudentModuleForm);
+
+    console.log("is invalid")
+    console.log(this.addStudentModuleForm.invalid);
+
+    //here need to check for uniqueness of the combination of the student ID and the moduleID
+    //need to compare to both arrays somehow  - or have an array of student modules
+    // for(let id of this.studentIDs){
+    //     let
+    // }
+    // let studentModules = []
+
+    let studentID = this.addStudentModuleForm.controls.studentID.value;
+    let moduleID = this.addStudentModuleForm.controls.moduleID.value;
 
     this.seatFirebaseService.addStudentModule(studentID, moduleID);
     this.alertGenerator.generateConfirmNotification("Success. Student "+studentID+" was enrolled into "+moduleID+".");
+    
+  }else{
+     //Notify user that a field is required
+      this.alertGenerator.generateDataAdditionError("Please provide a value for all fields.")
+  }
 
   }
 
   exportJSONTree() {
-   
-    console.log("aqui:"+this.dataTree);
+  
       let blob = new Blob([this.dataTree], { type: 'json' });
       FileSaver.saveAs(blob, "sdi-database.json");
      
