@@ -25,5 +25,8 @@
      color: white;
     background: #0e83cd;
 }
-   
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid #F65B61;
+}
     

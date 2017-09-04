@@ -68,8 +68,6 @@ export class SignUpPageComponent implements OnInit {
           this.alertGenerator.generateConfirmNotification("Registration was successful. Please verify your email before logging in.");
           this.router.navigate(['/welcome-page']);
           
-
-          //NAVIGATION (if any) SHOULD BE ADDED HERE -e.g. log in directly?
         }).catch(error => {
      
           this.authValidator.handleAuthErrors(error);

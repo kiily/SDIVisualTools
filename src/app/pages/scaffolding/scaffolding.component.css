@@ -123,3 +123,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.glyphicon{
+    font-size: 25px;
+}
