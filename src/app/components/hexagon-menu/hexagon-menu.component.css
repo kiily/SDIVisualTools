@@ -119,7 +119,7 @@ References:
 }
 
 /*** HEXAGON SIZING AND NUMBER OF HEXAGONS PER ROW ***/
-@media (min-width: 50px) { /* <- 2-1  hexagons per row */
+@media (min-width: 100px) { /* <- 2-1  hexagons per row */
   #hexGrid{
      padding-bottom: 11.2% 
   }
