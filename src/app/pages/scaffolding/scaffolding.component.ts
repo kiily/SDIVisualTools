@@ -51,11 +51,9 @@ export class ScaffoldingComponent implements OnInit {
     
       let app = appLink.link;
       let appDashboardPro = appLink.dashboardLinkPro;
-      let appWorkspace = appLink.workspaceLink;
-      let excel = appLink.excelLink;
-      console.log(excel);
+      
 
-      this.powerBIAppLinks.push(app,appDashboardPro,appWorkspace,excel);
+      this.powerBIAppLinks.push(app,appDashboardPro);
 
     });
 

@@ -37,6 +37,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   addAttemptForm: FormGroup;
   addStudentModuleForm : FormGroup;
 
+  dataManipulationLinks : any[] = [];
   sharePointLink;
   dataTree;
 
@@ -88,7 +89,12 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     this.authService.userScan();
 
     this.seatFirebaseService.getAppLink().subscribe(appLink => {
-      this.sharePointLink = appLink.sharePointLink;
+      let sharePointLink = appLink.sharePointLink;
+      let excel = appLink.excelLink;
+      let appWorkspace = appLink.workspaceLink;
+
+      this.dataManipulationLinks.push(sharePointLink, excel, appWorkspace)
+
     });
 
      this.seatFirebaseService.getScaffoldingDataTree().subscribe(snapshot => {
