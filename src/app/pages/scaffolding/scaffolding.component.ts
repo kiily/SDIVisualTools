@@ -46,16 +46,14 @@ export class ScaffoldingComponent implements OnInit {
       }
     })
 
-    //Getting PowerBI related links (App, Dashboard, Excel)
+    //Getting PowerBI related links (App, Dashboard, Workspace, Excel)
     this.seatFirebaseService.getAppLink().subscribe( appLink => {
     
       let app = appLink.link;
       let appDashboardPro = appLink.dashboardLinkPro;
-      let appDashboard = appLink.dashboardLink;
-      let excel = appLink.excelLink;
-      console.log(excel);
+      
 
-      this.powerBIAppLinks.push(app,appDashboardPro,appDashboard,excel);
+      this.powerBIAppLinks.push(app,appDashboardPro);
 
     });
 

@@ -20,6 +20,8 @@
     
 }
 
+#powerbi-excel-button:hover,
+#powerbi-dashboard-button:hover,
 #export-btn:hover,
 #share-point-btn:hover{
      color: white;
@@ -29,4 +31,13 @@
 .form-control.ng-touched.ng-invalid{
     border: 2px solid #F65B61;
 }
-    
+
+#powerbi-dashboard-button{
+    background: #F6E35C;
+    color: black;
+}
+
+
+#powerbi-excel-button{
+background-color: #2DD276;
+}
