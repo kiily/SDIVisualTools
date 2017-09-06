@@ -30,8 +30,10 @@ export class ScaffoldingComponent implements OnInit {
   //Report links
   reportLinks : any[] = [];
 
-  constructor(private seatFirebaseService : SEATFirebaseService, private route : ActivatedRoute,
-  private authService : AuthService) { }
+  constructor(private seatFirebaseService : SEATFirebaseService, 
+    private route : ActivatedRoute,  private authService : AuthService) {
+      
+     }
 
   ngOnInit() {
     //Checking that a user is logged in

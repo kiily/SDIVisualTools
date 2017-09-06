@@ -10,7 +10,7 @@ It is currently not in user
 export class DiscoveryHttpService extends HttpDataService{
 
   constructor(http : Http) { 
-    super( "url to be determined", http);
+    super( "https://jsonplaceholder.typicode.com/posts", http);
   }
   
 }
