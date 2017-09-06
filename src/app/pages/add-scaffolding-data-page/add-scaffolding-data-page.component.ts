@@ -1,4 +1,3 @@
-import { async } from '@angular/core/testing';
 import { SEATHttpService } from './../../services/seat-services/seat-http.service';
 import { AlertGenerator } from '../../common/alerts/alert-generator';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
@@ -8,13 +7,23 @@ import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import 'rxjs/add/operator/map';
+import * as XLSX from 'xlsx';
 
+type AOA = Array<Array<any>>;
+
+/* 
+REFERENCES: 
+ - https://github.com/SheetJS/js-xlsx/tree/master/demos/angular2
+ 
+ */
 @Component({
   selector: 'app-add-scaffolding-data-page',
   templateUrl: './add-scaffolding-data-page.component.html',
   styleUrls: ['./add-scaffolding-data-page.component.css']
 })
 export class AddScaffoldingDataPageComponent implements OnInit {
+
+
 
   phases: FirebaseListObservable<any[]>;
   modules: FirebaseListObservable<any[]>;
@@ -40,6 +49,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   dataManipulationLinks : any[] = [];
   sharePointLink;
   dataTree;
+  excelData : AOA;
 
   constructor(private authService: AuthService, private seatFirebaseService: SEATFirebaseService,
     private formBuilder: FormBuilder, private alertGenerator: AlertGenerator,
@@ -133,7 +143,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     this.studentModules.subscribe(studentModulePairs => {
       for(let pair of studentModulePairs){
         this.studentModulesPairs.push(pair);
-        console.log(this.studentModulesPairs);
+        
       }
     })
 
@@ -286,6 +296,50 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       let blob = new Blob([this.dataTree], { type: 'json' });
       FileSaver.saveAs(blob, "sdi-visual-tools-export.json");
      
+  }
+
+  onFileChanged(event : any ){
+
+    let target : DataTransfer = <DataTransfer>(event.target);
+    if(target.files.length != 1){
+      throw new Error("Only a single file can be opened at any given time");
+    }
+
+    let reader = new FileReader();
+    //Set the event for when the reader loads
+    reader.onload = (evt :any) => {
+      /* READ WORKBOOK */
+      let binaryFile = evt.target.result; 
+      let workbook = XLSX.read(binaryFile, {type: 'binary'});
+
+      let worksheets = [];
+
+
+      console.log(workbook);
+
+      //Will only grab the first sheet for now - could have a for loop here
+      let worksheetName = workbook.SheetNames[0];
+      let worksheet = workbook.Sheets[worksheetName];
+
+      /*SAVE DATA AS JSON */
+      this.excelData= <AOA>(XLSX.utils.sheet_to_json(worksheet, {header: 1}));
+
+      console.log(this.excelData);
+
+    };
+    //Read the selected file
+    reader.readAsBinaryString(target.files[0]);
+
+    
+  }
+
+  //this should be delegated to the Firebase Service and should reset the variable to null so that the table is hidden
+  //once uploaded
+  uploadExcelData(){
+
+    console.log(this.excelData);
+    this.excelData = null;
+    console.log("pressed");
   }
 
 
