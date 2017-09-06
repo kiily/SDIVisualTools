@@ -51,20 +51,8 @@ html { height: 100%;}
     width: 220px;
 }
 
-/* #page-content-wrapper {
-    width: 100%;
-    padding-top: 70px;
-} */
 
-/* might be necessary when adding content to the page
-/* #wrapper.toggled #button-content-wrapper {
-    position: absolute;
-    margin-right: -220px;
-}  */ 
-
-/*-------------------------------*/
-/*     Sidebar nav styles        */
-/*-------------------------------*/
+/*NAVIGATION BAR STYLES */
 
 .sidebar-nav {
     position: absolute;
@@ -93,7 +81,7 @@ html { height: 100%;}
     z-index: -1;
     height: 100%;
     width: 3px;
-    background-color: #F65B61;
+    background-color: #F69C21;
     -webkit-transition: width .2s ease-in;
       -moz-transition:  width .2s ease-in;
        -ms-transition:  width .2s ease-in;
@@ -160,9 +148,7 @@ html { height: 100%;}
 }
 
 
-/*-------------------------------*/
-/*       menu-Cross         */
-/*-------------------------------*/
+/* MENU BUTTON STYLING AND ANIMATION */
 
 .menu {
   position: fixed;

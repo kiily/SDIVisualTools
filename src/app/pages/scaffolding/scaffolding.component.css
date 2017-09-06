@@ -4,6 +4,14 @@
     
 }
 
+.button-box .button{ 
+    width: 48%;
+}
+
+.button-box-sm .button{ 
+    width: 100%;
+}
+
 
 
 
@@ -29,6 +37,10 @@ h5  {
 
 #add-data-button{
     background-color: #2DD276;
+ }
+
+ #powerbi-dashboard-button{
+    color: black;
  }
 
 
