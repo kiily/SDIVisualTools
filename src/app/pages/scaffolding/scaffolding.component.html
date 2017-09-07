@@ -91,26 +91,26 @@
                 <h2 *ngSwitchCase="5">SEAT Historical Data Report</h2>
                 <!--GENERAL OVERVIEW REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="0" width="1180" height="800" [src]="this.reportLinks[0] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
+                    ></iframe>
                 <!--PHASE 1 - PROCEDURAL PROGRAMMING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="1" width="1180" height="800" [src]="this.reportLinks[1] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
+                    ></iframe>
                 <!--PHASE 2 - SCRIPTING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="2" width="1180" height="800" [src]="this.reportLinks[2] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
+                    ></iframe>
                 <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" [src]="this.reportLinks[3] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
+                    ></iframe>
 
                 <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" [src]="this.reportLinks[4] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
+                    ></iframe>
                 <!--SEAT TIMELINE REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="5" width="1180" height="800" [src]="this.reportLinks[5] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
+                    ></iframe>
                 <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
                 <iframe class="report-frame" *ngSwitchDefault width="1180" height="1000" [src]="this.reportLinks[0] | safeURL" frameborder="0"
-                    allowFullScreen></iframe>
+                    ></iframe>
 
                 <!-- Note that allowFullScreen was removed due to an issue with an Edge update prior to the demo
                 at Microsoft. Removing it was a workaround used as of 06/09/2017 - allowFullScreen should be added
