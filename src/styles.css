@@ -19,7 +19,7 @@ body{
 }
 
 .top-row{
-    background-color: #F65B61;
+    background-color: #F69C21;
     position: fixed;
     width: 100%;
     z-index: 5;
@@ -43,6 +43,7 @@ body{
 .report-frame{
     width: 100%;
 }
+
 
 .text-transform{
     text-transform: uppercase;
@@ -111,21 +112,17 @@ a:hover .logout{
 
 .button {
     border: none;
-     font-family: 'Inconsolata', monospace;
-    font-size: inherit;
-    color: inherit;
-    background: none;
+    font-family: 'Inconsolata', monospace;
     cursor: pointer;
-    padding: 25px 50px;
+    padding: 20px 30px;
     display: inline-block;
-    margin: 10px;
+    margin: 5px;
     text-transform: uppercase;
-    letter-spacing: 1px;
     font-weight: 700;
-    outline: none;
     position: relative;
     border: 1px solid white;
     color: white;
+    letter-spacing: 1px;
     
 }
 

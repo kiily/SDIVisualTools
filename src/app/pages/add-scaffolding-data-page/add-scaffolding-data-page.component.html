@@ -9,54 +9,89 @@
     <div class="low-padding-top">
       <logout-button></logout-button>
     </div>
-
   </div>
 </div>
 
-<br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
-<div class="container-fluid" style="color: white;">
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-3">
+
+      <button class="button btn-block" id="export-btn" (click)="exportJSONTree()">Export Firebase Tree (JSON)</button>
+
+    </div>
+    <div class="col-sm-3">
+      <a [href]="this.dataManipulationLinks[0]" target="_blank"><button class="button btn-block" id="share-point-btn">
+                  <span class="glyphicon glyphicon-cloud"></span> SDI VisualTools SharePoint</button></a>
+    </div>
+
+    <div class="col-sm-3">
+      <a [href]="this.dataManipulationLinks[1]" target="_blank"><button class="button btn-block" id="powerbi-excel-button">
+                        <span class="glyphicon glyphicon-cloud"></span> Excel (Data Source) </button></a>
+    </div>
+    <div class="col-sm-3">
+      <a [href]="this.dataManipulationLinks[2]" target="_blank"><button class="button btn-block" id="powerbi-dashboard-button">
+                    <span class="glyphicon glyphicon-th-large"></span> App Workspace (Dashboard)</button></a>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid add-data-forms" >
   <div class="row">
     <div class="col-sm-6 form-box">
       <h1>Add a new module</h1>
 
       <form [formGroup]="addModuleForm" (ngSubmit)="addModule()">
         <div class="form-group">
-
-          <label for="module-code">Module Code (ID):</label>
-          <input formControlName="moduleID" type="text" class="form-control" name="module-code" required />
-          <div class="alert alert-danger" *ngIf=" addModuleForm.controls['moduleID'].touched &&
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="module-code">Module Code (ID):</label>
+              <input formControlName="moduleID" type="text" class="form-control" name="module-code" required />
+              <div class="alert alert-danger" *ngIf=" addModuleForm.controls['moduleID'].touched &&
            !addModuleForm.controls['moduleID'].valid ">ModuleID is required.
-          </div>
+              </div>
 
-          <label for="module-name">Module Name:</label>
-          <input formControlName="moduleName" type="text" class="form-control" name="module-name" required/>
-          <div class="alert alert-danger" *ngIf="addModuleForm.controls['moduleName'].touched && 
+              <label for="module-name">Module Name:</label>
+              <input formControlName="moduleName" type="text" class="form-control" name="module-name" required/>
+              <div class="alert alert-danger" *ngIf="addModuleForm.controls['moduleName'].touched && 
           !addModuleForm.controls['moduleName'].valid">
-            Module Name is required.
-          </div>
+                Module Name is required.
+              </div>
+            </div>
 
-          <label for="class-size">Class Size:</label>
-          <input formControlName="classSize" type="number" class="form-control" name="class-size" required/>
-          <div class="alert alert-danger" *ngIf="addModuleForm.controls['classSize'].touched && 
+            <div class="col-sm-8">
+              <div class="col-sm-6">
+                <label for="class-size">Class Size:</label>
+                <input formControlName="classSize" type="number" class="form-control" name="class-size" required/>
+                <div class="alert alert-danger" *ngIf="addModuleForm.controls['classSize'].touched && 
           !addModuleForm.controls['classSize'].valid">
-            Class Size is required.
-          </div>
+                  Class Size is required.
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <label for="phase">Phase:</label>
+                <select formControlName="phase" class="form-control" name="phase" required>
+                  <option *ngFor="let phase of phases | async" [value]="phase.$key">{{phase.phaseName}}</option>
+              </select>
+                <div class="alert alert-danger" *ngIf="addModuleForm.controls['phase'].touched && 
+               !addModuleForm.controls['phase'].valid ">
+                  Phase is required.
+                </div>
+              </div>
 
-          <label for="phase">Phase:</label>
-          <select formControlName="phase" class="form-control" name="phase" required>
-                <option *ngFor="let phase of phases | async" [value]="phase.$key">{{phase.phaseName}}</option>
-          </select>
-          <div class="alert alert-danger" *ngIf="addModuleForm.controls['phase'].touched && 
-             !addModuleForm.controls['phase'].valid ">
-            Phase is required.
+              <div class="col-sm-12">
+                <br>
+                <button class="btn btn-block" type="submit">Add Module</button>
+              </div>
+            </div>
           </div>
-
         </div>
-        <button class="btn btn-block" type="submit">Add Module</button>
       </form>
-
     </div>
+
+
     <div class="col-sm-6 form-box">
       <h1>Add a new ProblemSheet</h1>
 
@@ -102,6 +137,8 @@
              !addProblemSheetForm.controls['releaseDate'].valid ">
                 Release Date is required.
               </div>
+            </div>
+            <div class="col-sm-4">
               <label for="deadline-date">Deadline:</label>
               <input formControlName="deadline" type="date" class="form-control" name="deadline-date" required/>
               <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['deadline'].touched && 
@@ -109,9 +146,9 @@
                 Deadline is required.
               </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-4">
 
-              <br><br>
+              <br>
               <button class="btn btn-block" type="submit">Add Problem Sheet</button>
             </div>
           </div>
@@ -135,20 +172,7 @@
              !addProblemForm.controls['problemID'].valid ">
               Problem ID is required.
             </div>
-          </div>
 
-          <div class="col-sm-4">
-            <label for="problem-sheet-ID">ProblemSheetID:</label>
-            <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
-                <option *ngFor="let problemSheet of problemSheets | async" 
-                [value]="problemSheet.$key">{{problemSheet.$key}}. {{problemSheet.problemSheetTitle}}</option>
-          </select>
-            <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemSheetID'].touched && addProblemForm.controls['problemSheetID'].invalid">
-              ProblemSheetID is required.
-            </div>
-          </div>
-
-          <div class="col-sm-4">
             <label for="problem-title">Problem Title:</label>
             <input formControlName="problemTitle" type="text" class="form-control" name="problem-title" required/>
             <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemTitle'].touched && 
@@ -156,8 +180,19 @@
               Problem Title is required.
             </div>
           </div>
-          <div class="col-sm-8">
-            <br><br>
+
+          <div class="col-sm-4">
+            <label for="problem-sheet-ID">ProblemSheetID:</label>
+            <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
+                <option *ngFor="let problemSheet of problemSheets | async" 
+                [value]="problemSheet.$key">{{problemSheet.$key}}. {{problemSheet.problemSheetTitle}} ({{problemSheet.moduleID}})</option>
+          </select>
+            <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemSheetID'].touched && addProblemForm.controls['problemSheetID'].invalid">
+              ProblemSheetID is required.
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <br>
             <button class="btn btn-block" type="submit">Add Problem</button>
           </div>
         </div>
@@ -165,6 +200,80 @@
     </div>
 
 
+    <div class="col-sm-6 form-box">
+      <h1>Add an attempt:</h1>
+
+
+      <form [formGroup]="addAttemptForm" (ngSubmit)="addAttempt()">
+        <div class="form-group">
+
+          <div class="col-sm-4">
+            <label for="problem-ID">ProblemID:</label>
+            <select formControlName="problemID" class="form-control" name="problem-ID" required>
+                        <option *ngFor="let problem of problems | async" 
+                        [value]="problem.$key">{{problem.$key}}. {{problem.problemTitle}} (ProblemSheetID: {{problem.problemSheetID}})</option>
+                  </select>
+            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['problemID'].touched && 
+                    addAttemptForm.controls['problemID'].invalid">
+              Problem ID is required.
+            </div>
+
+            <label for="student-ID">StudentID:</label>
+            <select formControlName="studentID" class="form-control" name="student-ID" required>
+                        <option *ngFor="let student of students | async" 
+                        [value]="student.$key">{{student.$key}}. {{student.firstName}} {{student.lastName}}</option>
+                  </select>
+            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['studentID'].touched && 
+                    addAttemptForm.controls['studentID'].invalid">
+              Student ID is required.
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <label for="compile-status">Compile Status:</label>
+            <select formControlName="compile" class="form-control" name="compile-status" required>
+                        <option value="Y">Yes</option>
+                         <option value="N">No</option>
+                  </select>
+            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['compile'].touched && 
+                    addAttemptForm.controls['compile'].invalid">
+              Compile Status is required.
+            </div>
+
+            <label for="output-status">Output:</label>
+            <select formControlName="output" class="form-control" name="output-status" required>
+                        <option value="Correct">Correct</option>
+                        <option value="Wrong">Wrong</option>
+                  </select>
+            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['output'].touched && 
+                    addAttemptForm.controls['output'].invalid">
+              Output is required.
+            </div>
+
+          </div>
+
+          <div class="col-sm-4">
+            <label for="attempt-date">Attempt Date:</label>
+            <input formControlName="date" type="date" class="form-control" name="attempt-date" required/>
+            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['date'].touched && 
+                    addAttemptForm.controls['date'].invalid">
+              Attempt Date is required.
+            </div>
+
+            <br>
+            <button class="btn btn-block" type="submit">Add Attempt</button>
+          </div>
+
+        </div>
+      </form>
+      <br>
+
+    </div>
+
+  </div>
+
+
+  <div class="row">
     <div class="col-sm-6 form-box">
       <h1>Enrol a student in a module:</h1>
       <form [formGroup]="addStudentModuleForm" (ngSubmit)="addStudentModule()">
@@ -191,7 +300,6 @@
               Module ID is required.
             </div>
           </div>
-
           <div class="col-sm-4">
             <br>
             <button class="btn btn-block" type="submit">Enrol</button>
@@ -199,94 +307,29 @@
         </div>
       </form>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6 form-box">
-      <h1>Add an attempt:</h1>
-
-
-      <form [formGroup]="addAttemptForm" (ngSubmit)="addAttempt()">
-        <div class="form-group">
-
-          <div class="col-sm-4">
-            <label for="problem-ID">ProblemID:</label>
-            <select formControlName="problemID" class="form-control" name="problem-ID" required>
-                <option *ngFor="let problem of problems | async" 
-                [value]="problem.$key">{{problem.$key}}. {{problem.problemTitle}}</option>
-          </select>
-            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['problemID'].touched && 
-            addAttemptForm.controls['problemID'].invalid">
-              Problem ID is required.
-            </div>
-
-            <label for="student-ID">StudentID:</label>
-            <select formControlName="studentID" class="form-control" name="student-ID" required>
-                <option *ngFor="let student of students | async" 
-                [value]="student.$key">{{student.$key}}. {{student.firstName}} {{student.lastName}}</option>
-          </select>
-            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['studentID'].touched && 
-            addAttemptForm.controls['studentID'].invalid">
-              Student ID is required.
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <label for="compile-status">Compile Status:</label>
-            <select formControlName="compile" class="form-control" name="compile-status" required>
-                <option value="Y">Yes</option>
-                 <option value="N">No</option>
-          </select>
-            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['compile'].touched && 
-            addAttemptForm.controls['compile'].invalid">
-              Compile Status is required.
-            </div>
-
-            <label for="output-status">Output:</label>
-            <select formControlName="output" class="form-control" name="output-status" required>
-                <option value="Correct">Correct</option>
-                <option value="Wrong">Wrong</option>
-          </select>
-            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['output'].touched && 
-            addAttemptForm.controls['output'].invalid">
-              Output is required.
-            </div>
-
-          </div>
-
-          <div class="col-sm-4">
-            <label for="attempt-date">Attempt Date:</label>
-            <input formControlName="date" type="date" class="form-control" name="attempt-date" required/>
-            <div class="alert alert-danger" *ngIf="addAttemptForm.controls['date'].touched && 
-            addAttemptForm.controls['date'].invalid">
-              Attempt Date is required.
-            </div>
-
-            <br>
-            <button class="btn btn-block" type="submit">Add Attempt</button>
-          </div>
-
+    <div class="col-sm-6">
+        <div class="col-sm-4">
+          <h3>Add Excel Data</h3>
         </div>
-      </form>
-    </div>
+        <br>
+        <div class="col-sm-5">
+          <input type="file" (change)="onFileChanged($event)" multiple="false"/>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-block" (click)="uploadExcelData()">Upload Data</button>
+        </div>
+      </div>
+      <div class="row" *ngIf="excelData != null">
+        <div class="col-sm-12">
+          <table class="sjs-table">
+            <tr *ngFor="let row of excelData">
+              <td *ngFor="let val of row">{{val}} </td>
+            </tr>
+          </table>
+        </div>
+      </div>
 
-    <div class="col-sm-3 ">
 
-
-      <button class="button btn-block" id="export-btn" (click)="exportJSONTree()">Export Firebase Tree</button>
-
-    </div>
-    <div class="col-sm-3">
-      <a [href]="this.dataManipulationLinks[0]" target="_blank"><button class="button btn-block" id="share-point-btn">
-        <span class="glyphicon glyphicon-cloud"></span> SDI VisualTools SharePoint</button></a>
-    </div>
-
-    <div class="col-sm-3">
-      <a [href]="this.dataManipulationLinks[1]" target="_blank"><button class="button btn-block" id="powerbi-excel-button">
-              <span class="glyphicon glyphicon-cloud"></span> Excel (Data Source) </button></a>
-    </div>
-    <div class="col-sm-3">
-      <a [href]="this.dataManipulationLinks[2]" target="_blank"><button class="button btn-block" id="powerbi-dashboard-button">
-          <span class="glyphicon glyphicon-th-large"></span> App Workspace (Dashboard)</button></a>
-    </div>
   </div>
+
 </div>

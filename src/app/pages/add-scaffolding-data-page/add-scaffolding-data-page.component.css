@@ -7,7 +7,9 @@
 }
 
 .btn{
-    background-color: #F65B61;
+    background-color: #F69C21;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 #share-point-btn{
@@ -16,7 +18,7 @@
 }
 
 #export-btn{
-    background-color: #2DD276;
+    background-color: #75ADF2;
     
 }
 
@@ -37,6 +39,9 @@
     color: black;
 }
 
+.add-data-forms{
+    color: white;
+}
 
 #powerbi-excel-button{
 background-color: #2DD276;
