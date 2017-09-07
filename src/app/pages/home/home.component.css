@@ -45,6 +45,11 @@
     
 }
 
+p {
+    font-family: 'Inconsolata', monospace;
+    color:white; 
+}
+
 .glyphicon{
     font-size: 25px;
     color: white;

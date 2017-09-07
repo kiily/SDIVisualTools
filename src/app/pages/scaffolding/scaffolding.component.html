@@ -6,7 +6,8 @@
         <div class="col-sm-4 text-center text-transform">
             <h1 class="page-title">Scaffolding</h1>
         </div>
-        <div class="low-padding-top">
+        <div class="col-sm-1 pull-right low-padding-top">
+
             <logout-button></logout-button>
         </div>
 
@@ -15,19 +16,25 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-11 col-sm-offset-1 button-menu">
-            <section>
 
-                <div class="col-sm-3">
-                    <div class="button-box-sm">
+
+
+        <div class="col-sm-12 button-menu">
+
+            <div class="col-sm-1 text-center">
+                <h4>Select a report:</h4>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="button-box-sm">
                     <button class="button" [style.background-color]="phase == '0' ? '#0e83cd' : 'black' " (click)="togglePhase(0)">General Overview<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '0'}"> (NEW TAB)</a></button>
                     <button class="button" [style.background-color]="phase == '5' ? '#0e83cd' : 'black' " (click)="togglePhase(5)">SEAT Historical Data<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '5'}"> (NEW TAB)</a></button>
                 </div>
-                </div>
+            </div>
 
-                <div class="col-sm-6">
+            <div class="col-sm-6">
 
-                    <div class="button-box">
+                <div class="button-box">
                     <button class="button" [style.background-color]="phase == '1' ? '#0e83cd' : 'black' " (click)="togglePhase(1)">1. Procedural Programming
                         <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '1'}"> (NEW TAB)</a></button>
 
@@ -39,11 +46,12 @@
 
                     <button class="button" [style.background-color]="phase == '4' ? '#0e83cd' : 'black' " (click)="togglePhase(4)">4. Object-Oriented Programming
                         <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '4'}"> (NEW TAB)</a></button>
-                    </div>
                 </div>
+            </div>
 
-                <div class="col-sm-3">
-                    <div class="row">
+            <div class="col-sm-2">
+                <div class="row">
+
                     <div class="col-sm-6">
                         <h5>Open reports on a new tab:</h5>
                         <label class="switch">
@@ -58,9 +66,11 @@
 
                     </div>
                 </div>
-                </div>
 
-            </section>
+            </div>
+
+
+
 
         </div>
 
@@ -90,7 +100,8 @@
                     allowFullScreen="true"></iframe>
                 <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" [src]="this.reportLinks[3] | safeURL" frameborder="0"
-             allowFullScreen="true"></iframe>
+                    allowFullScreen="true"></iframe>
+
                 <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" [src]="this.reportLinks[4] | safeURL" frameborder="0"
                     allowFullScreen="true"></iframe>
@@ -99,7 +110,8 @@
                     allowFullScreen="true"></iframe>
                 <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
                 <iframe class="report-frame" *ngSwitchDefault width="1180" height="1000" [src]="this.reportLinks[0] | safeURL" frameborder="0"
-                allowfullscreen width="100%"></iframe>
+                    allowFullScreen></iframe>
+
                 <!-- Note that allowFullScreen was removed due to an issue with an Edge update prior to the demo
                 at Microsoft. Removing it was a workaround used as of 06/09/2017 - allowFullScreen should be added
                 afterwards -->

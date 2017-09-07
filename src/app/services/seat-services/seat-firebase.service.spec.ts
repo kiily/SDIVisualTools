@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { SEATFirebaseService } from './seatfirebase.service';
+import { SEATFirebaseService } from './seat-firebase.service';
 
 describe('SEATFirebaseService', () => {
   beforeEach(() => {
