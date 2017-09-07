@@ -185,7 +185,7 @@
             <label for="problem-sheet-ID">ProblemSheetID:</label>
             <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
                 <option *ngFor="let problemSheet of problemSheets | async" 
-                [value]="problemSheet.$key">{{problemSheet.$key}}. {{problemSheet.problemSheetTitle}}</option>
+                [value]="problemSheet.$key">{{problemSheet.$key}}. {{problemSheet.problemSheetTitle}} ({{problemSheet.moduleID}})</option>
           </select>
             <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemSheetID'].touched && addProblemForm.controls['problemSheetID'].invalid">
               ProblemSheetID is required.
@@ -211,7 +211,7 @@
             <label for="problem-ID">ProblemID:</label>
             <select formControlName="problemID" class="form-control" name="problem-ID" required>
                         <option *ngFor="let problem of problems | async" 
-                        [value]="problem.$key">{{problem.$key}}. {{problem.problemTitle}}</option>
+                        [value]="problem.$key">{{problem.$key}}. {{problem.problemTitle}} (ProblemSheetID: {{problem.problemSheetID}})</option>
                   </select>
             <div class="alert alert-danger" *ngIf="addAttemptForm.controls['problemID'].touched && 
                     addAttemptForm.controls['problemID'].invalid">

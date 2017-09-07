@@ -10,7 +10,6 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "lego-building-blocks",
         {
           "glob": "index.js",
           "input": "./server/",

@@ -39,6 +39,7 @@ export class ScaffoldingComponent implements OnInit {
     //Checking that a user is logged in
     this.authService.userScan();
 
+
     this.route.queryParamMap
     .subscribe(params => {
       
@@ -46,7 +47,8 @@ export class ScaffoldingComponent implements OnInit {
         let phaseNumber = params.get('phaseNumber');
         this.phase =  phaseNumber;
       }
-    })
+    });
+  
 
     //Getting PowerBI related links (App, Dashboard, Workspace, Excel)
     this.seatFirebaseService.getAppLink().subscribe( appLink => {
