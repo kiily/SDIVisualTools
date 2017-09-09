@@ -101,7 +101,6 @@
                 <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" [src]="this.reportLinks[3] | safeURL" frameborder="0"
                     allowFullScreen="true"></iframe>
-
                 <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
                 <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" [src]="this.reportLinks[4] | safeURL" frameborder="0"
                     allowFullScreen="true"></iframe>
@@ -110,7 +109,7 @@
                     allowFullScreen="true"></iframe>
                 <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
                 <iframe class="report-frame" *ngSwitchDefault width="1180" height="1000" [src]="this.reportLinks[0] | safeURL" frameborder="0"
-                    allowFullScreen></iframe>
+                    allowFullScreen="true"></iframe>
 
                 <!-- Note that allowFullScreen was removed due to an issue with an Edge update prior to the demo
                 at Microsoft. Removing it was a workaround used as of 06/09/2017 - allowFullScreen should be added

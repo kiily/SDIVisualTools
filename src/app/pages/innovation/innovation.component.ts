@@ -94,7 +94,9 @@ export class InnovationComponent implements OnInit {
 /* DEPRECATED IMPLEMENTATIONS - For reference only 
 
 This deprecated implementation required CORS - cross origin resource sharing is not
-enabled in the Innoflow API - this implementation works using a plugin for Chrome
+enabled in the Innoflow API - this implementation works using a plugin for Chrome - the
+plugin needs to be enabled for the synchronisation to work. Once the data is on Firebase,
+the plugin is no longer necessary.
 
 CORS Toggle - https://chrome.google.com/webstore/detail/cors-toggle/omcncfnpmcabckcddookmnajignpffnh?utm_source=chrome-app-launcher-info-dialog
 
