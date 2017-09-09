@@ -19,9 +19,6 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
-
-
-
   constructor(private afAuth : AngularFireAuth, private afdb : AngularFireDatabase,
   private router : Router) {
    

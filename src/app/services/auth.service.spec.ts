@@ -1,3 +1,4 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from '../app.module';
 
@@ -22,7 +23,7 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       providers: [AuthService, AngularFireAuth, FirebaseApp],
       imports: [AngularFireModule.initializeApp(firebaseConfig), AngularFireAuthModule,
-         AngularFireDatabaseModule]
+         AngularFireDatabaseModule, RouterTestingModule]
     });
   });
 

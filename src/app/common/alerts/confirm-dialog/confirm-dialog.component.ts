@@ -10,7 +10,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 /* This class controls the ConfirmDialogComponent that is used to generate a confirmation dialog.
 
 References:
- - https://material.angular.io/components/dialog/overview
+ - https://material.angular.io/components/dialog/overview - Acessed August 2017
  
  */
 export class ConfirmDialogComponent implements OnInit {

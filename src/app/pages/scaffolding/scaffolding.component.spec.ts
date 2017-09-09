@@ -1,8 +1,20 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../services/auth.service';
+import { FirebaseApp } from 'angularfire2/app';
+import { firebaseConfig } from './../../app.module';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
+import { SafeURLPipe } from '../../pipes/safe-url.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LogoutComponent } from '../../components/logout/logout.component';
 import { By } from '@angular/platform-browser';
 import { SDINavbarComponent } from './../../components/sdinavbar/sdinavbar.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ScaffoldingComponent } from './scaffolding.component';
+
+
 
 describe('ScaffoldingComponent', () => {
   let component: ScaffoldingComponent;
@@ -10,7 +22,10 @@ describe('ScaffoldingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScaffoldingComponent, SDINavbarComponent ]
+      declarations: [ ScaffoldingComponent, SDINavbarComponent, LogoutComponent, SafeURLPipe],
+      imports: [RouterTestingModule,FormsModule, ReactiveFormsModule, AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireDatabaseModule],
+      providers: [SEATFirebaseService, FirebaseApp, AuthService, AngularFireAuth]
     })
     .compileComponents();
   }));
@@ -32,5 +47,7 @@ describe('ScaffoldingComponent', () => {
 
    expect(component.phase).toBeLessThanOrEqual(5);
   });
+
+ 
 
 });

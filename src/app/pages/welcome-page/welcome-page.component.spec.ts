@@ -1,3 +1,4 @@
+import { LogoutComponent } from '../../components/logout/logout.component';
 import { AuthService } from './../../services/auth.service';
 import { AuthValidator } from './../../common/validators/auth.validator';
 import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
@@ -25,7 +26,7 @@ describe('WelcomePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WelcomePageComponent],
+      declarations: [WelcomePageComponent, LogoutComponent],
       imports: [RouterTestingModule, FormsModule, ReactiveFormsModule,
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule],

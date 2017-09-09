@@ -1,4 +1,3 @@
-import { SEATHttpService } from './../../services/seat-services/seat-http.service';
 import { AlertGenerator } from '../../common/alerts/alert-generator';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
@@ -52,8 +51,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   excelData : AOA;
 
   constructor(private authService: AuthService, private seatFirebaseService: SEATFirebaseService,
-    private formBuilder: FormBuilder, private alertGenerator: AlertGenerator,
-    private seatHttpService: SEATHttpService) {
+    private formBuilder: FormBuilder, private alertGenerator: AlertGenerator) {
 
     this.addModuleForm = formBuilder.group({
       moduleID: ["", Validators.required],

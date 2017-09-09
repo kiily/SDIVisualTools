@@ -1,3 +1,4 @@
+import { AddScaffoldingDataPageComponent } from './pages/add-scaffolding-data-page/add-scaffolding-data-page.component';
 import { InnovationComponent } from './pages/innovation/innovation.component';
 import { DiscoveryComponent } from './pages/discovery/discovery.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -42,5 +43,10 @@ describe('rootRouterConfig', () => {
     it('should contain a route for /innovation' , () => {
         expect(rootRouterConfig).toContain(
             { path: 'innovation', component: InnovationComponent });
+    });
+
+    it('should contain a route for /add-scaffolding-data-age' , () => {
+        expect(rootRouterConfig).toContain(
+            { path: 'add-scaffolding-data-page', component: AddScaffoldingDataPageComponent });
     });
 })

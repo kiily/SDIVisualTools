@@ -2,7 +2,7 @@
 import { ErrorHandler } from '@angular/core';
 
 /*References:
- - https://angular.io/api/core/ErrorHandler
+ - https://angular.io/api/core/ErrorHandler - Accessed 2017
  */
 
 export class AppGlobalErrorHandler implements ErrorHandler{

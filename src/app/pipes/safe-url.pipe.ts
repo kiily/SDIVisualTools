@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 /* Utility pipe for making the PowerBI report URLs safe.
 
 Reference:
- - https://stackoverflow.com/questions/43141534/angular2-base64-sanitizing-unsafe-url-value
+ - https://stackoverflow.com/questions/43141534/angular2-base64-sanitizing-unsafe-url-value - Accessed August 2017
 
  */
 

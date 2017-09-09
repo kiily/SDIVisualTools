@@ -1,11 +1,13 @@
+import { HttpModule } from '@angular/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { DiscoveryHttpService } from './discovery-http.service';
 
-describe('DiscoveryService', () => {
+describe('DiscoveryHttpService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DiscoveryHttpService]
+      providers: [DiscoveryHttpService],
+      imports: [HttpModule]
     });
   });
 
