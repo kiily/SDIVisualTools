@@ -3,7 +3,7 @@
 /*  LOGOUT BUTTON 
 
 References: 
- -  https://codepen.io/jeremyloyd/pen/EaavQb*/
+ -  https://codepen.io/jeremyloyd/pen/EaavQb - Acessed July 2017*/
 .navigation {
   width: 100%;
 }
@@ -22,7 +22,6 @@ References:
 .logout {
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
-	/* position: relative; */
   right: -18px;
   overflow: hidden;
   letter-spacing: 3px;

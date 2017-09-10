@@ -10,8 +10,8 @@ around them. It also provides links to acces PowerBI related data such as the Po
 app.
 
 References:
--  http://callmenick.com/post/stylish-css-buttons
-- https://bootsnipp.com/snippets/Oeo2N  */
+-  http://callmenick.com/post/stylish-css-buttons -Accessed July 2017.
+- https://bootsnipp.com/snippets/Oeo2N - Accessed July 2017  */
 @Component({
   selector: 'app-scaffolding',
   templateUrl: './scaffolding.component.html',
@@ -50,13 +50,12 @@ export class ScaffoldingComponent implements OnInit {
     });
   
 
-    //Getting PowerBI related links (App, Dashboard, Workspace, Excel)
+    //Getting PowerBI related links (App, Dashboard)
     this.seatFirebaseService.getAppLink().subscribe( appLink => {
     
       let app = appLink.link;
       let appDashboardPro = appLink.dashboardLinkPro;
       
-
       this.powerBIAppLinks.push(app,appDashboardPro);
 
     });

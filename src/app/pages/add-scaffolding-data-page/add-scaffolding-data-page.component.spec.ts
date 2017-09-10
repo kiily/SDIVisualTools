@@ -1,5 +1,5 @@
 import { SEATHttpService } from '../../services/seat-services/seat-http.service';
-import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
+import { MD_DIALOG_DATA, MdDialog, MdDialogRef, MdDialogModule, MaterialModule } from '@angular/material';
 import { AlertGenerator } from '../../common/alerts/alert-generator';
 import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -15,6 +15,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddScaffoldingDataPageComponent } from './add-scaffolding-data-page.component';
 import { AngularFireModule } from "angularfire2";
 
+let dialogMock = {
+  open(){}
+}
+
 describe('AddScaffoldingDataPageComponent', () => {
   let component: AddScaffoldingDataPageComponent;
   let fixture: ComponentFixture<AddScaffoldingDataPageComponent>;
@@ -23,11 +27,12 @@ describe('AddScaffoldingDataPageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AddScaffoldingDataPageComponent, SDINavbarComponent,
       LogoutComponent ],
-      imports: [RouterTestingModule, ReactiveFormsModule,  AngularFireModule.initializeApp(firebaseConfig)],
+      imports: [RouterTestingModule, ReactiveFormsModule,  AngularFireModule.initializeApp(firebaseConfig),
+      MaterialModule, MdDialogModule],
       providers: [AuthService, AngularFireAuth, FirebaseApp, AngularFireDatabase, SEATFirebaseService,
-      AlertGenerator,
+      AlertGenerator, 
       { provide: MD_DIALOG_DATA, useValue: {} },
-      { provide: MdDialog, useValue: {} },
+      { provide: MdDialog, useValue: {dialogMock} },
       { provide: MdDialogRef, useValue: {} }]
     })
     .compileComponents();
@@ -171,5 +176,13 @@ describe('AddScaffoldingDataPageComponent', () => {
 
   });
 
+  // it('should add a module to the database', ()=>{
+  //   let service = TestBed.get(SEATFirebaseService);
+  //   let spy = spyOn(service, 'addModule');
+
+  //   component.addModule();
+
+  //   expect(spy).toHaveBeenCalled();
+  // })
 
 });

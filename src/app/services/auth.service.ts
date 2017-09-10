@@ -9,10 +9,10 @@ import * as firebase from 'firebase/app';
  * AuthService provides user data manipulation methods and authentication methods.
  * 
  * References: 
- *  - https://firebase.google.com/docs/reference/
- *  - https://angularfire2.com/api/
- *  - https://github.com/angular/angularfire2
- *  - https://coursetro.com/posts/code/54/Angular-4-Firebase-Tutorial:-Make-a-Simple-Angular-4-App
+ *  - https://firebase.google.com/docs/reference/ - Accessed July 2017
+ *  - https://angularfire2.com/api/ - Accessed July 2017
+ *  - https://github.com/angular/angularfire2 - Accessed July 2017
+ *  - https://coursetro.com/posts/code/54/Angular-4-Firebase-Tutorial:-Make-a-Simple-Angular-4-App - Accessed July 2017
  * 
  * */
 

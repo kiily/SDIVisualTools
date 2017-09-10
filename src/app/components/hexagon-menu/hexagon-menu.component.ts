@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 method of the home page. It is associated with an HTML template that renders the honey-comb menu.
 
 References:
- - https://github.com/web-tiki/responsive-grid-of-hexagons*/
+ - https://github.com/web-tiki/responsive-grid-of-hexagons - Accessed August 2017*/
 @Component({
   selector: 'hexagon-menu',
   templateUrl: './hexagon-menu.component.html',

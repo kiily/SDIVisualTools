@@ -29,25 +29,52 @@ export class SEATFirebaseService {
      return reportEmbedLinks;
    }
 
+     /* This method retrieves a FirebaseObjectObservable with the entire Firebase JSON tree
+     corresponding to the scaffolding section */
    getScaffoldingDataTree(){
      let scaffoldingData = this.afdb.object("/scaffolding");
      return scaffoldingData;
    }
+
+     /* This method retrieves a FirebaseListObservable that contains the list of scaffolding phases */
    getPhases(){
      let phases = this.afdb.list("/scaffolding/phases");
      return phases;
    }
 
+   
+     /* This method retrieves a FirebaseListObservable that contains the list of students */
    getStudents(){
      let students = this.afdb.list("/scaffolding/students");
      return students;
    }
 
+   
+     /* This method retrieves a FirebaseListObservable that contains the list of student modules */
    getStudentModules(){
       let studentModules = this.afdb.list("/scaffolding/studentModules");
      return studentModules;
    }
 
+  /* This method retrieves a FirebaseListObservable that contains the list of modules */
+   getModules(){
+    let modules =  this.afdb.list('/scaffolding/modules');
+    return modules;
+  }
+
+    /* This method retrieves a FirebaseListObservable that contains the list of ProblemSheets */
+  getProblemSheets(){
+    let problemSheets =  this.afdb.list('/scaffolding/problemSheets');
+    return problemSheets;
+  }
+
+  /* This method retrieves a FirebaseListObservable that contains the list of Problems */
+  getProblems(){
+    let problems = this.afdb.list('/scaffolding/problems');
+    return problems; 
+  }
+
+   /* This method adds a new module to the modules part of the tree.*/
    addModule(moduleCode, moduleName, classSize, phaseID){
     let modules = this.afdb.object('/scaffolding/modules');
 
@@ -62,17 +89,8 @@ export class SEATFirebaseService {
    
    }
 
-   getModules(){
-     let modules =  this.afdb.list('/scaffolding/modules');
-     return modules;
-
-   }
-
-   getProblemSheets(){
-     let problemSheets =  this.afdb.list('/scaffolding/problemSheets');
-     return problemSheets;
-   }
-
+   
+   /* This method adds a new problemSheet to the problemSheets part of the tree.*/
    addProblemSheet(problemSheetID, problemSheetTitle, moduleID, releaseDate, deadline){
      let problemSheets = this.afdb.object('/scaffolding/problemSheets');
 
@@ -87,10 +105,8 @@ export class SEATFirebaseService {
      });
    }
 
-   getProblems(){
-     let problems = this.afdb.list('/scaffolding/problems');
-     return problems; 
-   }
+  
+   /* This method adds a new problem to the problems part of the tree.*/
    addProblem(problemID, problemSheetID, problemTitle){
      let problems = this.afdb.object('/scaffolding/problems');
 
@@ -103,6 +119,8 @@ export class SEATFirebaseService {
      });
    }
 
+   
+   /* This method adds a new attempt to the attempts part of the tree.*/
    addAttempt(studentID, problemID, compile, output, date){
      let attempts = this.afdb.list("/scaffolding/attempts");
 
@@ -115,6 +133,8 @@ export class SEATFirebaseService {
      });
    }
 
+   
+   /* This method adds a student module pair to the studentModules part of the tree.*/
    addStudentModule(studentID, moduleID){
      let studentModules = this.afdb.list("/scaffolding/studentModules");
 
