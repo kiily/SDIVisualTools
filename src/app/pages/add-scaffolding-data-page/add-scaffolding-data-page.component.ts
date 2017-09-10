@@ -1,4 +1,3 @@
-import { SEATHttpService } from './../../services/seat-services/seat-http.service';
 import { AlertGenerator } from '../../common/alerts/alert-generator';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
@@ -11,9 +10,17 @@ import * as XLSX from 'xlsx';
 
 type AOA = Array<Array<any>>;
 
+
 /* 
+
+/*This class acts as the controller for the AddScaffoldingDataPage component. It is associated with an HTML template
+that renders the add scaffolding data page. This class processes the scaffolding data submitted by the users and 
+ensures that Problems, Modules, ProblemSheets are unique and that attempts can only be assigned to an existing student and 
+an existing problem. The user can add new attempts, new modules, new problemSheets, new problems and enrol students into a module.
+This class also provides buttons to access the data sources and export the complete Firebase JSON tree 
+
 REFERENCES: 
- - https://github.com/SheetJS/js-xlsx/tree/master/demos/angular2
+ - https://github.com/SheetJS/js-xlsx/tree/master/demos/angular2 - Accessed August 2017
  
  */
 @Component({
@@ -23,8 +30,7 @@ REFERENCES:
 })
 export class AddScaffoldingDataPageComponent implements OnInit {
 
-
-
+  //Firebase Scaffolding data
   phases: FirebaseListObservable<any[]>;
   modules: FirebaseListObservable<any[]>;
   problemSheets: FirebaseListObservable<any[]>;
@@ -38,8 +44,10 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   moduleCodes: any[] = [];
   problemIDs: number[] = [];
   studentModulesPairs : any[] =[];
+  studentIDs : any[] = [];
 
 
+  //Forms
   addModuleForm: FormGroup;
   addProblemSheetForm: FormGroup;
   addProblemForm: FormGroup;
@@ -52,9 +60,9 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   excelData : AOA;
 
   constructor(private authService: AuthService, private seatFirebaseService: SEATFirebaseService,
-    private formBuilder: FormBuilder, private alertGenerator: AlertGenerator,
-    private seatHttpService: SEATHttpService) {
+    private formBuilder: FormBuilder, private alertGenerator: AlertGenerator) {
 
+    //Add Module Form
     this.addModuleForm = formBuilder.group({
       moduleID: ["", Validators.required],
       moduleName: ["", Validators.required],
@@ -62,6 +70,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       phase: ["", Validators.required]
     });
 
+    //Add ProblemSheet Form
     this.addProblemSheetForm = formBuilder.group({
       problemSheetID: ["", Validators.required],
       problemSheetTitle: ["", Validators.required],
@@ -70,17 +79,21 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       deadline: ["", Validators.required]
     });
 
+    //Add Student Form
     this.addStudentModuleForm = formBuilder.group({
       studentID: ["", Validators.required],
       moduleID: ["", Validators.required]
     })
 
+    //Add Problem Form
     this.addProblemForm = formBuilder.group({
       problemID: ["", Validators.required],
       problemSheetID: ["", Validators.required],
       problemTitle: ["", Validators.required],
     });
 
+
+    //Add Attempt Form
     this.addAttemptForm = formBuilder.group({
       studentID: ["", Validators.required],
       problemID: ["", Validators.required],
@@ -98,6 +111,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     //Checking that a user is logged in
     this.authService.userScan();
 
+    //Get the quickLinks to data sources from Firebase
     this.seatFirebaseService.getAppLink().subscribe(appLink => {
       let sharePointLink = appLink.sharePointLink;
       let excel = appLink.excelLink;
@@ -107,19 +121,26 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
     });
 
+    //Get the Firebase JSON tree
      this.seatFirebaseService.getScaffoldingDataTree().subscribe(snapshot => {
 
-      this.dataTree = JSON.stringify(snapshot);
+    this.dataTree = JSON.stringify(snapshot);
    
      })
 
-    //extract the arrays of modules and problems sheets here
+    //extract the arrays of modules, problems and problems sheets and StudentModule pairs here
     this.phases = this.seatFirebaseService.getPhases();
     this.students = this.seatFirebaseService.getStudents();
     this.modules = this.seatFirebaseService.getModules();
     this.problemSheets = this.seatFirebaseService.getProblemSheets();
     this.problems = this.seatFirebaseService.getProblems();
     this.studentModules = this.seatFirebaseService.getStudentModules();
+
+    this.students.subscribe(students => {
+      for(let student of students){
+        this.studentIDs.push(student.$key);
+      }
+    });
 
     this.modules.subscribe(modules => {
       for (let mod of modules) {
@@ -185,6 +206,9 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     }
   }
 
+
+    /*This method takes the values from the addProblemSheetForm and checks whether the ProblemSheetID provided
+  is unique. If it is, the new problemSheet is added to the database. If not, an error message is generated*/
   addProblemSheet() {
 
     if(!this.addProblemSheetForm.invalid){
@@ -218,6 +242,10 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
   }
 
+
+  
+    /*This method takes the values from the addProblemForm and checks whether the ProblemID provided
+  is unique. If it is, the new problem is added to the database. If not, an error message is generated*/
   addProblem() {
 
     if(!this.addProblemForm.invalid){
@@ -248,6 +276,10 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     }
   }
 
+
+    /*This method takes the values from the addAttemptForm and adds the new attempt to the database. 
+    Uniqueness is ensured by only letting the user add attempts to pre-existing problems and students.
+    */
   addAttempt() {
 
     if(!this.addAttemptForm.invalid){
@@ -268,6 +300,10 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   }
 
 
+
+    /*This method takes the values from the addStudentModuleForm and checks whether the StudentModule pair provided
+  is unique. If it is, the StudentModule pair is added to the database. If not, an error message is generated. This is
+  the equivalent of enrolling a student in a module. */
   addStudentModule(){
 
     if(!this.addStudentModuleForm.invalid){
@@ -291,6 +327,8 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
   }
 
+  /* Utility method to open a fileSaver and export the JSON data tree. This can then be imported to
+  sharepoint to update the data source. */
   exportJSONTree() {
   
       let blob = new Blob([this.dataTree], { type: 'json' });
@@ -298,6 +336,8 @@ export class AddScaffoldingDataPageComponent implements OnInit {
      
   }
 
+  /*Utility method that opens a file picker and reads an Excel file passed to it.
+  Current setup only uploads one sheet at the time */
   onFileChanged(event : any ){
 
     let target : DataTransfer = <DataTransfer>(event.target);
@@ -334,12 +374,51 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   }
 
   //this should be delegated to the Firebase Service and should reset the variable to null so that the table is hidden
-  //once uploaded
+  //once uploaded; TO BE FINISHED (Only allows attempts and students to be uploaded)
   uploadExcelData(){
 
-    console.log(this.excelData);
-    this.excelData = null;
-    console.log("pressed");
+    if(this.excelData == null){
+      this.alertGenerator.generateDataAdditionError("Please select a file to upload")
+    }else{   
+      
+      //Check the header and see if it matches the expected format for uploading student data
+      //StudentID, FirstName, LastName, Email, PromotionYear
+      //extract the headers
+      let headers = this.excelData[0];
+      
+      if(headers.includes("StudentID") && headers.includes("FirstName")
+        && headers.includes("LastName") && headers.includes("Email")
+      && headers.includes("PromotionYear")){
+        //headers are valid - assume that the data is too
+
+      
+          //clear the excel data after the upload
+          // this.excelData = null;
+          console.log("pressed");
+
+      for(let i = 1; i< this.excelData.length; i++){
+        let studentRow = (this.excelData[i]);
+
+        let studentID = studentRow[0];
+        if(!this.studentIDs.includes(studentID)){
+        let firstName = studentRow[1];
+        let lastName = studentRow[2];
+        let email = studentRow[3];
+        let promotionYear = studentRow[4];
+
+        this.seatFirebaseService.addStudent(studentID, firstName, lastName, email, promotionYear);
+        }else{
+          this.alertGenerator.generateDataAdditionError("Please ensure that all student IDs are unique.");
+          break;
+        }
+      }
+
+    }else{
+      //headers are not valid
+      this.alertGenerator.generateDataAdditionError("Please ensure that the data format is correct");
+    }
+    }
+    
   }
 
 

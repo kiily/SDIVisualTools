@@ -10,7 +10,8 @@ import 'rxjs/add/operator/catch';
 
 
 /* This Service acts as a parent class for all other HTTP services as it provides the mthods
-which enable the application to communicate via HTTP requests (e.g. REST API). This Service contains all CRUD methods - some are currently 
+which enable the application to communicate via HTTP requests (e.g. REST API). 
+This Service contains all CRUD methods - some are currently 
 not in use but may be useful in the future*/
 @Injectable()
 export class HttpDataService {

@@ -10,9 +10,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 that renders the welcome page. Current features: user login and password reset, and navigation to the sign up page. 
 
 References:
- - https://codepen.io/iamnbutler/pen/clrDk 
- - https://codepen.io/boltaway/pen/afpow 
- - https://www.freshdesignweb.com/css-login-form-templates/*/
+ - https://codepen.io/iamnbutler/pen/clrDk - Accessed July 2017
+ - https://codepen.io/boltaway/pen/afpow - Accessed July 2017
+ - https://www.freshdesignweb.com/css-login-form-templates/ - Accessed July 2017 */
  
 @Component({
   selector: 'welcome-page',

@@ -63,14 +63,6 @@ describe('SDINavbarComponent', () => {
 
   });
 
-   it('should have a link to the welcome-page page', () => {
-    let debugElements = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
-
-    let index = debugElements.findIndex(de => de.properties['href'] === '/welcome-page');
-
-    expect(index).toBeGreaterThan(-1);
-
-  });
 
 
 });

@@ -319,17 +319,21 @@
           <button class="btn btn-block" (click)="uploadExcelData()">Upload Data</button>
         </div>
       </div>
-      <div class="row" *ngIf="excelData != null">
-        <div class="col-sm-12">
-          <table class="sjs-table">
-            <tr *ngFor="let row of excelData">
-              <td *ngFor="let val of row">{{val}} </td>
-            </tr>
-          </table>
-        </div>
-      </div>
 
+   
+    </div>
 
+</div>
+
+<br><br>
+<div class="container-fluid">
+  <div class="row text-formatted" *ngIf="excelData != null">
+    <div class="col-sm-4 col-sm-offset-4 text-center">
+      <table class="sjs-table ">
+        <tr *ngFor="let row of excelData">
+          <td *ngFor="let val of row">{{val}} </td>
+        </tr>
+      </table>
+    </div>
   </div>
-
 </div>

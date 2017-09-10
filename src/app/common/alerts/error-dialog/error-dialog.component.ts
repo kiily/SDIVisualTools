@@ -10,7 +10,7 @@ import {MD_DIALOG_DATA} from '@angular/material';
 /* This class controls the AuthDialogComponent that is used to generate an alert tailored for authentication messages.
 
 References:
- - https://material.angular.io/components/dialog/overview
+ - https://material.angular.io/components/dialog/overview - Accessed August 2017
  
  */
 export class ErrorDialogComponent implements OnInit {

@@ -37,8 +37,8 @@ import { AddScaffoldingDataPageComponent } from './pages/add-scaffolding-data-pa
 
 /*GLOBAL REFERENCES - these tutorials where helpful during the dev process
 
- - https://www.udemy.com/angular-2-tutorial-for-beginners/learn/v4/content
- - https://www.udemy.com/testing-angular-apps/learn/v4/content
+ - https://www.udemy.com/angular-2-tutorial-for-beginners/learn/v4/content - Accessed July 2017
+ - https://www.udemy.com/testing-angular-apps/learn/v4/content - Accessed July 2017
 
 */
 

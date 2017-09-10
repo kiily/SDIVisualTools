@@ -1,6 +1,12 @@
+import { RouterTestingModule } from '@angular/router/testing';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { firebaseConfig } from './../../app.module';
+import { FirebaseApp } from 'angularfire2/app';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../services/auth.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LogoutComponent } from './logout.component';
+import { AngularFireModule } from "angularfire2";
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -8,7 +14,10 @@ describe('LogoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LogoutComponent ]
+      declarations: [ LogoutComponent ],
+      providers: [AuthService, AngularFireAuth, FirebaseApp],
+      imports: [AngularFireModule.initializeApp(firebaseConfig), AngularFireDatabaseModule,
+        RouterTestingModule ]
     })
     .compileComponents();
   }));

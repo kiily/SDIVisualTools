@@ -15,7 +15,7 @@ database. A synchronisation function is provided to fetch the most recent data f
 update the Firebase schema
 
 References:
- - Library used to render markdown with Prism.js: ttps://libraries.io/npm/angular2-markdown
+ - Library used to render markdown with Prism.js: ttps://libraries.io/npm/angular2-markdown - July 2017
  */
 @Component({
   selector: 'app-innovation',
