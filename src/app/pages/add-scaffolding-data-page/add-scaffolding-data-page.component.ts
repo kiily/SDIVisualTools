@@ -44,6 +44,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   moduleCodes: any[] = [];
   problemIDs: number[] = [];
   studentModulesPairs : any[] =[];
+  studentIDs : any[] = [];
 
 
   //Forms
@@ -134,6 +135,12 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     this.problemSheets = this.seatFirebaseService.getProblemSheets();
     this.problems = this.seatFirebaseService.getProblems();
     this.studentModules = this.seatFirebaseService.getStudentModules();
+
+    this.students.subscribe(students => {
+      for(let student of students){
+        this.studentIDs.push(student.$key);
+      }
+    });
 
     this.modules.subscribe(modules => {
       for (let mod of modules) {
@@ -329,7 +336,8 @@ export class AddScaffoldingDataPageComponent implements OnInit {
      
   }
 
-  /*Utility method that opens a file picker and reads an Excel file passed to it */
+  /*Utility method that opens a file picker and reads an Excel file passed to it.
+  Current setup only uploads one sheet at the time */
   onFileChanged(event : any ){
 
     let target : DataTransfer = <DataTransfer>(event.target);
@@ -366,12 +374,51 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   }
 
   //this should be delegated to the Firebase Service and should reset the variable to null so that the table is hidden
-  //once uploaded; TO BE FINISHED
+  //once uploaded; TO BE FINISHED (Only allows attempts and students to be uploaded)
   uploadExcelData(){
 
-    console.log(this.excelData);
-    this.excelData = null;
-    console.log("pressed");
+    if(this.excelData == null){
+      this.alertGenerator.generateDataAdditionError("Please select a file to upload")
+    }else{   
+      
+      //Check the header and see if it matches the expected format for uploading student data
+      //StudentID, FirstName, LastName, Email, PromotionYear
+      //extract the headers
+      let headers = this.excelData[0];
+      
+      if(headers.includes("StudentID") && headers.includes("FirstName")
+        && headers.includes("LastName") && headers.includes("Email")
+      && headers.includes("PromotionYear")){
+        //headers are valid - assume that the data is too
+
+      
+          //clear the excel data after the upload
+          // this.excelData = null;
+          console.log("pressed");
+
+      for(let i = 1; i< this.excelData.length; i++){
+        let studentRow = (this.excelData[i]);
+
+        let studentID = studentRow[0];
+        if(!this.studentIDs.includes(studentID)){
+        let firstName = studentRow[1];
+        let lastName = studentRow[2];
+        let email = studentRow[3];
+        let promotionYear = studentRow[4];
+
+        this.seatFirebaseService.addStudent(studentID, firstName, lastName, email, promotionYear);
+        }else{
+          this.alertGenerator.generateDataAdditionError("Please ensure that all student IDs are unique.");
+          break;
+        }
+      }
+
+    }else{
+      //headers are not valid
+      this.alertGenerator.generateDataAdditionError("Please ensure that the data format is correct");
+    }
+    }
+    
   }
 
 

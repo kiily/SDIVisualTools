@@ -141,7 +141,22 @@ export class SEATFirebaseService {
      studentModules.push({
        studentID : studentID,
        moduleID : moduleID
-     })
+     });
+   }
+/* This method adds a student to the students part of the tree.*/
+   addStudent(studentID, firstName, lastName, email, promotionYear){
+    let students = this.afdb.object('/scaffolding/students');
+
+    students.update({
+      [studentID] : {
+        studentID: studentID,
+        firstName: firstName,
+        lastName: lastName,
+        email : email,
+        promotionYear : promotionYear 
+      }
+    });
+
    }
     
 
