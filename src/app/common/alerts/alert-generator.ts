@@ -1,7 +1,7 @@
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { Injectable } from '@angular/core';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 /*
 This class encapsulates the necessary methods to trigger dialogs.
@@ -9,7 +9,7 @@ This class encapsulates the necessary methods to trigger dialogs.
 @Injectable()
 export class AlertGenerator{
 
-    constructor(private dialog : MdDialog){
+    constructor(private dialog : MatDialog){
 
     }
 

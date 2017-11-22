@@ -23,7 +23,7 @@ import { InnovationComponent } from './pages/innovation/innovation.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HexagonMenuComponent } from './components/hexagon-menu/hexagon-menu.component';
 import { MarkdownModule } from 'angular2-markdown'
-import { MdDialogModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
@@ -69,7 +69,7 @@ import { environment } from './../environments/environment.prod';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    MdDialogModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,

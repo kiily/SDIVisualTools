@@ -1,7 +1,9 @@
 import { AlertGenerator } from '../../common/alerts/alert-generator';
-import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
+import { AngularFireList } from 'angularfire2/database/interfaces';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
+import { PowerBIAppLinks } from '../../common/models/power-bi-links.model';
+import { PowerBIReportLinks } from '../../common/models/report-links.model';
 
 /*This Service handles the connection to Firebase for the data relevant to scaffolding. It provides
 methods retrieve the links for the PowerBI reports as well as the links for the PowerBI app, dashboard
@@ -11,8 +13,13 @@ This Service may be extended in the future once an appropriate connection with S
 @Injectable()
 export class SEATFirebaseService {
 
-  constructor(private afdb : AngularFireDatabase) { 
+  appLinksRef : AngularFireList<PowerBIAppLinks>;
+  reportLinksRef : AngularFireList<PowerBIReportLinks>;
 
+  
+
+  constructor(private afdb : AngularFireDatabase) { 
+    this.appLinksRef = this.afdb.list("/scaffolding/powerBIApp");
   }
 
   /*This method retrieves a FirebaseObjectObservable that contains the links for the PowerBI

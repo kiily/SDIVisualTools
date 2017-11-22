@@ -1,6 +1,5 @@
 import { AlertGenerator } from '../../common/alerts/alert-generator';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
 import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -31,12 +30,13 @@ REFERENCES:
 export class AddScaffoldingDataPageComponent implements OnInit {
 
   //Firebase Scaffolding data
-  phases: FirebaseListObservable<any[]>;
-  modules: FirebaseListObservable<any[]>;
-  problemSheets: FirebaseListObservable<any[]>;
-  problems: FirebaseListObservable<any[]>;
-  students: FirebaseListObservable<any[]>;
-  studentModules : FirebaseListObservable<any[]>;
+  phases;
+  modules;
+  problemSheets;
+  problems;
+  students;
+  studentModules;
+
 
 
   //Arrays are used to check for uniqueness
@@ -112,21 +112,21 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     this.authService.userScan();
 
     //Get the quickLinks to data sources from Firebase
-    this.seatFirebaseService.getAppLink().subscribe(appLink => {
-      let sharePointLink = appLink.sharePointLink;
-      let excel = appLink.excelLink;
-      let appWorkspace = appLink.workspaceLink;
+    // this.seatFirebaseService.getAppLink().subscribe(appLink => {
+    //   let sharePointLink = appLink.sharePointLink;
+    //   let excel = appLink.excelLink;
+    //   let appWorkspace = appLink.workspaceLink;
 
-      this.dataManipulationLinks.push(sharePointLink, excel, appWorkspace)
+    //   this.dataManipulationLinks.push(sharePointLink, excel, appWorkspace)
 
-    });
+    // });
 
-    //Get the Firebase JSON tree
-     this.seatFirebaseService.getScaffoldingDataTree().subscribe(snapshot => {
+    // //Get the Firebase JSON tree
+    //  this.seatFirebaseService.getScaffoldingDataTree().subscribe(snapshot => {
 
-    this.dataTree = JSON.stringify(snapshot);
+    // this.dataTree = JSON.stringify(snapshot);
    
-     })
+    //  })
 
     //extract the arrays of modules, problems and problems sheets and StudentModule pairs here
     this.phases = this.seatFirebaseService.getPhases();
