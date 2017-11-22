@@ -34,7 +34,7 @@ import { ConfirmDialogComponent } from './common/alerts/confirm-dialog/confirm-d
 import { LogoutComponent } from './components/logout/logout.component';
 import { SafeURLPipe } from './pipes/safe-url.pipe';
 import { AddScaffoldingDataPageComponent } from './pages/add-scaffolding-data-page/add-scaffolding-data-page.component';
-
+import { environment } from './../environments/environment.prod';
 /*GLOBAL REFERENCES - these tutorials where helpful during the dev process
 
  - https://www.udemy.com/angular-2-tutorial-for-beginners/learn/v4/content - Accessed July 2017
@@ -42,16 +42,6 @@ import { AddScaffoldingDataPageComponent } from './pages/add-scaffolding-data-pa
 
 */
 
-
-//Firebase database configuration settings
-export const firebaseConfig = {
-  apiKey: "AIzaSyDpKv2ZSRCffWFSua8lgy2YLVwTSHo_tRE",
-  authDomain: "sdi-visual-tools.firebaseapp.com",
-  databaseURL: "https://sdi-visual-tools.firebaseio.com",
-  projectId: "sdi-visual-tools",
-  storageBucket: "sdi-visual-tools.appspot.com",
-  messagingSenderId: "759960395397"
-}
 
 @NgModule({
   declarations: [
@@ -85,7 +75,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     MarkdownModule.forRoot(),
     RouterModule.forRoot(rootRouterConfig),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
 
   ],
   providers: [
