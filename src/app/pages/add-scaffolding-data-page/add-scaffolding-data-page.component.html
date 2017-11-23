@@ -73,7 +73,7 @@
               <div class="col-sm-6">
                 <label for="phase">Phase:</label>
                 <select formControlName="phase" class="form-control" name="phase" required>
-                  <option *ngFor="let phase of phases | async" [value]="phase.$key">{{phase.phaseName}}</option>
+                  <option *ngFor="let phase of phases" [value]="phase.phaseName">{{phase.phaseName}}</option>
               </select>
                 <div class="alert alert-danger" *ngIf="addModuleForm.controls['phase'].touched && 
                !addModuleForm.controls['phase'].valid ">
@@ -120,7 +120,7 @@
             <div class="col-sm-4">
               <label for="moduleID">ModuleID:</label>
               <select formControlName="moduleID" class="form-control" name="moduleID" required>
-                <option *ngFor="let module of modules | async" [value]="module.$key">{{module.$key}}</option>
+                <option *ngFor="let module of modules" [value]="module.moduleCode">{{module.moduleCode}}</option>
           </select>
               <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['moduleID'].touched && 
              !addProblemSheetForm.controls['moduleID'].valid ">
@@ -184,8 +184,8 @@
           <div class="col-sm-4">
             <label for="problem-sheet-ID">ProblemSheetID:</label>
             <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
-                <option *ngFor="let problemSheet of problemSheets | async" 
-                [value]="problemSheet.$key">{{problemSheet.$key}}. {{problemSheet.problemSheetTitle}} ({{problemSheet.moduleID}})</option>
+                <option *ngFor="let problemSheet of problemSheets" 
+                [value]="problemSheet.problemSheetID">{{problemSheet.problemSheetID}}. {{problemSheet.problemSheetTitle}} ({{problemSheet.moduleID}})</option>
           </select>
             <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemSheetID'].touched && addProblemForm.controls['problemSheetID'].invalid">
               ProblemSheetID is required.
@@ -210,8 +210,8 @@
           <div class="col-sm-4">
             <label for="problem-ID">ProblemID:</label>
             <select formControlName="problemID" class="form-control" name="problem-ID" required>
-                        <option *ngFor="let problem of problems | async" 
-                        [value]="problem.$key">{{problem.$key}}. {{problem.problemTitle}} (ProblemSheetID: {{problem.problemSheetID}})</option>
+                        <option *ngFor="let problem of problems" 
+                        [value]="problem.problemID">{{problem.problemID}}. {{problem.problemTitle}} (ProblemSheetID: {{problem.problemSheetID}})</option>
                   </select>
             <div class="alert alert-danger" *ngIf="addAttemptForm.controls['problemID'].touched && 
                     addAttemptForm.controls['problemID'].invalid">
@@ -220,8 +220,8 @@
 
             <label for="student-ID">StudentID:</label>
             <select formControlName="studentID" class="form-control" name="student-ID" required>
-                        <option *ngFor="let student of students | async" 
-                        [value]="student.$key">{{student.$key}}. {{student.firstName}} {{student.lastName}}</option>
+                        <option *ngFor="let student of students" 
+                        [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
                   </select>
             <div class="alert alert-danger" *ngIf="addAttemptForm.controls['studentID'].touched && 
                     addAttemptForm.controls['studentID'].invalid">
@@ -281,8 +281,8 @@
           <div class="col-sm-4">
             <label for="student-ID">StudentID:</label>
             <select formControlName="studentID" #studentID class="form-control" name="student-ID" required>
-                <option *ngFor="let student of students | async" 
-                [value]="student.$key">{{student.$key}}. {{student.firstName}} {{student.lastName}}</option>
+                <option *ngFor="let student of students" 
+                [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
            </select>
             <div class="alert alert-danger" *ngIf="addStudentModuleForm.controls['studentID'].touched && 
             addStudentModuleForm.controls['studentID'].invalid">
@@ -293,7 +293,7 @@
           <div class="col-sm-4">
             <label for="moduleID">ModuleID:</label>
             <select formControlName="moduleID" class="form-control" name="moduleID" required>
-                <option *ngFor="let module of modules | async" [value]="module.$key">{{module.$key}}</option>
+                <option *ngFor="let module of modules" [value]="module.$key">{{module.$key}}</option>
           </select>
             <div class="alert alert-danger" *ngIf="addStudentModuleForm.controls['moduleID'].touched && 
             addStudentModuleForm.controls['moduleID'].invalid">

@@ -1,3 +1,7 @@
+import { StudentModule } from './../../common/models/student-module.model';
+import { Problem } from '../../common/models/problem.model';
+import { Module } from '../../common/models/module.model';
+import { Phase } from './../../common/models/phase.model';
 import { AlertGenerator } from '../../components/alerts/alert-generator';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
@@ -6,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import 'rxjs/add/operator/map';
 import * as XLSX from 'xlsx';
+import { ProblemSheet } from '../../common/models/problem-sheet.model';
+import { Student } from '../../common/models/student.model';
 
 type AOA = Array<Array<any>>;
 
@@ -30,12 +36,12 @@ REFERENCES:
 export class AddScaffoldingDataPageComponent implements OnInit {
 
   //Firebase Scaffolding data
-  phases;
-  modules;
-  problemSheets;
-  problems;
-  students;
-  studentModules;
+  phases : Phase[] =[];
+  modules : Module[] = [];
+  problemSheets : ProblemSheet[] = [];
+  problems : Problem[] = [];
+  students : Student[] =[];
+  studentModules : StudentModule[] =[];
 
 
 
@@ -111,62 +117,65 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     //Checking that a user is logged in
     this.authService.userScan();
 
-    //Get the quickLinks to data sources from Firebase
-    // this.seatFirebaseService.getAppLink().subscribe(appLink => {
-    //   let sharePointLink = appLink.sharePointLink;
-    //   let excel = appLink.excelLink;
-    //   let appWorkspace = appLink.workspaceLink;
+    //extract the arrays of modules, problems and problems sheets and StudentModule pairs here
+    this.seatFirebaseService.getPhases().subscribe( phases => {
+      this.phases = phases;
+    });
+    this.seatFirebaseService.getStudents().subscribe( students => {
+      this.students = students;
+      console.log(students)
+    });
 
-    //   this.dataManipulationLinks.push(sharePointLink, excel, appWorkspace)
+    this.seatFirebaseService.getModules().subscribe( modules => {
+      this.modules  = modules;
+      console.log(modules);
+    });
 
+    this.seatFirebaseService.getProblemSheets().subscribe( problemSheets => {
+      this.problemSheets = problemSheets;
+    });
+
+    this.seatFirebaseService.getProblems().subscribe( problems => {
+      this.problems = problems;
+    });
+
+    this.seatFirebaseService.getStudentModules().subscribe(studentModules => {
+      this.studentModules = studentModules;
+    });
+
+
+    //PUSHING UNIQUE KEYS INTO ARRAYS FOR UNIQUENESS CHECK --> this can most likely be done on firebase itself
+    // this.students.subscribe(students => {
+    //   for(let student of students){
+    //     this.studentIDs.push(student.$key);
+    //   }
     // });
 
-    // //Get the Firebase JSON tree
-    //  this.seatFirebaseService.getScaffoldingDataTree().subscribe(snapshot => {
+    // this.modules.subscribe(modules => {
+    //   for (let mod of modules) {
+    //     this.moduleCodes.push(mod.$key);
+    //   }
+    // });
 
-    // this.dataTree = JSON.stringify(snapshot);
-   
-    //  })
+    // this.problemSheets.subscribe(problemSheets => {
+    //   for (let pS of problemSheets) {
+    //     this.problemSheetIDs.push(Number(pS.$key));
 
-    //extract the arrays of modules, problems and problems sheets and StudentModule pairs here
-    this.phases = this.seatFirebaseService.getPhases();
-    this.students = this.seatFirebaseService.getStudents();
-    this.modules = this.seatFirebaseService.getModules();
-    this.problemSheets = this.seatFirebaseService.getProblemSheets();
-    this.problems = this.seatFirebaseService.getProblems();
-    this.studentModules = this.seatFirebaseService.getStudentModules();
+    //   }
+    // });
 
-    this.students.subscribe(students => {
-      for(let student of students){
-        this.studentIDs.push(student.$key);
-      }
-    });
+    // this.problems.subscribe(problems => {
+    //   for (let problem of problems) {
+    //     this.problemIDs.push(Number(problem.$key));
+    //   }
+    // });
 
-    this.modules.subscribe(modules => {
-      for (let mod of modules) {
-        this.moduleCodes.push(mod.$key);
-      }
-    });
-
-    this.problemSheets.subscribe(problemSheets => {
-      for (let pS of problemSheets) {
-        this.problemSheetIDs.push(Number(pS.$key));
-
-      }
-    });
-
-    this.problems.subscribe(problems => {
-      for (let problem of problems) {
-        this.problemIDs.push(Number(problem.$key));
-      }
-    });
-
-    this.studentModules.subscribe(studentModulePairs => {
-      for(let pair of studentModulePairs){
-        this.studentModulesPairs.push(pair);
+    // this.studentModules.subscribe(studentModulePairs => {
+    //   for(let pair of studentModulePairs){
+    //     this.studentModulesPairs.push(pair);
         
-      }
-    })
+    //   }
+    // })
 
   }
 
