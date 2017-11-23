@@ -14,7 +14,7 @@ References:
 @Component({
   selector: 'sdinavbar',
   templateUrl: './sdinavbar.component.html',
-  styleUrls: ['./sdinavbar.component.css']
+  styleUrls: ['./sdinavbar.component.scss']
 })
 export class SDINavbarComponent implements OnInit {
   @Input('isOpen') isOpen : boolean;

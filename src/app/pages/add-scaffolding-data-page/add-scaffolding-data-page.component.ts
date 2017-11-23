@@ -25,7 +25,7 @@ REFERENCES:
 @Component({
   selector: 'app-add-scaffolding-data-page',
   templateUrl: './add-scaffolding-data-page.component.html',
-  styleUrls: ['./add-scaffolding-data-page.component.css']
+  styleUrls: ['./add-scaffolding-data-page.component.scss']
 })
 export class AddScaffoldingDataPageComponent implements OnInit {
 

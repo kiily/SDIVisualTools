@@ -4,7 +4,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 @Component({
   selector: 'confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.css']
+  styleUrls: ['./confirm-dialog.component.scss']
 })
 
 /* This class controls the ConfirmDialogComponent that is used to generate a confirmation dialog.

@@ -9,7 +9,7 @@ References:
 @Component({
   selector: 'hexagon-menu',
   templateUrl: './hexagon-menu.component.html',
-  styleUrls: ['./hexagon-menu.component.css']
+  styleUrls: ['./hexagon-menu.component.scss']
 })
 export class HexagonMenuComponent implements OnInit {
 

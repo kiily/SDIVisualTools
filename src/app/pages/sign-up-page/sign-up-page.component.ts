@@ -11,7 +11,7 @@ can register with the application.*/
 @Component({
   selector: 'sign-up-page',
   templateUrl: './sign-up-page.component.html',
-  styleUrls: ['./sign-up-page.component.css']
+  styleUrls: ['./sign-up-page.component.scss']
 })
 export class SignUpPageComponent implements OnInit {
 

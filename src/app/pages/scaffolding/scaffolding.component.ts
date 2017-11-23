@@ -15,7 +15,7 @@ References:
 @Component({
   selector: 'app-scaffolding',
   templateUrl: './scaffolding.component.html',
-  styleUrls: ['./scaffolding.component.css']
+  styleUrls: ['./scaffolding.component.scss']
 })
 export class ScaffoldingComponent implements OnInit {
 
@@ -39,7 +39,7 @@ export class ScaffoldingComponent implements OnInit {
     //Checking that a user is logged in
     this.authService.userScan();
 
-
+    //Handling the changes of phase
     this.route.queryParamMap
     .subscribe(params => {
       
@@ -52,11 +52,6 @@ export class ScaffoldingComponent implements OnInit {
 
     //Getting PowerBI related links (App, Dashboard)
     this.seatFirebaseService.getAppLink().subscribe( (appLinks) => {
-    
-      // let app = appLink.link;
-      // let appDashboardPro = appLink.dashboardLinkPro;
-      
-      // this.powerBIAppLinks.push(app,appDashboardPro);
       this.powerBIAppLinks = appLinks;
 
     });
@@ -66,19 +61,6 @@ export class ScaffoldingComponent implements OnInit {
 
     this.reportLinks = reportLinks;  
     console.log(this.reportLinks[0]);    
-
-    //Make the time
-      //Report links are accessed via Firebase key in the template -  name the variables accordingly here;
-      //Page to open the report on is added to the URL
-      // let generalOverview = reportLinks.generalOverview+"&pageName=ReportSection0";
-      // let phase1 = reportLinks.phase1+"&pageName=ReportSection0";
-      // let phase2 = reportLinks.phase2+"&pageName=ReportSection0";
-      // let phase3 = reportLinks.phase3+"&pageName=ReportSection0";
-      // let phase4= reportLinks.phase4+"&pageName=ReportSection0";
-      // let timelineReport = reportLinks.generalOverview+"&pageName=ReportSection4";
-
-      // this.reportLinks.push(generalOverview, phase1 ,phase2 ,phase3, phase4, timelineReport);
-
     });
 
   }
@@ -89,7 +71,7 @@ export class ScaffoldingComponent implements OnInit {
   }
 
   /* Utility method to track the status of the blankToggle variable */
-  toggleBlank(){
+  private toggleBlank(){
     console.log(this.blankToggle);
   }
 

@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 @Component({
   selector: 'error-dialog',
   templateUrl: './error-dialog.component.html',
-  styleUrls: ['./error-dialog.component.css']
+  styleUrls: ['./error-dialog.component.scss']
 })
 
 /* This class controls the AuthDialogComponent that is used to generate an alert tailored for authentication messages.
