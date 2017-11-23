@@ -1,10 +1,9 @@
 
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { Component, OnInit } from '@angular/core';
 import { DiscoveryFirebaseService } from '../../services/discovery-services/discovery-firebase.service';
-import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { AlertGenerator } from '../../components/alerts/alert-generator';
 
 /*This class acts as the controller for the Discovery component. It is associated with an HTML template
 that renders the discovery page. Current features: add and remove discovery links from the database. */
@@ -15,8 +14,8 @@ that renders the discovery page. Current features: add and remove discovery link
 })
 export class DiscoveryComponent implements OnInit {
 
-  discoveryLinks: FirebaseListObservable<any[]>;
-  discoveryLinkCategories: FirebaseListObservable<any[]>;
+  discoveryLinks;
+  discoveryLinkCategories;
   category: Object;
   selectedOption : string;
 

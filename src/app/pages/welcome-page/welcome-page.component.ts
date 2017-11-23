@@ -1,6 +1,6 @@
 
 import { AuthValidator } from '../../common/validators/auth.validator';
-import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { AlertGenerator } from '../../components/alerts/alert-generator';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

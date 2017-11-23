@@ -1,10 +1,6 @@
 import { AuthService } from '../../services/auth.service';
-import { FirebaseListObservable } from 'angularfire2/database/firebase_list_observable';
 import { InnoflowFirebaseService } from '../../services/innoflow-services/innoflow-firebase.service';
 import { forEach } from '@angular/router/src/utils/collection';
-import { NotFoundError } from '../../common/error-handling/not-found-error';
-import { BadInputRequestError } from '../../common/error-handling/bad-input-request';
-import { AppError } from '../../common/error-handling/app-error';
 import { InnoflowHttpService } from './../../services/innoflow-services/innoflow-http.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -27,7 +23,8 @@ export class InnovationComponent implements OnInit {
 
   innovations: any[];
   innoflowUsers: any[];
-  innoflowUsersFirebase : FirebaseListObservable<any[]>;
+  // innoflowUsersFirebase : FirebaseListObservable<any[]>;
+  innoflowUsersFirebase;
 
   selectedUser;
 
@@ -50,15 +47,15 @@ export class InnovationComponent implements OnInit {
   //Activated by pressing a given student number. It loads of all that user's innovations
   getInnovations(userID, username){
 
-    this.selectedUser = {
-      id: userID,
-      username: username
-    }
+    // this.selectedUser = {
+    //   id: userID,
+    //   username: username
+    // }
 
-    this.innoflowFirebaseService.getUserInnovations(userID)
-    .subscribe(innovations => {
-      this.innovations = innovations;
-    });    
+    // this.innoflowFirebaseService.getUserInnovations(userID)
+    // .subscribe(innovations => {
+    //   this.innovations = innovations;
+    // });    
   }
 
 /*This method takes makes HTTP requests to Innoflow to retrieve data from the Innoflow Server

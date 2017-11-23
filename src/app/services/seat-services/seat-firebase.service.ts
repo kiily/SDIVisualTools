@@ -1,9 +1,11 @@
-import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { AlertGenerator } from '../../components/alerts/alert-generator';
 import { AngularFireList } from 'angularfire2/database/interfaces';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import { PowerBIAppLinks } from '../../common/models/power-bi-links.model';
-import { PowerBIReportLinks } from '../../common/models/report-links.model';
+import { PowerBILink } from '../../common/models/powerbi-link.model';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
 
 /*This Service handles the connection to Firebase for the data relevant to scaffolding. It provides
 methods retrieve the links for the PowerBI reports as well as the links for the PowerBI app, dashboard
@@ -13,27 +15,39 @@ This Service may be extended in the future once an appropriate connection with S
 @Injectable()
 export class SEATFirebaseService {
 
-  appLinksRef : AngularFireList<PowerBIAppLinks>;
-  reportLinksRef : AngularFireList<PowerBIReportLinks>;
+  appLinksRef : AngularFireList<PowerBILink>;
+  reportLinksRef : AngularFireList<PowerBILink>;
 
+  appLinks$ : Observable<PowerBILink[]>;
+  reportLinks$ : Observable<PowerBILink[]>;
   
 
   constructor(private afdb : AngularFireDatabase) { 
     this.appLinksRef = this.afdb.list("/scaffolding/powerBIApp");
+
+    this.reportLinksRef = this.afdb.list("/scaffolding/powerBIReports");
+
+    this.appLinks$ = this.appLinksRef.valueChanges();
+    this.reportLinks$ = this.reportLinksRef.valueChanges();
+
+
   }
+
 
   /*This method retrieves a FirebaseObjectObservable that contains the links for the PowerBI
   app, dahsboard and Excel data source */
   getAppLink(){
-     let appLinks = this.afdb.object("/scaffolding/powerBIApp");
-     return appLinks;
+    //  let appLinks = this.afdb.object("/scaffolding/powerBIApp");
+    //  return appLinks;
+    return this.appLinks$;
    }
 
    /* This method retrieves a FirebaseObjectObservable that contains the links for the PowerBI reports
    that are embedded within the app */
    getReportEmbedLinks(){
-     let reportEmbedLinks = this.afdb.object("/scaffolding/powerBIReports");
-     return reportEmbedLinks;
+    //  let reportEmbedLinks = this.afdb.object("/scaffolding/powerBIReports");
+    //  return reportEmbedLinks;
+    return this.reportLinks$;
    }
 
      /* This method retrieves a FirebaseObjectObservable with the entire Firebase JSON tree

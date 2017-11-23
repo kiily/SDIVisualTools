@@ -1,4 +1,4 @@
-import { AlertGenerator } from '../../common/alerts/alert-generator';
+import { AlertGenerator } from '../../components/alerts/alert-generator';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
 import { AuthService } from '../../services/auth.service';
