@@ -1,3 +1,4 @@
+
 import { SafeURLPipe } from '../pipes/safe-url.pipe';
 import { MarkdownModule } from 'angular2-markdown';
 import { rootRouterConfig } from '../app.routes';
@@ -10,10 +11,10 @@ import { InnovationComponent } from './innovation/innovation.component';
 import { DiscoveryComponent } from './discovery/discovery.component';
 import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentModule } from '../components/components.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -31,8 +32,9 @@ import { ComponentModule } from '../components/components.module';
         FormsModule,
         ReactiveFormsModule,
         ComponentModule,
-        MarkdownModule.forRoot(),        
-        RouterModule.forChild(rootRouterConfig)
+        MarkdownModule.forRoot(),  
+        RouterModule
+        
     ],
     exports : [
         ScaffoldingComponent,
@@ -41,7 +43,7 @@ import { ComponentModule } from '../components/components.module';
         AddScaffoldingDataPageComponent,
         HomeComponent,
         SignUpPageComponent,
-        WelcomePageComponent 
+        WelcomePageComponent
     ]
 })
 export class PagesModule {}

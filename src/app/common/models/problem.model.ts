@@ -1,5 +1,5 @@
 export class Problem{
-    constructor(public problemID : number, problemSheetID : number, problemTitle : string){
+    constructor(public problemID : number, public problemSheetID : number, public problemTitle : string){
         
     }
 }

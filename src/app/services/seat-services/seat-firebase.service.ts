@@ -1,3 +1,4 @@
+import { Attempt } from './../../common/models/attempt.model';
 import { StudentModule } from '../../common/models/student-module.model';
 import { Student } from './../../common/models/student.model';
 import { Phase } from './../../common/models/phase.model';
@@ -36,6 +37,7 @@ export class SEATFirebaseService {
   problemsRef : AngularFireList<Problem>;
   modulesRef : AngularFireList<Module>;
   studentModulesRef : AngularFireList<StudentModule>;
+  attemptsRef : AngularFireList<Attempt>;
 
   phases$ : Observable<Phase[]>;
   students$ : Observable<Student[]>
@@ -61,6 +63,8 @@ export class SEATFirebaseService {
     this.problemsRef = this.afdb.list("/scaffolding/problems");
     this.modulesRef = this.afdb.list("/scaffolding/modules");
     this.studentModulesRef = this.afdb.list("/scaffolding/studentModules");
+
+    this.attemptsRef = this.afdb.list("/scaffolding/attempts");
 
     this.phases$ = this.phasesRef.valueChanges();
     this.students$ = this.studentsRef.valueChanges();
@@ -136,84 +140,77 @@ export class SEATFirebaseService {
   }
 
    /* This method adds a new module to the modules part of the tree.*/
-   addModule(moduleCode, moduleName, classSize, phaseID){
-    this.modulesRef.push(
-      [moduleCode]: {
-        moduleName : moduleName,
-        classSize: classSize,
-        phaseID: phaseID
+   addModule(module_ : Module){
+    this.modulesRef.push({
 
-      }
-    );
+        moduleCode : module_.moduleCode,
+        moduleName : module_.moduleName,
+        classSize: module_.classSize,
+        phaseID: module_.phaseID
+
+    });
 
    }
 
    
    /* This method adds a new problemSheet to the problemSheets part of the tree.*/
-   addProblemSheet(problemSheetID, problemSheetTitle, moduleID, releaseDate, deadline){
-     let problemSheets = this.afdb.object('/scaffolding/problemSheets');
+   addProblemSheet(problemSheet : ProblemSheet){
+     console.log(problemSheet);
+     this.problemSheetsRef.push({
+        problemSheetID : problemSheet.problemSheetID,
+        moduleID : problemSheet.moduleID,      
+        problemSheetTitle: problemSheet.problemSheetTitle,
+        releaseDate : problemSheet.releaseDate,
+        deadline : problemSheet.deadline
+      
+    });
 
-     problemSheets.update({
-       [problemSheetID] : {
-         problemSheetID : problemSheetID,
-         problemSheetTitle: problemSheetTitle,
-         moduleID : moduleID,
-         releaseDate : releaseDate,
-         deadline : deadline
-       }
-     });
    }
 
   
    /* This method adds a new problem to the problems part of the tree.*/
-   addProblem(problemID, problemSheetID, problemTitle){
-     let problems = this.afdb.object('/scaffolding/problems');
+   addProblem(problem : Problem){
+    this.problemsRef.push({
+      problemID: problem.problemID,
+      problemSheetID : problem.problemSheetID,
+      problemTitle: problem.problemTitle
+    })
 
-     problems.update({
-       [problemID] : {
-         problemID: problemID,
-         problemSheetID : problemSheetID,
-         problemTitle: problemTitle
-       }
-     });
+     
    }
 
    
    /* This method adds a new attempt to the attempts part of the tree.*/
-   addAttempt(studentID, problemID, compile, output, date){
-     let attempts = this.afdb.list("/scaffolding/attempts");
-
-     attempts.push({
-       studentID: studentID,
-       problemID: problemID,
-       compile : compile,
-       output: output,
-       date : date
+   addAttempt(attempt : Attempt){
+     this.attemptsRef.push({
+       studentID: attempt.studentID,
+       problemID: attempt.problemID,
+       compile : attempt.compile,
+       output: attempt.output,
+       date : attempt.date
      });
    }
 
    
    /* This method adds a student module pair to the studentModules part of the tree.*/
-   addStudentModule(studentID, moduleID){
-     let studentModules = this.afdb.list("/scaffolding/studentModules");
-
-     studentModules.push({
-       studentID : studentID,
-       moduleID : moduleID
+   addStudentModule(studentModule : StudentModule){
+     this.studentModulesRef.push({
+      studentID : studentModule.studentID,
+      moduleCode : studentModule.moduleCode
      });
+
    }
 /* This method adds a student to the students part of the tree.*/
-   addStudent(studentID, firstName, lastName, email, promotionYear){
+   addStudent(student : Student){
     let students = this.afdb.object('/scaffolding/students');
 
-    students.update({
-      [studentID] : {
-        studentID: studentID,
-        firstName: firstName,
-        lastName: lastName,
-        email : email,
-        promotionYear : promotionYear 
-      }
+    this.studentsRef.push({
+        studentID: student.studentID,
+        firstName: student.firstName,
+        lastName: student.lastName,
+        email : student.email,
+        promotionYear : student.promotionYear 
+      
     });
 
    }

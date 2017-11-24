@@ -1,3 +1,4 @@
+import { Attempt } from '../../common/models/attempt.model';
 import { StudentModule } from './../../common/models/student-module.model';
 import { Problem } from '../../common/models/problem.model';
 import { Module } from '../../common/models/module.model';
@@ -42,15 +43,6 @@ export class AddScaffoldingDataPageComponent implements OnInit {
   problems : Problem[] = [];
   students : Student[] =[];
   studentModules : StudentModule[] =[];
-
-
-
-  //Arrays are used to check for uniqueness
-  problemSheetIDs: number[] = [];
-  moduleCodes: any[] = [];
-  problemIDs: number[] = [];
-  studentModulesPairs : any[] =[];
-  studentIDs : any[] = [];
 
 
   //Forms
@@ -123,12 +115,10 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     });
     this.seatFirebaseService.getStudents().subscribe( students => {
       this.students = students;
-      console.log(students)
     });
 
     this.seatFirebaseService.getModules().subscribe( modules => {
       this.modules  = modules;
-      console.log(modules);
     });
 
     this.seatFirebaseService.getProblemSheets().subscribe( problemSheets => {
@@ -144,38 +134,6 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     });
 
 
-    //PUSHING UNIQUE KEYS INTO ARRAYS FOR UNIQUENESS CHECK --> this can most likely be done on firebase itself
-    // this.students.subscribe(students => {
-    //   for(let student of students){
-    //     this.studentIDs.push(student.$key);
-    //   }
-    // });
-
-    // this.modules.subscribe(modules => {
-    //   for (let mod of modules) {
-    //     this.moduleCodes.push(mod.$key);
-    //   }
-    // });
-
-    // this.problemSheets.subscribe(problemSheets => {
-    //   for (let pS of problemSheets) {
-    //     this.problemSheetIDs.push(Number(pS.$key));
-
-    //   }
-    // });
-
-    // this.problems.subscribe(problems => {
-    //   for (let problem of problems) {
-    //     this.problemIDs.push(Number(problem.$key));
-    //   }
-    // });
-
-    // this.studentModules.subscribe(studentModulePairs => {
-    //   for(let pair of studentModulePairs){
-    //     this.studentModulesPairs.push(pair);
-        
-    //   }
-    // })
 
   }
 
@@ -190,7 +148,13 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     let classSize = this.addModuleForm.controls.classSize.value;
     let phaseID = this.addModuleForm.controls.phase.value;
 
-    if (!this.moduleCodes.includes(moduleCode)) {
+    let module_ = new Module(moduleCode, moduleName, classSize, phaseID)
+
+    let moduleCodes : string[] =[];
+    for(let module_ of this.modules){
+      moduleCodes.push(module_.moduleCode);
+    }
+    if (!moduleCodes.includes(moduleCode)) {
       //module id is unique
 
       //reset form
@@ -198,7 +162,7 @@ export class AddScaffoldingDataPageComponent implements OnInit {
 
 
       //if it is unique, add to the database
-      this.seatFirebaseService.addModule(moduleCode, moduleName, classSize, phaseID);
+      this.seatFirebaseService.addModule(module_);
 
       //notify user
       this.alertGenerator.generateConfirmNotification("Success. A new module was successfully added");
@@ -228,14 +192,20 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     let releaseDate = this.addProblemSheetForm.controls.releaseDate.value;
     let deadline = this.addProblemSheetForm.controls.deadline.value;
 
-    if (!this.problemSheetIDs.includes(problemSheetID)) {
+    let problemSheet = new ProblemSheet(problemSheetID, moduleID, problemSheetTitle,  releaseDate, deadline);    
+
+    let problemSheetIDs : number[] =[];
+    for(let problemSheet of this.problemSheets){
+      problemSheetIDs.push(problemSheet.problemSheetID);
+    }
+    if (!problemSheetIDs.includes(problemSheetID)) {
       //if problemSheetID is unique
 
       //reset form
       this.addProblemSheetForm.reset();
 
       //add problem sheet
-      this.seatFirebaseService.addProblemSheet(problemSheetID, problemSheetTitle, moduleID, releaseDate, deadline);
+      this.seatFirebaseService.addProblemSheet(problemSheet);
 
       //notify user
       this.alertGenerator.generateConfirmNotification("Success. A new problem sheet was successfully added to " + moduleID);
@@ -263,14 +233,20 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     let problemSheetID = this.addProblemForm.controls.problemSheetID.value;
     let problemTitle = this.addProblemForm.controls.problemTitle.value;
 
-    if (!this.problemIDs.includes(problemID)) {
+    let problem = new Problem(problemID, problemSheetID, problemTitle);    
+
+    let problemIDs : number[] =[];
+    for(let problem of this.problems){
+      problemIDs.push(problem.problemID);
+    }
+    if (!problemIDs.includes(problemID)) {
       //if problemID is unique
 
       //reset form
       this.addProblemForm.reset();
 
-      //add problem sheet
-      this.seatFirebaseService.addProblem(problemID, problemSheetID, problemTitle);
+      //add problem 
+      this.seatFirebaseService.addProblem(problem);
 
       //notify user
       this.alertGenerator.generateConfirmNotification("Success. A new problem (ID: "+problemID+") was successfully added to problem sheet " + problemSheetID);
@@ -299,7 +275,9 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     let compile = this.addAttemptForm.controls.compile.value;
     let date = this.addAttemptForm.controls.date.value;
 
-    this.seatFirebaseService.addAttempt(studentID, problemID, output, compile, date);
+
+    let attempt = new Attempt(studentID, problemID, output, compile, date);
+    this.seatFirebaseService.addAttempt(attempt);
     this.alertGenerator.generateConfirmNotification("Success. A new attempt was successfully added");
 
     }else{
@@ -320,9 +298,12 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     let studentID = this.addStudentModuleForm.controls.studentID.value;
     let moduleID = this.addStudentModuleForm.controls.moduleID.value;
 
-    if(this.studentModulesPairs.includes({moduleID : moduleID, studentID : studentID})){
+    let studentModule = new StudentModule(studentID, moduleID);
+    
 
-    this.seatFirebaseService.addStudentModule(studentID, moduleID);
+    if(this.studentModules.includes(studentModule)){
+
+    this.seatFirebaseService.addStudentModule(studentModule);
     this.alertGenerator.generateConfirmNotification("Success. Student "+studentID+" was enrolled into "+moduleID+".");
     
     }else{
@@ -362,10 +343,6 @@ export class AddScaffoldingDataPageComponent implements OnInit {
       let workbook = XLSX.read(binaryFile, {type: 'binary'});
 
       let worksheets = [];
-
-
-      console.log(workbook);
-
       //Will only grab the first sheet for now - could have a for loop here
       let worksheetName = workbook.SheetNames[0];
       let worksheet = workbook.Sheets[worksheetName];
@@ -409,13 +386,21 @@ export class AddScaffoldingDataPageComponent implements OnInit {
         let studentRow = (this.excelData[i]);
 
         let studentID = studentRow[0];
-        if(!this.studentIDs.includes(studentID)){
+
+        //extract student IDs
+        let studentIDs : number[] = [];
+        for(let student of this.students){
+          studentIDs.push(student.studentID);
+        }
+
+        if(!studentIDs.includes(studentID)){
         let firstName = studentRow[1];
         let lastName = studentRow[2];
         let email = studentRow[3];
         let promotionYear = studentRow[4];
 
-        this.seatFirebaseService.addStudent(studentID, firstName, lastName, email, promotionYear);
+        let student = new Student(studentID, email, firstName, lastName,  promotionYear)
+        this.seatFirebaseService.addStudent(student);
         }else{
           this.alertGenerator.generateDataAdditionError("Please ensure that all student IDs are unique.");
           break;

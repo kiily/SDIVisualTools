@@ -34,7 +34,7 @@
 
                     <label for="category">Link category:</label>
                     <select formControlName="category" class="form-control" id="category">
-                    <option *ngFor="let category of discoveryLinkCategories | async" [value]="category.$value">{{category.$value}}</option>
+                    <option *ngFor="let category of discoveryLinkCategories" [value]="category.$value">{{category.$value}}</option>
                 </select>
                 </div>
                 <button class="btn btn-block btn-success" type="submit">Add Link</button>
@@ -45,7 +45,7 @@
             <div class="col-sm-12">
                 <h2>Useful Discovery Links:</h2>
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let link of discoveryLinks | async">
+                    <li class="list-group-item" *ngFor="let link of discoveryLinks">
                         <div>
                             <a target="_blank" href='{{link.link}}'> {{link.title}} - {{link.link}}</a>
                             <button class="btn-sm btn-danger pull-right" (click)="removeLink(link)">

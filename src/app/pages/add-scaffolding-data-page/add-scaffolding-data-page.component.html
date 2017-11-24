@@ -293,7 +293,7 @@
           <div class="col-sm-4">
             <label for="moduleID">ModuleID:</label>
             <select formControlName="moduleID" class="form-control" name="moduleID" required>
-                <option *ngFor="let module of modules" [value]="module.$key">{{module.$key}}</option>
+                <option *ngFor="let module of modules" [value]="module.moduleCode">{{module.moduleCode}}</option>
           </select>
             <div class="alert alert-danger" *ngIf="addStudentModuleForm.controls['moduleID'].touched && 
             addStudentModuleForm.controls['moduleID'].invalid">
