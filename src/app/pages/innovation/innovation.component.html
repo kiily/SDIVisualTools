@@ -31,11 +31,11 @@
                         </li>
                     </ul>
                 </div> -->
-                 <div class="col-sm-1" *ngFor="let user of innoflowUsersFirebase | async">
+                 <div class="col-sm-1" *ngFor="let user of innoflowUsers">
                     <ul class="list-group">
-                        <button (click)="getInnovations(user.$key, user.username)" class="btn btn-default btn-block">
+                        <button (click)="getInnovations(user)" class="btn btn-default btn-block">
                         <li class="list-group-item">
-                            {{user.$key}}
+                            {{user.userID}}
                         </li>
                         </button>
                     </ul>

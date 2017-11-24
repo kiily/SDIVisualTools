@@ -1,3 +1,7 @@
+import { InnovationUser } from './../../common/models/innovation/innovation-user.model';
+import { Observable } from 'rxjs/Observable';
+import { Innovation } from './../../common/models/innovation/innovation.model';
+import { AngularFireList } from 'angularfire2/database/interfaces';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
@@ -7,9 +11,54 @@ to these users. It also provides methods to retrieve all the stored users and th
 @Injectable()
 export class InnoflowFirebaseService {
 
-  constructor(private afdb : AngularFireDatabase) { 
 
+  innovationUsersRef : AngularFireList<InnovationUser>;
+  innovationsRef : AngularFireList<Innovation>
+
+  innovationUsers$ : Observable<InnovationUser[]>;
+  innovations$ : Observable<Innovation[]>;
+
+  constructor(private afdb : AngularFireDatabase) { 
+    this.innovationUsersRef = this.afdb.list("/innovation");
+  
+
+    this.innovationUsers$ = this.innovationUsersRef.snapshotChanges()
+    .map(innovationUsers => {
+      return innovationUsers.map ( c=> {
+        let key = c.payload.key;
+        let data = c.payload.val();
+    
+        let transformed = new InnovationUser(data['username'], data['innovations'], key);
+        
+        return transformed;
+        
+      });
+    });
   }
+
+    /*This method retrieves all the users in the innovations node */
+    getUsers(){
+      return this.innovationUsers$;
+    }
+  
+    /*This method retrieves all the innovations for the specified userID from the 
+    Firebase database. */
+    getUserInnovations(user : InnovationUser){
+      this.innovationsRef = this.afdb.list('/innovation/'+user.userID+'/innovations');
+      this.innovations$ = this.innovationsRef.snapshotChanges()
+      .map(innovations => {
+        return innovations.map ( c=> {
+  
+          let data = c.payload.val();
+      
+          let transformed = new Innovation(data['code'], data['created']);
+          
+          return transformed;
+          
+        });
+      });;
+     return this.innovations$;
+    }
 
   /*This method registers a new user in the innovations node of the Firebase database */
   addInnovationUser(user){
@@ -28,17 +77,6 @@ export class InnoflowFirebaseService {
     innovations.push(innovation);
   }
 
-  /*This method retrieves all the users in the innovations node */
-  getUsers(){
-    let innovationUsers = this.afdb.list("/innovation");
-    return innovationUsers;
-  }
 
-  /*This method retrieves all the innovations for the specified userID from the 
-  Firebase database. */
-  getUserInnovations(userID){
-    let userInnovations =  this.afdb.list("/innovation/"+userID+"/innovations");
-    return userInnovations;
-  }
 
 }

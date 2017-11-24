@@ -34,7 +34,7 @@
 
                     <label for="category">Link category:</label>
                     <select formControlName="category" class="form-control" id="category">
-                    <option *ngFor="let category of discoveryLinkCategories" [value]="category.$value">{{category.$value}}</option>
+                    <option *ngFor="let category of discoveryLinkCategories" [value]="category.linkCategory">{{category | json}}</option>
                 </select>
                 </div>
                 <button class="btn btn-block btn-success" type="submit">Add Link</button>

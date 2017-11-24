@@ -1,8 +1,8 @@
-import { Attempt } from '../../common/models/attempt.model';
-import { StudentModule } from './../../common/models/student-module.model';
-import { Problem } from '../../common/models/problem.model';
-import { Module } from '../../common/models/module.model';
-import { Phase } from './../../common/models/phase.model';
+import { Attempt } from '../../common/models/scaffolding/attempt.model';
+import { StudentModule } from './../../common/models/scaffolding/student-module.model';
+import { Problem } from '../../common/models/scaffolding/problem.model';
+import { Module } from '../../common/models/scaffolding/module.model';
+import { Phase } from './../../common/models/scaffolding/phase.model';
 import { AlertGenerator } from '../../components/alerts/alert-generator';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { SEATFirebaseService } from '../../services/seat-services/seat-firebase.service';
@@ -11,8 +11,8 @@ import { Component, OnInit } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import 'rxjs/add/operator/map';
 import * as XLSX from 'xlsx';
-import { ProblemSheet } from '../../common/models/problem-sheet.model';
-import { Student } from '../../common/models/student.model';
+import { ProblemSheet } from '../../common/models/scaffolding/problem-sheet.model';
+import { Student } from '../../common/models/scaffolding/student.model';
 
 type AOA = Array<Array<any>>;
 

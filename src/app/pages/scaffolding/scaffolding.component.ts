@@ -1,4 +1,4 @@
-import { PowerBILink } from './../../common/models/powerbi-link.model';
+import { PowerBILink } from './../../common/models/scaffolding/powerbi-link.model';
 import { SEATFirebaseService } from './../../services/seat-services/seat-firebase.service';
 import { AuthService } from './../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';

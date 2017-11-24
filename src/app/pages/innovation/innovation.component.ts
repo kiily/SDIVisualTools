@@ -1,8 +1,10 @@
+import { Innovation } from '../../common/models/innovation/innovation.model';
 import { AuthService } from '../../services/auth.service';
 import { InnoflowFirebaseService } from '../../services/innoflow-services/innoflow-firebase.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import { InnoflowHttpService } from './../../services/innoflow-services/innoflow-http.service';
 import { Component, OnInit } from '@angular/core';
+import { InnovationUser } from '../../common/models/innovation/innovation-user.model';
 
 
 /*This class acts as the controller for the Innovation component. It is associated with an HTML template that renders 
@@ -21,10 +23,9 @@ References:
 })
 export class InnovationComponent implements OnInit {
 
-  innovations: any[];
-  innoflowUsers: any[];
+  innovations: Innovation[];
+  innoflowUsers: InnovationUser[];
   // innoflowUsersFirebase : FirebaseListObservable<any[]>;
-  innoflowUsersFirebase;
 
   selectedUser;
 
@@ -40,22 +41,21 @@ export class InnovationComponent implements OnInit {
     this.authService.userScan();
 
     //Get the student numbers
-    this.innoflowUsersFirebase = this.innoflowFirebaseService.getUsers();
+    this.innoflowFirebaseService.getUsers().subscribe(innoflowUsers => {
+      this.innoflowUsers = innoflowUsers;
+    });
     
   }
   
   //Activated by pressing a given student number. It loads of all that user's innovations
-  getInnovations(userID, username){
-
-    // this.selectedUser = {
-    //   id: userID,
-    //   username: username
-    // }
-
-    // this.innoflowFirebaseService.getUserInnovations(userID)
-    // .subscribe(innovations => {
-    //   this.innovations = innovations;
-    // });    
+  getInnovations(user : InnovationUser){
+    this.innoflowFirebaseService.getUserInnovations(user)
+    .subscribe( innovations => {
+      this.innovations = innovations;
+    });
+    this.selectedUser = user;
+    
+    
   }
 
 /*This method takes makes HTTP requests to Innoflow to retrieve data from the Innoflow Server

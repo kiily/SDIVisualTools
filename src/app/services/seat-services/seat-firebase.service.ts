@@ -1,17 +1,17 @@
-import { Attempt } from './../../common/models/attempt.model';
-import { StudentModule } from '../../common/models/student-module.model';
-import { Student } from './../../common/models/student.model';
-import { Phase } from './../../common/models/phase.model';
+import { Attempt } from './../../common/models/scaffolding/attempt.model';
+import { StudentModule } from '../../common/models/scaffolding/student-module.model';
+import { Student } from './../../common/models/scaffolding/student.model';
+import { Phase } from './../../common/models/scaffolding/phase.model';
 import { AlertGenerator } from '../../components/alerts/alert-generator';
 import { AngularFireList } from 'angularfire2/database/interfaces';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import { PowerBILink } from '../../common/models/powerbi-link.model';
+import { PowerBILink } from '../../common/models/scaffolding/powerbi-link.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { ProblemSheet } from '../../common/models/problem-sheet.model';
-import { Problem } from '../../common/models/problem.model';
-import { Module } from '../../common/models/module.model';
+import { ProblemSheet } from '../../common/models/scaffolding/problem-sheet.model';
+import { Problem } from '../../common/models/scaffolding/problem.model';
+import { Module } from '../../common/models/scaffolding/module.model';
 
 
 /*This Service handles the connection to Firebase for the data relevant to scaffolding. It provides
