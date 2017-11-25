@@ -13,7 +13,7 @@ import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ComponentModule } from '../components/components.module';
+import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -31,7 +31,7 @@ import { RouterModule } from '@angular/router';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ComponentModule,
+        ComponentsModule,
         MarkdownModule.forRoot(),  
         RouterModule
         
@@ -43,7 +43,8 @@ import { RouterModule } from '@angular/router';
         AddScaffoldingDataPageComponent,
         HomeComponent,
         SignUpPageComponent,
-        WelcomePageComponent
+        WelcomePageComponent,
+        RouterModule
     ]
 })
 export class PagesModule {}

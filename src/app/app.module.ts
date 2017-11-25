@@ -1,6 +1,5 @@
 import { SERVICES } from './app.imports';
 import { PagesModule } from './pages/pages.module';
-import { ComponentModule } from './components/components.module';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';

@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 
 import { ConfirmDialogComponent } from './alerts/confirm-dialog/confirm-dialog.component';
 import { ErrorDialogComponent } from './alerts/error-dialog/error-dialog.component';
@@ -7,8 +8,6 @@ import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material';
-import { rootRouterConfig } from '../app.routes';
-import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -35,9 +34,9 @@ import { RouterModule } from '@angular/router';
         SDINavbarComponent,
         ErrorDialogComponent,
         ConfirmDialogComponent,
-       
+        RouterModule
     ]
 
 })
 
-export class ComponentModule{}
+export class ComponentsModule{}

@@ -20,5 +20,6 @@ export const rootRouterConfig: Routes = [
     { path: 'scaffolding', component: ScaffoldingComponent },
     { path: 'add-scaffolding-data-page', component: AddScaffoldingDataPageComponent },
     { path: 'discovery', component: DiscoveryComponent },
-    { path: 'innovation', component: InnovationComponent },
+    { path: 'innovation', component: InnovationComponent },  
+  
 ];
