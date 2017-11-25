@@ -4,7 +4,6 @@ import { MarkdownModule } from 'angular2-markdown';
 import { rootRouterConfig } from '../app.routes';
 import { CommonModule } from '@angular/common';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { HomeComponent } from './home/home.component';
 import { AddScaffoldingDataPageComponent } from './add-scaffolding-data-page/add-scaffolding-data-page.component';
 import { InnovationComponent } from './innovation/innovation.component';
@@ -12,10 +11,9 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatToolbarModule } from '@angular/material';
 import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
-import { WelcomePageModule } from './welcome-page/welcome-page.module';
 
 @NgModule({
     declarations: [
@@ -24,13 +22,13 @@ import { WelcomePageModule } from './welcome-page/welcome-page.module';
         InnovationComponent,
         AddScaffoldingDataPageComponent,
         HomeComponent,
-        SignUpPageComponent,
+        WelcomePageComponent,
         SafeURLPipe        
     ], 
     imports : [
         CommonModule,
-        WelcomePageModule,
         FormsModule,
+        MatToolbarModule,
         ReactiveFormsModule,
         ComponentsModule,
         MarkdownModule.forRoot(),  
@@ -43,7 +41,6 @@ import { WelcomePageModule } from './welcome-page/welcome-page.module';
         InnovationComponent,
         AddScaffoldingDataPageComponent,
         HomeComponent,
-        SignUpPageComponent,
         WelcomePageComponent,
         RouterModule
     ]

@@ -8,6 +8,9 @@ import { HexagonMenuComponent } from './hexagon-menu/hexagon-menu.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 
 @NgModule({
@@ -16,11 +19,14 @@ import { MatDialogModule } from '@angular/material';
         LogoutComponent,
         SDINavbarComponent,
         ErrorDialogComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        LoginFormComponent,
+        SignupFormComponent
     ],
     imports : [
         CommonModule,
         MatDialogModule,
+        ReactiveFormsModule,
         RouterModule
         
     ], 
@@ -34,6 +40,8 @@ import { MatDialogModule } from '@angular/material';
         SDINavbarComponent,
         ErrorDialogComponent,
         ConfirmDialogComponent,
+        LoginFormComponent,
+        SignupFormComponent,
         RouterModule
     ]
 

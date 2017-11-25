@@ -3,19 +3,8 @@
  - https://codepen.io/iamnbutler/pen/clrDk - Accessed July 2017
  - https://codepen.io/boltaway/pen/afpow - Accessed July 2017
  - https://www.freshdesignweb.com/css-login-form-templates/ - Accessed July 2017*/
-
-
-
-
-header {
-    height: 45px;
-    line-height: 45px;
-    border-bottom: solid 2px #ffdd00;
-    padding: 0 30px;
-
-    color: white;
-   
-}
+ $text-font : "Inconsolata", monospace;
+ 
 
 mat-toolbar {
     background-color: #F69C21;
@@ -30,7 +19,7 @@ mat-toolbar {
         h1 {
             font-size: 3.5rem;
             color: white;
-            font-family: 'Inconsolata', monospace;
+            font-family: $text-font;
             font-weight: bold;
         }
       
@@ -45,7 +34,7 @@ mat-toolbar {
 
 /* cover */
 #cover{
-    background: #222 url('../../../assets/space-telescope.jpg') center center no-repeat;
+    background: url('../../../assets/ucl-cover.jpg') center top no-repeat;
     background-size: cover;
     color: white;
     height: 100%;
@@ -58,40 +47,18 @@ mat-toolbar {
         width: 100%;
     }
 
-    h3 {
-        text-transform: uppercase;
-        
-        span {
-            color: #ffdd00;
-            
+    .card-footer {
+        p {
+            font-family: $text-font;
+            font-weight: bold;
         }
+    
+        background-color: #7589a1;
     }
 }
 
 
-.login-box{
-    padding:90px;
-    border: 1px solid white;
-    background:url('../../../assets/space-telescope.jpg') no-repeat;
-    box-shadow: 0px 0px 12px rgba(0,0,0,0.3);
-    border-radius: 2px;
-    color: white;
-    background-color: black;
-   
-}
 
-
-.login-btn{
-    background-color: #ffdd00;
-    color: black;
-}
-
-.sign-up-btn{
-    background-color: #ffdd00;
-    border-radius: 3px;
-    color: black;
-  
-}
 
 
 
