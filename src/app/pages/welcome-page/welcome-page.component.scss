@@ -17,15 +17,57 @@ header {
    
 }
 
+mat-toolbar {
+    background-color: #F69C21;
+   
+    
+    .welcome-title {
 
-header.welcome-back{
-    text-transform: uppercase;
+        display: flex;
+        flex-direction: row;
+        align-content: flex-end;
+
+        h1 {
+            font-size: 3.5rem;
+            color: white;
+            font-family: 'Inconsolata', monospace;
+            font-weight: bold;
+        }
+      
+    }
+
+    img {
+        max-width:100%;
+        max-height: 100%;
+
+    }
 }
 
+/* cover */
+#cover{
+    background: #222 url('../../../assets/space-telescope.jpg') center center no-repeat;
+    background-size: cover;
+    color: white;
+    height: 100%;
+    text-align: center;
+    //use flexbox to center
+    display: flex;
+    align-items: center;
 
-h3 span {
-    color: #ffdd00;
+    #cover-caption{
+        width: 100%;
+    }
+
+    h3 {
+        text-transform: uppercase;
+        
+        span {
+            color: #ffdd00;
+            
+        }
+    }
 }
+
 
 .login-box{
     padding:90px;

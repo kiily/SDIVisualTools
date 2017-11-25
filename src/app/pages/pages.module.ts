@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
+import { WelcomePageModule } from './welcome-page/welcome-page.module';
 
 @NgModule({
     declarations: [
@@ -24,11 +25,11 @@ import { RouterModule } from '@angular/router';
         AddScaffoldingDataPageComponent,
         HomeComponent,
         SignUpPageComponent,
-        WelcomePageComponent,
         SafeURLPipe        
     ], 
     imports : [
         CommonModule,
+        WelcomePageModule,
         FormsModule,
         ReactiveFormsModule,
         ComponentsModule,

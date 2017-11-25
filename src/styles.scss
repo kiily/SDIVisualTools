@@ -10,8 +10,8 @@
  - https://designschool.canva.com/blog/website-color-schemes/
  */
 
-html{
-    zoom:80%;
+html, body{
+    height: 100%;
 }
 
 body{
@@ -25,12 +25,7 @@ body{
     z-index: 5;
 }
 
-.page-title{
-    font-size:45pt;
-    color: white;
-    font-family: 'Inconsolata', monospace;
-    font-weight: bold;
-}
+
 
 .padding-top{
     padding-top:50px;
