@@ -16,7 +16,6 @@ export class HexagonMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("it loaded properly, bug is somewhere else");
   }
 
 }

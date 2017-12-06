@@ -25,7 +25,7 @@ export class SDINavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  activateMenu(){
+  activateMenu() {
     this.isOpen = !this.isOpen;
   }
 

@@ -2,78 +2,85 @@
 References:
     - https://github.com/web-tiki/responsive-grid-of-hexagons - Accessed July 2017 */
 
-#hexGrid {
-  display: flex;
-  flex-wrap: wrap;
-  width: 37%;
-  margin: 0 auto;
-  /* overflow: hidden; */
-  font-family: "Raleway", sans-serif;
-  font-size: 15px;
-  list-style-type: none;
-  padding-bottom: 11.2%;
+//Set different font sizes for the hexagon content based on BS breakpoints.
+$phone_width: 576px;
+$tablet_width: 768px;
+$desktop_width: 992px;
+$large_desktop_width: 1200px;
+$hololens_width: 2000px;
+
+@mixin phone-landscape {
+  @media (min-width: #{$phone_width}) and (max-width: #{$tablet_width - 1}) {
+    @content;
+  }
 }
 
-.hex {
-  position: relative;
-  visibility: hidden;
-  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
-  width: 50%;
+@mixin tablet {
+  @media (min-width: #{$tablet_width}) and (max-width: #{$desktop_width - 1}) {
+    @content;
+  }
 }
 
-.hex:nth-child(3n + 3) {
-  /* first hexagon of even rows */
-  margin-left: 25%; /* = width of .hex / 2  to indent even rows */
+@mixin desktop {
+  @media (min-width: #{$desktop_width}) and (max-width: #{$large-desktop_width - 1}) {
+    @content;
+  }
 }
 
-.hex::after {
-  content: "";
-  display: block;
-  padding-bottom: 86.602%; /* =  100 / tan(60) * 1.5 */
-}
-.hexIn {
-  position: absolute;
-  width: 96%;
-  padding-bottom: 110.851%; /* =  width / sin(60) */
-  margin: 0 2%;
-  overflow: hidden;
-  visibility: hidden;
-  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
-  -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
-  -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
-  transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
-}
-.hexIn * {
-  position: absolute;
-  visibility: visible;
-  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
-}
-.hexLink {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
-  -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
-  -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
-  transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+@mixin large-desktop {
+  @media (min-width: #{$large-desktop_width}) and (max-width: #{$hololens_width - 1}) {
+    @content;
+  }
 }
 
-/*** HEXAGON CONTENT ***/
-.hex img {
-  left: -100%;
-  right: -100%;
-  width: auto;
-  height: 100%;
-  margin: 0 auto;
-  -webkit-transform: rotate3d(0, 0, 0, 0deg);
-  -ms-transform: rotate3d(0, 0, 0, 0deg);
-  transform: rotate3d(0, 0, 0, 0deg);
+@mixin hololens {
+  @media (min-width: #{$hololens_width}) {
+    @content;
+  }
 }
 
-.hex h1,
-.hex p {
+@mixin p-text {
+  p {
+    @include phone-landscape {
+      font-size: 1.2em;
+    }
+    @include tablet {
+      font-size: 1.7em;
+    }
+    @include desktop {
+      font-size: 1.7em;
+    }
+    @include large-desktop {
+      font-size: 1.7em;
+    }
+    @include hololens {
+      font-size: 2.7em;
+    }
+  }
+}
+
+@mixin h1-text {
+  h1 {
+    font-size: 2.4em;
+    @include phone-landscape {
+      font-size: 3em;
+    }
+    @include tablet {
+      font-size: 3.5em;
+    }
+    @include desktop {
+      font-size: 3.7em;
+    }
+    @include large-desktop {
+      font-size: 4em;
+    }
+    @include hololens {
+      font-size: 7em;
+    }
+  }
+}
+
+@mixin hexagon-text {
   width: 100%;
   padding: 5%;
   margin: 0;
@@ -83,104 +90,110 @@ References:
   -webkit-transition: -webkit-transform 0.2s ease-out, opacity 0.3s ease-out;
   transition: transform 0.2s ease-out, opacity 0.3s ease-out;
 }
-.hex h1 {
-  bottom: 50%;
-  padding-top: 50%;
-  font-size: 3em;
-  z-index: 1;
-  -webkit-transform: translate3d(0, -100%, 0);
-  -ms-transform: translate3d(0, -100%, 0);
-  transform: translate3d(0, -100%, 0);
-}
-.hex h1::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 45%;
-  width: 10%;
-  text-align: center;
-  border-bottom: 1px solid #fff;
-}
-.hex p {
-  font-size: 14pt;
-  top: 50%;
-  padding-bottom: 50%;
-  -webkit-transform: translate3d(0, 100%, 0);
-  -ms-transform: translate3d(0, 100%, 0);
-  transform: translate3d(0, 100%, 0);
+
+#hexGrid {
+  //flex and wrap so that the last hexagon wraps around to the bottom
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  // margin: 0 auto;
+  /* overflow: hidden; */
+  font-family: "Raleway", sans-serif;
+  // font-size: 14px; //8.3
+  list-style-type: none;
+  padding-bottom: 11.2%;
 }
 
-/*** HEXAGON HOVER EFFECTS  ***/
-.hexLink:hover h1,
-.hexLink:focus h1,
-.hexLink:hover p,
-.hexLink:focus p {
-  -webkit-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+.hex {
+  font-size: 0.6em;
+  @include p-text;
+  @include h1-text;
+  position: relative;
+  visibility: hidden;
+  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  width: 50%; //this is the key width for the grid hexgons
+
+  &:nth-child(3n + 3) {
+    /* first hexagon of even rows */
+    margin-left: 25%; /* = width of .hex / 2  to indent even rows */
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 86.602%; /* =  100 / tan(60) * 1.5 */
+  }
+
+  .hexIn {
+    position: absolute;
+    width: 96%;
+    padding-bottom: 110.851%; /* =  width / sin(60) */
+    margin: 0 2%;
+    overflow: hidden;
+    visibility: hidden;
+    outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+    -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+    -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+    transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+
+    * {
+      position: absolute;
+      visibility: visible;
+      outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+    }
+  }
+
+  .hexLink {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+    -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+    transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+
+    &:hover,
+    &:focus {
+      h1,
+      p {
+        -webkit-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+
+  img {
+    left: -100%;
+    right: -100%;
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+    -webkit-transform: rotate3d(0, 0, 0, 0deg);
+    -ms-transform: rotate3d(0, 0, 0, 0deg);
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+
+  p {
+    @include hexagon-text;
+
+    top: 50%;
+    padding-bottom: 50%;
+    -webkit-transform: translate3d(0, 100%, 0);
+    -ms-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  h1 {
+    @include hexagon-text;
+    bottom: 50%;
+    padding-top: 50%;
+    // font-size: 1.4em; //1.5
+    z-index: 1;
+    -webkit-transform: translate3d(0, -100%, 0);
+    -ms-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
 }
-
-/*** HEXAGON SIZING AND NUMBER OF HEXAGONS PER ROW ***/
-
-/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
-// @media (min-width: 1201px) {
-//   /* <- 5-4  hexagons per row */
-//   #hexGrid {
-//     padding-bottom: 4.4%;
-//   }
-//   .hex {
-//     width: 20%; /* = 100 / 5 */
-//   }
-//   .hex:nth-child(9n + 6) {
-//     /* first hexagon of even rows */
-//     margin-left: 10%; /* = width of .hex / 2  to indent even rows */
-//   }
-// }
-
-// @media (max-width: 1200px) and (min-width: 901px) {
-//   /* <- 4-3  hexagons per row */
-//   #hexGrid {
-//     padding-bottom: 5.5%;
-//   }
-//   .hex {
-//     width: 25%; /* = 100 / 4 */
-//   }
-//   .hex:nth-child(7n + 5) {
-//     /* first hexagon of even rows */
-//     margin-left: 12.5%; /* = width of .hex / 2  to indent even rows */
-//   }
-// }
-
-// @media (max-width: 900px) and (min-width: 601px) {
-//   /* <- 3-2  hexagons per row */
-//   #hexGrid {
-//     padding-bottom: 7.4%;
-//   }
-//   .hex {
-//     width: 33.333%; /* = 100 / 3 */
-//   }
-//   .hex:nth-child(5n + 4) {
-//     /* first hexagon of even rows */
-//     margin-left: 16.666%; /* = width of .hex / 2  to indent even rows */
-//   }
-// }
-
-// @media (max-width: 600px) {
-//   /* <- 2-1  hexagons per row */
-//   #hexGrid {
-//     padding-bottom: 11.2%;
-//   }
-//   .hex {
-//     width: 50%; /* = 100 / 2 */
-//   }
-//   .hex:nth-child(3n + 3) {
-//     /* first hexagon of even rows */
-//     margin-left: 25%; /* = width of .hex / 2  to indent even rows */
-//   }
-// }
-
-// @media (max-width: 400px) {
-//   #hexGrid {
-//     font-size: 13px;
-//   }
-// }
