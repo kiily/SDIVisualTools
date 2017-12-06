@@ -7,7 +7,7 @@ method of the home page. It is associated with an HTML template that renders the
 References:
  - https://github.com/web-tiki/responsive-grid-of-hexagons - Accessed August 2017*/
 @Component({
-  selector: 'hexagon-menu',
+  selector: 'app-hexagon-menu',
   templateUrl: './hexagon-menu.component.html',
   styleUrls: ['./hexagon-menu.component.scss']
 })
@@ -16,6 +16,7 @@ export class HexagonMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("it loaded properly, bug is somewhere else");
   }
 
 }

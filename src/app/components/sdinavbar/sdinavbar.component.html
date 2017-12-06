@@ -1,26 +1,30 @@
- <div id="wrapper" [ngClass]="{ 'toggled': isOpen }">
-   
-
-   <!-- Sidebar -->
-   <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+<div id="wrapper" [ngClass]="{ 'toggled': isOpen }">
+  <!-- Sidebar -->
+  <nav class="navbar fixed-top" id="sidebar-wrapper" role="navigation">
     <ul class="nav sidebar-nav">
       <li class="sidebar-sdi">SDI Components:</li>
-      <li routerLinkActive="active current"><a routerLink="/home">Home</a></li>
-      <li routerLinkActive="active current"><a routerLink="/scaffolding">Scaffolding</a></li>
-      <li routerLinkActive="active current"><a routerLink="/discovery">Discovery</a></li>
-      <li routerLinkActive="active current"><a routerLink="/innovation">Innovation</a></li>    
+      <li routerLinkActive="active current">
+        <a routerLink="/home">Home</a>
+      </li>
+      <li routerLinkActive="active current">
+        <a routerLink="/scaffolding">Scaffolding</a>
+      </li>
+      <li routerLinkActive="active current">
+        <a routerLink="/discovery">Discovery</a>
+      </li>
+      <li routerLinkActive="active current">
+        <a routerLink="/innovation">Innovation</a>
+      </li>
       <!-- <li routerLinkActive="active current"><a routerLink='/welcome-page'>Sign Out</a></li> -->
     </ul>
   </nav>
-   
+
   <!-- /#sidebar-wrapper -->
 
-    <button type="button" class="menu is-closed" [ngClass]="{'is-open': isOpen, 'is-closed': !isOpen}" 
-    (click)='activateMenu()'>
-                <span class="menu-top"></span>
-    			      <span class="menu-middle"></span>
-				        <span class="menu-bottom"></span>
-            </button>
+  <button type="button" class="btn btn-outilne-secondary" (click)='activateMenu()'>
+    <span *ngIf="!isOpen" class="fa fa-bars fa-lg"></span>
+    <span *ngIf="isOpen" class="fa fa-times fa-lg"></span>
+  </button>
 
- </div> 
+</div>
 <!-- /#wrapper  -->

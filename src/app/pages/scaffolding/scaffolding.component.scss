@@ -1,62 +1,44 @@
-.button-menu{
-    padding-bottom: 50px;
-    padding-top: 120px;
-    
-}
-
-.button-box .button{ 
-    width: 48%;
-}
-
-.button-box-sm .button{ 
-    width: 100%;
-}
-
-
-
-
 /* clearfix */
-.clearfix:before, .clearfix:after {
-    content: " ";
-    display: table;
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
 }
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
-
-
-h2, h3, h4, h5 {
-    font-family: 'Inconsolata', monospace;
-    color: white;
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Inconsolata", monospace;
+  color: white;
 }
-#powerbi-app-button{
-    background: #FFDA11;
-    color: black;
+#powerbi-app-button {
+  background: #ffda11;
+  color: black;
 }
 
-#add-data-button{
-    background-color: #2DD276;
- }
+#add-data-button {
+  background-color: #2dd276;
+}
 
- #powerbi-dashboard-button{
-    color: black;
- }
-
+#powerbi-dashboard-button {
+  color: black;
+}
 
 .button:active,
 .button:hover,
 #powerbi-app-button:hover,
 #add-data-button:hover {
-    color: white;
-    background: #0e83cd;
-    
+  color: white;
+  background: #0e83cd;
 }
 
-.button a{
-    color: white;
+.button a {
+  color: white;
 }
-
 
 /* SLIDER
 
@@ -70,7 +52,9 @@ Reference: https://www.w3schools.com/howto/howto_css_switch.asp */
 }
 
 /* Hide default HTML checkbox */
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 /* The slider */
 .slider {
@@ -81,8 +65,8 @@ Reference: https://www.w3schools.com/howto/howto_css_switch.asp */
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -93,16 +77,16 @@ Reference: https://www.w3schools.com/howto/howto_css_switch.asp */
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
@@ -120,6 +104,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.glyphicon{
-    font-size: 25px;
+.glyphicon {
+  font-size: 25px;
 }

@@ -13,118 +13,128 @@
 
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<h1 class="display-1">Select Report</h1>
 <div class="container-fluid">
     <div class="row">
 
-
-
-        <div class="col-sm-12 button-menu">
-
-            <div class="col-sm-1 text-center">
-                <h4>Select a report:</h4>
-            </div>
-
-            <div class="col-sm-3">
-                <div class="button-box-sm">
-                    <button class="button" [style.background-color]="phase == '0' ? '#0e83cd' : 'black' " (click)="togglePhase(0)">General Overview<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' queryParams="{phaseNumber: '0'}"> (NEW TAB)</a></button>
-                    <button class="button" [style.background-color]="phase == '5' ? '#0e83cd' : 'black' " (click)="togglePhase(5)">SEAT Historical Data<a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' queryParams="{phaseNumber: '5'}"> (NEW TAB)</a></button>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-
-                <div class="button-box">
-                    <button class="button" [style.background-color]="phase == '1' ? '#0e83cd' : 'black' " (click)="togglePhase(1)">1. Procedural Programming
-                        <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '1'}"> (NEW TAB)</a></button>
-
-                    <button class="button" [style.background-color]="phase == '2' ? '#0e83cd' : 'black'" (click)="togglePhase(2)">2. Scripting
-                        <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '2'}"> (NEW TAB)</a></button>
-
-                    <button class="button" [style.background-color]="phase == '3' ? '#0e83cd' : 'black' " (click)="togglePhase(3)">3. Functional Programming
-                        <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '3'}"> (NEW TAB)</a></button>
-
-                    <button class="button" [style.background-color]="phase == '4' ? '#0e83cd' : 'black' " (click)="togglePhase(4)">4. Object-Oriented Programming
-                        <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '4'}"> (NEW TAB)</a></button>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="row">
-
-                    <div class="col-sm-6">
-                        <h5>Open reports on a new tab:</h5>
-                        <label class="switch">
-                             <input type="checkbox" [(ngModel)]="blankToggle" (change)="toggleBlank()">
-                             <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <div class="col-sm-6">
-
-                        <button class="button" id="add-data-button" routerLink='/add-scaffolding-data-page'>
-                            <span class="glyphicon glyphicon-stats"></span> Add Data</button>
-
-                    </div>
-                </div>
-
-            </div>
-
-
-
-
-        </div>
-
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row">
+        <!-- <div class="col-sm-1 text-center">
+            <h4>Select a report:</h4>
+        </div> -->
 
         <div class="col-sm-9">
-            <div [ngSwitch]="phase">
-                <!--CLEAN DATA DASHBOARDS  -->
-                <h2 *ngSwitchCase="0">General Overview Report:</h2>
-                <h2 *ngSwitchCase="1">Phase 1 - Procedural Programming Report:</h2>
-                <h2 *ngSwitchCase="2">Phase 2 - Scripting Report:</h2>
-                <h2 *ngSwitchCase="3">Phase 3 - Functional Programming Report:</h2>
-                <h2 *ngSwitchCase="4">Phase 4 - Object-Oriented Programming Report:</h2>
-                <h2 *ngSwitchCase="5">SEAT Historical Data Report</h2>
-                <!--GENERAL OVERVIEW REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="0" width="1180" height="800" [src]="this.reportLinks[0] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
-                <!--PHASE 1 - PROCEDURAL PROGRAMMING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="1" width="1180" height="800" [src]="this.reportLinks[1] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
-                <!--PHASE 2 - SCRIPTING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="2" width="1180" height="800" [src]="this.reportLinks[2] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
-                <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" [src]="this.reportLinks[3] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
-                <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" [src]="this.reportLinks[4] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
-                <!--SEAT TIMELINE REPORT  -->
-                <iframe class="report-frame" *ngSwitchCase="5" width="1180" height="800" [src]="this.reportLinks[5] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
-                <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
-                <iframe class="report-frame" *ngSwitchDefault width="1180" height="1000" [src]="this.reportLinks[0] | safeURL" frameborder="0"
-                    allowFullScreen="true"></iframe>
+            <div class="btn-group">
+                <button class="button" [style.background-color]="phase == '0' ? '#0e83cd' : 'black' " (click)="togglePhase(0)">General Overview
+                    <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' queryParams="{phaseNumber: '0'}">
+                        (NEW TAB)</a>
+                </button>
+                <button class="button" [style.background-color]="phase == '5' ? '#0e83cd' : 'black' " (click)="togglePhase(5)">SEAT Historical Data
+                    <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' queryParams="{phaseNumber: '5'}">
+                        (NEW TAB)</a>
+                </button>
+                <button class="button" [style.background-color]="phase == '1' ? '#0e83cd' : 'black' " (click)="togglePhase(1)">1. Procedural Programming
+                    <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '1'}"> (NEW TAB)</a>
+                </button>
 
-                <!-- Note that allowFullScreen was removed due to an issue with an Edge update prior to the demo
-                at Microsoft. Removing it was a workaround used as of 06/09/2017 - allowFullScreen should be added
-                afterwards -->
+                <button class="button" [style.background-color]="phase == '2' ? '#0e83cd' : 'black'" (click)="togglePhase(2)">2. Scripting
+                    <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '2'}"> (NEW TAB)</a>
+                </button>
+
+                <button class="button" [style.background-color]="phase == '3' ? '#0e83cd' : 'black' " (click)="togglePhase(3)">3. Functional Programming
+                    <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '3'}"> (NEW TAB)</a>
+                </button>
+
+                <button class="button" [style.background-color]="phase == '4' ? '#0e83cd' : 'black' " (click)="togglePhase(4)">4. Object-Oriented Programming
+                    <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' [queryParams]="{phaseNumber: '4'}"> (NEW TAB)</a>
+                </button>
             </div>
         </div>
 
-        <div class="col-sm-3" style="padding-right: 50px;">
 
-            <h3>PowerBI App:</h3>
-            <!--Works if the user has a PowerBI account and has been granted access to the app (takes the user to the dashboard) -->
+        <div class="col-sm-3">
+            <div class="row">
 
-            <a [href]="this.powerBIAppLinks[0]" target="_blank"><button class="button btn-block" id="powerbi-app-button">SDI VisualTools PowerBI (Pro)</button></a>
-            <br>
-            <a [href]="this.powerBIAppLinks[1]" target="_blank"><button class="button btn-block" id="powerbi-dashboard-button"><span class="glyphicon glyphicon-th-large"></span> SEAT Dashboard (Pro)</button></a>
+                <div class="col-sm-6">
+                    <h5>Open reports on a new tab:</h5>
+                    <label class="switch">
+                        <input type="checkbox" [(ngModel)]="blankToggle" (change)="toggleBlank()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="col-sm-6">
+
+                    <button class="button" id="add-data-button" routerLink='/add-scaffolding-data-page'>
+                        <span class="glyphicon glyphicon-stats"></span> Add Data</button>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-sm-9">
+                <div [ngSwitch]="phase">
+                    <!--CLEAN DATA DASHBOARDS  -->
+                    <h2 *ngSwitchCase="0">General Overview Report:</h2>
+                    <h2 *ngSwitchCase="1">Phase 1 - Procedural Programming Report:</h2>
+                    <h2 *ngSwitchCase="2">Phase 2 - Scripting Report:</h2>
+                    <h2 *ngSwitchCase="3">Phase 3 - Functional Programming Report:</h2>
+                    <h2 *ngSwitchCase="4">Phase 4 - Object-Oriented Programming Report:</h2>
+                    <h2 *ngSwitchCase="5">SEAT Historical Data Report</h2>
+                    <!--GENERAL OVERVIEW REPORT  -->
+                    <iframe class="report-frame" *ngSwitchCase="0" width="1180" height="800" [src]="this.reportLinks[0] | safeURL" frameborder="0"
+                        allowFullScreen="true"></iframe>
+                    <!--PHASE 1 - PROCEDURAL PROGRAMMING REPORT  -->
+                    <iframe class="report-frame" *ngSwitchCase="1" width="1180" height="800" [src]="this.reportLinks[1] | safeURL" frameborder="0"
+                        allowFullScreen="true"></iframe>
+                    <!--PHASE 2 - SCRIPTING REPORT  -->
+                    <iframe class="report-frame" *ngSwitchCase="2" width="1180" height="800" [src]="this.reportLinks[2] | safeURL" frameborder="0"
+                        allowFullScreen="true"></iframe>
+                    <!--PHASE 3 - FUNCTIONAL PROGRAMMING REPORT  -->
+                    <iframe class="report-frame" *ngSwitchCase="3" width="1180" height="800" [src]="this.reportLinks[3] | safeURL" frameborder="0"
+                        allowFullScreen="true"></iframe>
+                    <!--PHASE 4 - O-O PROGRAMMING REPORT  -->
+                    <iframe class="report-frame" *ngSwitchCase="4" width="1180" height="800" [src]="this.reportLinks[4] | safeURL" frameborder="0"
+                        allowFullScreen="true"></iframe>
+                    <!--SEAT TIMELINE REPORT  -->
+                    <iframe class="report-frame" *ngSwitchCase="5" width="1180" height="800" [src]="this.reportLinks[5] | safeURL" frameborder="0"
+                        allowFullScreen="true"></iframe>
+                    <!-- DISPLAY GENERAL OVERVIEW REPORT BY DEFAULT -->
+                    <iframe class="report-frame" *ngSwitchDefault width="1180" height="1000" [src]="this.reportLinks[0] | safeURL" frameborder="0"
+                        allowFullScreen="true"></iframe>
+
+                    <!-- Note that allowFullScreen was removed due to an issue with an Edge update prior to the demo
+                at Microsoft. Removing it was a workaround used as of 06/09/2017 - allowFullScreen should be added
+                afterwards -->
+                </div>
+            </div>
+
+            <div class="col-sm-3" style="padding-right: 50px;">
+
+                <h3>PowerBI App:</h3>
+                <!--Works if the user has a PowerBI account and has been granted access to the app (takes the user to the dashboard) -->
+
+                <a [href]="this.powerBIAppLinks[0]" target="_blank">
+                    <button class="button btn-block" id="powerbi-app-button">SDI VisualTools PowerBI (Pro)</button>
+                </a>
+                <br>
+                <a [href]="this.powerBIAppLinks[1]" target="_blank">
+                    <button class="button btn-block" id="powerbi-dashboard-button">
+                        <span class="glyphicon glyphicon-th-large"></span> SEAT Dashboard (Pro)</button>
+                </a>
+            </div>
         </div>
     </div>
-</div>

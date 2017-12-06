@@ -8,16 +8,9 @@ import { Routes } from '@angular/router';
 
 
 
-//This constants holds the configuration for all the necessary routes within the application
+// This constants holds the configuration for all the necessary routes within the application
 export const rootRouterConfig: Routes = [
-
-
     { path: '', component: WelcomePageComponent },
     { path: 'welcome-page', component: WelcomePageComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'scaffolding', component: ScaffoldingComponent },
-    { path: 'add-scaffolding-data-page', component: AddScaffoldingDataPageComponent },
-    { path: 'discovery', component: DiscoveryComponent },
-    { path: 'innovation', component: InnovationComponent },  
-  
+    { path: 'home', component: HomeComponent }
 ];

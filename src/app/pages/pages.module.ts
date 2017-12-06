@@ -23,17 +23,17 @@ import { RouterModule } from '@angular/router';
         AddScaffoldingDataPageComponent,
         HomeComponent,
         WelcomePageComponent,
-        SafeURLPipe        
-    ], 
+        SafeURLPipe
+    ],
     imports : [
         CommonModule,
         FormsModule,
         MatToolbarModule,
         ReactiveFormsModule,
         ComponentsModule,
-        MarkdownModule.forRoot(),  
+        MarkdownModule.forRoot(),
         RouterModule
-        
+
     ],
     exports : [
         ScaffoldingComponent,
@@ -45,4 +45,6 @@ import { RouterModule } from '@angular/router';
         RouterModule
     ]
 })
-export class PagesModule {}
+export class PagesModule {
+
+}

@@ -1,3 +1,4 @@
+import { componentRoutes } from './components.routes';
 import { RouterModule } from '@angular/router';
 
 import { ConfirmDialogComponent } from './alerts/confirm-dialog/confirm-dialog.component';
@@ -27,13 +28,12 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
         CommonModule,
         MatDialogModule,
         ReactiveFormsModule,
-        RouterModule
-        
-    ], 
+        RouterModule.forChild(componentRoutes)
+    ],
     entryComponents : [
         ErrorDialogComponent,
         ConfirmDialogComponent
-    ],    
+    ],
     exports: [
         HexagonMenuComponent,
         LogoutComponent,
@@ -46,5 +46,6 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     ]
 
 })
+export class ComponentsModule {
 
-export class ComponentsModule{}
+}
