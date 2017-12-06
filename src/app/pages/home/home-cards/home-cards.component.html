@@ -1,0 +1,68 @@
+<div class="card card-inverse" (mouseenter)="toggleCard('scaffolding')">
+  <div class="card-header text-center">
+    <h2 class="card-title text-white">Scaffolding
+      <span class="fa fa-bar-chart fa-lg"></span>
+      <span *ngIf="cards['scaffolding']" class="fa fa-times" (click)="unToggleCard('scaffolding')"></span>
+    </h2>
+  </div>
+  <div *ngIf="cards['scaffolding']" class="card-block">
+    <p class="lead">Scaffolding explores new methods of teaching the basic principles of programming. This phase focuses on linear problem
+      solving and is supported by programming lab assignments (PLAs) during term time. Scaffolding data can be revealing
+      of how well a student is grasping the taught concepts and to help teachers assess areas that require improvement.
+    </p>
+  </div>
+</div>
+
+<div class="card" (mouseenter)="toggleCard('discovery')">
+  <div class="card-header text-center">
+    <h2 class="text-white">Discovery
+      <span class="fa fa-globe fa-lg"></span>
+      <span *ngIf="cards['discovery']" class="fa fa-times" (click)="unToggleCard('discovery')"></span>
+    </h2>
+
+  </div>
+  <div *ngIf="cards['discovery']" class="card-block">
+    <p class="lead">Discovery involves open or guided, non-linear problem-based learning with exploration to solve requirements. Discovery
+      is encouraged with project work that forces students to independently research and consider alternatives to develop
+      and evaluate their solutions. This is an iterative design approach based on prior experiences.
+    </p>
+
+  </div>
+</div>
+<div class="card" (mouseenter)="toggleCard('innovation')">
+  <div class="card-header text-center">
+    <h2 class="text-white">Innovation
+      <span class="fa fa-flask fa-lg"></span>
+      <span *ngIf="cards['innovation']" class="fa fa-times" (click)="unToggleCard('innovation')"></span>
+    </h2>
+  </div>
+  <div *ngIf="cards['innovation']" class="card-block">
+
+    <p class="lead">Innovation builds upon the two previous phases. This phase pushes students to identify optimal solutions based on the
+      knowledge gathered through scaffolding and discovery. Innovation is encouraged by giving students a larger problem
+      which enables them to develop something innovative and exciting.
+    </p>
+  </div>
+</div>
+
+<div class="card" (mouseenter)="toggleCard('theory')">
+  <div class="card-header text-center">
+    <h2 class="text-white">Constructionism
+      <span class="text-formatted">- the underlying theory</span>
+      <span class="fa fa-book fa-lg"></span>
+      <span *ngIf="cards['theory']" class="fa fa-times" (click)="unToggleCard('theory')"></span>
+
+    </h2>
+  </div>
+  <div *ngIf="cards['theory']" class="card-block">
+
+    <p class="lead">SDI is based on constructionism, a learning theory which stems from constructivist principles in psychology. Constructivist
+      theories hold a view of learning as reconstruction process based on the idea that learners construct mental models
+      in other to reason about their world. Constructionist learning is a student-centred, iterative approach that promotes
+      discovery learning i.e. students are encouraged to use information known a priori as an instrument to acquire more
+      knowledge and to build increasingly complex levels of understanding. This is alternatively known as apprenticeship
+      learning i.e. learn by doing and based on the principle that “the way teachers teach should be adapted to how the students
+      learn”.
+    </p>
+  </div>
+</div>

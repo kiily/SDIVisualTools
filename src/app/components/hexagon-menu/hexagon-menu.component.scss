@@ -39,6 +39,7 @@ $hololens_width: 2000px;
   }
 }
 
+//Responsive paragraphs in the hexagon
 @mixin p-text {
   p {
     @include phone-landscape {
@@ -59,6 +60,7 @@ $hololens_width: 2000px;
   }
 }
 
+//Responsive header in the hexagon
 @mixin h1-text {
   h1 {
     font-size: 2.4em;

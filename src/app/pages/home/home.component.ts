@@ -11,6 +11,8 @@ the home page.*/
 })
 export class HomeComponent implements OnInit {
 
+  pageTitle = "home";
+  
   constructor(private authService : AuthService) {
 
    }

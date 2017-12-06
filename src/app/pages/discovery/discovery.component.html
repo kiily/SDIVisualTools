@@ -1,19 +1,6 @@
-
 <!--CONTAINER FOR TOP NAVBAR MENU  -->
 
-<div class="container-fluid top-row">
-    <div class="row">
-        <div class="col-sm-3">
-            <sdinavbar></sdinavbar>
-        </div>
-        <div class="col-sm-4 text-center text-transform">
-            <h1 class="page-title">Discovery</h1>
-        </div>
-         <div class="col-sm-1 pull-right low-padding-top">
-          <logout-button></logout-button>
-        </div>
-    </div>
-</div>
+<app-header [title]="pageTitle"></app-header>
 
 
 
@@ -22,40 +9,40 @@
 <div class="container-fluid link-container">
     <div class="row">
 
-       
+
         <div class="col-sm-4">
             <div class="row">
-            <div class="col-sm-12">
-            <h2>Add a new link:</h2>
-            <form [formGroup]="addLinkForm" (ngSubmit)="addNewLink()">
-                <div class="form-group">
-                    <input formControlName="title" type="text" class="form-control" placeholder="Title" required/>
-                    <input formControlName="link" type="text" class="form-control" placeholder="Link" required/>
+                <div class="col-sm-12">
+                    <h2>Add a new link:</h2>
+                    <form [formGroup]="addLinkForm" (ngSubmit)="addNewLink()">
+                        <div class="form-group">
+                            <input formControlName="title" type="text" class="form-control" placeholder="Title" required/>
+                            <input formControlName="link" type="text" class="form-control" placeholder="Link" required/>
 
-                    <label for="category">Link category:</label>
-                    <select formControlName="category" class="form-control" id="category">
-                    <option *ngFor="let category of discoveryLinkCategories" [value]="category.linkCategory">{{category | json}}</option>
-                </select>
-                </div>
-                <button class="btn btn-block btn-success" type="submit">Add Link</button>
-            </form>
-            </div>
-            </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <h2>Useful Discovery Links:</h2>
-                <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let link of discoveryLinks">
-                        <div>
-                            <a target="_blank" href='{{link.link}}'> {{link.title}} - {{link.link}}</a>
-                            <button class="btn-sm btn-danger pull-right" (click)="removeLink(link)">
-                           <span class="glyphicon glyphicon-trash"></span>
-                        </button>
+                            <label for="category">Link category:</label>
+                            <select formControlName="category" class="form-control" id="category">
+                                <option *ngFor="let category of discoveryLinkCategories" [value]="category.linkCategory">{{category | json}}</option>
+                            </select>
                         </div>
-                    </li>
-                </ul>
+                        <button class="btn btn-block btn-success" type="submit">Add Link</button>
+                    </form>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Useful Discovery Links:</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let link of discoveryLinks">
+                            <div>
+                                <a target="_blank" href='{{link.link}}'> {{link.title}} - {{link.link}}</a>
+                                <button class="btn-sm btn-danger pull-right" (click)="removeLink(link)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
 

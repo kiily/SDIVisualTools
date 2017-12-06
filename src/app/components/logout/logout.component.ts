@@ -20,12 +20,13 @@ export class LogoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  logout(){
+  logout() {
     this.authService.logout()
     .then(auth => {
       console.log(auth);
       this.router.navigate(['/welcome-page']);
-    })
+    });
   }
 
+  
 }

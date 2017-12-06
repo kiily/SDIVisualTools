@@ -1,0 +1,32 @@
+$text-font: "Inconsolata", monospace;
+
+.card {
+  .custom-btn {
+    background-color: #ffdd00;
+    color: black;
+  }
+  .card-header {
+    background-color: #7589a1;
+
+    h2 {
+      text-transform: uppercase;
+      font-family: $text-font;
+      font-weight: bold;
+      color: white;
+    }
+
+    span {
+      color: #ffdd00;
+    }
+  }
+
+  .card-block {
+    span {
+      color: red;
+    }
+
+    form {
+      color: black;
+    }
+  }
+}

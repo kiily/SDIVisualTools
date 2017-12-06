@@ -1,18 +1,11 @@
-<div class="container-fluid top-row">
-  <div class="row">
-    <div class="col-sm-3">
-      <sdinavbar></sdinavbar>
-    </div>
-    <div class="col-sm-4 text-center text-transform">
-      <h1 class="page-title">Scaffolding</h1>
-    </div>
-    <div class="col-sm-1 pull-right low-padding-top">
-      <logout-button></logout-button>
-    </div>
-  </div>
-</div>
+<app-header [title]="pageTitle"></app-header>
 
-<br><br><br><br><br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="container-fluid">
   <div class="row">
@@ -23,22 +16,28 @@
 
     </div>
     <div class="col-sm-3">
-      <a [href]="this.dataManipulationLinks[0]" target="_blank"><button class="button btn-block" id="share-point-btn">
-                  <span class="glyphicon glyphicon-cloud"></span> SDI VisualTools SharePoint</button></a>
+      <a [href]="this.dataManipulationLinks[0]" target="_blank">
+        <button class="button btn-block" id="share-point-btn">
+          <span class="glyphicon glyphicon-cloud"></span> SDI VisualTools SharePoint</button>
+      </a>
     </div>
 
     <div class="col-sm-3">
-      <a [href]="this.dataManipulationLinks[1]" target="_blank"><button class="button btn-block" id="powerbi-excel-button">
-                        <span class="glyphicon glyphicon-cloud"></span> Excel (Data Source) </button></a>
+      <a [href]="this.dataManipulationLinks[1]" target="_blank">
+        <button class="button btn-block" id="powerbi-excel-button">
+          <span class="glyphicon glyphicon-cloud"></span> Excel (Data Source) </button>
+      </a>
     </div>
     <div class="col-sm-3">
-      <a [href]="this.dataManipulationLinks[2]" target="_blank"><button class="button btn-block" id="powerbi-dashboard-button">
-                    <span class="glyphicon glyphicon-th-large"></span> App Workspace (Dashboard)</button></a>
+      <a [href]="this.dataManipulationLinks[2]" target="_blank">
+        <button class="button btn-block" id="powerbi-dashboard-button">
+          <span class="glyphicon glyphicon-th-large"></span> App Workspace (Dashboard)</button>
+      </a>
     </div>
   </div>
 </div>
 <br>
-<div class="container-fluid add-data-forms" >
+<div class="container-fluid add-data-forms">
   <div class="row">
     <div class="col-sm-6 form-box">
       <h1>Add a new module</h1>
@@ -74,7 +73,7 @@
                 <label for="phase">Phase:</label>
                 <select formControlName="phase" class="form-control" name="phase" required>
                   <option *ngFor="let phase of phases" [value]="phase.phaseName">{{phase.phaseName}}</option>
-              </select>
+                </select>
                 <div class="alert alert-danger" *ngIf="addModuleForm.controls['phase'].touched && 
                !addModuleForm.controls['phase'].valid ">
                   Phase is required.
@@ -121,7 +120,7 @@
               <label for="moduleID">ModuleID:</label>
               <select formControlName="moduleID" class="form-control" name="moduleID" required>
                 <option *ngFor="let module of modules" [value]="module.moduleCode">{{module.moduleCode}}</option>
-          </select>
+              </select>
               <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['moduleID'].touched && 
              !addProblemSheetForm.controls['moduleID'].valid ">
                 ModuleID is required.
@@ -184,9 +183,8 @@
           <div class="col-sm-4">
             <label for="problem-sheet-ID">ProblemSheetID:</label>
             <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
-                <option *ngFor="let problemSheet of problemSheets" 
-                [value]="problemSheet.problemSheetID">{{problemSheet.problemSheetID}}. {{problemSheet.problemSheetTitle}} ({{problemSheet.moduleID}})</option>
-          </select>
+              <option *ngFor="let problemSheet of problemSheets" [value]="problemSheet.problemSheetID">{{problemSheet.problemSheetID}}. {{problemSheet.problemSheetTitle}} ({{problemSheet.moduleID}})</option>
+            </select>
             <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemSheetID'].touched && addProblemForm.controls['problemSheetID'].invalid">
               ProblemSheetID is required.
             </div>
@@ -210,9 +208,8 @@
           <div class="col-sm-4">
             <label for="problem-ID">ProblemID:</label>
             <select formControlName="problemID" class="form-control" name="problem-ID" required>
-                        <option *ngFor="let problem of problems" 
-                        [value]="problem.problemID">{{problem.problemID}}. {{problem.problemTitle}} (ProblemSheetID: {{problem.problemSheetID}})</option>
-                  </select>
+              <option *ngFor="let problem of problems" [value]="problem.problemID">{{problem.problemID}}. {{problem.problemTitle}} (ProblemSheetID: {{problem.problemSheetID}})</option>
+            </select>
             <div class="alert alert-danger" *ngIf="addAttemptForm.controls['problemID'].touched && 
                     addAttemptForm.controls['problemID'].invalid">
               Problem ID is required.
@@ -220,9 +217,8 @@
 
             <label for="student-ID">StudentID:</label>
             <select formControlName="studentID" class="form-control" name="student-ID" required>
-                        <option *ngFor="let student of students" 
-                        [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
-                  </select>
+              <option *ngFor="let student of students" [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
+            </select>
             <div class="alert alert-danger" *ngIf="addAttemptForm.controls['studentID'].touched && 
                     addAttemptForm.controls['studentID'].invalid">
               Student ID is required.
@@ -232,9 +228,9 @@
           <div class="col-sm-4">
             <label for="compile-status">Compile Status:</label>
             <select formControlName="compile" class="form-control" name="compile-status" required>
-                        <option value="Y">Yes</option>
-                         <option value="N">No</option>
-                  </select>
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+            </select>
             <div class="alert alert-danger" *ngIf="addAttemptForm.controls['compile'].touched && 
                     addAttemptForm.controls['compile'].invalid">
               Compile Status is required.
@@ -242,9 +238,9 @@
 
             <label for="output-status">Output:</label>
             <select formControlName="output" class="form-control" name="output-status" required>
-                        <option value="Correct">Correct</option>
-                        <option value="Wrong">Wrong</option>
-                  </select>
+              <option value="Correct">Correct</option>
+              <option value="Wrong">Wrong</option>
+            </select>
             <div class="alert alert-danger" *ngIf="addAttemptForm.controls['output'].touched && 
                     addAttemptForm.controls['output'].invalid">
               Output is required.
@@ -281,9 +277,8 @@
           <div class="col-sm-4">
             <label for="student-ID">StudentID:</label>
             <select formControlName="studentID" #studentID class="form-control" name="student-ID" required>
-                <option *ngFor="let student of students" 
-                [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
-           </select>
+              <option *ngFor="let student of students" [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
+            </select>
             <div class="alert alert-danger" *ngIf="addStudentModuleForm.controls['studentID'].touched && 
             addStudentModuleForm.controls['studentID'].invalid">
               Student ID is required.
@@ -293,8 +288,8 @@
           <div class="col-sm-4">
             <label for="moduleID">ModuleID:</label>
             <select formControlName="moduleID" class="form-control" name="moduleID" required>
-                <option *ngFor="let module of modules" [value]="module.moduleCode">{{module.moduleCode}}</option>
-          </select>
+              <option *ngFor="let module of modules" [value]="module.moduleCode">{{module.moduleCode}}</option>
+            </select>
             <div class="alert alert-danger" *ngIf="addStudentModuleForm.controls['moduleID'].touched && 
             addStudentModuleForm.controls['moduleID'].invalid">
               Module ID is required.
@@ -308,24 +303,25 @@
       </form>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-4">
-          <h3>Add Excel Data</h3>
-        </div>
-        <br>
-        <div class="col-sm-5">
-          <input type="file" (change)="onFileChanged($event)" multiple="false"/>
-        </div>
-        <div class="col-sm-3">
-          <button class="btn btn-block" (click)="uploadExcelData()">Upload Data</button>
-        </div>
+      <div class="col-sm-4">
+        <h3>Add Excel Data</h3>
       </div>
-
-   
+      <br>
+      <div class="col-sm-5">
+        <input type="file" (change)="onFileChanged($event)" multiple="false" />
+      </div>
+      <div class="col-sm-3">
+        <button class="btn btn-block" (click)="uploadExcelData()">Upload Data</button>
+      </div>
     </div>
+
+
+  </div>
 
 </div>
 
-<br><br>
+<br>
+<br>
 <div class="container-fluid">
   <div class="row text-formatted" *ngIf="excelData != null">
     <div class="col-sm-4 col-sm-offset-4 text-center">

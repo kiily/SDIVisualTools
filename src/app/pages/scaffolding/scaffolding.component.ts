@@ -19,6 +19,7 @@ References:
 })
 export class ScaffoldingComponent implements OnInit {
 
+  pageTitle = "Scaffolding";
   phase : string;
 
   //New Tab Toggle

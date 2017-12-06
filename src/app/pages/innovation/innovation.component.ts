@@ -23,6 +23,7 @@ References:
 })
 export class InnovationComponent implements OnInit {
 
+  pageTitle = "Innovation";
   innovations: Innovation[];
   innoflowUsers: InnovationUser[];
   // innoflowUsersFirebase : FirebaseListObservable<any[]>;

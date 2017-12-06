@@ -1,7 +1,7 @@
-import { AlertGenerator } from './../alerts/alert-generator';
-import { AuthService } from './../../services/auth.service';
+import { AlertGenerator } from './../../../components/alerts/alert-generator';
+import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
-import { AuthValidator } from './../../common/validators/auth.validator';
+import { AuthValidator } from './../../../common/validators/auth.validator';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 

@@ -1,3 +1,7 @@
+import { HomeCardsComponent } from './home/home-cards/home-cards.component';
+import { ScrollIconComponent } from './home/scroll-icon/scroll-icon.component';
+import { LoginFormComponent } from './welcome-page/login-form/login-form.component';
+import { SignupFormComponent } from './welcome-page/signup-form/signup-form.component';
 
 import { SafeURLPipe } from '../pipes/safe-url.pipe';
 import { MarkdownModule } from 'angular2-markdown';
@@ -23,12 +27,15 @@ import { RouterModule } from '@angular/router';
         AddScaffoldingDataPageComponent,
         HomeComponent,
         WelcomePageComponent,
+        SignupFormComponent,
+        LoginFormComponent,
+        ScrollIconComponent,
+        HomeCardsComponent,
         SafeURLPipe
     ],
     imports : [
         CommonModule,
         FormsModule,
-        MatToolbarModule,
         ReactiveFormsModule,
         ComponentsModule,
         MarkdownModule.forRoot(),

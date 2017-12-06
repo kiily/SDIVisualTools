@@ -36,6 +36,8 @@ REFERENCES:
 })
 export class AddScaffoldingDataPageComponent implements OnInit {
 
+  pageTitle = "Scaffolding";
+
   //Firebase Scaffolding data
   phases : Phase[] =[];
   modules : Module[] = [];

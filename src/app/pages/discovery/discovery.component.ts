@@ -17,6 +17,7 @@ that renders the discovery page. Current features: add and remove discovery link
 })
 export class DiscoveryComponent implements OnInit {
 
+  pageTitle = "Discovery";
   discoveryLinks : DiscoveryLink[] =[] ;
   discoveryLinkCategories : DiscoveryLinkCategory[] = [];
   

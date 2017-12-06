@@ -1,57 +1,36 @@
-
-
 /*  LOGOUT BUTTON 
 
 References: 
  -  https://codepen.io/jeremyloyd/pen/EaavQb - Acessed July 2017*/
-.navigation {
-  width: 100%;
-}
-
-.navigation a {
-    text-decoration: none;
-    color:  white;
-}
-
-.glyphicon-log-out{
-    font-size: 25px;
-    color: white;
-
-}
 
 .logout {
   font-size: 20px;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   right: -18px;
   overflow: hidden;
+  color: white;
   letter-spacing: 3px;
   opacity: 0;
-  transition: opacity .45s;
-  -webkit-transition: opacity .35s;
-  
+  transition: opacity 0.45s;
+  -webkit-transition: opacity 0.35s;
 }
 
 .logout-button {
-	text-decoration: none;
-   padding: 30px; 
-  /* margin: 15px; */
-  color:white;
-  width: 25px;
-  transition: width .35s;
-  -webkit-transition: width .35s;
-  overflow: hidden
-}
-
-
-
-a:hover .logout{
-  opacity: .9;
   text-decoration: none;
+  padding: 30px;
+  /* margin: 15px; */
   color: white;
+  width: 25px;
+  transition: width 0.35s;
+  -webkit-transition: width 0.35s;
+  overflow: hidden;
+
+  span {
+    color: white;
+  }
 }
 
-.text-formatted{
-       color: white;
-    font-family: 'Inconsolata', monospace;
-    font-weight: bold;
+a:hover .logout {
+  opacity: 0.9;
+  text-decoration: none;
 }
