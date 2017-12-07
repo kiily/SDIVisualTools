@@ -1,3 +1,4 @@
+import { WelcomePageModule } from './welcome-page/welcome-page.module';
 import { HomeCardsComponent } from './home/home-cards/home-cards.component';
 import { ScrollIconComponent } from './home/scroll-icon/scroll-icon.component';
 import { LoginFormComponent } from './welcome-page/login-form/login-form.component';
@@ -27,8 +28,6 @@ import { RouterModule } from '@angular/router';
         AddScaffoldingDataPageComponent,
         HomeComponent,
         WelcomePageComponent,
-        SignupFormComponent,
-        LoginFormComponent,
         ScrollIconComponent,
         HomeCardsComponent,
         SafeURLPipe
@@ -36,6 +35,7 @@ import { RouterModule } from '@angular/router';
     imports : [
         CommonModule,
         FormsModule,
+        WelcomePageModule,
         ReactiveFormsModule,
         ComponentsModule,
         MarkdownModule.forRoot(),
