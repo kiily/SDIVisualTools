@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { ComponentsModule } from '../../../components/components.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StudentModuleFormComponent } from './student-module-form/student-module-form.component';
+import { ExcelComponent } from './excel/excel.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { StudentModuleFormComponent } from './student-module-form/student-module
         ProblemFormComponent,
         ProblemSheetFormComponent,
         AttemptFormComponent,
-        StudentModuleFormComponent
+        StudentModuleFormComponent,
+        ExcelComponent
     ],
     imports: [
         CommonModule,
