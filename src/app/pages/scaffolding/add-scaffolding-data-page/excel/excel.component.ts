@@ -32,7 +32,7 @@ export class ExcelComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.studentsSub.unsubscribe();
   }
 
@@ -86,8 +86,6 @@ export class ExcelComponent implements OnInit, OnDestroy {
             && headers.includes('LastName') && headers.includes('Email')
           && headers.includes('PromotionYear')) {
             // headers are valid - assume that the data is too
-
-
               // clear the excel data after the upload
               // this.excelData = null;
               console.log('pressed');

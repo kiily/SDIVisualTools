@@ -12,8 +12,9 @@
     </div>
   </div>
   <div class="row" *ngIf="excelData != null">
+    <br>
     <div class="col-12 col-sm-4 offset-sm-4 text-center">
-      <table class="table ">
+      <table class="table table-inverse ">
         <tr *ngFor="let row of excelData">
           <td *ngFor="let val of row">{{val}} </td>
         </tr>
