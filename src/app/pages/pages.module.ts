@@ -1,3 +1,4 @@
+import { HomeModule } from './home/home.module';
 import { WelcomePageModule } from './welcome-page/welcome-page.module';
 import { HomeCardsComponent } from './home/home-cards/home-cards.component';
 import { ScrollIconComponent } from './home/scroll-icon/scroll-icon.component';
@@ -26,28 +27,22 @@ import { RouterModule } from '@angular/router';
         DiscoveryComponent,
         InnovationComponent,
         AddScaffoldingDataPageComponent,
-        HomeComponent,
         WelcomePageComponent,
-        ScrollIconComponent,
-        HomeCardsComponent,
+        HomeComponent,
         SafeURLPipe
     ],
     imports : [
         CommonModule,
         FormsModule,
-        WelcomePageModule,
         ReactiveFormsModule,
+        WelcomePageModule,
+        HomeModule,
         ComponentsModule,
         MarkdownModule.forRoot(),
         RouterModule
 
     ],
     exports : [
-        ScaffoldingComponent,
-        DiscoveryComponent,
-        InnovationComponent,
-        AddScaffoldingDataPageComponent,
-        HomeComponent,
         WelcomePageComponent,
         RouterModule
     ]

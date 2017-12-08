@@ -1,3 +1,4 @@
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { consoleTestResultHandler } from 'tslint/lib/test';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
@@ -9,16 +10,34 @@ between the home, scaffolding, discovery and innovation pages.
 
 References:
 - https://bootsnipp.com/snippets/featured/fancy-sidebar-navigation
+- https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular/
 */
 
 @Component({
   selector: 'sdinavbar',
   templateUrl: './sdinavbar.component.html',
-  styleUrls: ['./sdinavbar.component.scss']
+  styleUrls: ['./sdinavbar.component.scss'],
+  // animations: [
+  //   trigger('collapse', [
+  //     state('open', style({
+  //       opacity: '1',
+  //       display: 'block',
+  //       transform: 'translate3d(0,0,0)',
+  //       overflow: 'hidden',
+  //       width: '220px'
+  //      })),
+  //      state('closed', style({
+  //       opacity: '0',
+  //       display: 'none',
+  //       transform: 'translate3d(100%,0,0)'
+  //      })),
+  //      transition('closed => open', animate('200ms ease-in')),
+  //      transition('open => closed', animate('100ms ease-out'))
+  //   ])
+  // ]
 })
 export class SDINavbarComponent implements OnInit {
-  isOpen: boolean = false;
-
+  isOpen= false;
 
   constructor() { }
 

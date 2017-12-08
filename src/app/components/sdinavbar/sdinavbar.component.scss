@@ -2,52 +2,49 @@
 - https://bootsnipp.com/snippets/featured/fancy-sidebar-navigation - Accessed July 2017
 */
 
-// body {
-//   position: relative;
-//   overflow-x: hidden;
-// }
+body {
+  position: relative;
+  overflow-x: hidden;
+}
 
 /*SDI NAVBAR WRAPPER*/
-
+#wrapper.toggled {
+  padding-left: 220px;
+  #sidebar-wrapper {
+    width: 220px;
+  }
+}
 #wrapper {
   padding-left: 0;
-  padding-bottom: 100px;
+
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 
-  &.toggled {
-    padding-left: 12em;
-  }
-
   #sidebar-wrapper {
-    z-index: 1;
-    left: 230px;
-    width: 0;
+    position: absolute;
+    z-index: 2000;
+    //change width of navbar
+    // left: 244px;
     /* Change height of the navbar */
-    height: 17rem;
-    overflow: hidden;
-    margin-left: -260px;
+    height: 16rem;
+    margin-left: -249px;
+    width: 0;
     overflow-y: auto;
     overflow-x: hidden;
     background: black;
+
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
-
-#sidebar-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-  width: 13em;
-}
-
-/*NAVIGATION BAR STYLES */
 
 .sidebar-nav {
   position: absolute;
@@ -56,87 +53,80 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
 
-.sidebar-nav li {
-  position: relative;
-  line-height: 20px;
-  display: inline-block;
-  width: 100%;
-  font-size: 16pt;
-  font-family: "Inconsolata", monospace;
-  text-transform: uppercase;
-}
+  .nav-title {
+    padding-left: 20px;
+    font-size: 31px;
+    line-height: 1.25em;
+    color: white;
+  }
 
-.sidebar-nav li:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  height: 100%;
-  width: 3px;
-  background-color: #f69c21;
-  -webkit-transition: width 0.2s ease-in;
-  -moz-transition: width 0.2s ease-in;
-  -ms-transition: width 0.2s ease-in;
-  transition: width 0.2s ease-in;
-}
-.sidebar-nav li:first-child a {
-  color: #fff;
-  /* background-color: #1a1a1a; */
-}
-.sidebar-nav li:nth-child(2):before {
-  background-color: #38d299;
-}
-.sidebar-nav li:nth-child(3):before {
-  background-color: #79aefe;
-}
+  li {
+    .active {
+      &:nth-child(2) {
+        background-color: #38d299;
+      }
+      &:nth-child(3) {
+        background-color: #79aefe;
+      }
+      &:nth-child(4) {
+        background-color: #279636;
+      }
+      &:nth-child(5) {
+        background-color: #279636;
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      height: 100%;
+      width: 3px;
+      background-color: #f69c21;
+      -webkit-transition: width 0.2s ease-in;
+      -moz-transition: width 0.2s ease-in;
+      -ms-transition: width 0.2s ease-in;
+      transition: width 0.2s ease-in;
+    }
+    position: relative;
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+    font-size: 16pt;
+    font-family: "Inconsolata", monospace;
+    text-transform: uppercase;
 
-.sidebar-nav li:nth-child(4):before {
-  background-color: #314190;
-}
+    &:nth-child(2)::before {
+      background-color: #38d299;
+    }
+    &:nth-child(3)::before {
+      background-color: #79aefe;
+    }
+    &:nth-child(4)::before {
+      background-color: #279636;
+    }
+    &:nth-child(5)::before {
+      background-color: #279636;
+    }
 
-.sidebar-nav li:nth-child(5):before {
-  background-color: #279636;
-}
-.sidebar-nav li:nth-child(6):before {
-  background-color: #7d5d81;
-}
-
-/*NOTE how a transition for the width is done" */
-.sidebar-nav li:hover:before,
-.sidebar-nav li.open:hover:before {
-  width: 100%;
-  -webkit-transition: width 0.2s ease-in;
-  -moz-transition: width 0.2s ease-in;
-  -ms-transition: width 0.2s ease-in;
-  transition: width 0.2s ease-in;
-}
-
-.sidebar-nav li a {
-  display: block;
-  color: #ddd;
-  text-decoration: none;
-  padding: 10px 15px 10px 30px;
-}
-
-.sidebar-nav li a:hover,
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus,
-.sidebar-nav li.open a:hover,
-.sidebar-nav li.open a:active,
-.sidebar-nav li.open a:focus {
-  color: #fff;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-.sidebar-nav > .sidebar-sdi {
-  padding-left: 20px;
-  font-size: 30px;
-  line-height: 44px;
-  color: white;
+    &:hover {
+      &::before {
+        width: 100%;
+        -webkit-transition: width 0.2s ease-in;
+        -moz-transition: width 0.2s ease-in;
+        -ms-transition: width 0.2s ease-in;
+        transition: width 0.2s ease-in;
+      }
+    }
+    a {
+      display: block;
+      color: #ddd;
+      text-decoration: none;
+      padding: 10px 15px 10px 30px;
+    }
+  }
 }
 
 /* MENU BUTTON STYLING AND ANIMATION */

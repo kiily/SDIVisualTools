@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatToolbarModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
     ],
     imports : [
         CommonModule,
+        BrowserAnimationsModule,
         MatToolbarModule,
         MatDialogModule,
         ReactiveFormsModule,
