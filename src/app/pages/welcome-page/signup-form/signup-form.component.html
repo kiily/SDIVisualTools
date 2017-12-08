@@ -1,40 +1,61 @@
 <div class="card">
-    <div class="card-header">
-      <h2><span>Create</span> a new <span>account</span></h2>
-    </div>
-    <div class="card-block pt-3">
-        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-            <div class="form-group row">
-              <label for="email" class="col-sm-2 col-form-label">Email<span> *</span></label>
-              <div class="col-sm-10">
-                  <input formControlName="email" id="email" type="text" class="form-control" name="email" required/>                 
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="firstNameFld" class="col-sm-2 col-form-label">First Name</label>
-              <div class="col-sm-4">
-                  <input formControlName="firstName" type="firstName" class="form-control" id="firstNameFld" />
-              </div>
-              <label for="lastNameFld" class="col-sm-2 col-form-label">Last Name</label>
-              <div class="col-sm-4">
-                  <input formControlName="lastName" type="lastName" class="form-control" id="lastNameFld" />                  
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="passwordFld" class="col-sm-2 col-form-label">Password<span> *</span></label>
-              <div class="col-sm-10">
-                  <input formControlName="password" type="password" class="form-control" id="passwordFld" required />                  
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="repeatPasswordFld" class="col-sm-2 col-form-label">Repeat Password<span> *</span></label>
-              <div class="col-sm-10">
-                  <input formControlName="repeatPassword" type="password" class="form-control" id="repeatPasswordFld" required />
-              </div>
-            </div>
-    
-            <br>
-            <button class="btn btn-block custom-btn" type="submit">Sign up</button>
-          </form>
+  <div class="card-header">
+    <h2>
+      <span>Create</span> a new
+      <span>account</span>
+    </h2>
+  </div>
+  <div class="card-block pt-3">
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <div class="form-group row">
+        <label for="email" class="col-sm-3 col-form-label">Email
+          <span> *</span>
+        </label>
+        <div class="ml-1 mr-1 col-sm-8">
+          <input formControlName="email" id="email" type="text" class="form-control" name="email" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="firstNameFld" class="col-sm-3 col-form-label">First Name</label>
+        <div class="ml-1 mr-1 col-sm-3">
+          <input formControlName="firstName" type="firstName" class="form-control" id="firstNameFld" />
+        </div>
+        <label for="lastNameFld" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="ml-1 mr-1 col-sm-3">
+          <input formControlName="lastName" type="lastName" class="form-control" id="lastNameFld" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="passwordFld" class="col-sm-3 col-form-label">Password
+          <span> *</span>
+        </label>
+        <div class="ml-1 mr-1 col-sm-8">
+          <input formControlName="password" type="password" class="form-control" id="passwordFld" required />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="repeatPasswordFld" class="col-sm-3 col-form-label">Repeat Password
+          <span> *</span>
+        </label>
+        <div class="ml-1 mr-1 col-sm-8">
+          <input formControlName="repeatPassword" type="password" class="form-control" id="repeatPasswordFld" required />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-sm-4 col-sm-4">
+          <button class="btn btn-block custom-btn" type="submit">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-sm-4">
+        <p>Already have an account?</p>
+      </div>
+      <div class="offset-sm-4 col-sm-4">
+        <button class="btn btn-block custom-btn" (click)="toggleAuth(true)">Log in</button>
+      </div>
     </div>
   </div>
+</div>

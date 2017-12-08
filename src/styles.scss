@@ -9,6 +9,7 @@
  */
 
 //GLOBAL VARIABLES
+$text-font: "Inconsolata", monospace;
 
 html,
 body {
@@ -67,4 +68,15 @@ body {
 .button:hover {
   color: white;
   background: #0e83cd;
+}
+
+//Welcome Page card footers
+
+.card-footer {
+  p {
+    font-family: $text-font;
+    font-weight: bold;
+  }
+
+  background-color: #7589a1;
 }

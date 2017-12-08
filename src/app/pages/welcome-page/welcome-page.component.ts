@@ -17,14 +17,14 @@ References:
 })
 export class WelcomePageComponent implements OnInit {
 
-  //true --> LOGIN; false --> SIGN UP
-  authMode : boolean = true;
+  // true --> LOGIN; false --> SIGN UP
+  authMode: boolean = true;
   
   constructor(private authService : AuthService) {
   }
 
   ngOnInit() {
-    //Checking whether last session was terminated
+    // Checking whether last session was terminated
       this.authService.userScan();
   }
 
@@ -32,14 +32,6 @@ export class WelcomePageComponent implements OnInit {
   toggleAuth(){
     this.authMode = !this.authMode;
   }
-
-  // /*This method is triggered when pressing the sign-up button */
-  // goToSignUp(){
-  //   this.router.navigate(['/sign-up-page']);
-  // }
-
-
-
 
 
 }

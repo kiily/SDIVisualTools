@@ -3,7 +3,7 @@ import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
 import { AuthValidator } from './../../../common/validators/auth.validator';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
@@ -12,11 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  loginForm : FormGroup;
+  @Output() toggle = new EventEmitter<boolean>();
+  loginForm: FormGroup;
   
   constructor( private formBuilder: FormBuilder, private router: Router, private authService: AuthService, 
     private alertGenerator : AlertGenerator, private authValidator : AuthValidator) { 
 
+  
     
     this.loginForm = formBuilder.group({
       email: ["", Validators.required],
@@ -69,4 +71,8 @@ export class LoginFormComponent implements OnInit {
      });
    }
 
+   toggleAuth(toggle :boolean) {
+     this.toggle.emit(toggle);
+     console.log("clickedc and emmited");
+   }
 }

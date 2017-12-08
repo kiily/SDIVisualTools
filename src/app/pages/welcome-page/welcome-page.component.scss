@@ -1,64 +1,43 @@
-
 /*LOGIN CSS References:
  - https://codepen.io/iamnbutler/pen/clrDk - Accessed July 2017
  - https://codepen.io/boltaway/pen/afpow - Accessed July 2017
  - https://www.freshdesignweb.com/css-login-form-templates/ - Accessed July 2017*/
- $text-font : "Inconsolata", monospace;
- 
+$text-font: "Inconsolata", monospace;
 
 mat-toolbar {
-    background-color: #F69C21;
-   
-    
-    .welcome-title {
+  background-color: #f69c21;
 
-        display: flex;
-        flex-direction: row;
-        align-content: flex-end;
+  .welcome-title {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
 
-        h1 {
-            font-size: 3.5rem;
-            color: white;
-            font-family: $text-font;
-            font-weight: bold;
-        }
-      
+    h1 {
+      font-size: 3.5rem;
+      color: white;
+      font-family: $text-font;
+      font-weight: bold;
     }
+  }
 
-    img {
-        max-width:100%;
-        max-height: 100%;
-
-    }
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 /* cover */
-#cover{
-    background: url('../../../assets/ucl-cover.jpg') center top no-repeat;
-    background-size: cover;
-    color: white;
-    height: 100%;
-    text-align: center;
-    //use flexbox to center
-    display: flex;
-    align-items: center;
+#cover {
+  background: url("../../../assets/ucl-cover.jpg") center top no-repeat;
+  background-size: cover;
+  color: white;
+  height: 100%;
+  text-align: center;
+  //use flexbox to center
+  display: flex;
+  align-items: center;
 
-    #cover-caption{
-        width: 100%;
-    }
-
-    .card-footer {
-        p {
-            font-family: $text-font;
-            font-weight: bold;
-        }
-    
-        background-color: #7589a1;
-    }
+  #cover-caption {
+    width: 100%;
+  }
 }
-
-
-
-
-
-

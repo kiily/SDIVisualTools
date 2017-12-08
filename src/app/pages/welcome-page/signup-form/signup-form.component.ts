@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AlertGenerator } from './../../../components/alerts/alert-generator';
 import { AuthService } from './../../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-signup-form',
@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup-form.component.scss']
 })
 export class SignupFormComponent implements OnInit {
+  @Output() toggle = new EventEmitter();
+
 
   signUpForm: FormGroup;
 
@@ -74,4 +76,10 @@ export class SignupFormComponent implements OnInit {
           this.alertGenerator.generateAuthAlert('Passwords do not match');
         }
       }
+
+      toggleAuth(toggle: boolean) {
+        this.toggle.emit(toggle);
+      }
+
+
 }

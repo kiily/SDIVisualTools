@@ -1,31 +1,42 @@
 <div class="card">
-    <div class="card-header">
-      <h2><span>SDI</span> VisualTools</h2>
-    </div>
-    <div class="card-block pt-3">
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div class="form-group row">
-          <div class="col-sm-8 offset-sm-2">
-            <label for="" class="sr-only">Email:</label>
-            <input formControlName="email" type="text" class="form-control" placeholder="example@ucl.ac.uk" name="email" />
-          </div>
+  <div class="card-header">
+    <h2>
+      <span>SDI</span> VisualTools</h2>
+  </div>
+  <div class="card-block pt-3">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-group row">
+        <div class="offset-2 col-9 col-sm-8 offset-sm-2">
+          <label for="" class="sr-only">Email:</label>
+          <input formControlName="email" type="text" class="form-control" placeholder="example@ucl.ac.uk" name="email" />
+        </div>
 
+      </div>
+      <div class="form-group row">
+        <div class="offset-2 col-9 col-sm-8 offset-sm-2">
+          <label for="" class="sr-only">Password:</label>
+          <input formControlName="password" placeholder="Password" type="password" class="form-control" name="passwordFld" />
         </div>
-        <div class="form-group row">
-          <div class="col-sm-8 offset-sm-2">
-            <label for="" class="sr-only">Password:</label>
-            <input formControlName="password" placeholder="Password" type="password" class="form-control" name="passwordFld" />
-          </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-sm-4 col-sm-4">
+          <button class="btn btn-block custom-btn" type="submit">Log In</button>
+          <!--The button below should be separated into a modal and ask the user for the email  -->
         </div>
-        <div class="form-group row">
-          <div class="offset-sm-4 col-sm-4">
-            <button class="btn btn-block custom-btn" type="submit">Log In</button>
-            <!--The button below should be separated into a modal and ask the user for the email  -->
-          </div>
-          <div class="col">
-            <button class="btn btn-link text-center" (click)="resetPassword()">Forgot your Password?</button>
-          </div>
+        <div class="col">
+          <button class="btn btn-link text-center" (click)="resetPassword()">Forgot your Password?</button>
         </div>
-      </form>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-sm-4">
+        <p>Don't have an account?</p>
+      </div>
+      <div class="offset-sm-4 col-sm-4">
+        <button class="btn btn-block custom-btn" (click)="toggleAuth(true)">Sign up</button>
+      </div>
     </div>
   </div>
+</div>
