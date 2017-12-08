@@ -28,10 +28,10 @@ export class DiscoveryFirebaseService {
     .map( discoveryLinks => {
       return discoveryLinks
       .map( c => {
-        let key = c.payload.key;
-        let link = c.payload.val();
-        //add the key to enable link deletion
-        let transformed = new DiscoveryLink(link['title'], link['link'], link['category'], key);
+        const key = c.payload.key;
+        const link = c.payload.val();
+        // add the key to enable link deletion
+        const transformed = new DiscoveryLink(link['title'], link['link'], link['category'], key);
         return transformed;
       });
     });

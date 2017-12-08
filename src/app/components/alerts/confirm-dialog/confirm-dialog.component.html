@@ -1,16 +1,10 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="text-center">
-        <mat-dialog-content>
-          <h4>{{data}}</h4>
-        </mat-dialog-content>
-        <mat-dialog-actions>
-          <button class="btn-danger btn-block" (click)="dialogRef.close(true)">Yes</button>
-          <br>
-          <button class="btn btn-block" (click)="dialogRef.close(false)">No</button>
-        </mat-dialog-actions>
-      </div>
-    </div>
+<mat-dialog-content>
+  <h4>{{data}}</h4>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div style="width: 100%;">
+    <button type="button" class="btn-danger" (click)="dialogRef.close(true)">Yes</button>
+    <button type="button" class="btn pull-right" (click)="dialogRef.close(false)">No</button>
   </div>
-</div>
+
+</mat-dialog-actions>

@@ -1,19 +1,16 @@
-
-
 /* ADD LINK FORM STYLING */
 
-
 li {
-    color: white;
-    border: 2px solid black; 
-    padding-bottom: 25px;
+  color: white;
+  border: 2px solid black;
+  padding-bottom: 25px;
 }
 
-h2, label {
-    color: white;
-    font-family: 'Inconsolata', monospace;
+.link-container {
+  padding-top: 100px;
 }
 
-.link-container{
-    padding-top: 100px;
+h2 {
+  color: white;
+  font-family: "Inconsolata", monospace;
 }

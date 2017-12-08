@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { DiscoveryLink } from './../../common/models/discovery/discovery-link.model';
 import { DiscoveryLinkCategory } from './../../common/models/discovery/discovery-link.category.model';
 
@@ -17,67 +18,46 @@ that renders the discovery page. Current features: add and remove discovery link
 })
 export class DiscoveryComponent implements OnInit {
 
-  pageTitle = "Discovery";
-  discoveryLinks : DiscoveryLink[] =[] ;
-  discoveryLinkCategories : DiscoveryLinkCategory[] = [];
-  
+  pageTitle = 'Discovery';
+  discoveryLinks: Observable<DiscoveryLink[]>;
 
-  selectedOption : string;
 
-  addLinkForm : FormGroup;
+  selectedOption: string;
+
+
 
   constructor(private discoveryFirebaseService: DiscoveryFirebaseService, private formBuilder: FormBuilder,
-    private alertGenerator: AlertGenerator, private authService : AuthService) {
+    private alertGenerator: AlertGenerator, private authService: AuthService) {
 
-    this.addLinkForm = formBuilder.group({
-      title: ["", Validators.required],
-      link: ["", Validators.required],
-      category: ["", Validators.required]
-    });
+
   }
 
   /*Use the Angular lifecycle hooks to retrieve the discovery data */
   ngOnInit() {
-    //Checking that a user is logged in
+    // Checking that a user is logged in
     this.authService.userScan();
 
-    this.discoveryFirebaseService.getDiscoveryLinks().subscribe( discoveryLinks => {
-      this.discoveryLinks = discoveryLinks;
-    });
-    this.discoveryFirebaseService.getDiscoveryLinkCategories().subscribe( linkCategories => {
-      this.discoveryLinkCategories = linkCategories;
-    });
+    this.discoveryLinks = this.discoveryFirebaseService.getDiscoveryLinks();
   }
 
-/* This method is linked to the "Add Link" button in the HTML template. It extracts the values from the 
-addLinkForm and adds the link to the database */
-  addNewLink() {
 
-    let title = this.addLinkForm.controls.title.value;
-    let link = this.addLinkForm.controls.link.value;
-    let category = this.addLinkForm.controls.category.value;
-
-    let newLink = new DiscoveryLink(title, link, category);
-    this.discoveryFirebaseService.addDiscoveryLink(newLink);
-    this.addLinkForm.reset();
-  }
 
 /* This method is linked to the delete button next to each link in the addLinkForm. It is passed the linkID of
 the discovery link to remove. A confirmation dialog is triggered and the link is deleted upon confirmation. */
-  removeLink(linkToDelete : DiscoveryLink) {
-    let dialogRef = this.alertGenerator.confirmDelete("Are you sure you want to delete this item?");
-    
+  removeLink(linkToDelete: DiscoveryLink) {
+    const dialogRef = this.alertGenerator.confirmDelete('Are you sure you want to delete this item?');
+
     dialogRef.subscribe( (response) => {
       this.selectedOption = response;
- 
-      //User confirms deletion
+
+      // User confirms deletion
       if (this.selectedOption) {
         this.discoveryFirebaseService.deleteLink(linkToDelete);
 
-      } 
-     
+      }
+
     });
-    
+
   }
 
 

@@ -1,10 +1,10 @@
+import { DiscoveryModule } from './discovery/discovery.module';
 import { HomeModule } from './home/home.module';
 import { WelcomePageModule } from './welcome-page/welcome-page.module';
 import { HomeCardsComponent } from './home/home-cards/home-cards.component';
 import { ScrollIconComponent } from './home/scroll-icon/scroll-icon.component';
 import { LoginFormComponent } from './welcome-page/login-form/login-form.component';
 import { SignupFormComponent } from './welcome-page/signup-form/signup-form.component';
-
 import { SafeURLPipe } from '../pipes/safe-url.pipe';
 import { MarkdownModule } from 'angular2-markdown';
 import { rootRouterConfig } from '../app.routes';
@@ -17,7 +17,6 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { ScaffoldingComponent } from './scaffolding/scaffolding.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material';
 import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
 
@@ -29,13 +28,14 @@ import { RouterModule } from '@angular/router';
         AddScaffoldingDataPageComponent,
         WelcomePageComponent,
         HomeComponent,
-        SafeURLPipe
+        SafeURLPipe,
     ],
     imports : [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         WelcomePageModule,
+        DiscoveryModule,
         HomeModule,
         ComponentsModule,
         MarkdownModule.forRoot(),
