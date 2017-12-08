@@ -1,7 +1,3 @@
-import { AddScaffoldingDataPageComponent } from './pages/add-scaffolding-data-page/add-scaffolding-data-page.component';
-import { ScaffoldingComponent } from './pages/scaffolding/scaffolding.component';
-import { InnovationComponent } from './pages/innovation/innovation.component';
-import { DiscoveryComponent } from './pages/discovery/discovery.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { Routes } from '@angular/router';

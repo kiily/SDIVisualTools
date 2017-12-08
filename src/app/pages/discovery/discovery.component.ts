@@ -19,7 +19,7 @@ that renders the discovery page. Current features: add and remove discovery link
 export class DiscoveryComponent implements OnInit {
 
   pageTitle = 'Discovery';
-  discoveryLinks: Observable<DiscoveryLink[]>;
+  discoveryLinks$: Observable<DiscoveryLink[]>;
 
 
   selectedOption: string;
@@ -37,7 +37,7 @@ export class DiscoveryComponent implements OnInit {
     // Checking that a user is logged in
     this.authService.userScan();
 
-    this.discoveryLinks = this.discoveryFirebaseService.getDiscoveryLinks();
+    this.discoveryLinks$ = this.discoveryFirebaseService.getDiscoveryLinks();
   }
 
 

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <form [formGroup]="addStudentModuleForm" (ngSubmit)="addStudentModule()">
+    <div class="form-group">
+      <div class="col-sm-4">
+        <label for="student-ID">StudentID:</label>
+        <select formControlName="studentID" #studentID class="form-control" name="student-ID" required>
+          <option *ngFor="let student of students$| async" [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="addStudentModuleForm.controls['studentID'].touched && 
+              addStudentModuleForm.controls['studentID'].invalid">
+          Student ID is required.
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <label for="moduleID">ModuleID:</label>
+        <select formControlName="moduleID" class="form-control" name="moduleID" required>
+          <option *ngFor="let module of modules$ | async" [value]="module.moduleCode">{{module.moduleCode}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="addStudentModuleForm.controls['moduleID'].touched && 
+              addStudentModuleForm.controls['moduleID'].invalid">
+          Module ID is required.
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <br>
+        <button class="btn btn-block" type="submit">Enrol</button>
+      </div>
+    </div>
+  </form>
+</div>

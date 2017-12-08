@@ -1,0 +1,63 @@
+<div class="container-fluid text">
+  <form [formGroup]="addProblemSheetForm" (ngSubmit)="addProblemSheet()">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="problem-sheet-ID">Problem Sheet (ID):</label>
+          <input formControlName="problemSheetID" type="number" class="form-control" name="problem-sheet-ID" required />
+          <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['problemSheetID'].touched && 
+         !addProblemSheetForm.controls['problemSheetID'].valid ">
+            Problem Sheet ID is required.
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="problem-sheet-title">Problem Sheet Title:</label>
+          <input formControlName="problemSheetTitle" type="text" class="form-control" name="problem-sheet-title" required/>
+          <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['problemSheetTitle'].touched && 
+         !addProblemSheetForm.controls['problemSheetTitle'].valid ">
+            Problem Sheet Title is required.
+          </div>
+        </div>
+
+
+        <div class="col-sm-4">
+          <label for="moduleID">ModuleID:</label>
+          <select formControlName="moduleID" class="form-control" name="moduleID" required>
+            <option *ngFor="let module of modules$ | async" [value]="module.moduleCode">{{module.moduleCode}}</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['moduleID'].touched && 
+         !addProblemSheetForm.controls['moduleID'].valid ">
+            ModuleID is required.
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="release-date">Release Date:</label>
+          <input formControlName="releaseDate" type="date" class="form-control" name="release-date" required/>
+          <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['releaseDate'].touched && 
+         !addProblemSheetForm.controls['releaseDate'].valid ">
+            Release Date is required.
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="deadline-date">Deadline:</label>
+          <input formControlName="deadline" type="date" class="form-control" name="deadline-date" required/>
+          <div class="alert alert-danger" *ngIf="addProblemSheetForm.controls['deadline'].touched && 
+         !addProblemSheetForm.controls['deadline'].valid ">
+            Deadline is required.
+          </div>
+        </div>
+        <div class="col-sm-4">
+
+          <br>
+          <button class="btn btn-block" type="submit">Add Problem Sheet</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</div>

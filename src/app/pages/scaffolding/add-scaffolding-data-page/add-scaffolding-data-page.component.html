@@ -1,0 +1,132 @@
+<app-header [title]="pageTitle"></app-header>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <button class="button btn-block" id="export-btn" (click)="exportJSONTree()">
+        <span class="fa fa-database"></span> Export Firebase Tree (JSON)</button>
+    </div>
+    <div class="col-sm-3">
+      <a [href]="sharepointLink?.url" target="_blank">
+        <button class="button btn-block" id="share-point-btn">
+          <span class="fa fa-cloud"></span> SDI VisualTools SharePoint</button>
+      </a>
+    </div>
+
+    <div class="col-sm-3">
+      <a [href]="excelLink?.url" target="_blank">
+        <button class="button btn-block" id="powerbi-excel-button">
+          <span class="fa fa-table"></span> Excel (Data Source) </button>
+      </a>
+    </div>
+    <div class="col-sm-3">
+      <a [href]="workspaceLink?.url" target="_blank">
+        <button class="button btn-block" id="powerbi-dashboard-button">
+          <span class="fa fa-bar-chart"></span> App Workspace (Dashboard)</button>
+      </a>
+    </div>
+  </div>
+</div>
+<br>
+
+
+<div class="container-fluid text">
+  <div class="row">
+    <div class="col-12 col-sm-2">
+      <h2>Select Action</h2>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <button type="button" class="btn btn-info" (click)="addModule()">
+            Add a Module
+          </button>
+        </li>
+        <br>
+        <li class="nav-item">
+          <button type="button" class="btn btn-info" (click)="addProblemSheet()">
+            Add a Problem Sheet
+          </button>
+        </li>
+        <br>
+        <li class="nav-item">
+          <button type="button" class="btn btn-info" (click)="addProblem()">
+            Add a Problem
+          </button>
+        </li>
+        <br>
+        <li class="nav-item">
+          <button type="button" class="btn btn-info" (click)="addAttempt()">
+            Add an Attempt
+          </button>
+        </li>
+        <br>
+        <li class="nav-item">
+          <button type="button" class="btn btn-info" (click)="addStudentModule()">
+            Enroll a Student
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-12 col-sm-10" [ngSwitch]="currentForm">
+      <div class="form-box" *ngSwitchCase="'addModule'">
+        <h2>Add a new module</h2>
+        <app-module-form></app-module-form>
+      </div>
+      <div class="form-box" *ngSwitchCase="'addProblemSheet'">
+        <h2>Add a new Problem Sheet</h2>
+        <app-problem-sheet-form></app-problem-sheet-form>
+      </div>
+      <div class="form-box" *ngSwitchCase="'addProblem'">
+        <h2>Add a new Problem</h2>
+        <app-problem-form></app-problem-form>
+      </div>
+      <div class="form-box" *ngSwitchCase="'addAttempt'">
+        <h2>Add a new Attempt</h2>
+        <app-attempt-form></app-attempt-form>
+      </div>
+      <div class="form-box" *ngSwitchCase="'addStudentModule'">
+        <h2>Enroll a student in a Module</h2>
+        <app-student-module-form></app-student-module-form>
+      </div>
+      <h1 *ngSwitchDefault>What do you want to do today?</h1>
+    </div>
+  </div>
+</div>
+
+
+<!-- ThiS WILL BECOME THE NEW EXCEL COMPONENT -->
+<div class="row">
+  <div class="col-sm-6">
+    <div class="col-sm-4">
+      <h3>Add Excel Data</h3>
+    </div>
+    <br>
+    <div class="col-sm-5">
+      <input type="file" (change)="onFileChanged($event)" multiple="false" />
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-block" (click)="uploadExcelData()">Upload Data</button>
+    </div>
+  </div>
+
+
+</div>
+
+
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row text-formatted" *ngIf="excelData != null">
+    <div class="col-sm-4 col-sm-offset-4 text-center">
+      <table class="sjs-table ">
+        <tr *ngFor="let row of excelData">
+          <td *ngFor="let val of row">{{val}} </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

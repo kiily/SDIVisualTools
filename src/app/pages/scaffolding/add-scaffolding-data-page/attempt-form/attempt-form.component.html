@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <form [formGroup]="addAttemptForm" (ngSubmit)="addAttempt()">
+    <div class="form-group">
+
+      <div class="col-sm-4">
+        <label for="problem-ID">ProblemID:</label>
+        <select formControlName="problemID" class="form-control" name="problem-ID" required>
+          <option *ngFor="let problem of problems$ | async" [value]="problem.problemID">{{problem.problemID}}. {{problem.problemTitle}} (ProblemSheetID: {{problem.problemSheetID}})</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="addAttemptForm.controls['problemID'].touched && 
+                      addAttemptForm.controls['problemID'].invalid">
+          Problem ID is required.
+        </div>
+
+        <label for="student-ID">StudentID:</label>
+        <select formControlName="studentID" class="form-control" name="student-ID" required>
+          <option *ngFor="let student of students$ | async" [value]="student.studentID">{{student.studentID}}. {{student.firstName}} {{student.lastName}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="addAttemptForm.controls['studentID'].touched && 
+                      addAttemptForm.controls['studentID'].invalid">
+          Student ID is required.
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <label for="compile-status">Compile Status:</label>
+        <select formControlName="compile" class="form-control" name="compile-status" required>
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="addAttemptForm.controls['compile'].touched && 
+                      addAttemptForm.controls['compile'].invalid">
+          Compile Status is required.
+        </div>
+
+        <label for="output-status">Output:</label>
+        <select formControlName="output" class="form-control" name="output-status" required>
+          <option value="Correct">Correct</option>
+          <option value="Wrong">Wrong</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="addAttemptForm.controls['output'].touched && 
+                      addAttemptForm.controls['output'].invalid">
+          Output is required.
+        </div>
+
+      </div>
+
+      <div class="col-sm-4">
+        <label for="attempt-date">Attempt Date:</label>
+        <input formControlName="date" type="date" class="form-control" name="attempt-date" required/>
+        <div class="alert alert-danger" *ngIf="addAttemptForm.controls['date'].touched && 
+                      addAttemptForm.controls['date'].invalid">
+          Attempt Date is required.
+        </div>
+
+        <br>
+        <button class="btn btn-block" type="submit">Add Attempt</button>
+      </div>
+
+    </div>
+  </form>
+</div>

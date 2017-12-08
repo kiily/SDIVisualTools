@@ -11,17 +11,17 @@ to update a link. */
 @Injectable()
 export class DiscoveryFirebaseService {
 
-  //retrieve the discovery links
-  discoveryLinksRef : AngularFireList<DiscoveryLink>;
-  //retrieve link categories
-  linkCategoriesRef : AngularFireList<DiscoveryLinkCategory>;
+  // retrieve the discovery links
+  discoveryLinksRef: AngularFireList<DiscoveryLink>;
+  // retrieve link categories
+  linkCategoriesRef: AngularFireList<DiscoveryLinkCategory>;
 
-  discoveryLinks$ : Observable<DiscoveryLink[]>;
-  linkCategories$ : Observable<DiscoveryLinkCategory[]>;
+  discoveryLinks$: Observable<DiscoveryLink[]>;
+  linkCategories$: Observable<DiscoveryLinkCategory[]>;
 
   constructor(private afdb: AngularFireDatabase) {
-    this.discoveryLinksRef = this.afdb.list("/discovery/links");
-    this.linkCategoriesRef = this.afdb.list("/discovery/linkCategories");
+    this.discoveryLinksRef = this.afdb.list('/discovery/links');
+    this.linkCategoriesRef = this.afdb.list('/discovery/linkCategories');
 
 
     this.discoveryLinks$ = this.discoveryLinksRef.snapshotChanges()
@@ -36,7 +36,7 @@ export class DiscoveryFirebaseService {
       });
     });
     this.linkCategories$ = this.linkCategoriesRef.valueChanges();
-    
+
   }
 
   /*This method retrieves all the discovery links. It returns a FirebaseListObservable.*/
@@ -50,9 +50,9 @@ export class DiscoveryFirebaseService {
     return this.linkCategories$;
   }
 
-  /* This method takes a title, link and category and registers this new link object in the Firebase 
+  /* This method takes a title, link and category and registers this new link object in the Firebase
   database */
-  addDiscoveryLink(newLink : DiscoveryLink) {
+  addDiscoveryLink(newLink: DiscoveryLink) {
     this.discoveryLinksRef.push({
       title: newLink.title,
       link: newLink.link,
@@ -61,14 +61,14 @@ export class DiscoveryFirebaseService {
   }
 
   /*This method takes a linkID and deletes it*/
-  deleteLink(linkToDelete : DiscoveryLink){
+  deleteLink(linkToDelete: DiscoveryLink) {
     this.discoveryLinksRef.remove(linkToDelete.discoveryLinkID);
   }
 
    /* This method takes an id, title, link and category and updates the specified link object in the Firebase 
   database; CURRENTLY NOT IN USE */
-  updateLink(id, title, link, category){
-    return this.afdb.object('/discovery/links/'+id).update({
+  updateLink(id, title, link, category) {
+    return this.afdb.object('/discovery/links/' + id).update({
       title: title,
       link: link,
       category: category

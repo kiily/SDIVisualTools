@@ -1,0 +1,44 @@
+.form-box {
+  border: 1px solid white;
+  border-radius: 10px;
+  font-family: "Inconsolata", monospace;
+  padding: 15px;
+}
+
+.btn {
+  background-color: #f69c21;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: 5px 0px;
+  width: 100%;
+
+  &:hover {
+    background-color: #2dd276;
+  }
+}
+
+#share-point-btn {
+  background-color: #96faf1;
+  color: black;
+}
+
+#export-btn {
+  background-color: #75adf2;
+}
+
+#powerbi-excel-button:hover,
+#powerbi-dashboard-button:hover,
+#export-btn:hover,
+#share-point-btn:hover {
+  color: white;
+  background: #0e83cd;
+}
+
+#powerbi-dashboard-button {
+  background: #f6e35c;
+  color: black;
+}
+
+#powerbi-excel-button {
+  background-color: #2dd276;
+}

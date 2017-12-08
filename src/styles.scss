@@ -36,13 +36,24 @@ body {
   text-transform: uppercase;
 }
 
-.text-formatted {
+.text {
+  @extend %text;
+}
+%text {
   color: white;
-  text-transform: lowercase;
-  font-family: "Inconsolata", monospace;
+  font-family: $text-font;
   font-weight: bold;
 }
 
+.text-formatted {
+  @extend %text;
+  text-transform: lowercase;
+}
+
+//Form Validation
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid #f65b61;
+}
 /*BUTTON REFERENCES:
     - https://bootsnipp.com/snippets/Oeo2N  
     - http://callmenick.com/post/stylish-css-buttons

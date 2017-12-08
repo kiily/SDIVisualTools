@@ -12,13 +12,13 @@ to these users. It also provides methods to retrieve all the stored users and th
 export class InnoflowFirebaseService {
 
 
-  innovationUsersRef : AngularFireList<InnovationUser>;
-  innovationsRef : AngularFireList<Innovation>
+  innovationUsersRef: AngularFireList<InnovationUser>;
+  innovationsRef: AngularFireList<Innovation>;
 
-  innovationUsers$ : Observable<InnovationUser[]>;
-  innovations$ : Observable<Innovation[]>;
+  innovationUsers$: Observable<InnovationUser[]>;
+  innovations$: Observable<Innovation[]>;
 
-  constructor(private afdb : AngularFireDatabase) { 
+  constructor(private afdb: AngularFireDatabase) { 
     this.innovationUsersRef = this.afdb.list("/innovation");
   
 

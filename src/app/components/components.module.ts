@@ -1,3 +1,4 @@
+import { SafeURLPipe } from '../pipes/safe-url.pipe';
 import { componentRoutes } from './components.routes';
 import { RouterModule } from '@angular/router';
 
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         SDINavbarComponent,
         ErrorDialogComponent,
         ConfirmDialogComponent,
-        HeaderComponent
+        HeaderComponent,
+        SafeURLPipe
     ],
     imports : [
         CommonModule,
@@ -43,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ConfirmDialogComponent,
         HeaderComponent,
         MatToolbarModule,
+        SafeURLPipe,
         RouterModule
     ]
 
