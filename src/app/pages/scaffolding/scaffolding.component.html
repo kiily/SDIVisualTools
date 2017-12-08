@@ -1,7 +1,9 @@
 <app-header [title]="pageTitle"></app-header>
+<br>
+<br>
+<br>
+<h1 class="ml-3 pt-1">Select Report</h1>
 
-
-<h1>Select Report</h1>
 <div class="container-fluid">
     <div class="row">
 
@@ -9,7 +11,7 @@
             <h4>Select a report:</h4>
         </div> -->
 
-        <div class="col-sm-9">
+        <div class="col-9 col-sm-9">
             <div class="btn-group">
                 <button class="button" [style.background-color]="phase == '0' ? '#0e83cd' : 'black' " (click)="togglePhase(0)">General Overview
                     <a *ngIf="blankToggle" target="_blank" routerLink='/scaffolding' queryParams="{phaseNumber: '0'}">
@@ -38,23 +40,23 @@
         </div>
 
 
-        <div class="col-sm-3">
+        <div class="col-12 col-sm-3">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-5">
                     <h5>Open reports on a new tab:</h5>
+
                     <label class="switch">
                         <input type="checkbox" [(ngModel)]="blankToggle" (change)="toggleBlank()">
                         <span class="slider round"></span>
                     </label>
                 </div>
-                <div class="col-sm-6">
+
+                <div class="col-5">
                     <button class="button" id="add-data-button" routerLink='/add-scaffolding-data-page'>
-                        <span class="glyphicon glyphicon-stats"></span> Add Data
+                        <span class="fa fa-bar-chart"></span> Add Data
                     </button>
                 </div>
             </div>
-
-
         </div>
 
 
