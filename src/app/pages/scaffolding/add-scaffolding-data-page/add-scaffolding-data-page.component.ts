@@ -83,6 +83,9 @@ export class AddScaffoldingDataPageComponent implements OnInit {
     addStudentModule() {
       this.currentForm = 'addStudentModule';
     }
+    addExcelData() {
+      this.currentForm = 'addExcelData';
+    }
 
 
   /* Utility method to open a fileSaver and export the JSON data tree. This can then be imported to

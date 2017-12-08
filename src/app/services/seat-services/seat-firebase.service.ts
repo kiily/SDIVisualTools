@@ -47,7 +47,7 @@ export class SEATFirebaseService {
   problems$: Observable<Problem[]>;
   modules$: Observable<Module[]>;
   studentModules$: Observable<StudentModule[]>;
-
+  scaffoldingTree$;
 
 
   constructor(private afdb: AngularFireDatabase) {
@@ -81,6 +81,7 @@ export class SEATFirebaseService {
     this.problemSheets$ = this.problemSheetsRef.valueChanges();
     this.problems$ = this.problemsRef.valueChanges();
     this.studentModules$ = this.studentModulesRef.valueChanges();
+    this.scaffoldingTree$ =  this.scaffoldingTree.valueChanges();
 
     // need to retrieve the module key
     this.modules$ = this.modulesRef.snapshotChanges()
@@ -113,7 +114,7 @@ export class SEATFirebaseService {
      /* This method retrieves a FirebaseObjectObservable with the entire Firebase JSON tree
      corresponding to the scaffolding section */
    getScaffoldingDataTree() {
-     return this.scaffoldingTree;
+     return this.scaffoldingTree$;
    }
 
      /* This method retrieves a FirebaseListObservable that contains the list of scaffolding phases */

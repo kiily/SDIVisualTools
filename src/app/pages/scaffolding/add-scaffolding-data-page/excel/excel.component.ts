@@ -38,7 +38,7 @@ export class ExcelComponent implements OnInit, OnDestroy {
 
    /*Utility method that opens a file picker and reads an Excel file passed to it.
   Current setup only uploads one sheet at the time */
-  onFileChanged(event: any ) {
+  onFileChanged(event: any) {
 
         const target: DataTransfer = <DataTransfer>(event.target);
         if (target.files.length !== 1) {

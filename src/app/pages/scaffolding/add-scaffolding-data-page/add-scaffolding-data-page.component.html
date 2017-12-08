@@ -69,6 +69,12 @@
             Enroll a Student
           </button>
         </li>
+        <br>
+        <li class="nav-item">
+          <button type="button" class="btn btn-info" (click)="addExcelData()">
+            Add Excel Data
+          </button>
+        </li>
       </ul>
     </div>
     <div class="col-12 col-sm-10" [ngSwitch]="currentForm">
@@ -92,9 +98,12 @@
         <h2>Enroll a student in a Module</h2>
         <app-student-module-form></app-student-module-form>
       </div>
+      <div *ngSwitchCase="'addExcelData'">
+        <app-excel></app-excel>
+      </div>
       <h1 *ngSwitchDefault>What do you want to do today?</h1>
     </div>
   </div>
 </div>
 
-<app-excel></app-excel>
+<br>
