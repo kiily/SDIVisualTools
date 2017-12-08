@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <form [formGroup]="addProblemForm" (ngSubmit)="addProblem()">
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <label for="problem-ID">Problem (ID):</label>
+        <input formControlName="problemID" type="number" class="form-control" name="problem-ID" required />
+        <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemID'].touched && 
+         !addProblemForm.controls['problemID'].valid ">
+          Problem ID is required.
+        </div>
+
+        <label for="problem-title">Problem Title:</label>
+        <input formControlName="problemTitle" type="text" class="form-control" name="problem-title" required/>
+        <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemTitle'].touched && 
+        addProblemForm.controls['problemTitle'].invalid">
+          Problem Title is required.
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <label for="problem-sheet-ID">ProblemSheetID:</label>
+        <select formControlName="problemSheetID" class="form-control" name="problem-sheet-ID" required>
+          <option *ngFor="let problemSheet of problemSheets$ | async" [value]="problemSheet.problemSheetID">{{problemSheet.problemSheetID}}. {{problemSheet.problemSheetTitle}} ({{problemSheet.moduleID}})</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="addProblemForm.controls['problemSheetID'].touched && addProblemForm.controls['problemSheetID'].invalid">
+          ProblemSheetID is required.
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <br>
+        <button class="btn btn-block btn-info" type="submit">Add Problem</button>
+      </div>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,36 @@
+/*  LOGOUT BUTTON 
+
+References: 
+ -  https://codepen.io/jeremyloyd/pen/EaavQb - Acessed July 2017*/
+
+.logout {
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+  right: -18px;
+  overflow: hidden;
+  color: white;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity 0.45s;
+  -webkit-transition: opacity 0.35s;
+}
+
+.logout-button {
+  text-decoration: none;
+  padding: 30px;
+  /* margin: 15px; */
+  color: white;
+  width: 25px;
+  transition: width 0.35s;
+  -webkit-transition: width 0.35s;
+  overflow: hidden;
+
+  span {
+    color: white;
+  }
+}
+
+a:hover .logout {
+  opacity: 0.9;
+  text-decoration: none;
+}

@@ -1,0 +1,29 @@
+.card {
+  width: 100%;
+  background: #191818;
+
+  .card-header {
+    h2 {
+      font-family: "Inconsolata", monospace;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 28px;
+      color: white;
+    }
+  }
+  .card-block {
+    border: 1px solid #fff;
+    padding: 40px 0px;
+    margin: 5px 0px;
+    text-align: justify;
+
+    p {
+      color: white;
+      text-align: justify;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-family: "Inconsolata", monospace;
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/*REFERENCES: 
+
+ - https://www.dtelepathy.com/blog/inspiration/30-bold-and-clean-web-designs-for-inspiration
+ - https://designschool.canva.com/blog/website-color-schemes/
+ */
+
+//GLOBAL VARIABLES
+$text-font: "Inconsolata", monospace;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #191818;
+}
+.report-frame {
+  width: 100%;
+}
+
+.text-transform {
+  text-transform: uppercase;
+}
+
+.text {
+  @extend %text;
+}
+%text {
+  color: white;
+  font-family: $text-font;
+  font-weight: bold;
+}
+
+.text-formatted {
+  @extend %text;
+  text-transform: lowercase;
+}
+
+//Form Validation
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid #f65b61;
+}
+/*BUTTON REFERENCES:
+    - https://bootsnipp.com/snippets/Oeo2N  
+    - http://callmenick.com/post/stylish-css-buttons
+
+   */
+
+.button {
+  font-family: "Inconsolata", monospace;
+  cursor: pointer;
+  padding: 10px 10px;
+  display: inline-block;
+  margin: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  border: 1px solid white;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.button:active,
+.button:hover {
+  color: white;
+  background: #0e83cd;
+}
+
+//Welcome Page card footers
+
+.card-footer {
+  p {
+    font-family: $text-font;
+    font-weight: bold;
+  }
+
+  background-color: #7589a1;
+}

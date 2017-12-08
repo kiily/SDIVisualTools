@@ -1,0 +1,201 @@
+/*Hexagonal Grid Styles.
+References:
+    - https://github.com/web-tiki/responsive-grid-of-hexagons - Accessed July 2017 */
+
+//Set different font sizes for the hexagon content based on BS breakpoints.
+$phone_width: 576px;
+$tablet_width: 768px;
+$desktop_width: 992px;
+$large_desktop_width: 1200px;
+$hololens_width: 2000px;
+
+@mixin phone-landscape {
+  @media (min-width: #{$phone_width}) and (max-width: #{$tablet_width - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet_width}) and (max-width: #{$desktop_width - 1}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop_width}) and (max-width: #{$large-desktop_width - 1}) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: #{$large-desktop_width}) and (max-width: #{$hololens_width - 1}) {
+    @content;
+  }
+}
+
+@mixin hololens {
+  @media (min-width: #{$hololens_width}) {
+    @content;
+  }
+}
+
+//Responsive paragraphs in the hexagon
+@mixin p-text {
+  p {
+    @include phone-landscape {
+      font-size: 1.2em;
+    }
+    @include tablet {
+      font-size: 1.7em;
+    }
+    @include desktop {
+      font-size: 1.5em;
+    }
+    @include large-desktop {
+      font-size: 1.5em;
+    }
+    @include hololens {
+      font-size: 2.7em;
+    }
+  }
+}
+
+//Responsive header in the hexagon
+@mixin h1-text {
+  h1 {
+    font-size: 2.4em;
+    @include phone-landscape {
+      font-size: 3em;
+    }
+    @include tablet {
+      font-size: 3.5em;
+    }
+    @include desktop {
+      font-size: 3.6em;
+    }
+    @include large-desktop {
+      font-size: 3.9em;
+    }
+    @include hololens {
+      font-size: 7em;
+    }
+  }
+}
+
+@mixin hexagon-text {
+  width: 100%;
+  padding: 5%;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: rgba(0, 128, 128, 0.8);
+  font-weight: 300;
+  -webkit-transition: -webkit-transform 0.2s ease-out, opacity 0.3s ease-out;
+  transition: transform 0.2s ease-out, opacity 0.3s ease-out;
+}
+
+#hexGrid {
+  //flex and wrap so that the last hexagon wraps around to the bottom
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  // margin: 0 auto;
+  /* overflow: hidden; */
+  font-family: "Raleway", sans-serif;
+  // font-size: 14px; //8.3
+  list-style-type: none;
+  padding-bottom: 11.2%;
+}
+
+.hex {
+  font-size: 0.6em;
+  @include p-text;
+  @include h1-text;
+  position: relative;
+  visibility: hidden;
+  outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+  width: 50%; //this is the key width for the grid hexgons
+
+  &:nth-child(3n + 3) {
+    /* first hexagon of even rows */
+    margin-left: 25%; /* = width of .hex / 2  to indent even rows */
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 86.602%; /* =  100 / tan(60) * 1.5 */
+  }
+
+  .hexIn {
+    position: absolute;
+    width: 96%;
+    padding-bottom: 110.851%; /* =  width / sin(60) */
+    margin: 0 2%;
+    overflow: hidden;
+    visibility: hidden;
+    outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+    -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+    -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+    transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+
+    * {
+      position: absolute;
+      visibility: visible;
+      outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+    }
+  }
+
+  .hexLink {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+    -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+    transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+
+    &:hover,
+    &:focus {
+      h1,
+      p {
+        -webkit-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+
+  img {
+    left: -100%;
+    right: -100%;
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+    -webkit-transform: rotate3d(0, 0, 0, 0deg);
+    -ms-transform: rotate3d(0, 0, 0, 0deg);
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+
+  p {
+    @include hexagon-text;
+
+    top: 50%;
+    padding-bottom: 50%;
+    -webkit-transform: translate3d(0, 100%, 0);
+    -ms-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  h1 {
+    @include hexagon-text;
+    bottom: 50%;
+    padding-top: 50%;
+    // font-size: 1.4em; //1.5
+    z-index: 1;
+    -webkit-transform: translate3d(0, -100%, 0);
+    -ms-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}

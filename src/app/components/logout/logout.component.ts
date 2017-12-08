@@ -9,7 +9,7 @@ that logs the user out of the application. It is associated with an HTML templat
 @Component({
   selector: 'logout-button',
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
 
@@ -20,12 +20,13 @@ export class LogoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  logout(){
+  logout() {
     this.authService.logout()
     .then(auth => {
       console.log(auth);
       this.router.navigate(['/welcome-page']);
-    })
+    });
   }
 
+  
 }

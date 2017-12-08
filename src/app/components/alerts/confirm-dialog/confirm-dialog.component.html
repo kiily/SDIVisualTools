@@ -1,0 +1,10 @@
+<mat-dialog-content>
+  <h4>{{data}}</h4>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div style="width: 100%;">
+    <button type="button" class="btn-danger" (click)="dialogRef.close(true)">Yes</button>
+    <button type="button" class="btn pull-right" (click)="dialogRef.close(false)">No</button>
+  </div>
+
+</mat-dialog-actions>

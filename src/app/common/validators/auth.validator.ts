@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AlertGenerator } from './../alerts/alert-generator';
-import { ErrorDialogComponent } from '../alerts/error-dialog/error-dialog.component';
-import { MdDialog } from '@angular/material';
+import { AlertGenerator } from '../../components/alerts/alert-generator';
+import { ErrorDialogComponent } from '../../components/alerts/error-dialog/error-dialog.component';
 
 /*This class encapsulates te necessary methods for validating authentication. This includes
 sign up and login */

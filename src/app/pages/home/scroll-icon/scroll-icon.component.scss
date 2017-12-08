@@ -1,0 +1,70 @@
+$wheel-bg-color: floralwhite;
+
+@mixin animation-name($name) {
+  animation-name: $name;
+}
+
+@mixin animation-duration($duration) {
+  animation-duration: $duration;
+}
+
+@mixin animation-timing-function($function) {
+  animation-timing-function: $function;
+}
+
+@mixin animation-delay($delay) {
+  animation-delay: $delay;
+}
+
+@mixin animation-iteration-count($count) {
+  animation-iteration-count: $count;
+}
+
+@mixin animation-play-state($state) {
+  animation-play-state: $state;
+}
+
+.mouse-icon {
+  border: 2px solid floralwhite;
+  border-radius: 16px;
+  display: block;
+  height: 50px;
+  margin: 0 48.1%;
+  position: relative;
+  width: 30px;
+
+  .wheel {
+    @include animation-name(drop);
+    @include animation-duration(1s);
+    @include animation-timing-function(linear);
+    @include animation-delay(0s);
+    @include animation-iteration-count(infinite);
+    @include animation-play-state(running);
+    background-color: $wheel-bg-color;
+    border-radius: 10px;
+    height: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 4px;
+    width: 4px;
+  }
+}
+
+//This is part of a CSS animation declaration
+@keyframes drop {
+  0% {
+    opacity: 0;
+    top: 5px;
+  }
+
+  30% {
+    opacity: 1;
+    top: 10px;
+  }
+
+  100% {
+    opacity: 0;
+    top: 25px;
+  }
+}

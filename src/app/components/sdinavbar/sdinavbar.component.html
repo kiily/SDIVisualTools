@@ -1,26 +1,54 @@
- <div id="wrapper" [ngClass]="{ 'toggled': isOpen }">
-   
-
-   <!-- Sidebar -->
-   <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+<div id="wrapper" [ngClass]="{ 'toggled': isOpen }">
+  <nav class="navbar" id="sidebar-wrapper" role="navigation">
     <ul class="nav sidebar-nav">
-      <li class="sidebar-sdi">SDI Components:</li>
-      <li routerLinkActive="active current"><a routerLink='/home'>Home</a></li>
-      <li routerLinkActive="active current"><a routerLink='/scaffolding'>Scaffolding</a></li>
-      <li routerLinkActive="active current"><a routerLink='/discovery'>Discovery</a></li>
-      <li routerLinkActive="active current"><a routerLink='/innovation'>Innovation</a></li>    
-      <!-- <li routerLinkActive="active current"><a routerLink='/welcome-page'>Sign Out</a></li> -->
+      <li class="nav-title">SDI Components:</li>
+      <li routerLinkActive="active current">
+        <a routerLink="/home">Home</a>
+      </li>
+      <li routerLinkActive="active current">
+        <a routerLink="/scaffolding">Scaffolding</a>
+      </li>
+      <li routerLinkActive="active current">
+        <a routerLink="/discovery">Discovery</a>
+      </li>
+      <li routerLinkActive="active current">
+        <a routerLink="/innovation">Innovation</a>
+      </li>
     </ul>
   </nav>
-   
+
   <!-- /#sidebar-wrapper -->
 
-    <button type="button" class="menu is-closed" [ngClass]="{'is-open': isOpen, 'is-closed': !isOpen}" 
-    (click)='activateMenu()'>
-                <span class="menu-top"></span>
-    			      <span class="menu-middle"></span>
-				        <span class="menu-bottom"></span>
-            </button>
+  <button type="button" class="btn btn-outilne-secondary" (click)='activateMenu()'>
+    <span [hidden]="isOpen" class="fa fa-bars fa-lg"></span>
+    <span [hidden]="!isOpen" class="fa fa-times fa-lg"></span>
+  </button>
 
- </div> 
+</div>
 <!-- /#wrapper  -->
+
+<!-- <button (click)="toggleCollapse()" class="btn btn-outline-secondary" type="button">
+  <span [hidden]="collapse=='open'" class="fa fa-bars fa-lg"></span>
+  <span [hidden]="collapse=='closed'" class="fa fa-times fa-lg"></span>
+</button>
+<!-- other navbar code omitted -->
+<!-- <div id="wrapper" [ngClass]="{'toggled' : isOpen}">
+  <nav class="navbar" role="navigation" id="sidebar-wrapper">
+    <ul class="nav sidebar-nav">
+      <li class="nav-title">SDI Components:</li>
+      <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active current">
+        <a routerLink="/scaffolding">Scaffolding</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active current">
+        <a routerLink="/discovery">Discovery</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active current">
+        <a routerLink="/innovation">Innovation</a>
+      </li> -->
+<!-- <li routerLinkActive="active current"><a routerLink='/welcome-page'>Sign Out</a></li> -->
+<!-- </ul>
+  </nav>
+</div>  -->
