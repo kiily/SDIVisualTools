@@ -1,18 +1,25 @@
 # SDIVisualTools
 
 ## What is SDI VisualTools?
-SDI VisualTools is an Angular 4 app that acts as teaching assistant designed to help teachers visualise student progress in Computer Science (CS). PowerBI is used to present the visualisations.
+SDI VisualTools is an Angular 5 app that acts as teaching assistant designed to help teachers visualise student progress in Computer Science (CS). PowerBI is used to present the visualisations.
 
 The solution is based on the Scaffolding-Discovery-Innovation (SDI) methodology, a constructionist learning theory which is currently being implemented at the University College London (UCL). 
 
 ## Technologies used:
- * [Angular 4](https://angular.io/)
+ * [Angular 5](https://angular.io/)
  * [Node.js](http://nodejs.org/)
  * [PowerBI](https://powerbi.microsoft.com/en-us/)
  * [Firebase](https://firebase.google.com/)
- * CSS based on [Twitter's bootstrap](http://getbootstrap.com/)
+ * [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
  * Tests written in  [Jasmine](http://jasmine.github.io/) 
  * Test executed with [Karma Test Runner](http://karma-runner.github.io/0.8/index.html)
+ 
+ ### Other libraries:
+  * [Angular2-Markdown](https://www.npmjs.com/package/angular2-markdown)
+  * [AngularFire5](https://github.com/angular/angularfire2)
+  * [XLSX](https://www.npmjs.com/package/xlsx)
+  * [FontAwesome](http://fontawesome.io/)
+  * [AngularMaterial5](https://material.angular.io/)
  
 ## Installation Guide:
 ### Preparing the development environment:
