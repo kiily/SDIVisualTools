@@ -25,7 +25,7 @@ export class ScaffoldingComponent implements OnInit, OnDestroy {
   phase: string;
 
   // New Tab Toggle
-  blankToggle: boolean = false;
+  blankToggle = false;
 
   // PowerBI app and related links
   powerBIAppLinks: PowerBILink[] = [];
@@ -82,7 +82,7 @@ export class ScaffoldingComponent implements OnInit, OnDestroy {
   }
 
   /* Utility method to track the status of the blankToggle variable */
-  private toggleBlank() {
+   toggleBlank() {
     console.log(this.blankToggle);
   }
 
